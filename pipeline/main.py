@@ -263,16 +263,21 @@ def create_reply(account: str, reply_to: str, text: str) -> str:
 
 
 # ---------------------------------------------------------------- 원고 → 게시물
-def build_texts(d: dict) -> tuple[str, str]:
+def build_texts(d: dict) -> tuple[str, list[str]]:
+    """본문과 댓글 체인. 링크와 정식 대가성 문구는 마지막 댓글에 자동으로 붙는다."""
     src = CONFIG["sources"][d["source"]]
     acct = CONFIG["accounts"][d["account"]]
     main = src["header"] + "\n\n" + d["text"].strip()
     if acct.get("persona_notice"):
         main += "\n\n" + acct["persona_notice"]
-    intro = (d.get("reply_text") or CONFIG["default_reply_intro"]).strip()
+    chain = [r.strip() for r in (d.get("replies") or []) if r and r.strip()]
+    if chain:
+        last_intro = chain.pop()
+    else:
+        last_intro = (d.get("reply_text") or CONFIG["default_reply_intro"]).strip()
     link = d.get("link") or "{링크}"
-    reply = f"{intro}\n{link}\n\n{src['disclosure']}"
-    return main, reply
+    chain.append(f"{src['disclosure']}\n\n{last_intro}\n{link}")
+    return main, chain
 
 
 def lint(d: dict) -> tuple[list[str], list[str]]:
@@ -298,15 +303,29 @@ def lint(d: dict) -> tuple[list[str], list[str]]:
         hit = [w for w in CONFIG["curation_banned_phrases"] if w in text]
         if hit:
             errs.append(f"큐레이션 모드인데 직접 써본 듯한 표현이 있어요: {', '.join(hit)}")
-    claims = [w for w in CONFIG["claim_warning_words"] if w in text]
+    main, chain = build_texts(d)
+    alltext = text + "\n" + "\n".join(chain)
+    claims = [w for w in CONFIG["claim_warning_words"] if w in alltext]
     if claims:
         warns.append(f"효능·건강 표현 확인 필요: {', '.join(claims)}")
-    main, reply = build_texts(d)
+    if d["mode"] == "curation":
+        hit = [w for w in CONFIG["curation_banned_phrases"] if w in "\n".join(chain)]
+        if hit:
+            errs.append(f"큐레이션 모드인데 댓글에 직접 써본 듯한 표현이 있어요: {', '.join(hit)}")
+    ad = [w for w in CONFIG.get("ad_words", []) if w in alltext]
+    if ad:
+        warns.append(f"광고 느낌 단어: {', '.join(ad)}")
+    first = text.strip().splitlines()[0] if text.strip() else ""
+    if threads_len(first) > CONFIG.get("hook_max_len", 20):
+        warns.append(f"첫 줄이 {threads_len(first)}자예요 ({CONFIG.get('hook_max_len', 20)}자 이내 권장)")
     mx = CONFIG["max_text_len"]
     if threads_len(main) > mx:
         errs.append(f"본문이 {threads_len(main)}자로 {mx}자를 넘어요 (대가성 문구 포함)")
-    if threads_len(reply.replace("{링크}", "x" * 60)) > mx:
-        errs.append("댓글이 너무 길어요")
+    for i, r in enumerate(chain, 1):
+        if threads_len(r.replace("{링크}", "x" * 60)) > mx:
+            errs.append(f"댓글 {i}이 {mx}자를 넘어요")
+    if len(chain) > 5:
+        errs.append("댓글은 최대 5개까지")
     if len(d.get("images") or []) > 20:
         errs.append("이미지는 최대 20장")
     if d.get("link"):
@@ -377,7 +396,10 @@ def preview_text(post: dict) -> str:
     src = CONFIG["sources"][post["source"]]["label"]
     when = parse_time(post["scheduled_at"]).strftime("%m/%d %H:%M")
     mode = "큐레이션" if post["mode"] == "curation" else "경험담"
-    lines = [f"📝 [{post['id']}] {acct} · {src} · {mode} · {when} 예정", "", "── 본문 ──", post["main_text"], "", "── 댓글 ──", post["reply_text"].replace("{링크}", post.get("link") or "🔗(링크 대기)")]
+    lines = [f"📝 [{post['id']}] {acct} · {src} · {mode} · {when} 예정", "", "── 본문 ──", post["main_text"]]
+    chain = post["reply_texts"]
+    for i, r in enumerate(chain, 1):
+        lines += ["", f"── 댓글 {i}/{len(chain)} ──", r.replace("{링크}", post.get("link") or "🔗(링크 대기)")]
     if post.get("warnings"):
         lines += ["", "⚠️ " + "\n⚠️ ".join(post["warnings"])]
     if not post.get("link"):
@@ -411,7 +433,7 @@ def cmd_ingest(force: bool = False) -> bool:
         if errs:
             problems.append(f"❌ [{pid or '?'}] " + " / ".join(errs))
             continue
-        main, reply = build_texts({**d, "link": None})
+        main, chain = build_texts({**d, "link": None})
         try:
             images = fetch_images(pid, d.get("images") or [])
         except Exception as e:
@@ -420,7 +442,7 @@ def cmd_ingest(force: bool = False) -> bool:
         post = {
             "id": pid, "account": d["account"], "source": d["source"], "mode": d["mode"],
             "scheduled_at": parse_time(d.get("scheduled_at")).isoformat(),
-            "main_text": main, "reply_text": reply, "link": (d.get("link") or "").strip(),
+            "main_text": main, "reply_texts": chain, "reply_ids": [], "link": (d.get("link") or "").strip(),
             "images": images, "warnings": warns, "experience_note": d.get("experience_note", ""),
             "status": "pending", "approved": bool(d.get("publish_now")), "created_at": now().isoformat(),
             "reply_attempts": 0,
@@ -523,8 +545,16 @@ def do_publish(post: dict, sync_msg: str = "publish"):
             urls = [f"{media_base()}/{p}" for p in post["images"]]
             post["main_id"] = create_main(acc, post["main_text"], urls)
             save_post(post)
-        reply_text = post["reply_text"].replace("{링크}", post["link"])
-        post["reply_id"] = create_reply(acc, post["main_id"], reply_text)
+        # 댓글 체인: 이미 올라간 댓글은 건너뛰고 이어서 단다 (실패 후 재시도해도 중복 없음)
+        ids = post.setdefault("reply_ids", [])
+        for i, r in enumerate(post["reply_texts"]):
+            if i < len(ids):
+                continue
+            parent = ids[-1] if ids else post["main_id"]
+            ids.append(create_reply(acc, parent, r.replace("{링크}", post["link"])))
+            save_post(post)
+            if i + 1 < len(post["reply_texts"]):
+                time.sleep(float(os.environ.get("REPLY_GAP", "3")))
         try:
             post["permalink"] = th_get(acc, post["main_id"], "permalink").get("permalink", "")
         except Exception:
