@@ -199,7 +199,9 @@ def safe_notify(text: str):
 
 # ---------------------------------------------------------------- 스레드 API
 def acct_creds(account: str) -> tuple[str, str]:
-    return env(f"THREADS_USER_ID_{account}"), env(f"THREADS_TOKEN_{account}")
+    # 사용자 ID를 따로 등록하지 않으면 토큰 주인(me)으로 게시
+    uid = os.environ.get(f"THREADS_USER_ID_{account}") or "me"
+    return uid, env(f"THREADS_TOKEN_{account}")
 
 
 def th_post(account: str, path: str, data: dict) -> dict:
@@ -623,7 +625,10 @@ def cmd_ping():
         try:
             uid, token = acct_creds(acc)
             j = requests.get(f"{THREADS_API}/me", params={"fields": "id,username", "access_token": token}, timeout=30).json()
-            ok = str(j.get("id")) == str(uid)
+            if not j.get("id"):
+                tg_text(f"계정 {acc}: ⚠️ 연결 실패 {str(j)[:300]}")
+                continue
+            ok = uid == "me" or str(j.get("id")) == str(uid)
             tg_text(f"계정 {acc}: @{j.get('username')} " + ("연결 OK" if ok else f"⚠️ 사용자 ID 불일치 ({j.get('id')} ≠ {uid})"))
         except Exception as e:
             safe_notify(f"계정 {acc}: 연결 실패 {e}")

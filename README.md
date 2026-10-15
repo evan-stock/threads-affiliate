@@ -77,8 +77,7 @@
 |---|---|
 | TELEGRAM_BOT_TOKEN | 봇 토큰 |
 | TELEGRAM_CHAT_ID | Chat ID |
-| THREADS_USER_ID_A / THREADS_TOKEN_A | 계정 A 사용자 ID / 토큰 |
-| THREADS_USER_ID_B / THREADS_TOKEN_B | 계정 B 사용자 ID / 토큰 |
+| THREADS_TOKEN_A | 계정 A 장기 액세스 토큰 (사용자 ID는 자동으로 찾아요) |
 | GH_PAT | github.com/settings/personal-access-tokens/new 에서 이 저장소만 선택, **Secrets: Read and write** 권한으로 만든 토큰 (스레드 토큰 자동 갱신용) |
 
 토큰은 채팅에 붙여넣지 말고 여기에만 넣어 주세요.
