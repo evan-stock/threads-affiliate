@@ -10,6 +10,10 @@ on:
         description: "같은 ID 원고를 다시 만들기"
         type: boolean
         default: true
+      id:
+        description: "이 글만 다시 만들기 (비우면 전체)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -39,7 +43,11 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
-            python pipeline/main.py ingest --force
+            if [ -n "${{ inputs.id }}" ]; then
+              python pipeline/main.py ingest --force --id "${{ inputs.id }}"
+            else
+              python pipeline/main.py ingest --force
+            fi
           else
             python pipeline/main.py ingest
           fi

@@ -421,11 +421,13 @@ def read_drafts() -> list[dict]:
     return items
 
 
-def cmd_ingest(force: bool = False) -> bool:
+def cmd_ingest(force: bool = False, only_id: str | None = None) -> bool:
     changed = False
     problems = []
     for d in read_drafts():
         pid = str(d.get("id", ""))
+        if only_id and pid != only_id:
+            continue
         old = load_post(pid) if ID_RE.match(pid) else None
         if old and (not force or old["status"] in ("published", "publishing", "reply_failed")):
             continue
@@ -696,7 +698,7 @@ def main():
             cmd_ping()
         elif a.cmd == "ingest":
             git_pull()
-            if cmd_ingest(a.force):
+            if cmd_ingest(a.force, a.id):
                 git_push("ingest drafts")
         elif a.cmd == "tick":
             git_pull()
