@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "id": "20261017-bulgogi",
+      "account": "A",
+      "source": "toss",
+      "mode": "experience",
+      "experience_note": "사용자가 직접 먹어봄: 맛있음, 마늘 넣고 볶아 먹으면 더 맛있음 (2026-10-16 아침 채팅)",
+      "scheduled_at": "2026-10-17T18:30",
+      "text": "이건 내가 직접 먹어본 거\n대구 북성로 연탄불고기 300g 3팩\n불향 제대로 나서 맛있음\n마늘 넣고 같이 볶으면 더 맛남 (진심)\n후기 256개에 평점 4.5",
+      "images": [
+        "https://shopping.toss.im/live/taca/ai/Yzc1NzU4/WlhHdGh6SkdGazhMTDVQQnBNaHl6UjhwYkxCZHJYczZsRGc0SWVMRVhwMD0.png"
+      ],
+      "link": "https://toss.shopping/_m/jbxAumyC",
+      "replies": [
+        "광고 글 중에서도 이건 진짜 먹어본 거라\n솔직하게 말할 수 있음ㅋㅋ\n불향 나는 고기 좋아하면 만족할 듯",
+        "더 맛있게 먹는 법\n· 팬에 마늘 넉넉히 넣고 같이 볶기 (이게 핵심)\n· 밥 위에 올려서 불고기 덮밥\n· 상추에 싸서 한 쌈",
+        "300g씩 3팩이라 한 팩씩 꺼내 먹기 좋고\n후기 256개에 평점 4.5\n다들 불고기에 마늘 넣어 먹어?",
+        "가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
