@@ -267,6 +267,8 @@ def build_texts(d: dict) -> tuple[str, list[str]]:
     """본문과 댓글 체인. 링크와 정식 대가성 문구는 마지막 댓글에 자동으로 붙는다."""
     src = CONFIG["sources"][d["source"]]
     acct = CONFIG["accounts"][d["account"]]
+    if d["source"] == "none":
+        return d["text"].strip(), [r.strip() for r in (d.get("replies") or []) if r and r.strip()]
     main = src["header"] + "\n\n" + d["text"].strip()
     if acct.get("persona_notice"):
         main += "\n\n" + acct["persona_notice"]
@@ -289,14 +291,21 @@ def lint(d: dict) -> tuple[list[str], list[str]]:
         errs.append(f"account는 {list(CONFIG['accounts'])} 중 하나")
     if d.get("source") not in CONFIG["sources"]:
         errs.append(f"source는 {list(CONFIG['sources'])} 중 하나")
-    if d.get("mode") not in ("curation", "experience"):
+    if d.get("source") == "none":
+        if d.get("mode") != "talk":
+            errs.append("일반 글(source none)은 mode를 talk로 적어 주세요")
+        if d.get("link"):
+            errs.append("일반 글에는 제휴 링크를 넣지 않아요")
+    elif d.get("mode") not in ("curation", "experience"):
         errs.append("mode는 curation 또는 experience")
     if not (d.get("text") or "").strip():
         errs.append("text(본문)가 비어 있어요")
     if errs:
         return errs, warns
     text = d["text"]
-    if d["mode"] == "experience":
+    if d["mode"] == "talk":
+        pass
+    elif d["mode"] == "experience":
         if not (d.get("experience_note") or "").strip():
             errs.append("경험담 모드는 experience_note(실제 사용 메모)가 필요해요")
     else:
@@ -339,6 +348,14 @@ def lint(d: dict) -> tuple[list[str], list[str]]:
     except Exception:
         errs.append("scheduled_at 형식 예: 2026-10-16T12:30")
     return errs, warns
+
+
+def needs_link(post: dict) -> bool:
+    return post.get("source") != "none"
+
+
+def ready_link(post: dict) -> bool:
+    return bool(post.get("link")) or not needs_link(post)
 
 
 def check_link(source: str, url: str) -> tuple[bool, str]:
@@ -395,14 +412,14 @@ def preview_text(post: dict) -> str:
     acct = CONFIG["accounts"][post["account"]]["label"]
     src = CONFIG["sources"][post["source"]]["label"]
     when = parse_time(post["scheduled_at"]).strftime("%m/%d %H:%M")
-    mode = "큐레이션" if post["mode"] == "curation" else "경험담"
+    mode = {"curation": "큐레이션", "experience": "경험담", "talk": "일반 글"}.get(post["mode"], post["mode"])
     lines = [f"📝 [{post['id']}] {acct} · {src} · {mode} · {when} 예정", "", "── 본문 ──", post["main_text"]]
     chain = post["reply_texts"]
     for i, r in enumerate(chain, 1):
         lines += ["", f"── 댓글 {i}/{len(chain)} ──", r.replace("{링크}", post.get("link") or "🔗(링크 대기)")]
     if post.get("warnings"):
         lines += ["", "⚠️ " + "\n⚠️ ".join(post["warnings"])]
-    if not post.get("link"):
+    if not ready_link(post):
         lines += ["", "🔗 이 메시지에 답장으로 링크를 보내 주세요."]
     return "\n".join(lines)
 
@@ -486,7 +503,7 @@ def handle_updates() -> bool:
                     post["approved"] = True
                     post["status"] = "approved"
                     when = parse_time(post["scheduled_at"]).strftime("%m/%d %H:%M")
-                    note = f"✅ [{pid}] 승인됨 · {when} 게시 예정" if post.get("link") else f"✅ [{pid}] 승인됨 · 링크를 받으면 {when}에 게시해요"
+                    note = f"✅ [{pid}] 승인됨 · {when} 게시 예정" if ready_link(post) else f"✅ [{pid}] 승인됨 · 링크를 받으면 {when}에 게시해요"
                 elif act == "no":
                     post["status"] = "rejected"
                     note = f"❌ [{pid}] 거절됨"
@@ -553,7 +570,7 @@ def do_publish(post: dict, sync_msg: str = "publish"):
             if i < len(ids):
                 continue
             parent = ids[-1] if ids else post["main_id"]
-            ids.append(create_reply(acc, parent, r.replace("{링크}", post["link"])))
+            ids.append(create_reply(acc, parent, r.replace("{링크}", post.get("link", ""))))
             save_post(post)
             if i + 1 < len(post["reply_texts"]):
                 time.sleep(float(os.environ.get("REPLY_GAP", "3")))
@@ -591,7 +608,7 @@ def cmd_tick() -> bool:
         if st == "reply_failed":
             do_publish(post, "retry-reply")
             changed = True
-        elif st == "approved" and post.get("link") and t >= when:
+        elif st == "approved" and ready_link(post) and t >= when:
             do_publish(post)
             changed = True
         elif st in ("pending", "approved") and t >= when + exp:
@@ -641,7 +658,7 @@ def cmd_publish(pid: str):
     post = load_post(pid)
     if not post:
         raise SystemExit(f"{pid} 없음")
-    if not post.get("link"):
+    if not ready_link(post):
         raise SystemExit("링크가 없어 게시할 수 없어요")
     if post["status"] == "published":
         raise SystemExit("이미 게시됨")

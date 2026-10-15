@@ -29,6 +29,12 @@
         "toss.page.link",
         "tossshopping.com"
       ]
+    },
+    "none": {
+      "label": "일반 글",
+      "header": "",
+      "disclosure": "",
+      "link_hosts": []
     }
   },
   "default_reply_intro": "여기서 볼 수 있어~",
