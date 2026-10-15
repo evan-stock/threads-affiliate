@@ -1,0 +1,53 @@
+name: tools
+# 수동 도구: 연결 확인(ping), 즉시 게시(publish), 토큰 갱신(refresh-tokens). 토큰 갱신은 매주 자동.
+on:
+  workflow_dispatch:
+    inputs:
+      cmd:
+        description: "ping / publish / refresh-tokens"
+        required: true
+        default: ping
+      id:
+        description: "publish 할 글 ID"
+        required: false
+  schedule:
+    - cron: "41 18 * * 0"   # 매주 월요일 03:41 KST 토큰 갱신
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tools
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - name: git 설정
+        run: |
+          git config user.name "threads-bot"
+          git config user.email "threads-bot@users.noreply.github.com"
+      - name: 실행
+        env:
+          GIT_SYNC: "1"
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          THREADS_USER_ID_A: ${{ secrets.THREADS_USER_ID_A }}
+          THREADS_TOKEN_A: ${{ secrets.THREADS_TOKEN_A }}
+          THREADS_USER_ID_B: ${{ secrets.THREADS_USER_ID_B }}
+          THREADS_TOKEN_B: ${{ secrets.THREADS_TOKEN_B }}
+        run: |
+          CMD="${{ inputs.cmd }}"
+          [ -z "$CMD" ] && CMD="refresh-tokens"
+          if [ "$CMD" = "publish" ]; then
+            python pipeline/main.py publish --id "${{ inputs.id }}"
+          else
+            python pipeline/main.py "$CMD"
+          fi

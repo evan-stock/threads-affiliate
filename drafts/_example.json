@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": "20261016-a1",
+      "account": "A",
+      "source": "coupang",
+      "mode": "curation",
+      "scheduled_at": "2026-10-16T12:30",
+      "text": "여행 가서 호텔 커피포트 쓰기 찜찜한 사람?\n생수병 꽂으면 바로 뜨거운 물 나오는 휴대용 온수기가 있더라~\n컵라면이랑 커피 정도는 이걸로 충분할 듯ㅎ\n접으면 파우치에 쏙 들어가는 크기래",
+      "images": ["https://example.com/product-thumbnail.jpg"],
+      "link": "",
+      "reply_text": "궁금한 사람은 여기서 봐~"
+    },
+    {
+      "id": "20261016-b1",
+      "account": "B",
+      "source": "toss",
+      "mode": "experience",
+      "experience_note": "2주째 매일 아침 사용 중. 손가락 관절에 붙여도 하루 버팀.",
+      "scheduled_at": "2026-10-16T19:00",
+      "text": "손가락 관절에 붙이는 밴드 맨날 들뜨는 거 나만 그래?\n이거 2주째 쓰는 중인데 설거지하고 나서도 안 떨어져서 놀람ㅋㅋ",
+      "images": ["media/uploads/my-photo.jpg"],
+      "link": ""
+    }
+  ]
+}

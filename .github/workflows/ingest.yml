@@ -1,0 +1,49 @@
+name: ingest
+# 원고(drafts/*.json)가 push되면 대기열에 넣고 텔레그램으로 미리보기를 보낸 뒤, 게시 감시(poster)를 깨운다.
+on:
+  push:
+    branches: [main]
+    paths: ["drafts/**"]
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "같은 ID 원고를 다시 만들기"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - name: git 설정
+        run: |
+          git config user.name "threads-bot"
+          git config user.email "threads-bot@users.noreply.github.com"
+      - name: 원고 반영
+        env:
+          GIT_SYNC: "1"
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            python pipeline/main.py ingest --force
+          else
+            python pipeline/main.py ingest
+          fi
+      - name: 게시 감시 깨우기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run poster.yml --ref main

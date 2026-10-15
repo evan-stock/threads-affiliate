@@ -1,0 +1,40 @@
+name: poster
+# 텔레그램 승인·링크를 1분마다 확인하고 시간이 된 글을 게시한다.
+# 대기 글이 남아 있으면 약 5시간 40분 뒤 스스로 다음 실행을 예약한다.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */3 * * *"   # 예비 실행 (3시간마다, UTC)
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: poster
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - name: git 설정
+        run: |
+          git config user.name "threads-bot"
+          git config user.email "threads-bot@users.noreply.github.com"
+      - name: 감시
+        env:
+          GIT_SYNC: "1"
+          GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          THREADS_USER_ID_A: ${{ secrets.THREADS_USER_ID_A }}
+          THREADS_TOKEN_A: ${{ secrets.THREADS_TOKEN_A }}
+          THREADS_USER_ID_B: ${{ secrets.THREADS_USER_ID_B }}
+          THREADS_TOKEN_B: ${{ secrets.THREADS_TOKEN_B }}
+        run: python pipeline/main.py watch --max-minutes 340 --redispatch
