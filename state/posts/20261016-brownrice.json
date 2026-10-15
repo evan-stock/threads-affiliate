@@ -11,7 +11,12 @@
     "즉석밥 고를 때 볼 건\n1. 개당 가격 (이건 900원도 안 됨)\n2. 한 개 용량 (150g이면 가볍게 한 끼)\n3. 후기 수랑 평점\n근데 가격은 수시로 바뀌던데, 지금도 이 가격일까?",
     "이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.\n\n가격 바뀌기 전에 여기서 확인해봐~\n{링크}"
   ],
-  "reply_ids": [],
+  "reply_ids": [
+    "18177066337440420",
+    "18115477781049787",
+    "18088428461278259",
+    "18103024673241527"
+  ],
   "link": "https://toss.shopping/_m/rgHKgYYl",
   "images": [
     "media/20261016-brownrice/1.jpg"
@@ -20,10 +25,13 @@
     "광고 느낌 단어: 대박"
   ],
   "experience_note": "",
-  "status": "publishing",
+  "status": "published",
   "approved": true,
   "created_at": "2026-10-16T02:14:25.216211+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 10,
-  "updated_at": "2026-10-16T02:15:22.262094+09:00"
+  "updated_at": "2026-10-16T02:16:29.578730+09:00",
+  "main_id": "18097917206390606",
+  "permalink": "https://www.threads.com/@gotitem.lab/post/DeheNN5m8yp",
+  "published_at": "2026-10-16T02:16:29.578666+09:00"
 }
