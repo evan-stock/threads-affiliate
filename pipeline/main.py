@@ -269,9 +269,13 @@ def build_texts(d: dict) -> tuple[str, list[str]]:
     acct = CONFIG["accounts"][d["account"]]
     if d["source"] == "none":
         return d["text"].strip(), [r.strip() for r in (d.get("replies") or []) if r and r.strip()]
-    main = src["header"] + "\n\n" + d["text"].strip()
+    main = d["text"].strip()
     if acct.get("persona_notice"):
         main += "\n\n" + acct["persona_notice"]
+    if CONFIG.get("header_position", "top") == "bottom":
+        main = main + "\n\n" + src["header"]
+    else:
+        main = src["header"] + "\n\n" + main
     chain = [r.strip() for r in (d.get("replies") or []) if r and r.strip()]
     if chain:
         last_intro = chain.pop()
