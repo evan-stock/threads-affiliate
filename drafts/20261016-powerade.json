@@ -1,0 +1,50 @@
+{
+  "posts": [
+    {
+      "id": "20261016-powerade",
+      "account": "A",
+      "source": "coupang",
+      "mode": "curation",
+      "scheduled_at": "2026-10-16T22:50",
+      "text": "쿠팡이 다나와보다 쌈\n파워에이드 제로 600ml 20개\n다나와 424개 쇼핑몰 최저가가 16,850원인데\n쿠팡 골드박스는 지금 14,990원\n한 병에 750원꼴, 직영몰(1,376원)의 거의 반값",
+      "images": [
+        "https://thumbnail12.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/5393230486688-34423626-75ea-47f7-b83c-bd0f3ca24d99.jpg"
+      ],
+      "compare": {
+        "title": "파워에이드 제로 600ml×20",
+        "unit": "1병",
+        "per": 1,
+        "checked_at": "10/16 22:30",
+        "rows": [
+          {
+            "name": "쿠팡 골드박스",
+            "price": 14990,
+            "amount": 20,
+            "amount_label": "600ml×20",
+            "source": "쿠팡 파트너스 상품 화면"
+          },
+          {
+            "name": "다나와 최저가 (424몰)",
+            "price": 16850,
+            "amount": 20,
+            "amount_label": "600ml×20",
+            "source": "다나와 가격비교"
+          },
+          {
+            "name": "코카콜라 직영몰",
+            "price": 27520,
+            "amount": 20,
+            "amount_label": "600ml×20",
+            "source": "다나와 검색 결과"
+          }
+        ]
+      },
+      "link": "https://link.coupang.com/a/hTIOWXRvG0",
+      "replies": [
+        "골드박스는 하루짜리 특가라 내일이면 가격 바뀔 수 있음\n운동하거나 사무실에 두고 마시는 사람은 이럴 때 한 박스 사두는 게 이득",
+        "다나와 가격은 쇼핑몰마다 배송비가 따로일 수 있고\n쿠팡도 와우 회원 아니면 배송비 붙을 수 있으니 결제 전에 한 번 확인해봐\n다들 이온음료 뭐 마셔?",
+        "지금 가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
