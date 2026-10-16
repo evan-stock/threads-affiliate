@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T23:10:16.639864+09:00",
+ "generated_at": "2026-10-16T23:14:42.828747+09:00",
  "watch_last_check": "2026-10-16T23:10:14.114514+09:00",
  "comments": {
   "skipped": 2,
@@ -211,6 +211,92 @@
    "comments": 1
   },
   {
+   "id": "20261017-life-dinner",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T18:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "주말 저녁 메뉴 정하는 게 제일 어려움",
+   "replies": 0,
+   "warnings": [
+    "첫 줄이 21자예요 (20자 이내 권장)"
+   ],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-life-hobby",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T15:10:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "취미 하나 새로 시작해보고 싶은데",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-life-night",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T23:20:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "토요일 밤이 일주일 중에 제일 좋음",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-life-show",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T20:40:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "주말 밤에 정주행할 거 찾는 중",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-life-sleep",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T09:40:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "토요일 아침 알람 없이 눈 뜨는 거",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-life-walk",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T12:20:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "요즘 날씨 덥지도 춥지도 않아서",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
    "id": "20261017-moksal",
    "source": "toss",
    "mode": "curation",
@@ -228,21 +314,21 @@
    "id": "20261017-talk-ask",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-17T17:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "다음 갓성비템 뭐 찾아줄까",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "사용자 요청으로 취소 (장보기 주제 편중)",
    "comments": 0
   },
   {
    "id": "20261017-talk-bulk",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-17T13:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -251,14 +337,14 @@
    "warnings": [
     "광고 느낌 단어: 무조건"
    ],
-   "note": "",
+   "note": "사용자 요청으로 취소 (장보기 주제 편중)",
    "comments": 0
   },
   {
    "id": "20261017-talk-delivery",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-17T22:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -267,7 +353,7 @@
    "warnings": [
     "첫 줄이 23자예요 (20자 이내 권장)"
    ],
-   "note": "",
+   "note": "사용자 요청으로 취소 (장보기 주제 편중)",
    "comments": 0
   },
   {
@@ -288,14 +374,14 @@
    "id": "20261017-talk-list",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-17T09:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "주말 장보기 리스트 쓰는 사람?",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "사용자 요청으로 취소 (장보기 주제 편중)",
    "comments": 0
   },
   {
@@ -330,28 +416,28 @@
    "id": "20261017-talk-tag",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-17T11:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "마트 가격표 구석에 작게 써있는 숫자",
    "replies": 2,
    "warnings": [],
-   "note": "",
+   "note": "사용자 요청으로 취소 (장보기 주제 편중)",
    "comments": 0
   },
   {
    "id": "20261017-talk-vs",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-17T19:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "장 볼 때 둘 중 하나만 골라야 하면",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "사용자 요청으로 취소 (장보기 주제 편중)",
    "comments": 0
   }
  ]
