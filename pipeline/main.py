@@ -222,7 +222,7 @@ def tg_text(text: str, reply_markup: dict | None = None, reply_to: int | None = 
 
 
 def tg_photos(paths: list[Path]):
-    paths = paths[:10]
+    paths = [p for p in paths if str(p).lower().endswith((".jpg", ".jpeg", ".png"))][:10]
     if not paths:
         return
     chat = env("TELEGRAM_CHAT_ID")
@@ -317,15 +317,23 @@ def create_main(account: str, text: str, image_urls: list[str]) -> str:
     return with_retry(lambda: _create_main(account, text, image_urls))
 
 
+def _media_fields(url: str) -> dict:
+    if url.lower().endswith(".mp4"):
+        return {"media_type": "VIDEO", "video_url": url}
+    return {"media_type": "IMAGE", "image_url": url}
+
+
 def _create_main(account: str, text: str, image_urls: list[str]) -> str:
     if not image_urls:
         cid = th_post(account, "threads", {"media_type": "TEXT", "text": text})["id"]
     elif len(image_urls) == 1:
-        cid = th_post(account, "threads", {"media_type": "IMAGE", "image_url": image_urls[0], "text": text})["id"]
+        cid = th_post(account, "threads", {**_media_fields(image_urls[0]), "text": text})["id"]
+        if image_urls[0].endswith(".mp4"):
+            wait_container(account, cid, 600)
     else:
         children = []
         for u in image_urls[:20]:
-            c = th_post(account, "threads", {"media_type": "IMAGE", "image_url": u, "is_carousel_item": "true"})["id"]
+            c = th_post(account, "threads", {**_media_fields(u), "is_carousel_item": "true"})["id"]
             children.append(c)
         for c in children:
             wait_container(account, c)
@@ -622,6 +630,13 @@ def handle_updates() -> bool:
         msg = u.get("message") or {}
         if str(msg.get("chat", {}).get("id")) != chat:
             continue
+        import photo_post as pp
+        try:
+            if pp.handle_media_message(msg, st) or pp.handle_name_reply(msg):
+                continue
+        except Exception as e:
+            safe_notify(f"⚠️ 사진 접수 오류: {str(e)[:300]}")
+            continue
         text = (msg.get("text") or "").strip()
         target = None
         rt = (msg.get("reply_to_message") or {}).get("message_id")
@@ -657,6 +672,7 @@ def handle_updates() -> bool:
             tg_text(f"[{target['id']}] {why}")
             continue
         target["link"] = urls[-1]
+        target["link_announced"] = True
         save_post(target)
         extra = f"\n⚠️ {why}" if why else ""
         state = "승인돼 있어서 시간 되면 게시해요" if target["approved"] else "✅ 승인 버튼을 누르면 게시돼요"
@@ -859,6 +875,12 @@ def do_publish(post: dict, sync_msg: str = "publish"):
 
 def cmd_tick() -> bool:
     changed = handle_updates()
+    import photo_post as pp
+    for fn in (pp.process_inbox, pp.announce_links):
+        try:
+            changed = fn() or changed
+        except Exception as e:
+            log("사진 글 처리 오류:", str(e)[:300])
     try:
         changed = check_comments() or changed
     except Exception as e:
