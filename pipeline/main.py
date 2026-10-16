@@ -374,6 +374,9 @@ def lint(d: dict) -> tuple[list[str], list[str]]:
             errs.append(msg)
         elif msg:
             warns.append(msg)
+    if d.get("compare"):
+        import compare as cmpmod
+        errs += cmpmod.validate(d["compare"])
     try:
         parse_time(d.get("scheduled_at"))
     except Exception:
@@ -486,6 +489,11 @@ def cmd_ingest(force: bool = False, only_id: str | None = None) -> bool:
         main, chain = build_texts({**d, "link": None})
         try:
             images = fetch_images(pid, d.get("images") or [])
+            if d.get("compare"):
+                import compare as cmpmod
+                out = MEDIA_DIR / pid / "compare.jpg"
+                cmpmod.render(d["compare"], str(out))
+                images = [str(out.relative_to(ROOT))] + images
         except Exception as e:
             problems.append(f"❌ [{pid}] 이미지 받기 실패: {e}")
             continue
