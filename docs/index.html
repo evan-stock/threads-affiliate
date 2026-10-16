@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>득템연구소 운영판</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 위에서 아래로 "손볼 것 → 숫자 → 시간표" 순서의 한 줄 기둥, 넓은 화면에선 시간표 옆에 비율 카드 */
+:root {
+  --bg: #f3f4f1;
+  --panel: #ffffff;
+  --ink: #17181a;
+  --sub: #6b6e68;
+  --line: #dfe1dc;
+  --tag: #ffd640;          /* 비교표 '제일 쌈' 노랑 */
+  --tag-ink: #17181a;
+  --ok: #1f8a4c;
+  --warn: #b26a00;
+  --bad: #c8372d;
+  --info: #2f5fb3;
+  --ok-bg: #e3f3e9;
+  --warn-bg: #fbefd9;
+  --bad-bg: #fbe3e0;
+  --info-bg: #e3ebf8;
+  --mute-bg: #ecedea;
+  --f-display: "Do Hyeon", "IBM Plex Sans KR", sans-serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121311; --panel: #1b1c1a; --ink: #eceee9; --sub: #9a9d96; --line: #2d2f2b;
+    --tag: #f2c935; --tag-ink: #17181a;
+    --ok: #5cc98a; --warn: #e6a64a; --bad: #ff7b6e; --info: #86a9ec;
+    --ok-bg: #173323; --warn-bg: #3a2c12; --bad-bg: #3d1c19; --info-bg: #1a2742; --mute-bg: #262825;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121311; --panel: #1b1c1a; --ink: #eceee9; --sub: #9a9d96; --line: #2d2f2b;
+  --tag: #f2c935; --tag-ink: #17181a;
+  --ok: #5cc98a; --warn: #e6a64a; --bad: #ff7b6e; --info: #86a9ec;
+  --ok-bg: #173323; --warn-bg: #3a2c12; --bad-bg: #3d1c19; --info-bg: #1a2742; --mute-bg: #262825;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.55 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 20px; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--info); outline-offset: 2px; }
+
+header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .mark {
+  font-family: var(--f-display); font-size: 20px; background: var(--tag); color: var(--tag-ink);
+  padding: 4px 10px 2px; border-radius: 6px; transform: rotate(-3deg);
+}
+h1 { font-family: var(--f-display); font-weight: 400; font-size: 32px; line-height: 1.1; margin: 0; text-wrap: balance; }
+.handle { color: var(--sub); font-size: 13px; }
+.fresh { display: flex; align-items: center; gap: 10px; color: var(--sub); font-size: 13px; }
+.fresh button {
+  border: 1px solid var(--line); background: var(--panel); border-radius: 999px;
+  padding: 6px 14px; cursor: pointer;
+}
+.fresh button:hover { border-color: var(--sub); }
+
+.attn { display: grid; gap: 8px; }
+.attn .row {
+  display: flex; gap: 10px; align-items: baseline; padding: 12px 14px; border-radius: 10px;
+  background: var(--panel); border: 1px solid var(--line); border-left-width: 5px;
+}
+.attn .row.bad { border-left-color: var(--bad); }
+.attn .row.warn { border-left-color: var(--warn); }
+.attn .row.ok { border-left-color: var(--ok); }
+.attn b { white-space: nowrap; }
+.attn span { color: var(--sub); min-width: 0; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; }
+.kpi .lab { font-size: 13px; color: var(--sub); }
+.kpi .val { font-family: var(--f-num); font-size: 30px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.kpi .val small { font-family: var(--f-body); font-size: 14px; color: var(--sub); margin-left: 2px; }
+.kpi .foot { font-size: 12px; color: var(--sub); }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-width: 0; }
+.panel h2 { font-size: 16px; margin: 0 0 12px; font-weight: 700; }
+
+.tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.tabs button {
+  border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 5px 14px; cursor: pointer;
+}
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tabs button .n { font-family: var(--f-num); font-size: 12px; opacity: .7; margin-left: 4px; }
+
+.list { list-style: none; margin: 0; padding: 0; display: grid; }
+.item {
+  display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 4px 12px; align-items: start;
+  padding: 12px 0; border-top: 1px solid var(--line);
+}
+.item:first-child { border-top: 0; }
+.item .t { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: 15px; padding-top: 1px; }
+.item .body { min-width: 0; display: grid; gap: 4px; }
+.item .title { overflow-wrap: anywhere; }
+.item .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; color: var(--sub); }
+.item .go { font-size: 13px; white-space: nowrap; color: var(--sub); text-decoration: none; padding-top: 2px; }
+.item .go:hover { color: var(--ink); text-decoration: underline; }
+.item.dim .title, .item.dim .t { color: var(--sub); }
+
+.chip { display: inline-block; font-size: 12px; line-height: 1; padding: 4px 8px; border-radius: 6px; white-space: nowrap; }
+.chip.ad { background: var(--tag); color: var(--tag-ink); font-weight: 700; }
+.chip.talk { background: var(--mute-bg); color: var(--sub); }
+.pill { display: inline-block; font-size: 12px; line-height: 1; padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.info { background: var(--info-bg); color: var(--info); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.pill.bad { background: var(--bad-bg); color: var(--bad); }
+.pill.mute { background: var(--mute-bg); color: var(--sub); }
+.empty { color: var(--sub); padding: 16px 0; }
+
+.side { display: grid; gap: 20px; }
+.ratio .big { font-family: var(--f-num); font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.ratio .big small { font-family: var(--f-body); font-size: 14px; color: var(--sub); }
+.bar { position: relative; height: 14px; border-radius: 7px; background: var(--mute-bg); margin: 14px 0 26px; }
+.bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 7px; background: var(--tag); }
+.bar .fill.over { background: var(--bad); }
+.bar .limit { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
+.bar .limit span { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--sub); white-space: nowrap; }
+.ratio p { margin: 0; color: var(--sub); font-size: 13px; }
+
+.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; height: 120px; margin-top: 4px; }
+.day { display: grid; grid-template-rows: 1fr auto; gap: 4px; height: 100%; text-align: center; }
+.stack { display: flex; flex-direction: column-reverse; justify-content: flex-start; gap: 2px; }
+.stack i { display: block; border-radius: 3px; }
+.stack i.ad { background: var(--tag); }
+.stack i.talk { background: var(--sub); opacity: .45; }
+.day .d { font-size: 11px; color: var(--sub); font-variant-numeric: tabular-nums; }
+.day .c { font-family: var(--f-num); font-size: 11px; color: var(--sub); }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--sub); margin-top: 10px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
+details.more { margin-top: 4px; }
+details.more summary { cursor: pointer; color: var(--sub); font-size: 13px; padding: 6px 0; }
+
+.err { background: var(--bad-bg); color: var(--bad); padding: 12px 14px; border-radius: 10px; }
+footer { color: var(--sub); font-size: 12px; text-align: center; }
+
+@media (max-width: 860px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  h1 { font-size: 26px; }
+  .item { grid-template-columns: 46px minmax(0, 1fr); }
+  .item .go { grid-column: 2; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar .fill { transition: width .4s ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <span class="mark">득템</span>
+      <div>
+        <h1>득템연구소 운영판</h1>
+        <div class="handle">@gotitem.lab · 스레드 자동 게시 현황</div>
+      </div>
+    </div>
+    <div class="fresh">
+      <span id="fresh">불러오는 중…</span>
+      <button id="reload" type="button">새로고침</button>
+    </div>
+  </header>
+
+  <section class="attn" id="attn" aria-label="손볼 것"></section>
+
+  <section class="kpis" id="kpis" aria-label="오늘 숫자"></section>
+
+  <div class="main">
+    <section class="panel" aria-labelledby="h-sched">
+      <h2 id="h-sched">시간표</h2>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <ul class="list" id="list"></ul>
+      <details class="more" id="moreBox">
+        <summary id="moreSum">보류·거절된 글</summary>
+        <ul class="list" id="moreList"></ul>
+      </details>
+    </section>
+
+    <aside class="side">
+      <section class="panel ratio" aria-labelledby="h-ratio">
+        <h2 id="h-ratio">최근 7일 링크 글 비율</h2>
+        <div class="big" id="ratioBig">–</div>
+        <div class="bar" id="ratioBar"><div class="fill" id="ratioFill" style="width:0"></div><div class="limit" style="left:30%"><span>지침 30%</span></div></div>
+        <p id="ratioNote"></p>
+      </section>
+      <section class="panel" aria-labelledby="h-days">
+        <h2 id="h-days">하루 게시 수</h2>
+        <div class="days" id="days"></div>
+        <div class="legend"><span><i style="background:var(--tag)"></i>광고 글</span><span><i style="background:var(--sub);opacity:.45"></i>일반 글</span></div>
+      </section>
+    </aside>
+  </div>
+
+  <footer>게시 감시가 상태를 바꿀 때마다 갱신돼요. 이 화면은 보기 전용이고, 승인은 텔레그램에서 해요.</footer>
+</div>
+
+<script>
+const REPO = "evan-stock/threads-affiliate";
+const FILE = "state/dashboard.json";
+const TZ = "Asia/Seoul";
+const LINK_LIMIT = 0.30;
+
+const STATUS = {
+  pending:      ["승인 대기", "warn"],
+  approved:     ["예약됨", "info"],
+  publishing:   ["올리는 중", "info"],
+  published:    ["게시됨", "ok"],
+  reply_failed: ["댓글 일부 실패", "bad"],
+  failed:       ["실패", "bad"],
+  rejected:     ["거절", "mute"],
+  expired:      ["시간 지나 취소", "mute"],
+  held:         ["보류", "mute"],
+};
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+const fmtDay = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" });
+const fmtTime = new Intl.DateTimeFormat("ko-KR", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hour12: false });
+const dayKey = (d) => fmtDay.format(d);
+const hm = (d) => fmtTime.format(d);
+const shiftDay = (key, n) => { const d = new Date(key + "T12:00:00+09:00"); d.setDate(d.getDate() + n); return dayKey(d); };
+const md = (key) => { const [, m, d] = key.split("-"); return `${+m}/${+d}`; };
+const ago = (d) => {
+  const m = Math.round((Date.now() - d) / 60000);
+  if (m < 1) return "방금";
+  if (m < 60) return `${m}분 전`;
+  const h = Math.floor(m / 60);
+  return h < 24 ? `${h}시간 전` : `${Math.floor(h / 24)}일 전`;
+};
+
+const isAd = (p) => p.source && p.source !== "none";
+const when = (p) => new Date(p.status === "published" && p.published_at ? p.published_at : p.scheduled_at);
+const OFF = new Set(["rejected", "expired", "held"]);
+
+let data = null;
+let tab = null;
+
+async function load() {
+  $("fresh").textContent = "불러오는 중…";
+  const bust = Date.now();
+  const tries = [
+    () => fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}?ref=main&t=${bust}`, { headers: { Accept: "application/vnd.github.raw+json" }, cache: "no-store" }),
+    () => fetch(`https://raw.githubusercontent.com/${REPO}/main/${FILE}?t=${bust}`, { cache: "no-store" }),
+  ];
+  for (const t of tries) {
+    try {
+      const r = await t();
+      if (r.ok) { data = await r.json(); render(); return; }
+    } catch (e) { /* 다음 경로 시도 */ }
+  }
+  $("fresh").textContent = "불러오지 못함";
+  const a = $("attn"); a.replaceChildren(el("div", "err", "상태 파일을 불러오지 못했어요. 잠시 뒤 새로고침을 눌러 주세요."));
+}
+
+function render() {
+  const posts = data.posts.map((p) => ({ ...p, at: when(p) })).sort((a, b) => a.at - b.at);
+  const gen = new Date(data.generated_at);
+  $("fresh").textContent = `마지막 갱신 ${hm(gen)} (${ago(gen)})`;
+
+  const today = dayKey(new Date());
+  const pubToday = posts.filter((p) => p.status === "published" && dayKey(p.at) === today);
+  const leftToday = posts.filter((p) => ["approved", "publishing"].includes(p.status) && dayKey(p.at) === today);
+  const pending = posts.filter((p) => p.status === "pending");
+  const broken = posts.filter((p) => ["failed", "reply_failed"].includes(p.status));
+  const cm = data.comments || {};
+  const cmWait = cm.pending || 0;
+
+  // 손볼 것
+  const attn = $("attn"); attn.replaceChildren();
+  const addRow = (cls, head, text) => { const r = el("div", "row " + cls); r.append(el("b", null, head), el("span", null, text)); attn.append(r); };
+  for (const p of broken) addRow("bad", STATUS[p.status][0], `${p.title || p.id}${p.note ? " · " + p.note : ""}`);
+  if (pending.length) addRow("warn", `승인 대기 ${pending.length}개`, "텔레그램에서 ✅를 눌러야 올라가요: " + pending.map((p) => p.title || p.id).join(", "));
+  if (cmWait) addRow("warn", `답글 대기 댓글 ${cmWait}개`, "텔레그램으로 온 답글 초안을 확인해 주세요.");
+  const late = posts.filter((p) => p.status === "approved" && p.at < new Date(Date.now() - 20 * 60000));
+  if (late.length) addRow("bad", "예약 시간이 지났는데 안 올라감", late.map((p) => `${hm(p.at)} ${p.title || p.id}`).join(", "));
+  if (!attn.children.length) addRow("ok", "손볼 것 없음", "예약된 글은 시간 맞춰 자동으로 올라가요.");
+
+  // 숫자
+  const k = $("kpis"); k.replaceChildren();
+  const kpi = (lab, val, unit, foot) => {
+    const c = el("div", "kpi"); c.append(el("div", "lab", lab));
+    const v = el("div", "val", String(val)); v.append(el("small", null, unit)); c.append(v);
+    c.append(el("div", "foot", foot)); k.append(c);
+  };
+  const adToday = pubToday.filter(isAd).length;
+  kpi("오늘 올라간 글", pubToday.length, "개", `광고 ${adToday} · 일반 ${pubToday.length - adToday}`);
+  const next = leftToday[0];
+  kpi("오늘 남은 예약", leftToday.length, "개", next ? `다음 ${hm(next.at)}` : "남은 글 없음");
+  kpi("승인 대기", pending.length, "개", pending.length ? "텔레그램 확인" : "없음");
+  const cmDone = (cm.sent || 0);
+  kpi("답글 대기 댓글", cmWait, "개", `보낸 답글 ${cmDone}개`);
+
+  // 탭: 어제/오늘/내일 + 그 뒤 예약 있는 날
+  const keys = new Set([shiftDay(today, -1), today, shiftDay(today, 1)]);
+  posts.forEach((p) => { if (!OFF.has(p.status) && dayKey(p.at) > today) keys.add(dayKey(p.at)); });
+  const order = [...keys].sort();
+  const label = (key) => key === today ? "오늘" : key === shiftDay(today, -1) ? "어제" : key === shiftDay(today, 1) ? "내일" : md(key);
+  if (!tab || !keys.has(tab)) tab = today;
+  const tabs = $("tabs"); tabs.replaceChildren();
+  for (const key of order) {
+    const n = posts.filter((p) => !OFF.has(p.status) && dayKey(p.at) === key).length;
+    const b = el("button", null, label(key)); b.type = "button"; b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", String(key === tab)); b.append(el("span", "n", String(n)));
+    b.onclick = () => { tab = key; try { sessionStorage.setItem("tab", key); } catch (e) {} render(); };
+    tabs.append(b);
+  }
+
+  const item = (p, showDate) => {
+    const li = el("li", "item" + (OFF.has(p.status) ? " dim" : ""));
+    li.append(el("div", "t", showDate ? md(dayKey(p.at)) : hm(p.at)));
+    const body = el("div", "body");
+    body.append(el("div", "title", p.title || p.id));
+    const meta = el("div", "meta");
+    meta.append(el("span", "chip " + (isAd(p) ? "ad" : "talk"), isAd(p) ? "광고" : "일반"));
+    const [sl, sc] = STATUS[p.status] || [p.status, "mute"];
+    meta.append(el("span", "pill " + sc, sl));
+    if (p.comments) meta.append(el("span", null, `댓글 ${p.comments}`));
+    if (p.warnings && p.warnings.length) meta.append(el("span", null, "⚠ " + p.warnings.join(", ")));
+    if (p.note && OFF.has(p.status)) meta.append(el("span", null, p.note));
+    body.append(meta); li.append(body);
+    if (p.permalink) { const a = el("a", "go", "보기 ↗"); a.href = p.permalink; a.target = "_blank"; a.rel = "noopener"; li.append(a); }
+    else li.append(el("span"));
+    return li;
+  };
+
+  const list = $("list"); list.replaceChildren();
+  const shown = posts.filter((p) => !OFF.has(p.status) && dayKey(p.at) === tab);
+  if (!shown.length) list.append(el("li", "empty", "이 날은 예약된 글이 없어요."));
+  shown.forEach((p) => list.append(item(p, false)));
+
+  const off = posts.filter((p) => OFF.has(p.status)).sort((a, b) => b.at - a.at);
+  $("moreSum").textContent = `보류·거절된 글 ${off.length}개`;
+  $("moreBox").hidden = !off.length;
+  const ml = $("moreList"); ml.replaceChildren(); off.forEach((p) => ml.append(item(p, true)));
+
+  // 링크 글 비율 (최근 7일 게시된 글)
+  const from = shiftDay(today, -6);
+  const week = posts.filter((p) => p.status === "published" && dayKey(p.at) >= from);
+  const ads = week.filter(isAd).length;
+  const ratio = week.length ? ads / week.length : 0;
+  const pct = Math.round(ratio * 100);
+  const big = $("ratioBig"); big.textContent = `${pct}%`; big.append(el("small", null, `  ${week.length}개 중 링크 글 ${ads}개`));
+  const fill = $("ratioFill"); fill.style.width = Math.min(100, pct) + "%"; fill.classList.toggle("over", ratio > LINK_LIMIT);
+  $("ratioNote").textContent = !week.length ? "아직 게시된 글이 없어요."
+    : ratio > LINK_LIMIT ? `지침(30% 이하)보다 높아요. 일반 글을 ${Math.max(1, Math.ceil(ads / LINK_LIMIT - week.length))}개 더 올리면 맞춰져요.`
+    : "지침 안이에요. 이대로 유지하면 돼요.";
+
+  // 하루 게시 수 7일
+  const days = $("days"); days.replaceChildren();
+  const perDay = [];
+  for (let i = 6; i >= 0; i--) {
+    const key = shiftDay(today, -i);
+    const ps = posts.filter((p) => p.status === "published" && dayKey(p.at) === key);
+    perDay.push({ key, ad: ps.filter(isAd).length, talk: ps.filter((p) => !isAd(p)).length });
+  }
+  const maxN = Math.max(4, ...perDay.map((d) => d.ad + d.talk));
+  for (const d of perDay) {
+    const col = el("div", "day");
+    const st = el("div", "stack");
+    const unit = 88 / maxN;
+    for (let i = 0; i < d.ad; i++) { const b = el("i", "ad"); b.style.height = (unit - 2) + "px"; st.append(b); }
+    for (let i = 0; i < d.talk; i++) { const b = el("i", "talk"); b.style.height = (unit - 2) + "px"; st.append(b); }
+    const lab = el("div");
+    lab.append(el("div", "c", String(d.ad + d.talk)), el("div", "d", d.key === today ? "오늘" : md(d.key)));
+    col.append(st, lab); days.append(col);
+  }
+}
+
+try { tab = sessionStorage.getItem("tab"); } catch (e) {}
+$("reload").onclick = load;
+load();
+setInterval(() => { if (!document.hidden) load(); }, 120000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden && data && Date.now() - new Date(data.generated_at) > 60000) load(); });
+</script>
+</body>
+</html>

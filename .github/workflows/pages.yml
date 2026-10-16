@@ -1,0 +1,30 @@
+name: pages
+# 대시보드 화면(docs/)이 바뀔 때만 GitHub Pages에 올린다. 숫자는 화면이 state/dashboard.json을 직접 읽는다.
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: docs }
+      - id: d
+        uses: actions/deploy-pages@v4

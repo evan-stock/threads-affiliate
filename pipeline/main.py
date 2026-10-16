@@ -135,9 +135,60 @@ def git_pull():
             log("git pull 실패:", r.stderr[:300])
 
 
+DASHBOARD = ROOT / "state" / "dashboard.json"
+
+
+def _first_line(text: str) -> str:
+    for line in (text or "").splitlines():
+        s = line.strip()
+        if s and not s.startswith("[광고]"):
+            return s[:60]
+    return ""
+
+
+def build_dashboard():
+    """대시보드(docs/index.html)가 읽는 요약 파일. 글 본문 첫 줄·상태·시각만 담는다."""
+    posts = []
+    for p in all_posts():
+        posts.append({
+            "id": p["id"],
+            "source": p.get("source", "none"),
+            "mode": p.get("mode", ""),
+            "status": p.get("status", ""),
+            "scheduled_at": p.get("scheduled_at", ""),
+            "published_at": p.get("published_at", ""),
+            "permalink": p.get("permalink", ""),
+            "title": _first_line(p.get("main_text", "")),
+            "replies": len(p.get("reply_texts") or []),
+            "warnings": p.get("warnings") or [],
+            "note": p.get("note", "") or p.get("error", ""),
+        })
+    c = load_comments()
+    counts: dict[str, int] = {}
+    per_post: dict[str, int] = {}
+    for it in c.get("items", {}).values():
+        st = it.get("status", "")
+        counts[st] = counts.get(st, 0) + 1
+        per_post[it.get("post_id", "")] = per_post.get(it.get("post_id", ""), 0) + 1
+    for p in posts:
+        p["comments"] = per_post.get(p["id"], 0)
+    data = {
+        "generated_at": now().isoformat(),
+        "watch_last_check": c.get("last_check", ""),
+        "comments": counts,
+        "posts": posts,
+    }
+    DASHBOARD.parent.mkdir(parents=True, exist_ok=True)
+    DASHBOARD.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def git_push(msg: str):
     if not git_enabled():
         return
+    try:
+        build_dashboard()
+    except Exception as e:  # 대시보드 실패가 게시를 막으면 안 된다
+        log("대시보드 요약 실패:", e)
     git("add", "state", "media", check=False)
     if git("diff", "--cached", "--quiet", check=False).returncode == 0:
         return
@@ -895,7 +946,7 @@ def cmd_refresh():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["ping", "ingest", "tick", "watch", "publish", "refresh-tokens"])
+    ap.add_argument("cmd", choices=["ping", "ingest", "tick", "watch", "publish", "refresh-tokens", "dashboard"])
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--id")
     ap.add_argument("--max-minutes", type=float, default=340)
@@ -919,6 +970,8 @@ def main():
             cmd_publish(a.id)
         elif a.cmd == "refresh-tokens":
             cmd_refresh()
+        elif a.cmd == "dashboard":
+            build_dashboard()
     except SystemExit:
         raise
     except Exception as e:
