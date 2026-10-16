@@ -1,8 +1,9 @@
 {
- "generated_at": "2026-10-16T19:41:41.051616+09:00",
- "watch_last_check": "2026-10-16T19:35:26.962568+09:00",
+ "generated_at": "2026-10-16T19:45:52.165505+09:00",
+ "watch_last_check": "2026-10-16T19:45:45.466083+09:00",
  "comments": {
-  "skipped": 2
+  "skipped": 2,
+  "pending": 1
  },
  "posts": [
   {
@@ -133,7 +134,7 @@
     "첫 줄이 22자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261016-talk-cvs",
