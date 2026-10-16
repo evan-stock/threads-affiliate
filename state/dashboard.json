@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T01:04:16.659732+09:00",
+ "generated_at": "2026-10-17T01:06:43.384789+09:00",
  "watch_last_check": "2026-10-17T01:04:14.154395+09:00",
  "comments": {
   "skipped": 2,
@@ -209,6 +209,20 @@
    "warnings": [],
    "note": "",
    "comments": 1
+  },
+  {
+   "id": "20261017-casio",
+   "source": "coupang",
+   "mode": "experience",
+   "status": "pending",
+   "scheduled_at": "2026-10-17T13:45:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "회계사 책상엔 이거 꼭 있음",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
   },
   {
    "id": "20261017-life-dinner",
