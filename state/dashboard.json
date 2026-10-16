@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T22:19:13.492160+09:00",
+ "generated_at": "2026-10-16T22:29:20.982189+09:00",
  "watch_last_check": "2026-10-16T22:19:11.599282+09:00",
  "comments": {
   "skipped": 2,
@@ -89,6 +89,22 @@
    "title": "제로콜라 한 캔에 630원꼴",
    "replies": 4,
    "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261016-powerade",
+   "source": "coupang",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-16T22:50:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "쿠팡이 다나와보다 쌈",
+   "replies": 3,
+   "warnings": [
+    "광고 느낌 단어: 최저가"
+   ],
    "note": "",
    "comments": 0
   },
