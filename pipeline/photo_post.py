@@ -228,6 +228,7 @@ def process_inbox() -> bool:
             copy = write_copy(item)
         except Exception as e:
             item["attempts"] = item.get("attempts", 0) + 1
+            item["last_error"] = str(e)[:500]
             M.log("글 쓰기 실패:", pid, str(e)[:300])
             if item["attempts"] >= 3:
                 item["status"] = "failed"
