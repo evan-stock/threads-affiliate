@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T19:30:53.348291+09:00",
+ "generated_at": "2026-10-16T19:31:21.276020+09:00",
  "watch_last_check": "2026-10-16T19:25:03.580359+09:00",
  "comments": {
   "pending": 1,
@@ -124,10 +124,10 @@
    "id": "20261016-talk-cart",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-16T19:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-16T19:31:20.588022+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DejUtfKG_H5",
    "title": "장바구니에 담아만 두고 결제 안 하는 거",
    "replies": 0,
    "warnings": [
