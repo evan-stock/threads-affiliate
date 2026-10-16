@@ -122,8 +122,11 @@ def render(c: dict, out_path: str) -> str:
             d.rounded_rectangle((W - 100 - tw2 - 36, y + ch - 78, W - 100, y + ch - 28), radius=22, fill=BEST)
             d.text((W - 100 - tw2 - 18, y + ch - 74), tag, font=tf, fill=INK)
         elif worst > 0:
-            diff = (ups[i] - ups[best]) / ups[i] * 100
-            d.text((100, y + ch - 70), f"제일 싼 곳보다 {diff:.0f}% 비쌈", font=_f(30), fill=SUB)
+            diff = (ups[i] - ups[best]) / ups[best] * 100
+            tag = f"제일 싼 것보다 {diff:.0f}% 비쌈"
+            tf = _f(30)
+            tw2 = d.textlength(tag, font=tf)
+            d.text((W - 100 - tw2, y + 108), tag, font=tf, fill=SUB)
 
     foot = f"가격 확인: {c['checked_at']} 기준 · 배송비·쿠폰·옵션에 따라 달라질 수 있어요"
     d.text((70, H - 150), foot, font=_f(28), fill=SUB)
