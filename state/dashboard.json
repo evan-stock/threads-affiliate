@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-16T23:20:29.365245+09:00",
- "watch_last_check": "2026-10-16T23:20:27.104521+09:00",
+ "generated_at": "2026-10-16T23:30:43.365903+09:00",
+ "watch_last_check": "2026-10-16T23:30:40.008137+09:00",
  "comments": {
   "skipped": 2,
   "sent": 1
@@ -172,7 +172,7 @@
    "id": "20261016-talk-night",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "publishing",
    "scheduled_at": "2026-10-16T23:30:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -276,7 +276,7 @@
    "scheduled_at": "2026-10-17T09:40:00+09:00",
    "published_at": "",
    "permalink": "",
-   "title": "스하리~",
+   "title": "어제 폰 보다가 새벽 3시에 잠듦",
    "replies": 0,
    "warnings": [],
    "note": "",
