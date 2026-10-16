@@ -75,6 +75,9 @@ def handle_media_message(msg: dict, st: dict) -> bool:
     is_vid_doc = (doc.get("mime_type") or "").startswith("video/")
     if not (photo or video or is_img_doc or is_vid_doc):
         return False
+    if os.environ.get("PHOTO_INTAKE") != "1":
+        M.tg_text("📷 사진·영상은 이제 Claude 대화창에 올려 주세요. 거기서 글을 쓰고 쿠팡 링크까지 붙여서 여기로 승인 요청을 보낼게요.")
+        return True
     gid = msg.get("media_group_id")
     groups = st.setdefault("media_groups", {})
     pid = groups.get(gid) if gid else None
