@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T23:00:03.660394+09:00",
+ "generated_at": "2026-10-16T23:07:28.966034+09:00",
  "watch_last_check": "2026-10-16T23:00:01.828143+09:00",
  "comments": {
   "skipped": 2,
@@ -321,6 +321,34 @@
    "published_at": "",
    "permalink": "",
    "title": "다음 갓성비템 뭐 찾아볼까?",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-talk-tag",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T11:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "마트 가격표 구석에 작게 써있는 숫자",
+   "replies": 2,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-talk-vs",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T19:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "장 볼 때 둘 중 하나만 골라야 하면",
    "replies": 0,
    "warnings": [],
    "note": "",
