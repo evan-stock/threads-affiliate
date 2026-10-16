@@ -10,17 +10,24 @@
     "근데 다들 귤은 냉장고파야 베란다파야?",
     "이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.\n\n수량 남아있을 때 여기서 봐~\n{링크}"
   ],
-  "reply_ids": [],
+  "reply_ids": [
+    "17950257501317144",
+    "18636195877049659",
+    "17925482814206025"
+  ],
   "link": "https://toss.shopping/_m/puT3X7r9",
   "images": [
     "media/20261016-gyul/1.jpg"
   ],
   "warnings": [],
   "experience_note": "",
-  "status": "publishing",
+  "status": "published",
   "approved": true,
   "created_at": "2026-10-16T17:14:02.692091+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 85,
-  "updated_at": "2026-10-16T17:15:08.019215+09:00"
+  "updated_at": "2026-10-16T17:16:02.966572+09:00",
+  "main_id": "18146735809558424",
+  "permalink": "https://www.threads.com/@gotitem.lab/post/DejFL0NG5-m",
+  "published_at": "2026-10-16T17:16:02.966509+09:00"
 }
