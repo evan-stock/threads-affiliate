@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "id": "20261016-talk-wallet",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-16T11:00",
+      "publish_now": true,
+      "text": "월급은 통장을 스쳐갈 뿐이라는 말\n이제 진짜 뼈저리게 이해함ㅋㅋㅋ"
+    },
+    {
+      "id": "20261016-talk-cvs",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-16T15:30",
+      "publish_now": true,
+      "text": "편의점 가면 계획에 없던 거 꼭 하나 더 집어오는 사람\n나만 아니지?"
+    },
+    {
+      "id": "20261016-talk-cart",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-16T19:30",
+      "publish_now": true,
+      "text": "장바구니에 담아만 두고 결제 안 하는 거\n이것도 일종의 절약 아님?ㅋㅋ"
+    },
+    {
+      "id": "20261016-talk-night",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-16T23:30",
+      "publish_now": true,
+      "text": "새벽에 쇼핑앱 켜는 거 진짜 위험함\n다들 자기 전엔 폰 멀리 두자"
+    },
+    {
+      "id": "20261017-talk-list",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T09:00",
+      "publish_now": true,
+      "text": "주말 장보기 리스트 쓰는 사람?\n나는 써놓고 안 지킴ㅋㅋ"
+    },
+    {
+      "id": "20261017-talk-bulk",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T13:00",
+      "publish_now": true,
+      "text": "대용량이 무조건 이득은 아니더라\n다 못 먹고 버리면 그게 제일 비싼 거임\n그래서 나는 단가랑 유통기한 같이 봄"
+    },
+    {
+      "id": "20261017-talk-ask",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T17:00",
+      "publish_now": true,
+      "text": "다음 갓성비템 뭐 찾아줄까\n댓글로 던져주면 단가 계산해서 가져옴"
+    },
+    {
+      "id": "20261017-talk-delivery",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T22:00",
+      "publish_now": true,
+      "text": "배달비 보고 조용히 앱 끈 사람 손🙋"
+    }
+  ]
+}
