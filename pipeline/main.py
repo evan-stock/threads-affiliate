@@ -737,6 +737,27 @@ def check_comments(force: bool = False) -> bool:
     if not force and last and now() - parse_time(last) < dt.timedelta(minutes=COMMENT_EVERY_MIN):
         return False
     store["last_check"] = now().isoformat()
+    # API 키가 없던 때 들어온 댓글: 키가 생기면 한 번만 초안을 다시 만들어 보낸다
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        posts_by_id = {p["id"]: p for p in all_posts()}
+        for cid, item in store["items"].items():
+            if item.get("status") != "pending" or item.get("draft") or item.get("redrafted"):
+                continue
+            post = posts_by_id.get(item.get("post_id"))
+            if not post:
+                continue
+            item["redrafted"] = True
+            try:
+                d = draft_reply(post, {"username": item.get("username"), "text": item.get("text", "")})
+            except Exception as e:
+                log(str(e)[:200])
+                continue
+            if not d or d.strip().upper() == "SKIP":
+                continue
+            item["draft"] = d
+            lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
+                     "✏️ 답글 초안", d, "", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
+            item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid))
     for post in recent_published():
         try:
             comments = fetch_comments(post)
