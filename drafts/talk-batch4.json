@@ -1,0 +1,58 @@
+{
+  "posts": [
+    {
+      "id": "20261017-life-sleep",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T09:40",
+      "publish_now": true,
+      "text": "토요일 아침 알람 없이 눈 뜨는 거\n이게 진짜 행복이지\n주말 늦잠 몇 시까지가 국룰임?"
+    },
+    {
+      "id": "20261017-life-walk",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T12:20",
+      "publish_now": true,
+      "text": "요즘 날씨 덥지도 춥지도 않아서\n그냥 나가서 걷기만 해도 기분 좋더라\n이런 날 집에만 있으면 손해 보는 느낌ㅋㅋ\n다들 주말에 뭐 해?"
+    },
+    {
+      "id": "20261017-life-hobby",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T15:10",
+      "publish_now": true,
+      "text": "취미 하나 새로 시작해보고 싶은데\n막상 뭘 해야 할지 모르겠음\n돈 많이 안 들고 혼자서도 할 수 있는 거 있으면 추천 좀\n요즘 빠져 있는 거 알려줘"
+    },
+    {
+      "id": "20261017-life-dinner",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T18:00",
+      "publish_now": true,
+      "text": "주말 저녁 메뉴 정하는 게 제일 어려움\n1. 라면\n2. 치킨\n3. 삼겹살\n4. 그냥 아무거나 (제일 어려운 답)\n골라줘"
+    },
+    {
+      "id": "20261017-life-show",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T20:40",
+      "publish_now": true,
+      "text": "주말 밤에 정주행할 거 찾는 중\n드라마든 예능이든 영화든 상관없음\n이거 보다가 밤샜다 싶은 거 하나씩만 던져줘"
+    },
+    {
+      "id": "20261017-life-night",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-17T23:20",
+      "publish_now": true,
+      "text": "토요일 밤이 일주일 중에 제일 좋음\n내일도 쉬는 날이라는 그 여유\n다들 지금 뭐 하고 있어?"
+    }
+  ]
+}
