@@ -182,14 +182,20 @@ def write_copy(item: dict) -> dict:
     content.append({"type": "text", "text": f"상품명: {item['name']}\n사용자 메모: {note}\n사진{vid}을 보고 글을 써줘."})
     body = {"model": os.environ.get("WRITER_MODEL", "claude-sonnet-5-5"), "max_tokens": 1200,
             "system": WRITER_SYSTEM, "messages": [{"role": "user", "content": content}]}
-    r = requests.post(f"{M.ANTHROPIC_API}/v1/messages", json=body, timeout=120,
-                      headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
+    hdr = {"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+    r = requests.post(f"{M.ANTHROPIC_API}/v1/messages", json=body, timeout=120, headers=hdr)
+    if r.status_code in (400, 404) and "model" in r.text:
+        body["model"] = M.ANTHROPIC_MODEL
+        r = requests.post(f"{M.ANTHROPIC_API}/v1/messages", json=body, timeout=120, headers=hdr)
     j = r.json()
     if r.status_code >= 400:
         raise RuntimeError(f"글 생성 실패: {str(j)[:300]}")
     out = "".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text")
     m = re.search(r"\{.*\}", out, re.S)
-    data = json.loads(m.group(0) if m else out)
+    try:
+        data = json.loads(m.group(0) if m else out, strict=False)
+    except Exception:
+        raise RuntimeError(f"글 형식을 못 읽었어요: {out[:200]}")
     if not data.get("text") or not isinstance(data.get("replies"), list):
         raise RuntimeError(f"글 형식이 이상해요: {out[:200]}")
     return data
@@ -222,6 +228,7 @@ def process_inbox() -> bool:
             copy = write_copy(item)
         except Exception as e:
             item["attempts"] = item.get("attempts", 0) + 1
+            M.log("글 쓰기 실패:", pid, str(e)[:300])
             if item["attempts"] >= 3:
                 item["status"] = "failed"
                 M.safe_notify(f"❌ [{pid}] 글 쓰기 실패: {str(e)[:300]}")
