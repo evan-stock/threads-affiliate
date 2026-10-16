@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T22:39:36.319213+09:00",
+ "generated_at": "2026-10-16T22:40:41.657231+09:00",
  "watch_last_check": "2026-10-16T22:39:34.651567+09:00",
  "comments": {
   "skipped": 2,
@@ -96,7 +96,7 @@
    "id": "20261016-powerade",
    "source": "coupang",
    "mode": "curation",
-   "status": "pending",
+   "status": "rejected",
    "scheduled_at": "2026-10-16T22:50:00+09:00",
    "published_at": "",
    "permalink": "",
