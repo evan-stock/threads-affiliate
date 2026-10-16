@@ -37,4 +37,5 @@ jobs:
           THREADS_TOKEN_A: ${{ secrets.THREADS_TOKEN_A }}
           THREADS_USER_ID_B: ${{ secrets.THREADS_USER_ID_B }}
           THREADS_TOKEN_B: ${{ secrets.THREADS_TOKEN_B }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline/main.py watch --max-minutes 340 --redispatch

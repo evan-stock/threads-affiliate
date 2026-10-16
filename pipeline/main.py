@@ -500,6 +500,21 @@ def handle_updates() -> bool:
             if str(cq["message"]["chat"]["id"]) != chat:
                 continue
             act, _, pid = cq.get("data", "").partition(":")
+            if act in ("cok", "cno"):
+                try:
+                    if act == "cok":
+                        item = load_comments()["items"].get(pid, {})
+                        note = send_comment_reply(pid, item.get("draft", "")) if item.get("draft") else "초안이 없어요. 답장으로 보내 주세요."
+                    else:
+                        note = skip_comment(pid)
+                except Exception as e:
+                    note = f"⚠️ 답글 실패: {str(e)[:200]}"
+                try:
+                    tg("answerCallbackQuery", {"callback_query_id": cq["id"], "text": note[:180]})
+                except Exception:
+                    pass
+                tg_text(note)
+                continue
             post = load_post(pid)
             note = "이미 처리된 글이에요"
             if post and post["status"] in ("pending", "approved"):
@@ -524,6 +539,13 @@ def handle_updates() -> bool:
         text = (msg.get("text") or "").strip()
         target = None
         rt = (msg.get("reply_to_message") or {}).get("message_id")
+        cmt = next((cid for cid, it in load_comments()["items"].items() if it.get("msg_id") == rt), None) if rt else None
+        if cmt and text:
+            try:
+                tg_text(send_comment_reply(cmt, text))
+            except Exception as e:
+                tg_text(f"⚠️ 답글 실패: {str(e)[:200]}")
+            continue
         if rt in posts_by_msg:
             target = load_post(posts_by_msg[rt]["id"])
         m = re.match(r"^/link\s+(\S+)\s+(\S+)", text)
@@ -556,6 +578,131 @@ def handle_updates() -> bool:
     if changed:
         save_tg_state(st)
     return changed
+
+
+# ---------------------------------------------------------------- 댓글 답글 (승인제)
+COMMENTS = ROOT / "state" / "comments.json"
+COMMENT_WINDOW_H = float(os.environ.get("COMMENT_WINDOW_HOURS", "72"))
+COMMENT_EVERY_MIN = float(os.environ.get("COMMENT_EVERY_MIN", "10"))
+ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-5-5")
+ANTHROPIC_API = os.environ.get("ANTHROPIC_API_BASE", "https://api.anthropic.com")
+
+
+def load_comments() -> dict:
+    return json.loads(COMMENTS.read_text(encoding="utf-8")) if COMMENTS.exists() else {"last_check": "", "items": {}}
+
+
+def save_comments(c: dict):
+    COMMENTS.parent.mkdir(parents=True, exist_ok=True)
+    COMMENTS.write_text(json.dumps(c, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def recent_published() -> list[dict]:
+    t = now()
+    out = []
+    for p in all_posts():
+        if p.get("status") == "published" and p.get("main_id") and p.get("published_at"):
+            if t - parse_time(p["published_at"]) <= dt.timedelta(hours=COMMENT_WINDOW_H):
+                out.append(p)
+    return out
+
+
+def fetch_comments(post: dict) -> list[dict]:
+    j = th_get(post["account"], f"{post['main_id']}/conversation",
+               "id,text,username,timestamp,is_reply_owned_by_me")
+    return [c for c in j.get("data", []) if not c.get("is_reply_owned_by_me") and (c.get("text") or "").strip()]
+
+
+REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)' 운영자로서 내 글에 달린 댓글에 답글을 쓴다.
+- 반말, 짧게 1~2문장, 친근하게. ㅋㅋ는 가끔. 이모지는 0~1개.
+- 상품 정보는 아래 '내 글'에 있는 사실만 말한다. 모르는 건 모른다고 하거나 상품 페이지에서 확인해보라고 한다.
+- 먹어보지 않은 상품의 맛·효과를 단정하지 않는다 (글이 경험담이면 그 경험 범위 안에서만).
+- 건강·효능 주장, 다른 쇼핑몰과의 가격 비교 단정, 품절 임박 같은 근거 없는 재촉은 하지 않는다.
+- 링크를 새로 붙이지 않는다. 구매처를 물으면 '댓글에 링크 있어~'처럼 안내한다.
+- 악플이나 시비에는 차분하게 짧게 답하거나, 답할 가치가 없으면 SKIP 한 단어만 출력한다.
+- 답글 문장만 출력한다."""
+
+
+def draft_reply(post: dict, comment: dict) -> str:
+    key = os.environ.get("ANTHROPIC_API_KEY")
+    if not key:
+        return ""
+    body = {
+        "model": ANTHROPIC_MODEL, "max_tokens": 200, "system": REPLY_SYSTEM,
+        "messages": [{"role": "user", "content":
+            f"내 글:\n{post['main_text']}\n\n댓글 (@{comment.get('username', '?')}):\n{comment['text']}\n\n답글:"}],
+    }
+    r = requests.post(f"{ANTHROPIC_API}/v1/messages", json=body, timeout=60,
+                      headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
+    j = r.json()
+    if r.status_code >= 400:
+        raise RuntimeError(f"답글 초안 생성 실패: {str(j)[:300]}")
+    return "".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip()
+
+
+def comment_buttons(cid: str) -> dict:
+    return {"inline_keyboard": [[{"text": "✅ 답글 보내기", "callback_data": f"cok:{cid}"},
+                                 {"text": "❌ 무시", "callback_data": f"cno:{cid}"}]]}
+
+
+def check_comments(force: bool = False) -> bool:
+    store = load_comments()
+    last = store.get("last_check")
+    if not force and last and now() - parse_time(last) < dt.timedelta(minutes=COMMENT_EVERY_MIN):
+        return False
+    store["last_check"] = now().isoformat()
+    for post in recent_published():
+        try:
+            comments = fetch_comments(post)
+        except Exception as e:
+            log("댓글 조회 실패:", post["id"], str(e)[:200])
+            continue
+        for c in comments:
+            cid = str(c["id"])
+            if cid in store["items"]:
+                continue
+            try:
+                draft = draft_reply(post, c)
+            except Exception as e:
+                draft = ""
+                log(str(e)[:200])
+            item = {"post_id": post["id"], "account": post["account"], "username": c.get("username", ""),
+                    "text": c["text"], "draft": "" if draft.strip().upper() == "SKIP" else draft,
+                    "status": "pending", "created_at": now().isoformat()}
+            warn = [w for w in CONFIG["claim_warning_words"] if w in item["draft"]]
+            lines = [f"💬 [{post['id']}] @{item['username']}", item["text"], ""]
+            if item["draft"]:
+                lines += ["✏️ 답글 초안", item["draft"]]
+                if warn:
+                    lines += ["", "⚠️ 표현 확인: " + ", ".join(warn)]
+                lines += ["", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
+            else:
+                lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요."]
+            item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid) if item["draft"] else None)
+            store["items"][cid] = item
+    save_comments(store)
+    return True
+
+
+def send_comment_reply(cid: str, text: str) -> str:
+    store = load_comments()
+    item = store["items"].get(cid)
+    if not item or item["status"] != "pending":
+        return "이미 처리된 댓글이에요"
+    rid = create_reply(item["account"], cid, text)
+    item.update({"status": "sent", "reply": text, "reply_id": rid, "sent_at": now().isoformat()})
+    save_comments(store)
+    return f"✅ @{item['username']}에게 답글 달았어요"
+
+
+def skip_comment(cid: str) -> str:
+    store = load_comments()
+    item = store["items"].get(cid)
+    if not item or item["status"] != "pending":
+        return "이미 처리된 댓글이에요"
+    item["status"] = "skipped"
+    save_comments(store)
+    return "❌ 무시했어요"
 
 
 def do_publish(post: dict, sync_msg: str = "publish"):
@@ -604,6 +751,10 @@ def do_publish(post: dict, sync_msg: str = "publish"):
 
 def cmd_tick() -> bool:
     changed = handle_updates()
+    try:
+        changed = check_comments() or changed
+    except Exception as e:
+        log("댓글 확인 오류:", str(e)[:300])
     t = now()
     exp = dt.timedelta(hours=CONFIG.get("expire_hours", 12))
     for post in sorted(all_posts(), key=lambda p: p["scheduled_at"]):
@@ -632,7 +783,8 @@ def cmd_tick() -> bool:
 
 
 def has_active() -> bool:
-    return any(p["status"] in ACTIVE for p in all_posts())
+    # 대기 글이 있거나, 최근 게시 글의 댓글을 지켜봐야 하면 감시를 계속한다
+    return any(p["status"] in ACTIVE for p in all_posts()) or bool(recent_published())
 
 
 def cmd_watch(max_minutes: float, redispatch: bool):
