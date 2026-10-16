@@ -238,10 +238,35 @@ def wait_container(account: str, cid: str, limit_s: int = 300):
 
 def publish_container(account: str, cid: str) -> str:
     wait_container(account, cid)
-    return th_post(account, "threads_publish", {"creation_id": cid})["id"]
+    # 스레드가 가끔 방금 만든 컨테이너를 "Media Not Found"로 거절함 → 잠시 뒤 다시 시도
+    for i in range(3):
+        try:
+            return th_post(account, "threads_publish", {"creation_id": cid})["id"]
+        except RuntimeError as e:
+            if ("4279009" not in str(e) and "Media Not Found" not in str(e)) or i == 2:
+                raise
+            log(f"게시 재시도 {i + 1}/2 (Media Not Found)")
+            time.sleep(20 * (i + 1))
+            wait_container(account, cid)
+
+
+def with_retry(make, tries: int = 2):
+    """컨테이너 생성부터 다시 하는 재시도 (게시 전에 실패한 경우만 → 중복 게시 없음)."""
+    for i in range(tries):
+        try:
+            return make()
+        except RuntimeError as e:
+            if ("4279009" not in str(e) and "Media Not Found" not in str(e)) or i == tries - 1:
+                raise
+            log("컨테이너를 새로 만들어 다시 시도")
+            time.sleep(15)
 
 
 def create_main(account: str, text: str, image_urls: list[str]) -> str:
+    return with_retry(lambda: _create_main(account, text, image_urls))
+
+
+def _create_main(account: str, text: str, image_urls: list[str]) -> str:
     if not image_urls:
         cid = th_post(account, "threads", {"media_type": "TEXT", "text": text})["id"]
     elif len(image_urls) == 1:
@@ -258,8 +283,10 @@ def create_main(account: str, text: str, image_urls: list[str]) -> str:
 
 
 def create_reply(account: str, reply_to: str, text: str) -> str:
-    cid = th_post(account, "threads", {"media_type": "TEXT", "text": text, "reply_to_id": reply_to})["id"]
-    return publish_container(account, cid)
+    def make():
+        cid = th_post(account, "threads", {"media_type": "TEXT", "text": text, "reply_to_id": reply_to})["id"]
+        return publish_container(account, cid)
+    return with_retry(make)
 
 
 # ---------------------------------------------------------------- 원고 → 게시물
