@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T01:16:18.864441+09:00",
+ "generated_at": "2026-10-18T01:17:22.755600+09:00",
  "watch_last_check": "2026-10-18T01:05:49.918879+09:00",
  "comments": {
   "skipped": 4,
@@ -769,10 +769,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T01:15:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T01:17:22.143337+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DemhDGcGlC2",
    "title": "물티슈 한 장에 5원",
    "replies": 3,
    "warnings": [],
