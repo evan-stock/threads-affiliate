@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T21:00:14.925428+09:00",
+ "generated_at": "2026-10-17T21:00:28.335346+09:00",
  "watch_last_check": "2026-10-17T20:57:04.831006+09:00",
  "comments": {
   "skipped": 4,
@@ -245,10 +245,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-17T21:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-17T21:00:27.789359+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DemDu00oMoN",
    "title": "토요일 저녁에 인스타 켰다가",
    "replies": 0,
    "warnings": [],
