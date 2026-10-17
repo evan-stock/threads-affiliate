@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T19:00:45.670917+09:00",
+ "generated_at": "2026-10-17T19:01:43.908398+09:00",
  "watch_last_check": "2026-10-17T18:53:26.817702+09:00",
  "comments": {
   "skipped": 4,
@@ -740,10 +740,10 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-17T19:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-17T19:01:42.663215+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/Del2Dv2oHwB",
    "title": "혼자 살면서 깨달은 거.",
    "replies": 3,
    "warnings": [],
