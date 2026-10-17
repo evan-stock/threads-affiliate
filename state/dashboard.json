@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-17T23:32:40.954664+09:00",
- "watch_last_check": "2026-10-17T23:32:29.998376+09:00",
+ "generated_at": "2026-10-17T23:42:58.431673+09:00",
+ "watch_last_check": "2026-10-17T23:42:47.508470+09:00",
  "comments": {
   "skipped": 4,
   "sent": 17,
-  "pending": 3
+  "pending": 4
  },
  "posts": [
   {
@@ -300,7 +300,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261017-life-show",
