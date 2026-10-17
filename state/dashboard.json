@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T00:34:40.028276+09:00",
+ "generated_at": "2026-10-18T00:43:47.301414+09:00",
  "watch_last_check": "2026-10-18T00:34:28.156669+09:00",
  "comments": {
   "skipped": 4,
@@ -521,8 +521,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
-   "scheduled_at": "2026-10-18T17:00:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-18T07:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "발매트 한 장 3,800원꼴",
@@ -709,8 +709,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
-   "scheduled_at": "2026-10-18T11:40:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-18T08:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "쌀 1kg에 995원꼴",
