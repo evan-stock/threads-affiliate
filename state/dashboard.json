@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T01:35:47.243470+09:00",
+ "generated_at": "2026-10-18T01:36:42.791362+09:00",
  "watch_last_check": "2026-10-18T01:28:52.505909+09:00",
  "comments": {
   "skipped": 4,
@@ -600,10 +600,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T01:35:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T01:36:42.255070+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DemjRBXFg8u",
    "title": "햇반 한 개 996원 실화?🍚",
    "replies": 3,
    "warnings": [],
