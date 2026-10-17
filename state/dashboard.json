@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-18T00:43:47.301414+09:00",
- "watch_last_check": "2026-10-18T00:34:28.156669+09:00",
+ "generated_at": "2026-10-18T00:45:00.399302+09:00",
+ "watch_last_check": "2026-10-18T00:44:50.749914+09:00",
  "comments": {
   "skipped": 4,
   "sent": 17,
@@ -694,7 +694,7 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
+   "status": "approved",
    "scheduled_at": "2026-10-18T08:30:00+09:00",
    "published_at": "",
    "permalink": "",
