@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T04:07:25.045571+09:00",
+ "generated_at": "2026-10-18T04:07:37.295248+09:00",
  "watch_last_check": "2026-10-18T04:06:00.527956+09:00",
  "comments": {
   "skipped": 10,
@@ -553,10 +553,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T04:07:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T04:07:36.750328+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/Dem0ng2iQnX",
    "title": "새벽 4시에 눈이 떠졌다.",
    "replies": 0,
    "warnings": [],
