@@ -443,6 +443,8 @@ def lint(d: dict) -> tuple[list[str], list[str]]:
     if d.get("compare"):
         import compare as cmpmod
         errs += cmpmod.validate(d["compare"])
+    elif d.get("account") == "A" and d.get("source") in ("toss", "coupang"):
+        errs.append("득템 광고 글은 첫 장에 단가 카드(compare)가 꼭 필요해요 (비교할 곳이 없으면 rows 1개 + note)")
     try:
         parse_time(d.get("scheduled_at"))
     except Exception:

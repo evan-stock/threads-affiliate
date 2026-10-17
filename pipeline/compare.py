@@ -62,8 +62,8 @@ def unit_prices(c: dict) -> list[float]:
 def validate(c: dict) -> list[str]:
     errs = []
     rows = c.get("rows") or []
-    if len(rows) < 2:
-        errs.append("비교표는 2개 이상 비교해야 해요")
+    if len(rows) < 1:
+        errs.append("단가 카드에 rows가 1개 이상 필요해요")
     for r in rows:
         for k in ("name", "price", "amount"):
             if not r.get(k):
@@ -73,6 +73,42 @@ def validate(c: dict) -> list[str]:
     if not c.get("checked_at"):
         errs.append("비교표에 checked_at(가격 확인 시각)이 필요해요")
     return errs
+
+
+def render_single(c: dict, out_path: str) -> str:
+    """비교할 곳이 없거나 차이가 작을 때: 같은 디자인의 단가 카드(단가 크게 + 한 줄 메모).
+    공식 상품 사진은 가공하지 않고 두 번째 이미지로 따로 붙인다."""
+    img = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(img)
+    unit = c.get("unit", "1개")
+    r = c["rows"][0]
+    up = unit_prices(c)[0]
+    d.text((70, 70), "득템연구소 단가 계산", font=_f(36, True), fill=ACCENT)
+    d.text((70, 125), c.get("title", ""), font=_f(60, True), fill=INK)
+    d.text((70, 210), f"{unit}당 가격", font=_f(40), fill=SUB)
+    y0, y1 = 330, 1010
+    d.rounded_rectangle((60, y0, W - 60, y1), radius=36, fill=CARD, outline=BEST, width=8)
+    d.text((110, y0 + 50), r["name"], font=_f(48, True), fill=INK)
+    meta = f"{won(r['price'])} · {r.get('amount_label', '')}".strip(" ·")
+    d.text((110, y0 + 120), meta, font=_f(38), fill=SUB)
+    lab = f"{unit}당"
+    lf = _f(48, True)
+    d.text(((W - d.textlength(lab, font=lf)) / 2, y0 + 250), lab, font=lf, fill=SUB)
+    big = won(up)
+    bf = _f(150, True)
+    d.text(((W - d.textlength(big, font=bf)) / 2, y0 + 310), big, font=bf, fill=ACCENT)
+    if c.get("note"):
+        tf = _f(36, True)
+        tw = d.textlength(c["note"], font=tf)
+        x = (W - tw) / 2
+        d.rounded_rectangle((x - 30, y1 - 130, x + tw + 30, y1 - 64), radius=30, fill=BEST)
+        d.text((x, y1 - 124), c["note"], font=tf, fill=INK)
+    foot = f"가격 확인: {c['checked_at']} 기준 · 배송비·쿠폰·옵션에 따라 달라질 수 있어요"
+    d.text((70, H - 150), foot, font=_f(28), fill=SUB)
+    d.text((70, H - 105), "@gotitem.lab", font=_f(32, True), fill=INK)
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    img.save(out_path, "JPEG", quality=92)
+    return out_path
 
 
 def summary(c: dict) -> str:
@@ -86,6 +122,8 @@ def summary(c: dict) -> str:
 
 
 def render(c: dict, out_path: str) -> str:
+    if len(c["rows"]) == 1:
+        return render_single(c, out_path)
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
     unit = c.get("unit", "100g")
