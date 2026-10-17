@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T17:33:15.812188+09:00",
+ "generated_at": "2026-10-17T17:36:21.216449+09:00",
  "watch_last_check": "2026-10-17T17:29:54.880605+09:00",
  "comments": {
   "skipped": 4,
@@ -646,8 +646,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
-   "scheduled_at": "2026-10-18T17:30:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T19:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "유산균 매일 챙겨 먹는 스친 있어?",
@@ -663,7 +663,7 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
+   "status": "approved",
    "scheduled_at": "2026-10-19T18:00:00+09:00",
    "published_at": "",
    "permalink": "",

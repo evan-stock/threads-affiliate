@@ -19,10 +19,10 @@
     "효능·건강 표현 확인 필요: 다이어트"
   ],
   "experience_note": "",
-  "status": "pending",
-  "approved": false,
+  "status": "approved",
+  "approved": true,
   "created_at": "2026-10-17T17:32:54.747490+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 149,
-  "updated_at": "2026-10-17T17:32:56.411980+09:00"
+  "updated_at": "2026-10-17T17:36:19.067114+09:00"
 }
