@@ -1,0 +1,20 @@
+{
+  "id": "20261018-cb-sun-lunch",
+  "account": "B",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-18T12:30:00+09:00",
+  "main_text": "일요일 점심에 동네 감자탕집 갔는데\n메뉴판이 소(2인)부터 시작함.\n\n\"몇 분이세요?\"\n\"한 명이요.\"\n\n잠깐 정적.\n\n결국 뼈해장국 시켜서\n옆 테이블 감자탕 냄비 구경하면서 먹음.\n\n인생도 메뉴판도\n기본이 2인분부터인 게 문제다.",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-17T15:40:54.331273+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 126,
+  "updated_at": "2026-10-17T15:40:54.809373+09:00"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "20261019-cb-mon-morning",
+  "account": "B",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-19T08:00:00+09:00",
+  "main_text": "월요일 아침 갑자기 추워짐.\n\n옷장 열었더니\n작년에 산 패딩이 아직 세탁소 비닐에 싸여 있음.\n\n비닐 벗기면서 생각해 봄.\n이거 입고 작년 겨울에 뭐 했더라.\n\n출근하고 퇴근함.\n\n올해도 이 패딩은\n회사랑 집만 왔다 갔다 할 예정이다.",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-17T15:40:55.320827+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 128,
+  "updated_at": "2026-10-17T15:40:55.797978+09:00"
+}

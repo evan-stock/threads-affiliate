@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T15:40:36.115576+09:00",
+ "generated_at": "2026-10-17T15:40:57.202527+09:00",
  "watch_last_check": "2026-10-17T15:36:52.106909+09:00",
  "comments": {
   "skipped": 2,
@@ -235,6 +235,21 @@
    "permalink": "https://www.threads.com/@gotitem.lab/post/DelWQIOnA9v",
    "title": "회계사 책상엔 이거 꼭 있음",
    "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261017-cb-sat-night",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T21:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "토요일 저녁에 인스타 켰다가",
+   "replies": 0,
    "warnings": [],
    "note": "",
    "comments": 0
@@ -483,6 +498,100 @@
    "replies": 0,
    "warnings": [],
    "note": "사용자 요청으로 취소 (장보기 주제 편중)",
+   "comments": 0
+  },
+  {
+   "id": "20261018-cb-sun-lunch",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-18T12:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "일요일 점심에 동네 감자탕집 갔는데",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261018-cb-sun-morning",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-18T08:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "일요일인데 알람 없이 7시에 눈 떠짐.",
+   "replies": 0,
+   "warnings": [
+    "첫 줄이 21자예요 (20자 이내 권장)"
+   ],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261018-cb-sun-night",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-18T21:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "일요일 밤 9시만 되면",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261019-cb-mon-lunch",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-19T12:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "점심시간에 후배들이 마라탕 가자고 함.",
+   "replies": 0,
+   "warnings": [
+    "첫 줄이 21자예요 (20자 이내 권장)"
+   ],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261019-cb-mon-morning",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-19T08:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "월요일 아침 갑자기 추워짐.",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261019-cb-mon-night",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-19T21:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "대학 동기한테 오랜만에 카톡 옴.",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
    "comments": 0
   }
  ],
