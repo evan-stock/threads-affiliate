@@ -706,13 +706,34 @@ def save_comments(c: dict):
     COMMENTS.write_text(json.dumps(c, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def recent_published() -> list[dict]:
+def recent_published(include_remote: bool = False) -> list[dict]:
     t = now()
     out = []
     for p in all_posts():
         if p.get("status") == "published" and p.get("main_id") and p.get("published_at"):
             if t - parse_time(p["published_at"]) <= dt.timedelta(hours=COMMENT_WINDOW_H):
                 out.append(p)
+    if include_remote:
+        # 앱에서 직접 올린 글도 댓글을 지켜본다 (계정별 최근 글)
+        known = {p["main_id"] for p in out}
+        for acc in CONFIG["accounts"]:
+            if not os.environ.get(f"THREADS_TOKEN_{acc}"):
+                continue
+            try:
+                uid, _ = acct_creds(acc)
+                items = th_get(acc, f"{uid}/threads", "id,text,timestamp,permalink").get("data", [])
+            except Exception as e:
+                log("최근 글 조회 실패:", acc, str(e)[:200])
+                continue
+            for it in items:
+                mid = str(it.get("id"))
+                if mid in known or not it.get("timestamp"):
+                    continue
+                if t - parse_time(it["timestamp"]) > dt.timedelta(hours=COMMENT_WINDOW_H):
+                    continue
+                out.append({"id": f"th-{acc}-{mid}", "account": acc, "main_id": mid,
+                            "main_text": it.get("text") or "", "published_at": it["timestamp"],
+                            "permalink": it.get("permalink", ""), "remote": True})
     return out
 
 
@@ -733,12 +754,24 @@ REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)' 운영
 - 답글 문장만 출력한다."""
 
 
+REPLY_SYSTEM_B = """너는 스레드 계정 @just.chanbok의 주인 '김찬복'이다. 40대 독거남 직장인, 원룸 혼자 산다.
+내 글에 달린 댓글에 답글을 쓴다.
+- 반말 섞인 친근한 말투, 1~2문장. 자조적인 유머로 가볍게 받아친다. 이모지는 0~1개.
+- 상대 말에 공감하고, 가능하면 짧은 펀치라인 하나. 훈계·조언·긴 설명 금지.
+- 내 글에 없는 사실(직업 세부, 사는 곳, 가족 정보)을 새로 지어내지 않는다.
+- 광고 글이면 상품 얘기는 글에 있는 사실만, 링크를 새로 붙이지 않는다('댓글에 링크 있음' 정도).
+- 상대가 '스하리'(팔로우·하트·리포스트 해줬다는 뜻)를 남기면 고마워하며 '나도 스하리할게~'처럼 받아준다.
+- 악플·스팸·이상한 홍보에는 SKIP 한 단어만 출력한다.
+- 답글 문장만 출력한다."""
+
+
 def draft_reply(post: dict, comment: dict) -> str:
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key:
         return ""
+    system = REPLY_SYSTEM_B if post.get("account") == "B" else REPLY_SYSTEM
     body = {
-        "model": ANTHROPIC_MODEL, "max_tokens": 200, "system": REPLY_SYSTEM,
+        "model": ANTHROPIC_MODEL, "max_tokens": 200, "system": system,
         "messages": [{"role": "user", "content":
             f"내 글:\n{post['main_text']}\n\n댓글 (@{comment.get('username', '?')}):\n{comment['text']}\n\n답글:"}],
     }
@@ -782,7 +815,7 @@ def check_comments(force: bool = False) -> bool:
             lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
                      "✏️ 답글 초안", d, "", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
             item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid))
-    for post in recent_published():
+    for post in recent_published(include_remote=True):
         try:
             comments = fetch_comments(post)
         except Exception as e:
@@ -801,7 +834,9 @@ def check_comments(force: bool = False) -> bool:
                     "text": c["text"], "draft": "" if draft.strip().upper() == "SKIP" else draft,
                     "status": "pending", "created_at": now().isoformat()}
             warn = [w for w in CONFIG["claim_warning_words"] if w in item["draft"]]
-            lines = [f"💬 [{post['id']}] @{item['username']}", item["text"], ""]
+            who = CONFIG["accounts"].get(post["account"], {}).get("label", post["account"])
+            snippet = (post.get("main_text") or "").strip().splitlines()[0][:30] if (post.get("main_text") or "").strip() else post["id"]
+            lines = [f"💬 [{who}] '{snippet}' 글에 @{item['username']}", item["text"], ""]
             if item["draft"]:
                 lines += ["✏️ 답글 초안", item["draft"]]
                 if warn:
