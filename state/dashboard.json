@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T00:49:00.847997+09:00",
+ "generated_at": "2026-10-18T00:50:17.998495+09:00",
  "watch_last_check": "2026-10-18T00:44:50.749914+09:00",
  "comments": {
   "skipped": 4,
@@ -591,6 +591,21 @@
    "permalink": "",
    "title": "일요일 밤 9시만 되면",
    "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261018-hobakgoguma",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T00:55:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "고구마 1kg에 1,406원꼴",
+   "replies": 3,
    "warnings": [],
    "note": "",
    "comments": 0
