@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": "20261018-life-market",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-18T10:10",
+      "publish_now": true,
+      "text": "일요일 아침 망원시장 갔다 옴\n호떡 하나 사 먹으려고 나간 건데\n정신 차려보니 양손에 봉지 3개ㅋㅋ\n시장은 계획이랑 상관없이 사게 되는 마법이 있음\n다들 시장 가면 꼭 사는 거 있어?"
+    },
+    {
+      "id": "20261018-life-drama",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-18T13:00",
+      "publish_now": true,
+      "text": "추천받은 드라마 점심 먹고 1화만 보려고 틀었는데\n정신 차려보니 4화임\n일요일 오후 순삭 각...\n스친들 책임져ㅋㅋ"
+    },
+    {
+      "id": "20261018-life-knit",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-18T15:40",
+      "publish_now": true,
+      "text": "뜨개질 결국 실 샀음ㅋㅋ\n공방은 아직 무서워서 일단 다이소에서\n유튜브 보면서 첫 줄 뜨는 데 40분 걸림\n근데 은근 멍때리기 좋아서 계속 하게 됨\n뜨개질 하는 스친 있어? 초보 팁 좀"
+    },
+    {
+      "id": "20261018-life-sunday",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-18T19:20",
+      "publish_now": true,
+      "text": "일요일 저녁 6시만 되면\n내일 출근 생각나는 거 나만 그래?\n아직 주말 몇 시간 남았는데\n머리는 이미 월요일 회의 중\n다들 일요일 밤 루틴 있어?"
+    },
+    {
+      "id": "20261018-life-icecream",
+      "account": "A",
+      "source": "none",
+      "mode": "talk",
+      "scheduled_at": "2026-10-18T22:40",
+      "publish_now": true,
+      "text": "월요일 오기 전 마지막 행복\n편의점 신상 아이스크림 하나 사 옴\n이 정도 사치는 괜찮잖아\n다들 월요일 버티는 방법 하나씩 공유해줘"
+    }
+  ]
+}
