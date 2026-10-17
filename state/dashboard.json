@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T00:45:11.014786+09:00",
+ "generated_at": "2026-10-18T00:45:43.778633+09:00",
  "watch_last_check": "2026-10-18T00:44:50.749914+09:00",
  "comments": {
   "skipped": 4,
@@ -709,8 +709,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "approved",
-   "scheduled_at": "2026-10-18T08:00:00+09:00",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T11:40:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "쌀 1kg에 995원꼴",
