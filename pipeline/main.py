@@ -588,15 +588,13 @@ URL_RE = re.compile(r"https?://\S+")
 
 
 def toss_fast_slot(post: dict) -> dt.datetime:
-    """토스 광고 승인 시 앞당길 시각: 지금(새벽 0~7시면 7시), 같은 계정 광고와 1시간 이상 띄움, 원래 예약보다 늦지 않게."""
+    """토스 광고 승인 시 앞당길 시각: 지금 바로(같은 계정 광고와 15분 이상 띄움), 원래 예약보다 늦지 않게."""
     orig = parse_time(post["scheduled_at"])
     t = now().replace(microsecond=0)
-    if t.hour < 7:
-        t = t.replace(hour=7, minute=0, second=0)
     taken = [parse_time(p["scheduled_at"]) for p in all_posts()
              if p["id"] != post["id"] and p.get("account") == post.get("account")
              and p.get("source") != "none" and p["status"] in ("approved", "publishing", "published")]
-    gap = dt.timedelta(minutes=60)
+    gap = dt.timedelta(minutes=15)
     while t < orig and any(abs(t - x) < gap for x in taken):
         t += dt.timedelta(minutes=10)
     return min(t, orig)
