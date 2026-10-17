@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       cmd:
-        description: "ping / publish / refresh-tokens"
+        description: "ping / publish / refresh-tokens / shari"
         required: true
         default: ping
       id:

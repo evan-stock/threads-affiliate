@@ -1079,9 +1079,62 @@ def cmd_refresh():
             safe_notify(f"⚠️ 계정 {acc} 토큰은 받았지만 Secrets 저장 실패: {p.stderr[:300]}")
 
 
+# ---------------------------------------------------------------- 스하리 찾기 (사용자가 직접 반응할 목록만 보냄)
+SHARI_COMMENTS = [
+    "스하리 하고 가요~ 반하리 부탁해💕",
+    "스하리 완료! 우리 같이 커가자🫶",
+    "글 보고 스하리 하고 감~ 반하리 기다릴게😊",
+    "스하리 꾹! 오늘도 좋은 하루 보내💛",
+    "스하리 했어요~ 나도 자취 단가 얘기 올리니까 놀러와🙌",
+    "스하리 하고 갑니다! 반하리 해주면 감사💕",
+    "공감돼서 스하리 했어ㅎㅎ 반하리 부탁해~",
+    "스하리 완료🙆 뒷삭 없이 오래 보자!",
+]
+
+
+def cmd_shari(hours: float = 36, limit: int = 20):
+    """'스하리'·'반하리' 최근 글을 찾아 링크 + 댓글 문구 목록을 텔레그램으로 보낸다. 반응은 사용자가 직접."""
+    _, token = acct_creds("A")
+    path = ROOT / "state" / "shari.json"
+    seen = json.loads(path.read_text()) if path.exists() else {"sent": []}
+    sent = set(seen.get("sent", []))
+    mine = {CONFIG["accounts"][a].get("label", "").split()[0] for a in CONFIG["accounts"]}
+    cutoff = now() - dt.timedelta(hours=hours)
+    found = {}
+    for q in ("스하리", "반하리", "맞스하리"):
+        r = requests.get(f"{THREADS_API}/keyword_search", params={
+            "q": q, "search_type": "RECENT", "limit": 50,
+            "fields": "id,text,permalink,username,timestamp", "access_token": token}, timeout=60)
+        j = r.json()
+        if r.status_code >= 400 or "error" in j:
+            raise RuntimeError(f"키워드 검색 실패 ({r.status_code}): {j}")
+        for p in j.get("data", []):
+            ts = p.get("timestamp")
+            try:
+                when = dt.datetime.fromisoformat(ts.replace("+0000", "+00:00"))
+            except Exception:
+                continue
+            if when < cutoff or p["id"] in sent or p.get("username") in mine:
+                continue
+            found[p["id"]] = p
+    items = sorted(found.values(), key=lambda p: p["timestamp"], reverse=True)[:limit]
+    if not items:
+        tg_text("🔎 스하리 글 찾기: 새로 찾은 글이 없어요.")
+        return
+    lines = [f"🔎 스하리·반하리 글 {len(items)}개 (팔로우·하트·리포스트 + 댓글은 직접!)"]
+    for i, p in enumerate(items):
+        snip = (p.get("text") or "").replace("\n", " ")[:40]
+        lines.append(f"\n{i+1}. @{p.get('username')} · {snip}\n{p.get('permalink')}\n💬 {SHARI_COMMENTS[i % len(SHARI_COMMENTS)]}")
+    msg = "\n".join(lines)
+    for k in range(0, len(msg), 3800):
+        tg_text(msg[k:k + 3800])
+    seen["sent"] = (list(sent) + [p["id"] for p in items])[-2000:]
+    path.write_text(json.dumps(seen, ensure_ascii=False, indent=2))
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["ping", "ingest", "tick", "watch", "publish", "refresh-tokens", "dashboard"])
+    ap.add_argument("cmd", choices=["ping", "ingest", "tick", "watch", "publish", "refresh-tokens", "dashboard", "shari"])
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--id")
     ap.add_argument("--max-minutes", type=float, default=340)
@@ -1107,6 +1160,10 @@ def main():
             cmd_refresh()
         elif a.cmd == "dashboard":
             build_dashboard()
+        elif a.cmd == "shari":
+            git_pull()
+            cmd_shari()
+            git_push("shari")
     except SystemExit:
         raise
     except Exception as e:
