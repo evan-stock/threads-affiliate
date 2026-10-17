@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T03:44:31.560640+09:00",
+  "last_check": "2026-10-18T03:55:00.064923+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -338,6 +338,56 @@
       "status": "skipped",
       "created_at": "2026-10-18T03:44:41.235920+09:00",
       "msg_id": 278
+    },
+    "18201265057382132": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "insiklee_",
+      "text": "여긴 아직 밤9시가 되어가네🇰🇷🇪🇸🙋",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T03:55:08.288588+09:00",
+      "msg_id": 279
+    },
+    "18570831679076038": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "taki.travelnote",
+      "text": "스하링",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T03:55:09.050709+09:00",
+      "msg_id": 280
+    },
+    "18082349138344812": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "gwichanm_note",
+      "text": "스하리~",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T03:55:09.770988+09:00",
+      "msg_id": 281
+    },
+    "18131507290758952": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "leesg888888",
+      "text": "그래서 미치것어",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T03:55:10.537263+09:00",
+      "msg_id": 282
+    },
+    "18114398288110158": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "asozasing",
+      "text": "술먹고 게임좀 하다 자는거지요~",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T03:55:11.270000+09:00",
+      "msg_id": 283
     }
   }
 }
