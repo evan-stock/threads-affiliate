@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T03:55:00.064923+09:00",
+  "last_check": "2026-10-18T04:06:00.527956+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -361,7 +361,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T03:55:09.050709+09:00",
-      "msg_id": 280
+      "msg_id": 280,
+      "redrafted": true
     },
     "18082349138344812": {
       "post_id": "20261018-night-shari",
@@ -381,7 +382,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T03:55:10.537263+09:00",
-      "msg_id": 282
+      "msg_id": 282,
+      "redrafted": true
     },
     "18114398288110158": {
       "post_id": "20261018-night-shari",
@@ -396,6 +398,56 @@
       "reply": "완벽한 토요일 마무리다ㅋㅋ\n무슨 게임 해? 나도 잠 안 와서 같이 하고 싶음",
       "reply_id": "18159892810504762",
       "sent_at": "2026-10-18T03:57:53.566131+09:00"
+    },
+    "18102535307532817": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "taki.travelnote",
+      "text": "반가워▓▓",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T04:06:10.088345+09:00",
+      "msg_id": 286
+    },
+    "18113336230852777": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "health_man1969",
+      "text": "잠이 안올땐 자도록 노력해야지  ㅎㅎ\n스하리~^^",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T04:06:10.916409+09:00",
+      "msg_id": 287
+    },
+    "18243108703314286": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "insiklee_",
+      "text": "된장국 ㅋㅋ",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T04:06:11.630519+09:00",
+      "msg_id": 288
+    },
+    "18137885848725496": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "asozasing",
+      "text": "메이플도 하고 발로란트도 하고 배그도? 그때그때마다 할 사람 맞춰서 하는 것 같네요",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T04:06:12.369879+09:00",
+      "msg_id": 289
+    },
+    "18126997198857568": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "mer_perspective",
+      "text": "새벽 스하리로 인사드려요 🙂 메르의 인사이트를 쉽게 전하는 ‘메르의 시선’입니다. 숫자와 생활 이야기 읽으며 서로 꾸준히 소통해요!",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T04:06:13.111626+09:00",
+      "msg_id": 290
     }
   }
 }
