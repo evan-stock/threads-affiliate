@@ -1,0 +1,57 @@
+{
+  "posts": [
+    {
+      "id": "20261018-wipes",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-18T01:15",
+      "text": "물티슈 한 장에 5원\n맘스럽 시그니처코튼 100매 10팩, 1,000장이 4,990원\n다나와에서 같은 상품 제일 싼 데가 9,900원\n유아물티슈 1위에 리뷰 9,076개, 평점 4.8\n이 정도면 거의 공짜 아님?",
+      "images": ["https://shopping.toss.im/live/temp/2026-08-19/0a772c5e-a39c-483a-901f-cf08c10f1f4d.jpeg"],
+      "compare": {"title":"맘스럽 시그니처코튼 물티슈","unit":"100매","per":100,"checked_at":"10/18 01:10","rows":[
+        {"name":"토스쇼핑","price":4990,"amount":1000,"amount_label":"100매×10팩","source":"토스쇼핑 앱 가격"},
+        {"name":"다나와 같은 상품 최저","price":9900,"amount":1000,"amount_label":"100매×10팩","source":"다나와 검색 결과"},
+        {"name":"다나와 같은 상품 보통","price":13410,"amount":1000,"amount_label":"100매×10팩","source":"다나와 검색 결과"}]},
+      "link": "https://toss.shopping/_m/7jOgm1dd",
+      "replies": [
+        "10팩이면 거실, 화장대, 주방, 차 안에 하나씩 둬도 남음\n캡형이라 뚜껑 닫아두면 덜 마르는 타입",
+        "물티슈는 결국 계속 사는 거라 쌀 때 쟁이는 게 이득\n다들 물티슈 어디서 제일 많이 써?",
+        "4,990원은 10/18 1시 기준 특가라 금방 바뀔 수 있음\n지금 가격은 여기서 확인해봐~"
+      ]
+    },
+    {
+      "id": "20261018-mosquito",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-18T01:15",
+      "text": "아직 모기 소리 들리는 집 손\n몽카라 전기 모기채가 토스에선 8,390원\n다나와에선 같은 몽카라 모기채가 18,780원부터\nLED 유인 기능이 있어서 세워두면 포충기로도 씀\n반값 이하로 채 + 포충기 두 개 산 셈",
+      "images": ["https://shopping.toss.im/live/temp/2026-07-28/61fcb5b5-c0d7-452b-86bc-ace45b38c300.jpeg"],
+      "compare": {"title":"몽카라 전기 모기채","unit":"1개","per":1,"checked_at":"10/18 01:10","rows":[
+        {"name":"토스쇼핑","price":8390,"amount":1,"amount_label":"PRM-001","source":"토스쇼핑 앱 가격"},
+        {"name":"다나와 몽카라 최저","price":18780,"amount":1,"amount_label":"충전식 26년형","source":"다나와 검색 결과"},
+        {"name":"다나와 몽카라 다른 곳","price":20700,"amount":1,"amount_label":"충전식 26년형","source":"다나와 검색 결과"}]},
+      "link": "https://toss.shopping/_m/v2z6JbGu",
+      "replies": [
+        "손에 들고 휘두르는 것도 되고 세워두는 것도 되는 타입\n리뷰 757개에 평점 4.3, 내일 도착으로 뜸",
+        "가을 모기가 제일 독하다는 말 있잖아\n다들 모기 어떻게 잡아? 손바닥파? 홈매트파?",
+        "8,390원은 10/18 1시 기준 특가라 금방 바뀔 수 있음\n지금 가격은 여기서 확인해봐~"
+      ]
+    },
+    {
+      "id": "20261018-twist",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-18T01:15",
+      "text": "드라마 보면서 발로 돌리는 운동기구\n일공공구 발지압 트위스트가 15,101원\n트위스트 운동기구 1위, 리뷰 406개\n헬스장 가기 싫은 날 거실에서 한 편 틀어놓고 돌리기 딱\n다들 집에서 하는 운동 하나씩만 알려줘",
+      "images": ["https://shopping.toss.im/live/temp/2026-09-11/2d1182e3-dac4-4e29-9a71-50b45ac40491.jpeg"],
+      "link": "https://toss.shopping/_m/5FKSSUIa",
+      "replies": [
+        "이름처럼 발지압 되는 트위스트라 맨발로 올라가는 타입\n거실 한쪽에 두고 생각날 때마다 올라가기 좋음",
+        "다나와에선 같은 상품이 14,130원에 배송비 3,150원 따로라\n토스 쪽이 조금 더 쌈. 큰 차이는 아님",
+        "15,101원은 10/18 1시 기준이라 바뀔 수 있음\n지금 가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
