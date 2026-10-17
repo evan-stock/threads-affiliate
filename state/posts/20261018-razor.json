@@ -3,7 +3,7 @@
   "account": "A",
   "source": "toss",
   "mode": "curation",
-  "scheduled_at": "2026-10-18T08:30:00+09:00",
+  "scheduled_at": "2026-10-18T01:12:04+09:00",
   "main_text": "[광고] 링크로 사면 수수료 받음\n\n면도날 한 개 630원꼴\n토스에서 면도기 + 5중날 12개가 7,561원\n다나와에서 같은 브랜드 찾아보니 날 1개 1,336원꼴\n정품 와이즐리 리필은 2,249원꼴\n이 정도면 반값 맞지?",
   "reply_texts": [
     "다나와 쪽은 면도기에 달린 날까지 5개로 넉넉하게 쳐서 계산함\n그래도 토스가 개당 절반 이하",
@@ -18,10 +18,10 @@
   ],
   "warnings": [],
   "experience_note": "",
-  "status": "pending",
-  "approved": false,
+  "status": "approved",
+  "approved": true,
   "created_at": "2026-10-18T00:45:08.502841+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 218,
-  "updated_at": "2026-10-18T00:45:11.011397+09:00"
+  "updated_at": "2026-10-18T00:52:04.270043+09:00"
 }
