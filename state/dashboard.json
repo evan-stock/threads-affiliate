@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-18T02:21:54.107743+09:00",
- "watch_last_check": "2026-10-18T02:21:45.374627+09:00",
+ "generated_at": "2026-10-18T02:32:10.709536+09:00",
+ "watch_last_check": "2026-10-18T02:32:02.064574+09:00",
  "comments": {
   "skipped": 4,
   "sent": 17,
@@ -536,7 +536,7 @@
    "account": "B",
    "source": "coupang",
    "mode": "experience",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-18T18:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -545,7 +545,7 @@
    "warnings": [
     "광고 느낌 단어: 무조건"
    ],
-   "note": "",
+   "note": "득템 정지 여파로 찬복 광고 잠시 보류",
    "comments": 0
   },
   {
@@ -662,7 +662,7 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-18T13:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -671,7 +671,7 @@
    "warnings": [
     "첫 줄이 27자예요 (20자 이내 권장)"
    ],
-   "note": "",
+   "note": "10/18 계정 정지로 보류",
    "comments": 0
   },
   {
@@ -679,14 +679,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-18T22:40:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "월요일 오기 전 마지막 행복🍦",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "10/18 계정 정지로 보류",
    "comments": 0
   },
   {
@@ -694,14 +694,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-18T15:40:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "뜨개질 결국 실 샀어ㅋㅋ🧶",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "10/18 계정 정지로 보류",
    "comments": 0
   },
   {
@@ -709,14 +709,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-18T10:10:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "일요일 아침 망원시장 다녀왔어🧺",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "10/18 계정 정지로 보류",
    "comments": 0
   },
   {
@@ -724,14 +724,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-18T19:20:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "일요일 저녁 6시만 되면",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "10/18 계정 정지로 보류",
    "comments": 0
   },
   {
@@ -861,14 +861,14 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "approved",
+   "status": "held",
    "scheduled_at": "2026-10-19T18:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "명절에 엄마가 구워주던 굴비",
    "replies": 3,
    "warnings": [],
-   "note": "",
+   "note": "득템 정지 여파로 찬복 광고 잠시 보류",
    "comments": 0
   },
   {
