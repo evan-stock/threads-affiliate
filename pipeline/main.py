@@ -915,8 +915,30 @@ def do_publish(post: dict, sync_msg: str = "publish"):
     git_push(f"{sync_msg} {post['id']}")
 
 
+def send_requested_replies() -> bool:
+    """채팅에서 Claude가 정해 둔 답글(status send_requested)을 게시한다."""
+    store = load_comments()
+    todo = [cid for cid, it in store["items"].items() if it.get("status") == "send_requested" and it.get("send_text")]
+    for cid in todo:
+        it = load_comments()["items"][cid]
+        it_text = it["send_text"]
+        store2 = load_comments()
+        store2["items"][cid]["status"] = "pending"
+        save_comments(store2)
+        try:
+            note = send_comment_reply(cid, it_text)
+        except Exception as e:
+            note = f"⚠️ 답글 실패: {str(e)[:200]}"
+        safe_notify(note + f"\n└ {it_text}")
+    return bool(todo)
+
+
 def cmd_tick() -> bool:
     changed = handle_updates()
+    try:
+        changed = send_requested_replies() or changed
+    except Exception as e:
+        log("요청 답글 처리 오류:", str(e)[:300])
     import photo_post as pp
     for fn in (pp.process_inbox, pp.announce_links):
         try:
