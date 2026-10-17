@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T03:36:25.070874+09:00",
- "watch_last_check": "2026-10-18T03:33:47.076268+09:00",
+ "generated_at": "2026-10-18T03:44:52.054671+09:00",
+ "watch_last_check": "2026-10-18T03:44:31.560640+09:00",
  "comments": {
   "skipped": 4,
   "sent": 17,
-  "pending": 4
+  "pending": 5
  },
  "posts": [
   {
@@ -779,7 +779,7 @@
     "첫 줄이 24자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261018-probiotic",
