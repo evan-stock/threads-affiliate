@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": "20261018-drumstick",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-18T02:20",
+      "text": "닭다리 100g에 576원🍗\n고기중독 닭다리 북채 1kg 2팩, 2kg이 11,510원\n다나와에선 같은 상품이 20,930원이라 거의 반값이야\n에어프라이어에 돌리면 퇴근 후 치킨 한 판 뚝딱\n다들 닭다리는 구이파야 닭볶음탕파야?",
+      "images": ["https://shopping.toss.im/live/temp/2026-06-21/49760286-df18-49af-9c70-2c27287f6b7c.jpeg"],
+      "compare": {"title":"고기중독 닭다리 북채 2kg","unit":"100g","per":100,"checked_at":"10/18 02:15","rows":[
+        {"name":"토스쇼핑","price":11510,"amount":2000,"amount_label":"1kg×2팩","source":"토스쇼핑 앱 가격"},
+        {"name":"다나와 같은 상품","price":20930,"amount":2000,"amount_label":"1kg×2팩","source":"다나와 검색 결과"},
+        {"name":"다나와 같은 브랜드 1kg","price":18900,"amount":1000,"amount_label":"1kg","source":"다나와 검색 결과"}]},
+      "link": "https://toss.shopping/_m/z0oH45qD",
+      "replies": [
+        "토스쇼핑 생고기 4위, 리뷰 4,017개에 평점 4.2\n2kg이라 소분해 두면 몇 번은 먹어",
+        "혼자 먹어도 닭다리 4개는 기본 아니야?ㅋㅋ\n스하리 해주면 반하리 갈게💕",
+        "11,510원은 10/18 새벽 2시 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~"
+      ]
+    },
+    {
+      "id": "20261018-tantan-rice",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-18T02:20",
+      "text": "쌀 1kg에 2,700원🍚\n농협안심 새청무 탄탄대로 쌀 상등급 10kg이 27,000원\n다나와에서 같은 쌀 제일 싼 데가 37,730원, 보통은 4만 원대 후반\n만 원 넘게 차이 나면 이건 쟁여야지\n다들 쌀은 몇 kg짜리 사?",
+      "images": ["https://shopping.toss.im/live/taca/ai/Zjg1MDlh/SncvU1dsaTJKYXl4NGR1aEx4bTIxbGh2UzBxYnN2V2xwTmthU1ZsazViWT0.png"],
+      "compare": {"title":"농협안심 탄탄대로 쌀 10kg","unit":"1kg","per":1,"checked_at":"10/18 02:15","note":"다나와 같은 쌀 최저보다 10,730원 쌈","rows":[
+        {"name":"토스쇼핑","price":27000,"amount":10,"amount_label":"새청무 상등급 10kg","source":"토스쇼핑 앱 가격"}]},
+      "link": "https://toss.shopping/_m/LbzapPb8",
+      "replies": [
+        "토스쇼핑 백미 3위, 리뷰 7,555개에 평점 4.7\n새청무 단일품종 상등급이야",
+        "아까 싸래기쌀도 올렸는데 밥맛 챙기는 스친은 이쪽이 맞을 듯\n스하리 해주면 반하리 갈게💕",
+        "27,000원은 10/18 새벽 2시 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
