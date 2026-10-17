@@ -345,9 +345,10 @@
       "username": "insiklee_",
       "text": "여긴 아직 밤9시가 되어가네🇰🇷🇪🇸🙋",
       "draft": "",
-      "status": "pending",
+      "status": "send_requested",
       "created_at": "2026-10-18T03:55:08.288588+09:00",
-      "msg_id": 279
+      "msg_id": 279,
+      "send_text": "와 스페인이구나!\n거긴 이제 저녁 먹을 시간이겠네ㅋㅋ 오늘 저녁 뭐 먹어?"
     },
     "18570831679076038": {
       "post_id": "20261018-night-shari",
@@ -365,7 +366,7 @@
       "username": "gwichanm_note",
       "text": "스하리~",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T03:55:09.770988+09:00",
       "msg_id": 281
     },
@@ -385,9 +386,10 @@
       "username": "asozasing",
       "text": "술먹고 게임좀 하다 자는거지요~",
       "draft": "",
-      "status": "pending",
+      "status": "send_requested",
       "created_at": "2026-10-18T03:55:11.270000+09:00",
-      "msg_id": 283
+      "msg_id": 283,
+      "send_text": "완벽한 토요일 마무리다ㅋㅋ\n무슨 게임 해? 나도 잠 안 와서 같이 하고 싶음"
     }
   }
 }
