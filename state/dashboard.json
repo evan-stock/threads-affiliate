@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T01:24:02.028657+09:00",
+ "generated_at": "2026-10-18T01:25:49.193749+09:00",
  "watch_last_check": "2026-10-18T01:18:25.915415+09:00",
  "comments": {
   "skipped": 4,
@@ -600,7 +600,7 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
+   "status": "approved",
    "scheduled_at": "2026-10-18T01:35:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -707,7 +707,7 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
+   "status": "approved",
    "scheduled_at": "2026-10-18T01:35:00+09:00",
    "published_at": "",
    "permalink": "",
