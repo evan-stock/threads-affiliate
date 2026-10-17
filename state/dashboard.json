@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T01:29:03.138791+09:00",
+ "generated_at": "2026-10-18T01:30:41.518507+09:00",
  "watch_last_check": "2026-10-18T01:28:52.505909+09:00",
  "comments": {
   "skipped": 4,
@@ -769,10 +769,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T01:28:42+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T01:30:40.913389+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DemihBNmjKs",
    "title": "쌀 1kg에 995원꼴",
    "replies": 3,
    "warnings": [],
