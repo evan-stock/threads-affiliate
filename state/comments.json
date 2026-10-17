@@ -263,7 +263,7 @@
       "username": "funcoolmantokyo",
       "text": "형 1.8만도 손떨려.....잘찾아보면 8천원도 있는데",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-17T19:14:08.525748+09:00",
       "msg_id": 192
     },
@@ -273,7 +273,7 @@
       "username": "salrim___pick",
       "text": "같이 배달하는데 있을걸?",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-17T19:24:22.066420+09:00",
       "msg_id": 193,
       "redrafted": true
@@ -313,7 +313,7 @@
       "username": "ruby.rainbow",
       "text": "아직 안해쒀?.?",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-17T21:48:46.983501+09:00",
       "msg_id": 202,
       "redrafted": true
@@ -324,7 +324,7 @@
       "username": "alwjd08",
       "text": "치킨머거써!!",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-17T23:42:53.829132+09:00",
       "msg_id": 205,
       "redrafted": true
@@ -335,7 +335,7 @@
       "username": "leesg888888",
       "text": "눈 감고 야식 먹는 생각",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T03:44:41.235920+09:00",
       "msg_id": 278
     }
