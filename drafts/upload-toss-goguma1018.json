@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "id": "20261018-hobakgoguma",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-18T00:55",
+      "text": "고구마 1kg에 1,406원꼴\n해남 호풍미 호박고구마 대 5kg이 토스에선 7,030원\n다나와에서 같은 호풍미 대 5kg 찾아보니 12,910원\n77개 쇼핑몰 가격비교 최저도 13,580원\n거의 반값인데 군고구마 철에 이건 못 참지?",
+      "images": ["https://shopping.toss.im/live/temp/2026-02-02/29aedeab-abc6-4b2c-86f7-31bcc48005aa.jpeg"],
+      "compare": {"title":"해남 호박고구마 대 5kg","unit":"1kg","per":1,"checked_at":"10/18 00:55","rows":[
+        {"name":"토스쇼핑","price":7030,"amount":5,"amount_label":"호풍미 대 5kg","source":"토스쇼핑 앱 가격"},
+        {"name":"다나와 같은 호풍미","price":12910,"amount":5,"amount_label":"대 5kg","source":"다나와 검색 결과"},
+        {"name":"다나와 가격비교 최저","price":13580,"amount":5,"amount_label":"77개 몰 · 대 5kg","source":"다나와 가격비교"}]},
+      "link": "https://toss.shopping/_m/lindbOJk",
+      "replies": [
+        "토스쇼핑 호박고구마 1위, 리뷰 496개에 평점 4.4\n대 사이즈라 한 개 300g 넘는 걸로 온대",
+        "에어프라이어에 구워서 한 끼로 먹는다는 후기가 많더라\n다들 고구마는 군고구마파야 찐고구마파야?",
+        "7,030원은 10/18 0시 기준이고 특가라 금방 바뀔 수 있음\n도착은 10/22 예정, 지금 가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
