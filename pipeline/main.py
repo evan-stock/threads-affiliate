@@ -810,6 +810,19 @@ def is_shari(text: str) -> bool:
     return len(t) <= 30 and bool(SHARI_RE.search(t))
 
 
+SHARI_TEMPLATES = {
+    "A": ["반하리 갈게~💕 반가워!", "스하리 고마워! 반하리 갈게💕", "와줘서 고마워~ 반하리 간다💕"],
+    "B": ["와줘서 고맙다. 반하리 간다.", "팔로워가 늘었다. 반하리 간다.", "고맙다. 나도 반하리 간다."],
+}
+
+
+def shari_template(account: str, cid: str) -> str:
+    """스하리 댓글용 정해진 답 초안 (텔레그램 ✅로 사용자가 승인해야 게시됨)"""
+    opts = SHARI_TEMPLATES.get(account, SHARI_TEMPLATES["A"])
+    tail = "".join(ch for ch in str(cid)[-4:] if ch.isdigit())
+    return opts[int(tail) % len(opts)] if tail else opts[0]
+
+
 def comment_buttons(cid: str) -> dict:
     return {"inline_keyboard": [[{"text": "✅ 답글 보내기", "callback_data": f"cok:{cid}"},
                                  {"text": "❌ 무시", "callback_data": f"cno:{cid}"}]]}
@@ -858,6 +871,8 @@ def check_comments(force: bool = False) -> bool:
             except Exception as e:
                 draft = ""
                 log(str(e)[:200])
+            if not draft.strip() and is_shari(c.get("text", "")):
+                draft = shari_template(post["account"], cid)
             item = {"post_id": post["id"], "account": post["account"], "username": c.get("username", ""),
                     "text": c["text"], "draft": "" if draft.strip().upper() == "SKIP" else draft,
                     "status": "pending", "created_at": now().isoformat()}
