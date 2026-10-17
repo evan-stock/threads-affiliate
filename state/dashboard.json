@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T23:20:53.918473+09:00",
+ "generated_at": "2026-10-17T23:21:07.241585+09:00",
  "watch_last_check": "2026-10-17T23:11:29.763813+09:00",
  "comments": {
   "skipped": 4,
@@ -292,10 +292,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-17T23:20:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-17T23:21:06.736736+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DemT09FEXoj",
    "title": "치킨 시켜놓고 이거 쓰는 중ㅋㅋ",
    "replies": 0,
    "warnings": [],
