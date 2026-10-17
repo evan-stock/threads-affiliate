@@ -4,7 +4,7 @@ name: poster
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */3 * * *"   # 예비 실행 (3시간마다, UTC)
+    - cron: "17 * * * *"   # 예비 실행 (매시간, UTC). 감시가 이미 돌고 있으면 대기열에서 기다림
 
 permissions:
   contents: write

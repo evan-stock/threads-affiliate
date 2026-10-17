@@ -925,10 +925,21 @@ def has_active() -> bool:
 
 def cmd_watch(max_minutes: float, redispatch: bool):
     t0 = time.time()
+    errors = 0
     while True:
-        git_pull()
-        if cmd_tick():
-            git_push("tick")
+        try:
+            git_pull()
+            if cmd_tick():
+                git_push("tick")
+            errors = 0
+        except Exception as e:
+            # 한 번의 오류로 감시 전체가 죽지 않게: 알리고 다음 분에 다시 시도
+            errors += 1
+            log("감시 중 오류:", str(e)[:500])
+            if errors in (1, 10, 60):
+                safe_notify(f"⚠️ 게시 감시 오류 ({errors}회째, 계속 재시도 중)\n{str(e)[:300]}")
+            git("rebase", "--abort", check=False)
+            git("pull", "--rebase", "--autostash", "-q", check=False)
         if not has_active():
             log("대기 중인 글이 없어 종료")
             return
