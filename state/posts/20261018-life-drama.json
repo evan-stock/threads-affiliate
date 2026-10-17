@@ -3,7 +3,7 @@
   "account": "A",
   "source": "none",
   "mode": "talk",
-  "scheduled_at": "2026-10-18T13:00:00+09:00",
+  "scheduled_at": "2026-10-18T14:00:00+09:00",
   "main_text": "추천받은 드라마 점심 먹고 1화만 보려고 했는데\n정신 차려보니 4화째야🙈\n일요일 오후 순삭 각...\n스친들 책임져ㅋㅋ💕",
   "reply_texts": [],
   "reply_ids": [],
@@ -13,11 +13,10 @@
     "첫 줄이 27자예요 (20자 이내 권장)"
   ],
   "experience_note": "",
-  "status": "held",
+  "status": "approved",
   "approved": true,
   "created_at": "2026-10-17T16:39:49.012742+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 139,
-  "updated_at": "2026-10-17T16:39:49.665963+09:00",
-  "note": "10/18 계정 정지로 보류"
+  "updated_at": "2026-10-17T16:39:49.665963+09:00"
 }
