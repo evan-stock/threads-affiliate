@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T01:18:37.192825+09:00",
+ "generated_at": "2026-10-18T01:24:02.028657+09:00",
  "watch_last_check": "2026-10-18T01:18:25.915415+09:00",
  "comments": {
   "skipped": 4,
@@ -596,6 +596,21 @@
    "comments": 0
   },
   {
+   "id": "20261018-hetbahn",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T01:35:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "햇반 한 개 996원 실화?🍚",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
    "id": "20261018-hobakgoguma",
    "account": "A",
    "source": "toss",
@@ -683,6 +698,21 @@
    "permalink": "",
    "title": "일요일 저녁 6시만 되면",
    "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261018-mascara",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T01:35:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "마스카라 하나에 5,050원💄",
+   "replies": 3,
    "warnings": [],
    "note": "",
    "comments": 0
