@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T14:13:41.799715+09:00",
+ "generated_at": "2026-10-17T14:22:49.343017+09:00",
  "watch_last_check": "2026-10-17T14:13:39.479313+09:00",
  "comments": {
   "skipped": 2,
@@ -214,7 +214,7 @@
    "id": "20261017-casio",
    "source": "coupang",
    "mode": "experience",
-   "status": "pending",
+   "status": "publishing",
    "scheduled_at": "2026-10-17T13:45:00+09:00",
    "published_at": "",
    "permalink": "",
