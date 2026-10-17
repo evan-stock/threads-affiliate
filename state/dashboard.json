@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T00:45:43.778633+09:00",
+ "generated_at": "2026-10-18T00:48:05.892032+09:00",
  "watch_last_check": "2026-10-18T00:44:50.749914+09:00",
  "comments": {
   "skipped": 4,
@@ -521,8 +521,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "approved",
-   "scheduled_at": "2026-10-18T07:00:00+09:00",
+   "status": "publishing",
+   "scheduled_at": "2026-10-18T00:47:36+09:00",
    "published_at": "",
    "permalink": "",
    "title": "발매트 한 장 3,800원꼴",
