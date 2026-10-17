@@ -5,7 +5,11 @@
   "max_text_len": 500,
   "accounts": {
     "A": {
-      "label": "계정A",
+      "label": "gotitem.lab",
+      "persona_notice": ""
+    },
+    "B": {
+      "label": "just.chanbok (일상)",
       "persona_notice": ""
     }
   },
