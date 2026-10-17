@@ -152,6 +152,7 @@ def build_dashboard():
     for p in all_posts():
         posts.append({
             "id": p["id"],
+            "account": p.get("account", "A"),
             "source": p.get("source", "none"),
             "mode": p.get("mode", ""),
             "status": p.get("status", ""),

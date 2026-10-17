@@ -122,6 +122,7 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: 32px; line-heig
 .chip { display: inline-block; font-size: 12px; line-height: 1; padding: 4px 8px; border-radius: 6px; white-space: nowrap; }
 .chip.ad { background: var(--tag); color: var(--tag-ink); font-weight: 700; }
 .chip.talk { background: var(--mute-bg); color: var(--sub); }
+.chip.acct { background: transparent; color: var(--sub); border: 1px solid var(--line); }
 .pill { display: inline-block; font-size: 12px; line-height: 1; padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
 .pill.ok { background: var(--ok-bg); color: var(--ok); }
 .pill.info { background: var(--info-bg); color: var(--info); }
@@ -353,6 +354,7 @@ function render() {
     const body = el("div", "body");
     body.append(el("div", "title", p.title || p.id));
     const meta = el("div", "meta");
+    meta.append(el("span", "chip acct", p.account === "B" ? "찬복" : "득템"));
     meta.append(el("span", "chip " + (isAd(p) ? "ad" : "talk"), isAd(p) ? "광고" : "일반"));
     const [sl, sc] = STATUS[p.status] || [p.status, "mute"];
     meta.append(el("span", "pill " + sc, sl));
