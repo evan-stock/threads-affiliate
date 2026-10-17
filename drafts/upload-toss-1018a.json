@@ -6,14 +6,45 @@
       "source": "toss",
       "mode": "curation",
       "scheduled_at": "2026-10-18T08:30",
-      "text": "면도날 한 개 630원꼴\n질레트 호환 5중 면도날 12개 + 면도기 1개 세트\n전부 해서 7,561원\n면도날 따로 사면 얼마였는지 기억나는 사람?",
-      "images": ["https://shopping.toss.im/live/temp/2026-04-05/0e0f109f-8000-4e30-9561-f66881a3cfd5.jpeg"],
+      "text": "면도날 한 개 630원꼴\n토스에서 면도기 + 5중날 12개가 7,561원\n다나와에서 같은 브랜드 찾아보니 날 1개 1,336원꼴\n정품 와이즐리 리필은 2,249원꼴\n이 정도면 반값 맞지?",
+      "images": [
+        "https://shopping.toss.im/live/temp/2026-04-05/0e0f109f-8000-4e30-9561-f66881a3cfd5.jpeg"
+      ],
       "link": "https://toss.shopping/_m/rD6wLr4c",
       "replies": [
-        "날만 12개라 한 달에 2개씩 갈아도 반년 버팀\n면도기세트 3위, 리뷰 427개에 평점 4.1",
+        "다나와 쪽은 면도기에 달린 날까지 5개로 넉넉하게 쳐서 계산함\n그래도 토스가 개당 절반 이하",
         "질레트 '호환용'이라 정품은 아님\n지금 쓰는 손잡이에 맞는지는 상세페이지에서 한 번 확인해봐",
         "7,561원은 10/18 기준이라 바뀔 수 있음\n지금 가격은 여기서 확인해봐~"
-      ]
+      ],
+      "compare": {
+        "title": "5중 면도날 개당 가격",
+        "unit": "1개",
+        "per": 1,
+        "checked_at": "10/18 00:50",
+        "rows": [
+          {
+            "name": "토스쇼핑",
+            "price": 7561,
+            "amount": 12,
+            "amount_label": "면도기+날 12개",
+            "source": "토스쇼핑 앱 가격"
+          },
+          {
+            "name": "다나와 같은 브랜드",
+            "price": 6680,
+            "amount": 5,
+            "amount_label": "면도기+리필 4개",
+            "source": "다나와 검색 결과"
+          },
+          {
+            "name": "다나와 와이즐리 정품",
+            "price": 17990,
+            "amount": 8,
+            "amount_label": "4개입×2",
+            "source": "다나와 검색 결과"
+          }
+        ]
+      }
     },
     {
       "id": "20261018-rice",
@@ -21,14 +52,45 @@
       "source": "toss",
       "mode": "curation",
       "scheduled_at": "2026-10-18T11:40",
-      "text": "쌀 1kg에 995원꼴\n실속밥상 싸래기쌀 20kg이 19,900원\n싸래기는 도정하다 부서진 쌀이라 싼 거임\n볶음밥·죽·떡볶이용으로는 모양 상관없잖아?",
-      "images": ["https://shopping.toss.im/live/temp/2026-01-30/597b18e3-e1cf-4591-8cb4-a105599845ee.png"],
+      "text": "쌀 1kg에 995원꼴\n실속밥상 싸래기쌀 20kg이 토스에선 19,900원\n다나와에서 같은 상품 제일 싼 데가 26,910원\n비싼 데는 40,370원까지 받음\n싸래기라 모양만 부서졌지 볶음밥·죽용으론 충분",
+      "images": [
+        "https://shopping.toss.im/live/temp/2026-01-30/597b18e3-e1cf-4591-8cb4-a105599845ee.png"
+      ],
       "link": "https://toss.shopping/_m/P1P2lEsr",
       "replies": [
         "토스쇼핑 쌀류 5위, 리뷰 1,087개에 평점 4.0\n20kg이면 혼자 사는 집은 몇 달 먹음",
-        "알 모양이 고르지 않은 건 감안해야 함\n다들 쌀은 10kg 사? 20kg 사?",
+        "싸래기는 도정하다 부서진 쌀이라 원래 싼 쌀이긴 함\n알 모양이 고르지 않은 건 감안해야 함\n다들 쌀은 10kg 사? 20kg 사?",
         "19,900원은 10/18 기준이라 바뀔 수 있음\n지금 가격은 여기서 확인해봐~"
-      ]
+      ],
+      "compare": {
+        "title": "실속밥상 싸래기쌀 20kg",
+        "unit": "1kg",
+        "per": 1,
+        "checked_at": "10/18 00:45",
+        "rows": [
+          {
+            "name": "토스쇼핑",
+            "price": 19900,
+            "amount": 20,
+            "amount_label": "20kg",
+            "source": "토스쇼핑 앱 가격"
+          },
+          {
+            "name": "다나와 같은 상품 최저가",
+            "price": 26910,
+            "amount": 20,
+            "amount_label": "20kg",
+            "source": "다나와 검색 결과"
+          },
+          {
+            "name": "다나와 같은 상품 최고가",
+            "price": 40370,
+            "amount": 20,
+            "amount_label": "20kg",
+            "source": "다나와 검색 결과"
+          }
+        ]
+      }
     },
     {
       "id": "20261018-bathmat",
@@ -37,7 +99,9 @@
       "mode": "curation",
       "scheduled_at": "2026-10-18T17:00",
       "text": "발매트 한 장 3,800원꼴\n빨아쓰는 규조토 발매트 2장 세트가 7,637원\n60x40 하나, 120x40 하나 들어 있음\n욕실 앞이랑 주방 싱크대 앞에 하나씩 딱이네",
-      "images": ["https://shopping.toss.im/live/taca/ai/NGUzODg0/QUtBZkIvQTBET0MrQXdOSWIvQWdBVjdnSEdYajJHL1BJQU9lK2N3T1l6UVI.png"],
+      "images": [
+        "https://shopping.toss.im/live/taca/ai/NGUzODg0/QUtBZkIvQTBET0MrQXdOSWIvQWdBVjdnSEdYajJHL1BJQU9lK2N3T1l6UVI.png"
+      ],
       "link": "https://toss.shopping/_m/H8RQcGO",
       "replies": [
         "규조토인데 '빨아쓰는' 타입이라 세탁이 된다는 게 포인트\n리뷰 310개에 평점 4.3",
