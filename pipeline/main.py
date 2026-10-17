@@ -622,6 +622,12 @@ def handle_updates() -> bool:
                 if act == "ok":
                     post["approved"] = True
                     post["status"] = "approved"
+                    if post.get("source") == "toss" and CONFIG.get("toss_publish_on_approve", True) and parse_time(post["scheduled_at"]) > now():
+                        # 토스 특가는 금방 마감되니 승인하면 바로 게시
+                        t_now = now().replace(microsecond=0)
+                        if t_now.hour < 7:  # 새벽에 승인하면 아침 7시에
+                            t_now = t_now.replace(hour=7, minute=0, second=0)
+                        post["scheduled_at"] = min(t_now, parse_time(post["scheduled_at"])).isoformat()
                     when = parse_time(post["scheduled_at"]).strftime("%m/%d %H:%M")
                     note = f"✅ [{pid}] 승인됨 · {when} 게시 예정" if ready_link(post) else f"✅ [{pid}] 승인됨 · 링크를 받으면 {when}에 게시해요"
                 elif act == "no":

@@ -83,5 +83,6 @@
     "필수템",
     "인생템"
   ],
-  "header_position": "top"
+  "header_position": "top",
+  "toss_publish_on_approve": true
 }
