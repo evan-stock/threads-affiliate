@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T18:03:41.400944+09:00",
+ "generated_at": "2026-10-17T18:05:45.041311+09:00",
  "watch_last_check": "2026-10-17T18:01:32.766711+09:00",
  "comments": {
   "skipped": 4,
@@ -506,8 +506,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
-   "scheduled_at": "2026-10-18T17:30:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-17T22:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "볶음밥 한 봉에 1,450원꼴",
