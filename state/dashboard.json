@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T08:00:46.047112+09:00",
+ "generated_at": "2026-10-18T08:00:59.008366+09:00",
  "watch_last_check": "2026-10-18T07:54:30.268222+09:00",
  "comments": {
   "skipped": 10,
@@ -583,10 +583,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T08:00:58.486341+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DenPUnsGltv",
    "title": "일요일인데 알람 없이 7시에 눈 떠짐.",
    "replies": 0,
    "warnings": [
