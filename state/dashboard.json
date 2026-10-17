@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T00:24:23.745395+09:00",
+ "generated_at": "2026-10-18T00:31:48.540673+09:00",
  "watch_last_check": "2026-10-18T00:24:14.548513+09:00",
  "comments": {
   "skipped": 4,
@@ -517,6 +517,21 @@
    "comments": 0
   },
   {
+   "id": "20261018-bathmat",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T17:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "발매트 한 장 3,800원꼴",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
    "id": "20261018-cb-curry",
    "account": "B",
    "source": "coupang",
@@ -671,6 +686,36 @@
    "warnings": [
     "효능·건강 표현 확인 필요: 다이어트"
    ],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261018-razor",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T08:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "면도날 한 개 630원꼴",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261018-rice",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-18T11:40:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "쌀 1kg에 995원꼴",
+   "replies": 3,
+   "warnings": [],
    "note": "",
    "comments": 0
   },
