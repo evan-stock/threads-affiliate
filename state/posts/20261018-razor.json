@@ -10,7 +10,11 @@
     "질레트 '호환용'이라 정품은 아님\n지금 쓰는 손잡이에 맞는지는 상세페이지에서 한 번 확인해봐",
     "이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.\n\n7,561원은 10/18 기준이라 바뀔 수 있음\n지금 가격은 여기서 확인해봐~\n{링크}"
   ],
-  "reply_ids": [],
+  "reply_ids": [
+    "17951962812083579",
+    "18117509960290525",
+    "17950879131307692"
+  ],
   "link": "https://toss.shopping/_m/rD6wLr4c",
   "images": [
     "media/20261018-razor/compare.jpg",
@@ -18,10 +22,13 @@
   ],
   "warnings": [],
   "experience_note": "",
-  "status": "publishing",
+  "status": "published",
   "approved": true,
   "created_at": "2026-10-18T00:45:08.502841+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 218,
-  "updated_at": "2026-10-18T01:12:13.336054+09:00"
+  "updated_at": "2026-10-18T01:13:12.605207+09:00",
+  "main_id": "18128763830509055",
+  "permalink": "https://www.threads.com/@gotitem.lab/post/DemglsXGoqE",
+  "published_at": "2026-10-18T01:13:12.605115+09:00"
 }
