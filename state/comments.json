@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-17T18:53:26.817702+09:00",
+  "last_check": "2026-10-17T19:03:47.627142+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -214,6 +214,36 @@
       "reply": "떡볶이도 들어왔다ㅋㅋ\n지금 1·2·3번 거의 동점이라 직업병 도져서 집계표 만드는 중",
       "reply_id": "17920580289240077",
       "sent_at": "2026-10-17T18:56:41.364851+09:00"
+    },
+    "18054495860592481": {
+      "post_id": "20261017-life-dinner",
+      "account": "A",
+      "username": "kyungae_kang",
+      "text": "치킨",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-17T19:03:51.104986+09:00",
+      "msg_id": 186
+    },
+    "17893858113437758": {
+      "post_id": "20261017-life-dinner",
+      "account": "A",
+      "username": "salrim___pick",
+      "text": "같이 배달하는데 있을걸?",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-17T19:03:51.863986+09:00",
+      "msg_id": 187
+    },
+    "18498623722100096": {
+      "post_id": "th-B-17906603268583225",
+      "account": "B",
+      "username": "funcoolmantokyo",
+      "text": "이분 부자동네 계심",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-17T19:03:54.208834+09:00",
+      "msg_id": 188
     }
   }
 }

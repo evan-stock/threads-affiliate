@@ -1,9 +1,10 @@
 {
- "generated_at": "2026-10-17T19:01:45.157023+09:00",
- "watch_last_check": "2026-10-17T18:53:26.817702+09:00",
+ "generated_at": "2026-10-17T19:03:55.372552+09:00",
+ "watch_last_check": "2026-10-17T19:03:47.627142+09:00",
  "comments": {
   "skipped": 4,
-  "sent": 12
+  "sent": 12,
+  "pending": 3
  },
  "posts": [
   {
@@ -269,7 +270,7 @@
     "첫 줄이 21자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 4
+   "comments": 6
   },
   {
    "id": "20261017-life-hobby",
