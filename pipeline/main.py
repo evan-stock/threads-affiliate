@@ -801,6 +801,15 @@ def draft_reply(post: dict, comment: dict) -> str:
     return "".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip()
 
 
+SHARI_RE = re.compile(r"스하리|스하링|반하리|맞팔|선팔|맞스|스친")
+
+
+def is_shari(text: str) -> bool:
+    """짧은 스하리·맞팔 댓글인지 (맞팔 목록 알림용, 자동 답글은 하지 않음)"""
+    t = (text or "").strip()
+    return len(t) <= 30 and bool(SHARI_RE.search(t))
+
+
 def comment_buttons(cid: str) -> dict:
     return {"inline_keyboard": [[{"text": "✅ 답글 보내기", "callback_data": f"cok:{cid}"},
                                  {"text": "❌ 무시", "callback_data": f"cno:{cid}"}]]}
@@ -833,6 +842,7 @@ def check_comments(force: bool = False) -> bool:
             lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
                      "✏️ 답글 초안", d, "", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
             item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid))
+    shari_new = []  # 이번 확인에서 새로 들어온 스하리 댓글 → 맞팔 목록으로 한 번에 알림
     for post in recent_published(include_remote=True):
         try:
             comments = fetch_comments(post)
@@ -855,6 +865,9 @@ def check_comments(force: bool = False) -> bool:
             who = CONFIG["accounts"].get(post["account"], {}).get("label", post["account"])
             snippet = (post.get("main_text") or "").strip().splitlines()[0][:30] if (post.get("main_text") or "").strip() else post["id"]
             lines = [f"💬 [{who}] '{snippet}' 글에 @{item['username']}", item["text"], ""]
+            if is_shari(item["text"]):
+                shari_new.append((who, item["username"]))
+                lines += [f"🤝 맞팔: https://www.threads.com/@{item['username']}", ""]
             if item["draft"]:
                 lines += ["✏️ 답글 초안", item["draft"]]
                 if warn:
@@ -864,6 +877,17 @@ def check_comments(force: bool = False) -> bool:
                 lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요."]
             item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid) if item["draft"] else None)
             store["items"][cid] = item
+    if shari_new:
+        seen, rows = set(), []
+        for who, u in shari_new:
+            if (who, u) in seen:
+                continue
+            seen.add((who, u))
+            rows.append(f"[{who}] @{u}\nhttps://www.threads.com/@{u}")
+        try:
+            tg_text("🤝 맞팔할 사람 (직접 팔로우·하트·답글)\n\n" + "\n\n".join(rows))
+        except Exception as e:
+            log("맞팔 목록 알림 실패:", str(e)[:200])
     save_comments(store)
     return True
 
