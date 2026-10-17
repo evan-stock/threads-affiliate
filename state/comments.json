@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T04:48:10.612438+09:00",
+  "last_check": "2026-10-18T04:58:33.903846+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -517,6 +517,36 @@
       "status": "pending",
       "created_at": "2026-10-18T04:48:16.222605+09:00",
       "msg_id": 341
+    },
+    "17971456617174829": {
+      "post_id": "20261018-cb-night-shari",
+      "account": "B",
+      "username": "sanghwi.lee.77",
+      "text": "스하리",
+      "draft": "고맙다. 나도 반하리 간다.",
+      "status": "pending",
+      "created_at": "2026-10-18T04:58:40.901659+09:00",
+      "msg_id": 343
+    },
+    "18109589014908590": {
+      "post_id": "20261018-cb-night-shari",
+      "account": "B",
+      "username": "archmen97",
+      "text": "굿모닝^^ 새벽반 지킴이 허당할배 스하리!!",
+      "draft": "팔로워가 늘었다. 반하리 간다.",
+      "status": "pending",
+      "created_at": "2026-10-18T04:58:41.601584+09:00",
+      "msg_id": 344
+    },
+    "18198872464391661": {
+      "post_id": "20261018-night-shari",
+      "account": "A",
+      "username": "hyemi4073",
+      "text": "럽리💓 스하 💓 나한테 안옴 삐진당!🤔💓",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T04:58:43.947598+09:00",
+      "msg_id": 345
     }
   }
 }

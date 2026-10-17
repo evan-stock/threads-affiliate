@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T04:48:26.604217+09:00",
- "watch_last_check": "2026-10-18T04:48:10.612438+09:00",
+ "generated_at": "2026-10-18T04:58:53.872411+09:00",
+ "watch_last_check": "2026-10-18T04:58:33.903846+09:00",
  "comments": {
   "skipped": 10,
   "sent": 19,
-  "pending": 13
+  "pending": 16
  },
  "posts": [
   {
@@ -561,7 +561,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 4
+   "comments": 6
   },
   {
    "id": "20261018-cb-sun-lunch",
@@ -794,7 +794,7 @@
     "첫 줄이 24자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 13
+   "comments": 14
   },
   {
    "id": "20261018-probiotic",
