@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T18:00:17.768241+09:00",
+ "generated_at": "2026-10-17T18:00:29.424678+09:00",
  "watch_last_check": "2026-10-17T17:51:03.765827+09:00",
  "comments": {
   "skipped": 4,
@@ -260,10 +260,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-17T18:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-17T18:00:28.382173+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DelvIz_lX9x",
    "title": "점심에 라면 먹어서 라면은 탈락ㅋㅋ",
    "replies": 0,
    "warnings": [
