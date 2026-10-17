@@ -140,6 +140,17 @@ h1 { font-family: var(--f-display); font-weight: 400; font-size: 32px; line-heig
 .bar .limit span { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--sub); white-space: nowrap; }
 .ratio p { margin: 0; color: var(--sub); font-size: 13px; }
 
+.rev { display: grid; gap: 14px; }
+.rev .src { display: grid; gap: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.rev .src:first-of-type { border-top: 0; padding-top: 0; }
+.rev .head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.rev .nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.rev .nums div { display: grid; }
+.rev .nums b { font-family: var(--f-num); font-size: 17px; font-variant-numeric: tabular-nums; font-weight: 500; }
+.rev .nums span, .rev .when { font-size: 11px; color: var(--sub); }
+.rev .goal { font-size: 12px; color: var(--sub); }
+.rev .gbar { height: 8px; border-radius: 4px; background: var(--mute-bg); overflow: hidden; margin-top: 4px; }
+.rev .gbar i { display: block; height: 100%; background: var(--tag); }
 .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; height: 120px; margin-top: 4px; }
 .day { display: grid; grid-template-rows: 1fr auto; gap: 4px; height: 100%; text-align: center; }
 .stack { display: flex; flex-direction: column-reverse; justify-content: flex-start; gap: 2px; }
@@ -203,6 +214,10 @@ footer { color: var(--sub); font-size: 12px; text-align: center; }
     </section>
 
     <aside class="side">
+      <section class="panel" aria-labelledby="h-rev">
+        <h2 id="h-rev">수익</h2>
+        <div class="rev" id="rev"><div class="empty">아직 수익 기록이 없어요.</div></div>
+      </section>
       <section class="panel ratio" aria-labelledby="h-ratio">
         <h2 id="h-ratio">최근 7일 링크 글 비율</h2>
         <div class="big" id="ratioBig">–</div>
@@ -371,6 +386,42 @@ function render() {
   $("ratioNote").textContent = !week.length ? "아직 게시된 글이 없어요."
     : ratio > LINK_LIMIT ? `지침(30% 이하)보다 높아요. 일반 글을 ${Math.max(1, Math.ceil(ads / LINK_LIMIT - week.length))}개 더 올리면 맞춰져요.`
     : "지침 안이에요. 이대로 유지하면 돼요.";
+
+  // 수익
+  const revEl = $("rev");
+  const rv = data.revenue;
+  if (rv) {
+    revEl.replaceChildren();
+    const won = (n) => (n || 0).toLocaleString("ko-KR") + "원";
+    for (const key of ["coupang", "toss"]) {
+      const r = rv[key]; if (!r) continue;
+      const box = el("div", "src");
+      const head = el("div", "head");
+      head.append(el("b", null, r.label));
+      const m = r.month;
+      const earned = m && ((m.commission || 0) > 0 || (m.orders || 0) > 0);
+      head.append(el("span", "pill " + (!m ? "mute" : earned ? "ok" : "warn"), !m ? "확인 전" : earned ? "수익 발생" : "아직 없음"));
+      box.append(head);
+      if (m) {
+        const nums = el("div", "nums");
+        for (const [lab, v] of [["클릭", (m.clicks || 0).toLocaleString("ko-KR")], ["구매", (m.orders || 0) + "건"], ["판매액", won(m.sales)], ["수익", won(m.commission)]]) {
+          const d = el("div"); d.append(el("b", null, v), el("span", null, "이번 달 " + lab)); nums.append(d);
+        }
+        box.append(nums);
+        if (r.today) box.append(el("div", "when", `오늘: 클릭 ${r.today.clicks || 0} · 구매 ${r.today.orders || 0}건 · 수익 ${won(r.today.commission)}`));
+      } else {
+        box.append(el("div", "when", "토스 앱 쉐어링크 화면 숫자를 알려주시면 반영돼요"));
+      }
+      if (r.approval_goal) {
+        const pct = Math.min(100, Math.round((r.total_sales || 0) / r.approval_goal * 100));
+        const g = el("div", "goal", `최종 승인까지 판매액 ${won(r.total_sales)} / ${won(r.approval_goal)} (${pct}%)`);
+        const bar = el("div", "gbar"); const fillg = el("i"); fillg.style.width = pct + "%"; bar.append(fillg); g.append(bar);
+        box.append(g);
+      }
+      if (r.checked_at) box.append(el("div", "when", "확인: " + md(dayKey(new Date(r.checked_at))) + " " + hm(new Date(r.checked_at))));
+      revEl.append(box);
+    }
+  }
 
   // 하루 게시 수 7일
   const days = $("days"); days.replaceChildren();

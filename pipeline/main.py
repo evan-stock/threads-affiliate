@@ -178,6 +178,12 @@ def build_dashboard():
         "comments": counts,
         "posts": posts,
     }
+    rev = ROOT / "state" / "revenue.json"
+    if rev.exists():
+        try:
+            data["revenue"] = json.loads(rev.read_text(encoding="utf-8"))
+        except Exception:
+            pass
     DASHBOARD.parent.mkdir(parents=True, exist_ok=True)
     DASHBOARD.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
 

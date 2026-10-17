@@ -1,0 +1,27 @@
+{
+  "coupang": {
+    "label": "쿠팡 파트너스",
+    "checked_at": "2026-10-17T14:30:00+09:00",
+    "source": "파트너스 홈 '기간별 리포트' (쿠팡 집계는 하루 단위로 늦게 반영)",
+    "today": {
+      "clicks": 0,
+      "orders": 0,
+      "sales": 0,
+      "commission": 0
+    },
+    "month": {
+      "clicks": 0,
+      "orders": 0,
+      "sales": 0,
+      "commission": 0
+    },
+    "total_sales": 0,
+    "approval_goal": 150000
+  },
+  "toss": {
+    "label": "토스쇼핑 쉐어링크",
+    "checked_at": null,
+    "source": "토스 앱 쉐어링크 화면 (사용자 확인)",
+    "month": null
+  }
+}
