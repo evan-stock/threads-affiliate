@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T04:58:53.872411+09:00",
- "watch_last_check": "2026-10-18T04:58:33.903846+09:00",
+ "generated_at": "2026-10-18T05:09:23.086196+09:00",
+ "watch_last_check": "2026-10-18T05:09:01.007234+09:00",
  "comments": {
   "skipped": 10,
   "sent": 19,
-  "pending": 16
+  "pending": 17
  },
  "posts": [
   {
@@ -561,7 +561,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 6
+   "comments": 7
   },
   {
    "id": "20261018-cb-sun-lunch",

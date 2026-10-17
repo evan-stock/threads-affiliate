@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T04:58:33.903846+09:00",
+  "last_check": "2026-10-18T05:09:01.007234+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -546,7 +546,18 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T04:58:43.947598+09:00",
-      "msg_id": 345
+      "msg_id": 345,
+      "redrafted": true
+    },
+    "17903788926600310": {
+      "post_id": "20261018-cb-night-shari",
+      "account": "B",
+      "username": "joideco9926",
+      "text": "나도 4시에 일어 났는데. ㅋㅋㅋ 스하리",
+      "draft": "팔로워가 늘었다. 반하리 간다.",
+      "status": "pending",
+      "created_at": "2026-10-18T05:09:09.283463+09:00",
+      "msg_id": 347
     }
   }
 }
