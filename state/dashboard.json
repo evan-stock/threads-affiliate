@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T04:06:23.133449+09:00",
+ "generated_at": "2026-10-18T04:06:58.751683+09:00",
  "watch_last_check": "2026-10-18T04:06:00.527956+09:00",
  "comments": {
   "skipped": 10,
@@ -546,6 +546,21 @@
     "광고 느낌 단어: 무조건"
    ],
    "note": "득템 정지 여파로 찬복 광고 잠시 보류",
+   "comments": 0
+  },
+  {
+   "id": "20261018-cb-night-shari",
+   "account": "B",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-18T04:07:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "새벽 4시에 눈이 떠졌다.",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
    "comments": 0
   },
   {
