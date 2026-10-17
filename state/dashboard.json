@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T03:36:16.980079+09:00",
+ "generated_at": "2026-10-18T03:36:23.895719+09:00",
  "watch_last_check": "2026-10-18T03:33:47.076268+09:00",
  "comments": {
   "skipped": 4,
@@ -769,10 +769,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T03:35:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T03:36:23.358939+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DemxDfVCXBE",
    "title": "잠 안 오는 스친 손🙋‍♀️",
    "replies": 0,
    "warnings": [
