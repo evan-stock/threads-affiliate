@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T02:20:28.368903+09:00",
+ "generated_at": "2026-10-18T02:20:42.267258+09:00",
  "watch_last_check": "2026-10-18T02:10:57.593140+09:00",
  "comments": {
   "skipped": 4,
@@ -600,14 +600,14 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "failed",
    "scheduled_at": "2026-10-18T02:20:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "닭다리 100g에 576원🍗",
    "replies": 3,
    "warnings": [],
-   "note": "",
+   "note": "스레드 조회 실패 (400): {'error': {'message': 'Error validating access token: You cannot access the app till you log in to www.threads.com and follow the instructions given.', 'code': 190, 'type': 'OAuthException', 'error_subcode': 0, 'fbtrace_id': 'AUnMy-3ma58w5Pm6I2vAMFU'}}",
    "comments": 0
   },
   {
