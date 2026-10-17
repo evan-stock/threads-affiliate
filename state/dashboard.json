@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T01:36:44.076440+09:00",
+ "generated_at": "2026-10-18T01:37:34.173206+09:00",
  "watch_last_check": "2026-10-18T01:28:52.505909+09:00",
  "comments": {
   "skipped": 4,
@@ -707,10 +707,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T01:35:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T01:37:33.600011+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DemjX8dlo7-",
    "title": "마스카라 하나에 5,050원💄",
    "replies": 3,
    "warnings": [],
