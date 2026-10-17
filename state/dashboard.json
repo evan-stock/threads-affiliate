@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-17T15:40:57.202527+09:00",
- "watch_last_check": "2026-10-17T15:36:52.106909+09:00",
+ "generated_at": "2026-10-17T15:47:07.397170+09:00",
+ "watch_last_check": "2026-10-17T15:47:04.603356+09:00",
  "comments": {
   "skipped": 2,
   "sent": 1
@@ -8,7 +8,6 @@
  "posts": [
   {
    "id": "20261016-brownrice",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "published",
@@ -25,7 +24,6 @@
   },
   {
    "id": "20261016-chicken",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "held",
@@ -40,7 +38,6 @@
   },
   {
    "id": "20261016-goguma",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "held",
@@ -55,7 +52,6 @@
   },
   {
    "id": "20261016-gyul",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "published",
@@ -70,7 +66,6 @@
   },
   {
    "id": "20261016-melonmilk",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "published",
@@ -85,7 +80,6 @@
   },
   {
    "id": "20261016-pepsi",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "published",
@@ -100,7 +94,6 @@
   },
   {
    "id": "20261016-powerade",
-   "account": "A",
    "source": "coupang",
    "mode": "curation",
    "status": "rejected",
@@ -117,7 +110,6 @@
   },
   {
    "id": "20261016-samgyeop",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "published",
@@ -132,7 +124,6 @@
   },
   {
    "id": "20261016-talk-calc",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -147,7 +138,6 @@
   },
   {
    "id": "20261016-talk-cart",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -164,7 +154,6 @@
   },
   {
    "id": "20261016-talk-cvs",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -181,7 +170,6 @@
   },
   {
    "id": "20261016-talk-night",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -196,7 +184,6 @@
   },
   {
    "id": "20261016-talk-wallet",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -211,7 +198,6 @@
   },
   {
    "id": "20261017-bulgogi",
-   "account": "A",
    "source": "toss",
    "mode": "experience",
    "status": "published",
@@ -226,7 +212,6 @@
   },
   {
    "id": "20261017-casio",
-   "account": "A",
    "source": "coupang",
    "mode": "experience",
    "status": "published",
@@ -241,7 +226,6 @@
   },
   {
    "id": "20261017-cb-sat-night",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -256,7 +240,6 @@
   },
   {
    "id": "20261017-life-dinner",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -273,7 +256,6 @@
   },
   {
    "id": "20261017-life-hobby",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -288,7 +270,6 @@
   },
   {
    "id": "20261017-life-night",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -303,7 +284,6 @@
   },
   {
    "id": "20261017-life-show",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -318,7 +298,6 @@
   },
   {
    "id": "20261017-life-sleep",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -333,7 +312,6 @@
   },
   {
    "id": "20261017-life-walk",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "published",
@@ -348,7 +326,6 @@
   },
   {
    "id": "20261017-moksal",
-   "account": "A",
    "source": "toss",
    "mode": "curation",
    "status": "published",
@@ -363,7 +340,6 @@
   },
   {
    "id": "20261017-talk-ask",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -378,7 +354,6 @@
   },
   {
    "id": "20261017-talk-bulk",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -395,7 +370,6 @@
   },
   {
    "id": "20261017-talk-delivery",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -412,7 +386,6 @@
   },
   {
    "id": "20261017-talk-leak",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -427,7 +400,6 @@
   },
   {
    "id": "20261017-talk-list",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -442,7 +414,6 @@
   },
   {
    "id": "20261017-talk-money",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -457,7 +428,6 @@
   },
   {
    "id": "20261017-talk-request",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -472,7 +442,6 @@
   },
   {
    "id": "20261017-talk-tag",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -487,7 +456,6 @@
   },
   {
    "id": "20261017-talk-vs",
-   "account": "A",
    "source": "none",
    "mode": "talk",
    "status": "rejected",
@@ -502,7 +470,6 @@
   },
   {
    "id": "20261018-cb-sun-lunch",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -517,7 +484,6 @@
   },
   {
    "id": "20261018-cb-sun-morning",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -534,7 +500,6 @@
   },
   {
    "id": "20261018-cb-sun-night",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -549,7 +514,6 @@
   },
   {
    "id": "20261019-cb-mon-lunch",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -566,7 +530,6 @@
   },
   {
    "id": "20261019-cb-mon-morning",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
@@ -581,7 +544,6 @@
   },
   {
    "id": "20261019-cb-mon-night",
-   "account": "B",
    "source": "none",
    "mode": "talk",
    "status": "approved",
