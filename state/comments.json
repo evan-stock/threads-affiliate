@@ -691,11 +691,12 @@
       "account": "B",
       "username": "dobejug10",
       "text": "그래",
-      "draft": "",
-      "status": "pending",
+      "draft": "약속은 지킨다.\n할 일 없는 사람의 유일한 장점이다.",
+      "status": "review_requested",
       "created_at": "2026-10-18T10:21:43.971086+09:00",
       "msg_id": 404,
-      "redrafted": true
+      "redrafted": true,
+      "note": "짧은 맞장구라 ❌로 넘겨도 돼요"
     },
     "18179369140438858": {
       "post_id": "20261018-intro",
@@ -712,8 +713,8 @@
       "account": "A",
       "username": "mungu_jogakdal",
       "text": "망원시장 재밌지! 나는 찹쌀떡 !",
-      "draft": "",
-      "status": "pending",
+      "draft": "찹쌀떡 너무 좋지🥹 다음엔 호떡 말고 찹쌀떡으로 시작해 볼래ㅋㅋ",
+      "status": "review_requested",
       "created_at": "2026-10-18T11:46:25.509444+09:00",
       "msg_id": 409
     }
