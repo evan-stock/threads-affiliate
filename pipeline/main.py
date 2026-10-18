@@ -864,6 +864,47 @@ def no_middot(text: str) -> str:
     return re.sub(r"\s*·\s*", ", ", text or "")
 
 
+# 사용자가 승인한 실제 답글 예시(말투 기준). AI 초안은 이 말투를 따라 쓴다.
+REPLY_EXAMPLES = {
+    "A": [
+        ("어제까지 일했어ㅠ 즐건주말보내^^", "어제까지 일했구나ㅠ 고생 많았어! 남은 일요일은 푹 쉬어💕"),
+        ("망원시장 재밌지! 나는 찹쌀떡 !", "찹쌀떡 너무 좋지🥹 다음엔 호떡 말고 찹쌀떡으로 시작해 볼래ㅋㅋ"),
+        ("뜨개 돈 많이 들.......222 다이소 재료로 시작해보는것도 좋아!", "222까지 나오니까 확신 생겼어ㅋㅋ 이번 주에 다이소 실부터 사 볼게! 처음엔 뭐 뜨는 게 제일 쉬워?"),
+        ("된장국 ㅋㅋ", "스페인에서 된장국이라니 최고다ㅋㅋ 한국 맛 그리울 때 딱이지?"),
+        ("럽리💓 스하 💓 나한테 안옴 삐진당!", "헉 미안해🥹 지금 바로 반하리 갈게! 삐지지 마💕"),
+        ("반하리 왔어요!", "와줘서 고마워💕 앞으로 자주 놀러 갈게!"),
+    ],
+    "B": [
+        ("이분 부자동네 계심", "동네는 부자일지 몰라도 나는 아님ㅋㅋ\n그 3만 5천 원 때문에 이번 주 점심 편의점임"),
+        ("나두 찔리네^^;;", "찔리는 사람이 생각보다 많아서 위안이 된다ㅋㅋ\n집집마다 냉장고에 두부 하나씩은 묻혀 있는 듯"),
+        ("별차이 없어요. 해장국으로 드시거나 혼자 전골 소자드시거나", "전골 소자도 있었구나ㅋㅋ 다음엔 당당하게 소자 시켜 본다"),
+        ("안녕👋난 제주귤이야🍊스하리하고가~", "제주귤 반가워🍊 반하리 간다! 귤 철이라 더 반갑네ㅋㅋ"),
+        ("반하링~ 리포완 열심히 살아보자궁~ 좋은하루보내~", "리포까지 고마워ㅋㅋ 반하리 간다! 너도 좋은 하루 보내, 열심히 살아 보자"),
+        ("감사하리! 가끔씩 소통해^^", "나도 고마워ㅋㅋ 자주 소통하자!"),
+    ],
+}
+EXAMPLE_SINCE = {"A": "2026-10-18T09:00", "B": "2026-10-18T12:50"}  # 말투 확정 이후 승인분만 추가 예시로
+
+
+def reply_examples(account: str, n_recent: int = 6) -> list[tuple[str, str]]:
+    base = list(REPLY_EXAMPLES.get(account, []))
+    seen = {r for _, r in base}
+    try:
+        items = load_comments()["items"].values()
+    except Exception:
+        items = []
+    rec = sorted([it for it in items if it.get("account") == account and it.get("status") == "sent" and it.get("reply")
+                  and it.get("sent_at", "") >= EXAMPLE_SINCE.get(account, "")],
+                 key=lambda it: it.get("sent_at", ""), reverse=True)
+    for it in rec:
+        if len(base) >= len(REPLY_EXAMPLES.get(account, [])) + n_recent:
+            break
+        if it["reply"] not in seen:
+            base.append((it.get("text", "")[:80], it["reply"]))
+            seen.add(it["reply"])
+    return base
+
+
 def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key:
@@ -872,6 +913,8 @@ def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     body = {
         "model": ANTHROPIC_MODEL, "max_tokens": 200, "system": system,
         "messages": [{"role": "user", "content":
+            "내가 실제로 단 답글 예시(이 말투, 길이, 이모지 양을 그대로 따라 한다):\n"
+            + "\n".join(f"- 댓글: {c} → 답글: {r}" for c, r in reply_examples(post.get("account", "A"))) + "\n\n"
             f"내 글:\n{post['main_text']}\n\n댓글 (@{comment.get('username', '?')}):\n{comment['text']}\n\n"
             + (f"요청: {extra}\n\n" if extra else "") + "답글:"}],
     }
