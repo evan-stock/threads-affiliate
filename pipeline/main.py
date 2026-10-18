@@ -675,7 +675,7 @@ def handle_updates() -> bool:
                         note = queue_batch(pid)
                     elif act == "cok":
                         item = load_comments()["items"].get(pid, {})
-                        note = queue_reply(pid, item.get("draft", "")) if item.get("draft") else "초안이 없어요. 답장으로 보내 주세요."
+                        note = queue_reply(pid, item.get("draft", "")) if item.get("draft") else "초안이 없어요. '다시' 또는 '그대로: 문장'으로 답장해 주세요."
                     else:
                         note = skip_comment(pid)
                 except Exception as e:
@@ -730,10 +730,16 @@ def handle_updates() -> bool:
                 tg_text(f"⚠️ 새 초안 실패: {str(e)[:200]}")
             continue
         if cmt and text:
+            # 답장은 절대 바로 게시하지 않는다(10/18 사고). "그대로: 문장"이면 그 문장을 초안으로,
+            # 그 외에는 고칠 점(요청)으로 보고 AI가 새 초안을 쓴다. 어느 쪽이든 ✅를 눌러야 게시.
             try:
-                tg_text(queue_reply(cmt, text))
+                m2 = re.match(r"^(그대로|답|=)\s*[:：]?\s*(.+)$", text, re.S)
+                if m2:
+                    tg_text(set_manual_draft(cmt, m2.group(2).strip()))
+                else:
+                    tg_text(regen_draft(cmt, f"사용자 요청: {text}"))
             except Exception as e:
-                tg_text(f"⚠️ 답글 실패: {str(e)[:200]}")
+                tg_text(f"⚠️ 처리 실패: {str(e)[:200]}")
             continue
         if rt in posts_by_msg:
             target = load_post(posts_by_msg[rt]["id"])
@@ -1114,7 +1120,7 @@ def check_comments(force: bool = False) -> bool:
                 continue
             item["draft"] = d
             lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
-                     "✏️ 답글 초안", d, "", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
+                     "✏️ 답글 초안", d, "", "고칠 점을 답장하면 새 초안을 써요. 직접 쓴 문장은 '그대로: 문장'. 게시는 ✅를 눌러야 해요."]
             send_comment_msg(cid, item, lines)
     new_drafts = []
     shari_new = []  # 이번 확인에서 새로 들어온 스하리 댓글 → 맞팔 목록으로 한 번에 알림
@@ -1155,9 +1161,9 @@ def check_comments(force: bool = False) -> bool:
                 lines += ["✏️ 답글 초안", item["draft"]]
                 if warn:
                     lines += ["", "⚠️ 표현 확인: " + ", ".join(warn)]
-                lines += ["", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
+                lines += ["", "고칠 점을 답장하면 새 초안을 써요. 직접 쓴 문장은 '그대로: 문장'. 게시는 ✅를 눌러야 해요."]
             else:
-                lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요. '다시'라고 답장하면 AI가 다시 써요."]
+                lines += ["(초안 없음) '다시'라고 답장하면 AI가 써요. 직접 쓰려면 '그대로: 문장'. 게시는 ✅를 눌러야 해요."]
                 if draft_err:
                     lines += [f"⚠️ 초안 실패 이유: {draft_err}"]
             send_comment_msg(cid, item, lines)
@@ -1296,6 +1302,19 @@ def with_draft(msg_text: str, draft: str) -> str:
     return "\n".join(keep).rstrip() + f"\n\n✏️ 답글 초안\n{draft}"
 
 
+def set_manual_draft(cid: str, text: str) -> str:
+    """사용자가 직접 쓴 문장을 초안으로 넣는다(게시는 ✅를 눌러야)."""
+    store = load_comments()
+    item = store["items"].get(cid)
+    if not item or item.get("status") != "pending":
+        return "이미 처리된 댓글이에요"
+    item["draft"] = no_middot(text)
+    item["msg_text"] = with_draft(item.get("msg_text") or f"💬 @{item.get('username', '')}\n{item.get('text', '')}", item["draft"])
+    save_comments(store)
+    refresh_comment_msg(cid, item)
+    return f"✏️ 초안을 바꿨어요. ✅ 눌러야 게시돼요: {item['draft']}"
+
+
 def regen_draft(cid: str, extra: str = "") -> str:
     """텔레그램에서 '다시', '짧게' 등으로 초안을 새로 받는다."""
     store = load_comments()
@@ -1313,7 +1332,7 @@ def regen_draft(cid: str, extra: str = "") -> str:
     item["msg_text"] = with_draft(item.get("msg_text") or f"💬 @{item.get('username', '')}\n{item.get('text', '')}", d)
     save_comments(store)
     refresh_comment_msg(cid, item)
-    return f"✏️ 새 초안: {d}"
+    return f"✏️ 새 초안이에요. ✅ 눌러야 게시돼요: {d}"
 
 
 def comments_command() -> None:
@@ -1355,7 +1374,7 @@ def comments_command() -> None:
         lines += [""] + [f"@{it.get('username', '')} https://www.threads.com/@{it.get('username', '')}" for _, it in follow[:15]]
         lines += ["", "맞팔한 사람은 아래 버튼으로 지워 주세요(스레드 API로는 맞팔 여부를 확인할 수 없어요)."]
     if pend:
-        lines += ["", "버튼이 남아 있는 댓글 메시지가 처리할 것이에요. 초안 메시지에 '다시', '짧게', '길게', '더 웃기게'라고 답장하면 새로 써요."]
+        lines += ["", "버튼이 남아 있는 댓글 메시지가 처리할 것이에요. 초안 메시지에 고칠 점('다시', '짧게', '물음표 빼고' 등)을 답장하면 새 초안을 써요. 직접 쓴 문장은 '그대로: 문장'. 게시는 항상 ✅."]
     kb = None
     if follow:
         rows = [[{"text": f"🤝 @{it.get('username', '')} 맞팔함", "callback_data": f"cfw:{k}"}] for k, it in follow[:10]]
