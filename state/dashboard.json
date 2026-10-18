@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T19:31:25.159827+09:00",
+ "generated_at": "2026-10-18T19:31:53.185811+09:00",
  "watch_last_check": "2026-10-18T19:30:58.024803+09:00",
  "comments": {
   "skipped": 34,
@@ -739,10 +739,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T19:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T19:31:52.537097+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DeoeXF_mzLe",
    "title": "일요일 저녁 6시만 되면",
    "replies": 0,
    "warnings": [],
