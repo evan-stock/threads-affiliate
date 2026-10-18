@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T18:00:46.521670+09:00",
+ "generated_at": "2026-10-18T18:01:48.244938+09:00",
  "watch_last_check": "2026-10-18T17:58:20.768980+09:00",
  "comments": {
   "skipped": 29,
@@ -536,10 +536,10 @@
    "account": "B",
    "source": "coupang",
    "mode": "experience",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T18:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T18:01:47.711662+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DeoT_QIFTSv",
    "title": "카레는 밖에서 안 사 먹음.",
    "replies": 3,
    "warnings": [
