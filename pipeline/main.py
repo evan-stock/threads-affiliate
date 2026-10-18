@@ -628,11 +628,13 @@ def handle_updates() -> bool:
                 except Exception:
                     pass
                 continue
-            if act in ("cok", "cno"):
+            if act in ("cok", "cno", "call"):
                 try:
-                    if act == "cok":
+                    if act == "call":
+                        note = queue_batch(pid)
+                    elif act == "cok":
                         item = load_comments()["items"].get(pid, {})
-                        note = send_comment_reply(pid, item.get("draft", "")) if item.get("draft") else "초안이 없어요. 답장으로 보내 주세요."
+                        note = queue_reply(pid, item.get("draft", "")) if item.get("draft") else "초안이 없어요. 답장으로 보내 주세요."
                     else:
                         note = skip_comment(pid)
                 except Exception as e:
@@ -682,7 +684,7 @@ def handle_updates() -> bool:
                     if it.get("msg_id") == rt or rt in (it.get("msg_ids") or [])), None) if rt else None
         if cmt and text:
             try:
-                tg_text(send_comment_reply(cmt, text))
+                tg_text(queue_reply(cmt, text))
             except Exception as e:
                 tg_text(f"⚠️ 답글 실패: {str(e)[:200]}")
             continue
@@ -903,6 +905,8 @@ def comment_buttons(cid: str, item: dict | None = None) -> dict:
             row.append({"text": "✅ 답글 보내기", "callback_data": f"cok:{cid}"})
         row.append({"text": "❌ 무시", "callback_data": f"cno:{cid}"})
         rows.append(row)
+    elif item.get("status") == "approved_send":
+        rows.append([{"text": "↩️ 보내기 취소", "callback_data": f"cno:{cid}"}])
     if item and is_shari(item.get("text", "")) and not item.get("followed"):
         rows.append([{"text": "🤝 맞팔했음", "callback_data": f"cfw:{cid}"}])
     return {"inline_keyboard": rows}
@@ -914,6 +918,8 @@ def comment_header(item: dict) -> list[str]:
         head = [f"✅ 답글 완료: {item.get('reply', '')}"]
     elif st == "skipped":
         head = ["❌ 무시함"]
+    elif st == "approved_send":
+        head = [f"🕒 보낼 순서 대기 (몇 분 간격으로 하나씩): {item.get('send_text', '')}"]
     else:
         head = ["⏳ 답글 대기"]
     if is_shari(item.get("text", "")):
@@ -985,6 +991,7 @@ def check_comments(force: bool = False) -> bool:
             lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
                      "✏️ 답글 초안", d, "", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
             send_comment_msg(cid, item, lines)
+    new_drafts = []
     shari_new = []  # 이번 확인에서 새로 들어온 스하리 댓글 → 맞팔 목록으로 한 번에 알림
     for post in recent_published(include_remote=True):
         try:
@@ -1021,6 +1028,8 @@ def check_comments(force: bool = False) -> bool:
                 lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요."]
             send_comment_msg(cid, item, lines)
             store["items"][cid] = item
+            if item["draft"]:
+                new_drafts.append(cid)
     if shari_new:
         seen, rows = set(), []
         for who, u in shari_new:
@@ -1033,6 +1042,10 @@ def check_comments(force: bool = False) -> bool:
         except Exception as e:
             log("맞팔 목록 알림 실패:", str(e)[:200])
     save_comments(store)
+    try:
+        send_batch_button(new_drafts)
+    except Exception as e:
+        log("묶음 승인 버튼 실패:", str(e)[:200])
     return True
 
 
@@ -1052,12 +1065,13 @@ def send_comment_reply(cid: str, text: str) -> str:
 def skip_comment(cid: str) -> str:
     store = load_comments()
     item = store["items"].get(cid)
-    if not item or item["status"] != "pending":
+    if not item or item["status"] not in ("pending", "approved_send"):
         return "이미 처리된 댓글이에요"
+    was_queued = item["status"] == "approved_send"
     item["status"] = "skipped"
     save_comments(store)
     refresh_comment_msg(cid, item)
-    return "❌ 무시했어요"
+    return "↩️ 보내기 취소했어요" if was_queued else "❌ 무시했어요"
 
 
 def do_publish(post: dict, sync_msg: str = "publish"):
@@ -1104,6 +1118,83 @@ def do_publish(post: dict, sync_msg: str = "publish"):
     git_push(f"{sync_msg} {post['id']}")
 
 
+# ---- 답글 보내기 줄: ✅를 여러 개 눌러도 한꺼번에 올리지 않고 계정마다 간격을 둔다 (10/18 정지 재발 방지)
+REPLY_MIN_GAP_SEC = float(os.environ.get("REPLY_MIN_GAP_SEC", str(CONFIG.get("reply_min_gap_sec", 150))))
+
+
+def queue_reply(cid: str, text: str) -> str:
+    store = load_comments()
+    item = store["items"].get(cid)
+    if not item or item["status"] not in ("pending", "approved_send"):
+        return "이미 처리된 댓글이에요"
+    item.update({"status": "approved_send", "send_text": no_middot(text), "approved_at": now().isoformat()})
+    save_comments(store)
+    refresh_comment_msg(cid, item)
+    ahead = sum(1 for k, it in store["items"].items()
+                if k != cid and it.get("status") == "approved_send" and it.get("account") == item.get("account"))
+    return f"🕒 @{item.get('username', '')} 답글 보낼 순서에 넣었어요" + (f" (앞에 {ahead}개)" if ahead else "")
+
+
+def queue_batch(key: str) -> str:
+    store = load_comments()
+    ids = (store.get("batches") or {}).pop(key, None)
+    if ids is None:
+        return "이미 처리한 묶음이에요"
+    save_comments(store)
+    n = 0
+    for cid in ids:
+        it = load_comments()["items"].get(cid) or {}
+        if it.get("status") == "pending" and it.get("draft"):
+            queue_reply(cid, it["draft"])
+            n += 1
+    return f"🕒 {n}개 보낼 순서에 넣었어요. 몇 분 간격으로 하나씩 올라가요" if n else "보낼 초안이 남아 있지 않아요"
+
+
+def send_batch_button(ids: list[str]):
+    """초안이 2개 이상이면 '한꺼번에 승인' 버튼을 보낸다(실제 게시는 줄에서 간격을 두고)."""
+    store = load_comments()
+    ids = [c for c in ids if (store["items"].get(c) or {}).get("status") == "pending" and store["items"][c].get("draft")]
+    if len(ids) < 2:
+        return
+    key = now().strftime("%m%d%H%M%S")
+    store.setdefault("batches", {})[key] = ids
+    for k in sorted(store["batches"])[:-10]:
+        store["batches"].pop(k, None)
+    save_comments(store)
+    names = ", ".join("@" + store["items"][c].get("username", "") for c in ids)
+    tg_text(f"📦 위 초안 {len(ids)}개 ({names})\n괜찮으면 한 번에 승인해요. 고칠 건 먼저 답장하거나 ❌ 누르고 이 버튼을 눌러 주세요.",
+            reply_markup={"inline_keyboard": [[{"text": f"✅ {len(ids)}개 모두 보내기", "callback_data": f"call:{key}"}]]})
+
+
+def send_queued_replies() -> bool:
+    """승인된 답글을 계정마다 REPLY_MIN_GAP_SEC 간격으로 한 개씩 게시한다."""
+    store = load_comments()
+    items = store["items"]
+    changed = False
+    for acc in {it.get("account") for it in items.values() if it.get("status") == "approved_send"}:
+        last = max((it.get("sent_at", "") for it in items.values() if it.get("account") == acc and it.get("sent_at")), default="")
+        if last and (now() - parse_time(last)).total_seconds() < REPLY_MIN_GAP_SEC:
+            continue
+        q = sorted((it.get("approved_at", ""), cid) for cid, it in items.items()
+                   if it.get("account") == acc and it.get("status") == "approved_send")
+        cid = q[0][1]
+        text = items[cid].get("send_text", "")
+        s2 = load_comments()
+        s2["items"][cid]["status"] = "pending"
+        save_comments(s2)
+        try:
+            note = send_comment_reply(cid, text)
+        except Exception as e:
+            note = f"⚠️ 답글 실패 (다시 ✅ 누르거나 답장으로 보내 주세요): {str(e)[:200]}"
+            s3 = load_comments()
+            s3["items"][cid]["status"] = "pending"
+            save_comments(s3)
+            safe_notify(note + f"\n└ {text}")
+        log(note)
+        changed = True
+    return changed
+
+
 def send_requested_replies() -> bool:
     """채팅에서 Claude가 정해 둔 답글(status send_requested)을 게시한다."""
     store = load_comments()
@@ -1114,11 +1205,7 @@ def send_requested_replies() -> bool:
         store2 = load_comments()
         store2["items"][cid]["status"] = "pending"
         save_comments(store2)
-        try:
-            note = send_comment_reply(cid, it_text)
-        except Exception as e:
-            note = f"⚠️ 답글 실패: {str(e)[:200]}"
-        safe_notify(note + f"\n└ {it_text}")
+        log(queue_reply(cid, it_text))
     return bool(todo)
 
 
@@ -1145,6 +1232,7 @@ def send_review_requests() -> bool:
         it["status"] = "pending"
         save_comments(store)
         time.sleep(0.5)
+    send_batch_button(todo)
     return True
 
 
@@ -1158,6 +1246,10 @@ def cmd_tick() -> bool:
         changed = send_review_requests() or changed
     except Exception as e:
         log("답글 초안 승인 요청 오류:", str(e)[:300])
+    try:
+        changed = send_queued_replies() or changed
+    except Exception as e:
+        log("답글 보내기 줄 오류:", str(e)[:300])
     import photo_post as pp
     for fn in (pp.process_inbox, pp.announce_links):
         try:
@@ -1197,7 +1289,8 @@ def cmd_tick() -> bool:
 
 def has_active() -> bool:
     # 대기 글이 있거나, 최근 게시 글의 댓글을 지켜봐야 하면 감시를 계속한다
-    return any(p["status"] in ACTIVE for p in all_posts()) or bool(recent_published())
+    queued = any(it.get("status") == "approved_send" for it in load_comments()["items"].values())
+    return queued or any(p["status"] in ACTIVE for p in all_posts()) or bool(recent_published())
 
 
 def cmd_watch(max_minutes: float, redispatch: bool):
