@@ -595,12 +595,12 @@
       "account": "B",
       "username": "dobejug10",
       "text": "시가랄때 한번 들러줘.",
-      "draft": "그럼요ㅎㅎ 시간 날 때 꼭 놀러 갈게요!",
-      "status": "pending",
+      "draft": "당연하지ㅋㅋ 시간은 남아도니까 꼭 들를게",
+      "status": "review_requested",
       "created_at": "2026-10-18T08:15:35.154580+09:00",
       "msg_id": 427,
       "redrafted": true,
-      "note": "찬복 말투 바꾼 수정본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
+      "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
     },
     "18176572180446571": {
       "post_id": "20261017-life-hobby",
@@ -658,22 +658,23 @@
       "account": "B",
       "username": "jeju88888888888",
       "text": "안녕👋난 제주귤이야🍊스하리하고가~🤎",
-      "draft": "제주귤님 반가워요🍊 반하리 갑니다! 귤 철이라 더 반갑네요ㅎㅎ",
-      "status": "pending",
+      "draft": "제주귤 반가워🍊 반하리 간다! 귤 철이라 더 반갑네ㅋㅋ",
+      "status": "review_requested",
       "created_at": "2026-10-18T09:28:24.719325+09:00",
       "msg_id": 428,
-      "note": "찬복 말투 바꾼 수정본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
+      "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
     },
     "17966020602193083": {
       "post_id": "20261018-cb-sun-morning",
       "account": "B",
       "username": "dobejug10",
       "text": "감사하리! 가끔씩 소통해^^",
-      "draft": "저도 감사합니다ㅎㅎ 자주 소통해요!",
-      "status": "pending",
+      "draft": "나도 고마워ㅋㅋ 자주 소통하자!",
+      "status": "review_requested",
       "created_at": "2026-10-18T09:28:25.685526+09:00",
       "msg_id": 429,
-      "redrafted": true
+      "redrafted": true,
+      "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
     },
     "18016377077973302": {
       "post_id": "20261018-cb-night-shari",
