@@ -89,7 +89,7 @@ def render_single(c: dict, out_path: str) -> str:
     y0, y1 = 330, 1010
     d.rounded_rectangle((60, y0, W - 60, y1), radius=36, fill=CARD, outline=BEST, width=8)
     d.text((110, y0 + 50), r["name"], font=_f(48, True), fill=INK)
-    meta = f"{won(r['price'])} · {r.get('amount_label', '')}".strip(" ·")
+    meta = f"{won(r['price'])} / {r.get('amount_label', '')}".strip(" /")
     d.text((110, y0 + 120), meta, font=_f(38), fill=SUB)
     lab = f"{unit}당"
     lf = _f(48, True)
@@ -103,7 +103,7 @@ def render_single(c: dict, out_path: str) -> str:
         x = (W - tw) / 2
         d.rounded_rectangle((x - 30, y1 - 130, x + tw + 30, y1 - 64), radius=30, fill=BEST)
         d.text((x, y1 - 124), c["note"], font=tf, fill=INK)
-    foot = f"가격 확인: {c['checked_at']} 기준 · 배송비·쿠폰·옵션에 따라 달라질 수 있어요"
+    foot = f"가격 확인: {c['checked_at']} 기준, 배송비나 쿠폰, 옵션에 따라 달라질 수 있어요"
     d.text((70, H - 150), foot, font=_f(28), fill=SUB)
     d.text((70, H - 105), "@gotitem.lab", font=_f(32, True), fill=INK)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
@@ -147,7 +147,7 @@ def render(c: dict, out_path: str) -> str:
         d.rounded_rectangle((60, y, W - 60, y + ch), radius=28,
                             fill=CARD, outline=BEST if is_best else (225, 220, 210), width=8 if is_best else 3)
         d.text((100, y + 30), r["name"], font=_f(46, True), fill=INK)
-        meta = f"{won(r['price'])} · {r.get('amount_label', '')}".strip(" ·")
+        meta = f"{won(r['price'])} / {r.get('amount_label', '')}".strip(" /")
         d.text((100, y + 95), meta, font=_f(34), fill=SUB)
         up = f"{unit}당 {won(ups[i])}"
         fnt = _f(56 if is_best else 48, True)
@@ -166,7 +166,7 @@ def render(c: dict, out_path: str) -> str:
             tw2 = d.textlength(tag, font=tf)
             d.text((W - 100 - tw2, y + 108), tag, font=tf, fill=SUB)
 
-    foot = f"가격 확인: {c['checked_at']} 기준 · 배송비·쿠폰·옵션에 따라 달라질 수 있어요"
+    foot = f"가격 확인: {c['checked_at']} 기준, 배송비나 쿠폰, 옵션에 따라 달라질 수 있어요"
     d.text((70, H - 150), foot, font=_f(28), fill=SUB)
     d.text((70, H - 105), "@gotitem.lab", font=_f(32, True), fill=INK)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
