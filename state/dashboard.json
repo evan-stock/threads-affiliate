@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T22:30:28.662153+09:00",
- "watch_last_check": "2026-10-18T22:29:51.058771+09:00",
+ "generated_at": "2026-10-18T22:40:29.114081+09:00",
+ "watch_last_check": "2026-10-18T22:39:37.311835+09:00",
  "comments": {
-  "skipped": 31,
+  "skipped": 32,
   "sent": 61,
-  "pending": 1
+  "pending": 3
  },
  "posts": [
   {
@@ -702,7 +702,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 3
   },
   {
    "id": "20261018-life-knit",
