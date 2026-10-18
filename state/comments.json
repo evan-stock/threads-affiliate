@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T14:15:35.407092+09:00",
+  "last_check": "2026-10-18T14:26:07.282474+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -852,7 +852,8 @@
       "msg_id": 455,
       "msg_ids": [
         455
-      ]
+      ],
+      "redrafted": true
     },
     "17894550750680504": {
       "post_id": "20261018-cb-sun-morning",
@@ -866,6 +867,21 @@
       "msg_id": 456,
       "msg_ids": [
         456
+      ],
+      "redrafted": true
+    },
+    "18135993433636350": {
+      "post_id": "20261018-cb-sun-lunch",
+      "account": "B",
+      "username": "mitzziyo",
+      "text": "감자탕이 전골식이쥬?",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T14:26:15.513368+09:00",
+      "msg_text": "💬 [just.chanbok (일상)] '일요일 점심에 동네 감자탕집 갔는데' 글에 @mitzziyo\n감자탕이 전골식이쥬?\n\n(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요.",
+      "msg_id": 457,
+      "msg_ids": [
+        457
       ]
     }
   }

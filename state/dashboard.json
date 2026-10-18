@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T14:15:59.243203+09:00",
- "watch_last_check": "2026-10-18T14:15:35.407092+09:00",
+ "generated_at": "2026-10-18T14:26:30.129430+09:00",
+ "watch_last_check": "2026-10-18T14:26:07.282474+09:00",
  "comments": {
   "skipped": 25,
   "sent": 38,
-  "pending": 4
+  "pending": 5
  },
  "posts": [
   {
@@ -576,7 +576,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261018-cb-sun-morning",
