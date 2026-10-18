@@ -1,0 +1,26 @@
+{"posts": [{
+ "id": "20261019-cupcoffee",
+ "account": "A",
+ "source": "toss",
+ "mode": "curation",
+ "scheduled_at": "2026-10-19T10:00",
+ "text": "컵커피 한 개 645원☕\n요거프레소 컵커피 라떼 10개 + 모카 10개, 20개가 12,900원\n다나와에서 같은 구성 제일 싼 데가 20,390원이라 7천 원 넘게 차이 나\n출근길 커피값 생각하면 회사 냉장고에 쟁여 두고 싶은 가격\n다들 아침 커피 라떼파야 모카파야?💕",
+ "images": ["https://shopping.toss.im/live/temp/2026-04-13/91d9faf8-52be-4dca-9794-841e7949a539.png"],
+ "compare": {
+  "title": "요거프레소 컵커피 라떼+모카 20개",
+  "unit": "1컵",
+  "per": 1,
+  "checked_at": "10/18 16:20",
+  "rows": [
+   {"name": "토스쇼핑", "price": 12900, "amount": 20, "amount_label": "200ml×20컵", "source": "토스쇼핑 앱 가격"},
+   {"name": "다나와 같은 구성 최저", "price": 20390, "amount": 20, "amount_label": "200ml×20컵", "source": "다나와 검색 결과"},
+   {"name": "다나와 같은 구성 보통", "price": 25200, "amount": 20, "amount_label": "200ml×20컵", "source": "다나와 검색 결과"}
+  ]
+ },
+ "link": "https://toss.shopping/_m/3ePVOO9l",
+ "replies": [
+  "토스쇼핑 커피음료 4위, 리뷰 904개에 평점 4.6\n200ml 컵 20개, 라떼랑 모카 반반 구성이야",
+  "회계사 사무실 냉장고엔 늘 누가 사 둔 컵커피가 있더라ㅋㅋ\n스하리 해주면 반하리 갈게🫶",
+  "12,900원은 10/18 오후 4시 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~"
+ ]
+}]}
