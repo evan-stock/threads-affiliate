@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T21:00:41.959358+09:00",
+ "generated_at": "2026-10-18T21:00:55.237421+09:00",
  "watch_last_check": "2026-10-18T20:54:12.151107+09:00",
  "comments": {
   "skipped": 30,
@@ -600,10 +600,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T21:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T21:00:54.606852+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DeoolDfG2zw",
    "title": "일요일 밤 9시만 되면",
    "replies": 0,
    "warnings": [],
