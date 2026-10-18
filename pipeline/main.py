@@ -854,7 +854,8 @@ def fetch_comments(post: dict) -> list[dict]:
 
 REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)'의 주인이다. 30대 초반 여성 회계사, 서울 망원동 원룸 자취 4년 차.
 내 글에 달린 댓글에 답글을 쓴다.
-- 반말, 밝고 부드러운 여성 말투("~했어", "~야", "~인 듯", "~잖아"), 1~2문장. ㅋㅋ, ㅎㅎ는 가끔.
+- 반말, 밝고 부드러운 여성 말투("~했어", "~야", "~인 듯", "~잖아"). 상대가 존댓말이어도 반말로 통일하고 존댓말("~시다", "~세요")을 섞지 않는다.
+- 최대 2문장, 70자 안팎. 질문은 하나만. ㅋㅋ, ㅎㅎ는 가끔.
 - 이모지는 0~1개(💕🥹🙈🫶 등). 줄마다 붙이지 않는다.
 - 가운뎃점(·)은 절대 쓰지 않는다. 나열은 쉼표나 '랑', '이나'로 자연스럽게.
 - 상대 말에 먼저 반응하고, 자연스러우면 짧은 질문으로 대화를 이어 간다.
@@ -869,7 +870,7 @@ REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)'의 주
 
 REPLY_SYSTEM_B = """너는 스레드 계정 @just.chanbok의 주인 '김찬복'이다. 40대 남자 직장인, 혼자 산다.
 내 글에 달린 댓글에 답글을 쓴다.
-- 스레드 콘셉트라 항상 반말. 친근한 40대 아저씨 말투, 1~2문장. ㅋㅋ는 가끔. 이모지는 0~1개.
+- 스레드 콘셉트라 항상 반말. 상대가 존댓말이어도 반말로 통일하고 존댓말을 섞지 않는다. 친근한 40대 아저씨 말투, 최대 2문장, 70자 안팎. ㅋㅋ는 가끔. 이모지는 0~1개.
 - 가운뎃점(·)은 절대 쓰지 않는다. 나열은 쉼표나 '랑', '이나'로 자연스럽게.
 - 자조적인 유머가 기본: 노총각(연애 세포, 결혼한 친구들, 혼자 1인분), 나이, 체력, 무릎, 지갑, 아재 개그, 허당 같은 걸로 자기를 살짝 놀리며 웃긴다.
 - 다만 친구 없음, 말 걸 사람 없음, 인생 망함처럼 사회부적응자로 보이는 자조는 하지 않는다.
@@ -933,7 +934,7 @@ def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
         return ""
     system = REPLY_SYSTEM_B if post.get("account") == "B" else REPLY_SYSTEM
     body = {
-        "model": ANTHROPIC_MODEL, "max_tokens": 200, "system": system,
+        "model": ANTHROPIC_MODEL, "max_tokens": 800, "system": system,
         "messages": [{"role": "user", "content":
             "내가 실제로 단 답글 예시(이 말투, 길이, 이모지 양을 그대로 따라 한다):\n"
             + "\n".join(f"- 댓글: {c} → 답글: {r}" for c, r in reply_examples(post.get("account", "A"))) + "\n\n"
@@ -945,7 +946,10 @@ def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     j = r.json()
     if r.status_code >= 400:
         raise RuntimeError(f"답글 초안 생성 실패: {str(j)[:300]}")
-    return no_middot("".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip())
+    out = no_middot("".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip())
+    if not out:
+        raise RuntimeError(f"AI 응답이 비어 있음(stop_reason={j.get('stop_reason')})")
+    return out
 
 
 SHARI_RE = re.compile(r"스하|반하리|맞팔|선팔|맞스|스친|팔로우|럽리")
@@ -1280,6 +1284,18 @@ def post_for_item(item: dict) -> dict:
     return {"id": pid, "account": item.get("account"), "main_text": ""}
 
 
+def with_draft(msg_text: str, draft: str) -> str:
+    """댓글 메시지 본문에서 예전 초안/초안 없음/실패 줄을 지우고 새 초안을 붙인다."""
+    keep = []
+    for line in (msg_text or "").split("\n"):
+        if line.startswith("✏️ 답글 초안"):
+            break
+        if line.startswith("(초안 없음)") or line.startswith("⚠️ 초안 실패"):
+            continue
+        keep.append(line)
+    return "\n".join(keep).rstrip() + f"\n\n✏️ 답글 초안\n{draft}"
+
+
 def regen_draft(cid: str, extra: str = "") -> str:
     """텔레그램에서 '다시', '짧게' 등으로 초안을 새로 받는다."""
     store = load_comments()
@@ -1294,10 +1310,7 @@ def regen_draft(cid: str, extra: str = "") -> str:
     if not d or d.strip().upper() == "SKIP":
         return "AI가 답할 필요 없는 댓글로 봤어요(SKIP). 직접 답장으로 문장을 보내거나 ❌ 해 주세요"
     item["draft"] = d
-    lines = (item.get("msg_text") or "").split("\n")
-    if "✏️ 답글 초안" in lines:
-        lines = lines[:lines.index("✏️ 답글 초안")]
-    item["msg_text"] = "\n".join(lines + ["✏️ 답글 초안", d]).strip()
+    item["msg_text"] = with_draft(item.get("msg_text") or f"💬 @{item.get('username', '')}\n{item.get('text', '')}", d)
     save_comments(store)
     refresh_comment_msg(cid, item)
     return f"✏️ 새 초안: {d}"
@@ -1326,11 +1339,11 @@ def comments_command() -> None:
                 d = draft_reply(post_for_item(it), {"username": it.get("username"), "text": it.get("text", "")})
             except Exception as e:
                 log(str(e)[:200])
-                break
+                continue
             if not d or d.strip().upper() == "SKIP":
                 continue
             it["draft"] = d
-            it["msg_text"] = (it.get("msg_text") or "\n".join([f"💬 @{it.get('username', '')}", it.get("text", "")])) + f"\n\n✏️ 답글 초안\n{d}"
+            it["msg_text"] = with_draft(it.get("msg_text") or f"💬 @{it.get('username', '')}\n{it.get('text', '')}", d)
             save_comments(store)
             refresh_comment_msg(cid, it)
             made += 1
