@@ -1080,7 +1080,8 @@
       "msg_id": 495,
       "msg_ids": [
         495
-      ]
+      ],
+      "followed": true
     }
   },
   "batches": {
