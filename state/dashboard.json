@@ -1,9 +1,10 @@
 {
- "generated_at": "2026-10-18T23:51:54.691616+09:00",
- "watch_last_check": "2026-10-18T23:46:18.416107+09:00",
+ "generated_at": "2026-10-18T23:57:25.149976+09:00",
+ "watch_last_check": "2026-10-18T23:57:00.165400+09:00",
  "comments": {
   "skipped": 34,
-  "sent": 70
+  "sent": 70,
+  "pending": 2
  },
  "posts": [
   {
@@ -701,7 +702,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 7
+   "comments": 8
   },
   {
    "id": "20261018-life-knit",
@@ -855,7 +856,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261018-tantan-rice",
