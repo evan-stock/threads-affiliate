@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T12:30:06.985793+09:00",
+ "generated_at": "2026-10-18T12:30:24.167074+09:00",
  "watch_last_check": "2026-10-18T12:28:43.660522+09:00",
  "comments": {
   "skipped": 24,
@@ -568,10 +568,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T12:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T12:30:23.656362+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DenuJZAjXGf",
    "title": "일요일 점심에 동네 감자탕집 갔는데",
    "replies": 0,
    "warnings": [],
