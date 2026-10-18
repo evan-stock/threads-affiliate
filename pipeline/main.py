@@ -813,17 +813,61 @@ def is_shari(text: str) -> bool:
     return len(t) <= 30 and bool(SHARI_RE.search(t))
 
 
-SHARI_TEMPLATES = {
-    "A": ["반하리 갈게~💕 반가워!", "스하리 고마워! 반하리 갈게💕", "와줘서 고마워~ 반하리 간다💕"],
-    "B": ["와줘서 고맙다. 반하리 간다.", "팔로워가 늘었다. 반하리 간다.", "고맙다. 나도 반하리 간다."],
+# 스하리 댓글 답 초안: 시간대 인사 + 댓글 키워드 반응 + 반하리 마무리를 조합해서 매번 다르게 (✅ 승인 후 게시)
+SHARI_PARTS = {
+    "A": {
+        "dawn": ["새벽반 스친 반가워~", "이 시간에 만나다니 반가워ㅎㅎ", "새벽에 와줘서 고마워!"],
+        "morning": ["좋은 아침이야~", "아침부터 와줘서 고마워ㅎㅎ", "굿모닝 스친!"],
+        "day": ["와줘서 고마워~", "스하리 고마워ㅎㅎ", "반가워 스친!"],
+        "night": ["밤에 와줘서 고마워~", "반가워 스친ㅎㅎ", "스하리 고마워!"],
+        "kw": [("새벽반", "새벽반 의리 최고ㅋㅋ"), ("굿모닝|좋은 ?아침|모닝", "너도 좋은 아침이야☀️"),
+               ("리포|리그램", "리포까지 해줘서 감동이야🥹"), ("의리", "의리 받았으니 의리로 갚을게ㅋㅋ"),
+               ("[0-9]시|일찍|못 ?잤|안 ?자", "나만 깨 있는 거 아니었구나ㅋㅋ"), ("부탁", "부탁 안 해도 당연히 가지~"),
+               ("주말", "주말 잘 보내~"), ("좋은 ?하루|좋은하루", "너도 좋은 하루 보내!")],
+        "close": ["반하리 갈게💕", "반하리 바로 갈게!", "반하리로 보답할게🫶", "나도 반하리 갈게~"],
+        "tail": ["", "", "오늘 뭐 해?", "자주 놀러 와~"],
+    },
+    "B": {
+        "dawn": ["새벽반 동지 반갑다.", "이 시간에 깨어 있는 사람 또 있었네.", "새벽에 와줘서 고맙다."],
+        "morning": ["아침부터 와줘서 고맙다.", "좋은 아침이다.", "아침에 사람 오니까 좋다."],
+        "day": ["와줘서 고맙다.", "들러줘서 고맙다.", "반갑다."],
+        "night": ["밤에 와줘서 고맙다.", "이 시간에 반갑다.", "들러줘서 고맙다."],
+        "kw": [("새벽반", "새벽반은 의리로 버틴다."), ("굿모닝|좋은 ?아침|모닝", "덕분에 아침이 덜 쓸쓸하다."),
+               ("리포|리그램", "리포까지 해주다니 감동이다."), ("의리", "의리 받았으니 의리로 갚는다."),
+               ("[0-9]시|일찍|못 ?잤|안 ?자", "나만 일찍 깬 게 아니라 다행이다."), ("부탁", "부탁 안 해도 간다."),
+               ("주말", "주말 잘 보내라."), ("좋은 ?하루|좋은하루", "그쪽도 좋은 하루 보내라.")],
+        "close": ["반하리 간다.", "반하리 바로 간다.", "반하리로 갚겠다.", "나도 반하리 간다."],
+        "tail": ["", "", "팔로워 늘 때마다 월급날 기분이다.", "이 맛에 스레드 한다."],
+    },
 }
 
 
-def shari_template(account: str, cid: str) -> str:
-    """스하리 댓글용 정해진 답 초안 (텔레그램 ✅로 사용자가 승인해야 게시됨)"""
-    opts = SHARI_TEMPLATES.get(account, SHARI_TEMPLATES["A"])
-    tail = "".join(ch for ch in str(cid)[-4:] if ch.isdigit())
-    return opts[int(tail) % len(opts)] if tail else opts[0]
+def shari_template(account: str, cid: str, text: str = "", used: set | None = None) -> str:
+    """스하리 댓글용 답 초안. 텔레그램 ✅로 사용자가 승인해야 게시된다."""
+    import random
+    P = SHARI_PARTS.get(account, SHARI_PARTS["A"])
+    h = now().hour
+    slot = "dawn" if h < 6 else "morning" if h < 11 else "day" if h < 19 else "night"
+    kws = [line for pat, line in P["kw"] if re.search(pat, text or "")]
+    rnd = random.Random(str(cid))
+    used = used or set()
+    out = ""
+    for _ in range(12):
+        first = rnd.choice(kws) if kws and rnd.random() < 0.8 else rnd.choice(P[slot])
+        parts = [first, rnd.choice(P["close"])]
+        tail = rnd.choice(P["tail"])
+        if tail:
+            parts.append(tail)
+        out = " ".join(parts) if account == "A" else "\n".join(parts)
+        if out not in used:
+            break
+    return out
+
+
+def recent_replies(store: dict, account: str, n: int = 20) -> set:
+    items = [it for it in store.get("items", {}).values() if it.get("account") == account]
+    items.sort(key=lambda it: it.get("created_at", ""), reverse=True)
+    return {(it.get("reply") or it.get("draft") or "") for it in items[:n]}
 
 
 def comment_buttons(cid: str) -> dict:
@@ -875,7 +919,7 @@ def check_comments(force: bool = False) -> bool:
                 draft = ""
                 log(str(e)[:200])
             if not draft.strip() and is_shari(c.get("text", "")):
-                draft = shari_template(post["account"], cid)
+                draft = shari_template(post["account"], cid, c.get("text", ""), recent_replies(store, post["account"]))
             item = {"post_id": post["id"], "account": post["account"], "username": c.get("username", ""),
                     "text": c["text"], "draft": "" if draft.strip().upper() == "SKIP" else draft,
                     "status": "pending", "created_at": now().isoformat()}
