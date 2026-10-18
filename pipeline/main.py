@@ -1124,11 +1124,18 @@ def check_comments(force: bool = False) -> bool:
             cid = str(c["id"])
             if cid in store["items"]:
                 continue
-            try:
-                draft = draft_reply(post, c)
-            except Exception as e:
-                draft = ""
-                log(str(e)[:200])
+            draft_err = ""
+            for _try in range(2):  # 일시 오류(과부하 등)면 한 번 더
+                try:
+                    draft = draft_reply(post, c)
+                    draft_err = "" if draft.strip() else "AI 응답이 비어 있음"
+                    break
+                except Exception as e:
+                    draft, draft_err = "", str(e)[:160]
+                    log(draft_err)
+                    time.sleep(3)
+            if draft.strip().upper() == "SKIP":
+                draft_err = "AI가 답 안 해도 되는 댓글로 봤어요(SKIP)"
             if not draft.strip() and is_shari(c.get("text", "")):
                 draft = shari_template(post["account"], cid, c.get("text", ""), recent_replies(store, post["account"]))
             item = {"post_id": post["id"], "account": post["account"], "username": c.get("username", ""),
@@ -1146,7 +1153,9 @@ def check_comments(force: bool = False) -> bool:
                     lines += ["", "⚠️ 표현 확인: " + ", ".join(warn)]
                 lines += ["", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
             else:
-                lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요."]
+                lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요. '다시'라고 답장하면 AI가 다시 써요."]
+                if draft_err:
+                    lines += [f"⚠️ 초안 실패 이유: {draft_err}"]
             send_comment_msg(cid, item, lines)
             store["items"][cid] = item
             if item["draft"]:
