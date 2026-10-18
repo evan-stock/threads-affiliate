@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T09:18:03.896125+09:00",
- "watch_last_check": "2026-10-18T09:17:53.227277+09:00",
+ "generated_at": "2026-10-18T09:28:37.319166+09:00",
+ "watch_last_check": "2026-10-18T09:28:15.864648+09:00",
  "comments": {
   "skipped": 10,
   "sent": 24,
-  "pending": 18
+  "pending": 20
  },
  "posts": [
   {
@@ -561,7 +561,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 9
+   "comments": 10
   },
   {
    "id": "20261018-cb-sun-lunch",
@@ -593,7 +593,7 @@
     "첫 줄이 21자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261018-cb-sun-night",
