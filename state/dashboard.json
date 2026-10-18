@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:28:18.781779+09:00",
+ "generated_at": "2026-10-18T16:29:35.546141+09:00",
  "watch_last_check": "2026-10-18T16:22:53.207379+09:00",
  "comments": {
   "skipped": 29,
@@ -970,10 +970,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T16:28:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T16:29:34.848982+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DeoJa2vG4yP",
    "title": "컵커피 한 개 645원☕",
    "replies": 3,
    "warnings": [],
