@@ -591,6 +591,36 @@ def cmd_ingest(force: bool = False, only_id: str | None = None) -> bool:
 URL_RE = re.compile(r"https?://\S+")
 
 
+def link_slot_wait(post: dict) -> dt.datetime | None:
+    """링크(광고) 글 속도 규칙 (10/18 정지 재발 방지). 지금 올리면 안 되면 올려도 되는 가장 이른 시각을 돌려준다.
+    - 새벽(0시~link_quiet_end_hour) 금지
+    - 같은 계정 링크 글끼리 link_gap_hours 이상 간격
+    - 같은 계정 링크 글 하루 link_daily_max개까지 (KST 날짜 기준)"""
+    if post.get("source") in (None, "", "none"):
+        return None
+    t = now().replace(second=0, microsecond=0)
+    quiet_end = int(CONFIG.get("link_quiet_end_hour", 8))
+    gap = dt.timedelta(hours=float(CONFIG.get("link_gap_hours", 2)))
+    cap = int(CONFIG.get("link_daily_max", 2))
+    pub = [parse_time(p["published_at"]) for p in all_posts()
+           if p["id"] != post["id"] and p.get("account") == post.get("account")
+           and p.get("source") not in (None, "", "none") and p.get("published_at")]
+    cand = t
+    for _ in range(20):
+        if cand.hour < quiet_end:
+            cand = cand.replace(hour=quiet_end, minute=0)
+        last = max((x for x in pub if x <= cand), default=None)
+        if last and cand - last < gap:
+            cand = last + gap
+            continue
+        day_n = sum(1 for x in pub if x.date() == cand.date())
+        if day_n >= cap:
+            cand = (cand + dt.timedelta(days=1)).replace(hour=quiet_end, minute=0)
+            continue
+        break
+    return None if cand <= t else cand
+
+
 def toss_fast_slot(post: dict) -> dt.datetime:
     """토스 광고 승인 시 앞당길 시각: 지금 바로(같은 계정 광고와 15분 이상 띄움), 원래 예약보다 늦지 않게."""
     orig = parse_time(post["scheduled_at"])
@@ -1271,7 +1301,13 @@ def cmd_tick() -> bool:
             do_publish(post, "retry-reply")
             changed = True
         elif st == "approved" and ready_link(post) and t >= when:
-            do_publish(post)
+            wait = link_slot_wait(post)
+            if wait:
+                post["scheduled_at"] = wait.isoformat()
+                save_post(post)
+                safe_notify(f"⏸ [{post['id']}] 광고 글 속도 규칙(하루 {CONFIG.get('link_daily_max', 2)}개, {CONFIG.get('link_gap_hours', 2)}시간 간격, 새벽 금지) 때문에 {wait:%m/%d %H:%M}로 미뤘어요")
+            else:
+                do_publish(post)
             changed = True
         elif st in ("pending", "approved") and t >= when + exp:
             post["status"] = "expired"

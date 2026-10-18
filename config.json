@@ -84,5 +84,8 @@
     "인생템"
   ],
   "header_position": "top",
-  "toss_publish_on_approve": true
+  "toss_publish_on_approve": false,
+  "link_daily_max": 2,
+  "link_gap_hours": 2,
+  "link_quiet_end_hour": 8
 }
