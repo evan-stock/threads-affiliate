@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T11:35:25.687546+09:00",
+  "last_check": "2026-10-18T11:46:10.673404+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -706,6 +706,16 @@
       "status": "skipped",
       "created_at": "2026-10-18T10:21:45.432908+09:00",
       "msg_id": 405
+    },
+    "17978997125924900": {
+      "post_id": "20261018-life-market",
+      "account": "A",
+      "username": "mungu_jogakdal",
+      "text": "망원시장 재밌지! 나는 찹쌀떡 !",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-10-18T11:46:25.509444+09:00",
+      "msg_id": 409
     }
   }
 }

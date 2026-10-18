@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T11:36:04.240351+09:00",
- "watch_last_check": "2026-10-18T11:35:25.687546+09:00",
+ "generated_at": "2026-10-18T11:46:41.851205+09:00",
+ "watch_last_check": "2026-10-18T11:46:10.673404+09:00",
  "comments": {
   "skipped": 23,
   "sent": 29,
-  "pending": 5
+  "pending": 6
  },
  "posts": [
   {
@@ -732,7 +732,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261018-life-sunday",
