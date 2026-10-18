@@ -1037,12 +1037,43 @@ def send_requested_replies() -> bool:
     return bool(todo)
 
 
+def send_review_requests() -> bool:
+    """채팅에서 Claude가 쓴 답글 초안(status review_requested)을 텔레그램으로 보내 ✅/❌ 승인받는다."""
+    store = load_comments()
+    todo = [cid for cid, it in store["items"].items() if it.get("status") == "review_requested" and it.get("draft")]
+    if not todo:
+        return False
+    posts_by_id = {p["id"]: p for p in all_posts()}
+    tg_text(f"📝 답글 초안 {len(todo)}개 보낼게요. ✅ 보내기 / ❌ 무시, 고치려면 그 메시지에 답장으로 문장을 보내 주세요.")
+    for cid in todo:
+        it = store["items"][cid]
+        who = CONFIG["accounts"].get(it.get("account"), {}).get("label", it.get("account"))
+        post = posts_by_id.get(it.get("post_id")) or {}
+        body = (post.get("main_text") or "").strip()
+        snippet = body.splitlines()[0][:30] if body else it.get("post_id", "")
+        lines = [f"💬 [{who}] '{snippet}' 글에 @{it.get('username', '')}", it.get("text", ""), "",
+                 "✏️ 답글 초안", it["draft"]]
+        if it.get("note"):
+            lines += ["", "ℹ️ " + it["note"]]
+        if is_shari(it.get("text", "")):
+            lines += ["", f"🤝 맞팔: https://www.threads.com/@{it.get('username', '')}"]
+        it["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid))
+        it["status"] = "pending"
+        save_comments(store)
+        time.sleep(0.5)
+    return True
+
+
 def cmd_tick() -> bool:
     changed = handle_updates()
     try:
         changed = send_requested_replies() or changed
     except Exception as e:
         log("요청 답글 처리 오류:", str(e)[:300])
+    try:
+        changed = send_review_requests() or changed
+    except Exception as e:
+        log("답글 초안 승인 요청 오류:", str(e)[:300])
     import photo_post as pp
     for fn in (pp.process_inbox, pp.announce_links):
         try:

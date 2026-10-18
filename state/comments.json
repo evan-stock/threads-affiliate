@@ -358,11 +358,12 @@
       "account": "A",
       "username": "taki.travelnote",
       "text": "스하링",
-      "draft": "",
-      "status": "pending",
+      "draft": "반가워 스친~ 반하리 갈게💕",
+      "status": "review_requested",
       "created_at": "2026-10-18T03:55:09.050709+09:00",
       "msg_id": 280,
-      "redrafted": true
+      "redrafted": true,
+      "note": "같은 사람이 '반가워'도 남김(그건 정리함)"
     },
     "18082349138344812": {
       "post_id": "20261018-night-shari",
@@ -379,8 +380,8 @@
       "account": "A",
       "username": "leesg888888",
       "text": "그래서 미치것어",
-      "draft": "",
-      "status": "pending",
+      "draft": "결국 라면 참았어?ㅋㅋ 난 버티다가 잠들었어",
+      "status": "review_requested",
       "created_at": "2026-10-18T03:55:10.537263+09:00",
       "msg_id": 282,
       "redrafted": true
@@ -405,7 +406,7 @@
       "username": "taki.travelnote",
       "text": "반가워▓▓",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T04:06:10.088345+09:00",
       "msg_id": 286,
       "redrafted": true
@@ -415,19 +416,20 @@
       "account": "A",
       "username": "health_man1969",
       "text": "잠이 안올땐 자도록 노력해야지  ㅎㅎ\n스하리~^^",
-      "draft": "",
-      "status": "pending",
+      "draft": "맞는 말ㅋㅋ 결국 눕자마자 잠들었어 응원 고마워! 반하리 갈게💕",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:06:10.916409+09:00",
       "msg_id": 287,
-      "redrafted": true
+      "redrafted": true,
+      "note": "같은 사람이 '굿밤~대박나길~'도 남김(그건 정리함)"
     },
     "18243108703314286": {
       "post_id": "20261018-night-shari",
       "account": "A",
       "username": "insiklee_",
       "text": "된장국 ㅋㅋ",
-      "draft": "",
-      "status": "pending",
+      "draft": "스페인에서 된장국이라니 최고다ㅋㅋ 한국 맛 그리울 때 딱이지?",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:06:11.630519+09:00",
       "msg_id": 288,
       "redrafted": true
@@ -437,8 +439,8 @@
       "account": "A",
       "username": "asozasing",
       "text": "메이플도 하고 발로란트도 하고 배그도? 그때그때마다 할 사람 맞춰서 하는 것 같네요",
-      "draft": "",
-      "status": "pending",
+      "draft": "그때그때 같이 할 사람 있는 거 부럽다ㅋㅋ 난 게임 하면 맨날 져서 구경만 해",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:06:12.369879+09:00",
       "msg_id": 289,
       "redrafted": true
@@ -449,7 +451,7 @@
       "username": "mer_perspective",
       "text": "새벽 스하리로 인사드려요 🙂 메르의 인사이트를 쉽게 전하는 ‘메르의 시선’입니다. 숫자와 생활 이야기 읽으며 서로 꾸준히 소통해요!",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T04:06:13.111626+09:00",
       "msg_id": 290,
       "redrafted": true
@@ -459,8 +461,8 @@
       "account": "B",
       "username": "kkkhehehet",
       "text": "팔로워가 왜 필요한겨??",
-      "draft": "",
-      "status": "pending",
+      "draft": "그러게 말이다. 필요는 없는데\n숫자 오르면 누가 나 알아주는 기분이 든다.\n40대한테 이 정도 낙은 허락해 줘라.",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:16:52.792336+09:00",
       "msg_id": 293,
       "redrafted": true
@@ -471,7 +473,7 @@
       "username": "mer_perspective",
       "text": "새벽 스하리로 인사드려요 🙂 메르의 인사이트를 쉽게 전하는 ‘메르의 시선’입니다. 서로 글 읽고 일상 이야기 나누며 소통해요!",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T04:16:53.532173+09:00",
       "msg_id": 294,
       "redrafted": true
@@ -482,7 +484,7 @@
       "username": "insiklee_",
       "text": "된장국 🇰🇷🇪🇸🙋",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T04:16:55.691452+09:00",
       "msg_id": 295,
       "redrafted": true
@@ -493,7 +495,7 @@
       "username": "health_man1969",
       "text": "굿밤~대박나길~^^",
       "draft": "",
-      "status": "pending",
+      "status": "skipped",
       "created_at": "2026-10-18T04:16:56.572845+09:00",
       "msg_id": 296,
       "redrafted": true
@@ -503,8 +505,8 @@
       "account": "B",
       "username": "c_story___",
       "text": "스하리 ☕️ ㅎ 새벽반 아침 조용하니 좋네요 ㅋ",
-      "draft": "와줘서 고맙다. 반하리 간다.",
-      "status": "pending",
+      "draft": "새벽반은 의리로 버틴다.\n반하리로 갚겠다.",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:27:36.137283+09:00",
       "msg_id": 338
     },
@@ -513,8 +515,8 @@
       "account": "B",
       "username": "joyjo1004",
       "text": "새벽반 스하리 완료\n반하리 잘 부탁해",
-      "draft": "고맙다. 나도 반하리 간다.",
-      "status": "pending",
+      "draft": "부탁 안 해도 간다.\n새벽반 동지 반갑다.",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:48:16.222605+09:00",
       "msg_id": 341
     },
@@ -549,11 +551,12 @@
       "account": "A",
       "username": "hyemi4073",
       "text": "럽리💓 스하 💓 나한테 안옴 삐진당!🤔💓",
-      "draft": "",
-      "status": "pending",
+      "draft": "헉 미안해🥹 지금 바로 반하리 갈게!",
+      "status": "review_requested",
       "created_at": "2026-10-18T04:58:43.947598+09:00",
       "msg_id": 345,
-      "redrafted": true
+      "redrafted": true,
+      "note": "반하리가 안 갔다는 댓글 → 팔로우 먼저 하고 ✅"
     },
     "17903788926600310": {
       "post_id": "20261018-cb-night-shari",
@@ -586,8 +589,8 @@
       "account": "B",
       "username": "dobejug10",
       "text": "시가랄때 한번 들러줘.",
-      "draft": "",
-      "status": "pending",
+      "draft": "알겠다. 시간은 남아돈다.\n오늘 들르겠다.",
+      "status": "review_requested",
       "created_at": "2026-10-18T08:15:35.154580+09:00",
       "msg_id": 352,
       "redrafted": true
@@ -597,8 +600,8 @@
       "account": "A",
       "username": "cozy_3553",
       "text": "독셔? 확실한건 뜨개는 돈이 많이들어",
-      "draft": "",
-      "status": "pending",
+      "draft": "독서 추천 고마워! 뜨개 재료비 얘기 듣고 지갑이 벌써 움츠러들었어ㅋㅋ 다이소 실로 먼저 시작해 볼까 봐",
+      "status": "review_requested",
       "created_at": "2026-10-18T08:36:26.387907+09:00",
       "msg_id": 353,
       "redrafted": true
@@ -608,8 +611,8 @@
       "account": "A",
       "username": "twokidsmom_77",
       "text": "어제까지 일했어ㅠ 즐건주말보내^^",
-      "draft": "",
-      "status": "pending",
+      "draft": "어제까지 일했구나ㅠ 고생 많았어! 남은 일요일은 푹 쉬어💕",
+      "status": "review_requested",
       "created_at": "2026-10-18T08:46:48.060724+09:00",
       "msg_id": 354,
       "redrafted": true
@@ -632,8 +635,8 @@
       "account": "B",
       "username": "pickzip8949",
       "text": "🤛의리🤛의리🤛의리\n반하리~~리포까지 굿!!",
-      "draft": "고맙다. 나도 반하리 간다.",
-      "status": "pending",
+      "draft": "의리 받았으니 의리로 갚는다.\n리포까지 해주다니 감동이다.",
+      "status": "review_requested",
       "created_at": "2026-10-18T08:57:08.792491+09:00",
       "msg_id": 357
     },
