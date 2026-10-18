@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T13:01:18.177552+09:00",
+  "last_check": "2026-10-18T13:11:54.879948+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -770,7 +770,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T13:01:23.877760+09:00",
-      "msg_id": 436
+      "msg_id": 436,
+      "redrafted": true
     },
     "17913474573495357": {
       "post_id": "20261017-life-hobby",
@@ -780,7 +781,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T13:01:24.657643+09:00",
-      "msg_id": 437
+      "msg_id": 437,
+      "redrafted": true
     },
     "18113745722032493": {
       "post_id": "20261018-cb-sun-lunch",
@@ -790,7 +792,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T13:01:28.431044+09:00",
-      "msg_id": 438
+      "msg_id": 438,
+      "redrafted": true
     }
   }
 }
