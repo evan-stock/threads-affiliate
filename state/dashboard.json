@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:24:35.172824+09:00",
+ "generated_at": "2026-10-18T16:28:18.781779+09:00",
  "watch_last_check": "2026-10-18T16:22:53.207379+09:00",
  "comments": {
   "skipped": 29,
@@ -970,8 +970,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "approved",
-   "scheduled_at": "2026-10-19T08:00:00+09:00",
+   "status": "publishing",
+   "scheduled_at": "2026-10-18T16:28:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "컵커피 한 개 645원☕",
