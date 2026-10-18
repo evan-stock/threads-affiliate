@@ -648,6 +648,17 @@ def handle_updates() -> bool:
             if str(cq["message"]["chat"]["id"]) != chat:
                 continue
             act, _, pid = cq.get("data", "").partition(":")
+            if act == "cfwall":
+                try:
+                    note = clear_follow_all()
+                except Exception as e:
+                    note = f"⚠️ 표시 실패: {str(e)[:150]}"
+                try:
+                    tg("answerCallbackQuery", {"callback_query_id": cq["id"], "text": note[:180]})
+                except Exception:
+                    pass
+                tg_text(note)
+                continue
             if act == "cfw":
                 try:
                     note = mark_followed(pid)
@@ -824,10 +835,21 @@ def recent_published(include_remote: bool = False) -> list[dict]:
     return out
 
 
+REPLIED_BY_ME: set = set()  # 이번 확인에서 내 계정이 이미 답한 댓글 id (앱에서 직접 단 답 포함)
+
+
 def fetch_comments(post: dict) -> list[dict]:
-    j = th_get(post["account"], f"{post['main_id']}/conversation",
-               "id,text,username,timestamp,is_reply_owned_by_me")
-    return [c for c in j.get("data", []) if not c.get("is_reply_owned_by_me") and (c.get("text") or "").strip()]
+    try:
+        j = th_get(post["account"], f"{post['main_id']}/conversation",
+                   "id,text,username,timestamp,is_reply_owned_by_me,replied_to")
+    except Exception:
+        j = th_get(post["account"], f"{post['main_id']}/conversation",
+                   "id,text,username,timestamp,is_reply_owned_by_me")
+    data = j.get("data", [])
+    for c in data:
+        if c.get("is_reply_owned_by_me") and isinstance(c.get("replied_to"), dict):
+            REPLIED_BY_ME.add(str(c["replied_to"].get("id")))
+    return [c for c in data if not c.get("is_reply_owned_by_me") and (c.get("text") or "").strip()]
 
 
 REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)'의 주인이다. 30대 초반 여성 회계사, 서울 망원동 원룸 자취 4년 차.
@@ -1014,7 +1036,7 @@ def comment_header(item: dict) -> list[str]:
     if st == "sent":
         head = [f"✅ 답글 완료: {item.get('reply', '')}"]
     elif st == "skipped":
-        head = ["❌ 무시함"]
+        head = ["✅ 앱에서 직접 답함"] if item.get("note") == "앱에서 직접 답함" else ["❌ 무시함"]
     elif st == "approved_send":
         head = [f"🕒 보낼 순서 대기 (몇 분 간격으로 하나씩): {item.get('send_text', '')}"]
     else:
@@ -1129,6 +1151,14 @@ def check_comments(force: bool = False) -> bool:
             store["items"][cid] = item
             if item["draft"]:
                 new_drafts.append(cid)
+    for cid, it in store["items"].items():
+        if it.get("status") == "pending" and cid in REPLIED_BY_ME:
+            it["status"] = "skipped"
+            it["note"] = "앱에서 직접 답함"
+            try:
+                refresh_comment_msg(cid, it)
+            except Exception:
+                pass
     if shari_new:
         seen, rows = set(), []
         for who, u in shari_new:
@@ -1265,13 +1295,18 @@ def regen_draft(cid: str, extra: str = "") -> str:
 
 
 def comments_command() -> None:
-    """/댓글: 남은 일 요약 + 초안 없는 댓글은 초안을 만들어 다시 보낸다."""
+    """/댓글: 새 댓글을 바로 가져온 뒤 남은 일 요약 + 초안 없는 댓글은 초안을 만들어 채운다."""
+    try:
+        check_comments(force=True)
+    except Exception as e:
+        log("댓글 즉시 확인 실패:", str(e)[:200])
     store = load_comments()
     items = store["items"]
     pend = [(k, it) for k, it in items.items() if it.get("status") == "pending"]
     queued = [k for k, it in items.items() if it.get("status") == "approved_send"]
-    follow = [it for it in items.values() if is_shari(it.get("text", "")) and not it.get("followed")
-              and it.get("created_at", "") >= (now() - dt.timedelta(days=3)).isoformat()
+    follow = [(k, it) for k, it in items.items() if is_shari(it.get("text", "")) and not it.get("followed")
+              and not it.get("follow_cleared")
+              and it.get("created_at", "") >= (now() - dt.timedelta(days=2)).isoformat()
               and it.get("status") in ("pending", "approved_send", "sent")]
     made = 0
     if os.environ.get("ANTHROPIC_API_KEY"):
@@ -1295,10 +1330,31 @@ def comments_command() -> None:
              f"🕒 보낼 순서 대기 {len(queued)}개",
              f"🤝 맞팔 필요 {len(follow)}명"]
     if follow:
-        lines += [""] + [f"@{it.get('username', '')} https://www.threads.com/@{it.get('username', '')}" for it in follow[:20]]
+        lines += [""] + [f"@{it.get('username', '')} https://www.threads.com/@{it.get('username', '')}" for _, it in follow[:15]]
+        lines += ["", "맞팔한 사람은 아래 버튼으로 지워 주세요(스레드 API로는 맞팔 여부를 확인할 수 없어요)."]
     if pend:
         lines += ["", "버튼이 남아 있는 댓글 메시지가 처리할 것이에요. 초안 메시지에 '다시', '짧게', '길게', '더 웃기게'라고 답장하면 새로 써요."]
-    tg_text("\n".join(lines))
+    kb = None
+    if follow:
+        rows = [[{"text": f"🤝 @{it.get('username', '')} 맞팔함", "callback_data": f"cfw:{k}"}] for k, it in follow[:10]]
+        rows.append([{"text": "🤝 전부 맞팔 완료", "callback_data": "cfwall:0"}])
+        kb = {"inline_keyboard": rows}
+    tg_text("\n".join(lines), reply_markup=kb)
+
+
+def clear_follow_all() -> str:
+    store = load_comments()
+    n = 0
+    for k, it in store["items"].items():
+        if is_shari(it.get("text", "")) and not it.get("followed") and not it.get("follow_cleared"):
+            it["followed"] = True
+            n += 1
+            try:
+                refresh_comment_msg(k, it)
+            except Exception:
+                pass
+    save_comments(store)
+    return f"🤝 {n}명 맞팔 완료로 표시했어요"
 
 
 def queue_reply(cid: str, text: str) -> str:
