@@ -3,7 +3,7 @@
   "account": "A",
   "source": "toss",
   "mode": "curation",
-  "scheduled_at": "2026-10-19T10:00:00+09:00",
+  "scheduled_at": "2026-10-18T16:17:00+09:00",
   "main_text": "[광고] 링크로 사면 수수료 받음\n\n컵커피 한 개 645원☕\n요거프레소 컵커피 라떼 10개 + 모카 10개, 20개가 12,900원\n다나와에서 같은 구성 제일 싼 데가 20,390원이라 7천 원 넘게 차이 나\n출근길 커피값 생각하면 회사 냉장고에 쟁여 두고 싶은 가격\n다들 아침 커피 라떼파야 모카파야?💕",
   "reply_texts": [
     "토스쇼핑 커피음료 4위, 리뷰 904개에 평점 4.6\n200ml 컵 20개, 라떼랑 모카 반반 구성이야",
@@ -18,10 +18,12 @@
   ],
   "warnings": [],
   "experience_note": "",
-  "status": "pending",
-  "approved": false,
+  "status": "approved",
+  "approved": true,
   "created_at": "2026-10-18T16:15:57.079072+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 466,
-  "updated_at": "2026-10-18T16:15:59.968102+09:00"
+  "updated_at": "2026-10-18T16:15:59.968102+09:00",
+  "skip_link_rules": true,
+  "note": "10/18 16:17 사용자: 토스쉐어라 오늘 바로, 규칙 예외 1회"
 }

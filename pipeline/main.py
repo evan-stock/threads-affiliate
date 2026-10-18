@@ -596,8 +596,8 @@ def link_slot_wait(post: dict) -> dt.datetime | None:
     - 새벽(0시~link_quiet_end_hour) 금지
     - 같은 계정 링크 글끼리 link_gap_hours 이상 간격
     - 같은 계정 링크 글 하루 link_daily_max개까지 (KST 날짜 기준)"""
-    if post.get("source") in (None, "", "none"):
-        return None
+    if post.get("source") in (None, "", "none") or post.get("skip_link_rules"):
+        return None  # skip_link_rules: 사용자가 위험을 알고 이 글만 규칙 예외로 올리라고 한 경우
     t = now().replace(second=0, microsecond=0)
     quiet_end = int(CONFIG.get("link_quiet_end_hour", 8))
     gap = dt.timedelta(hours=float(CONFIG.get("link_gap_hours", 2)))
