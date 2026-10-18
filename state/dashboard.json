@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T14:05:27.578117+09:00",
- "watch_last_check": "2026-10-18T14:05:06.130406+09:00",
+ "generated_at": "2026-10-18T14:15:59.243203+09:00",
+ "watch_last_check": "2026-10-18T14:15:35.407092+09:00",
  "comments": {
   "skipped": 25,
   "sent": 38,
-  "pending": 2
+  "pending": 4
  },
  "posts": [
   {
@@ -285,7 +285,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 4
+   "comments": 5
   },
   {
    "id": "20261017-life-night",
@@ -593,7 +593,7 @@
     "첫 줄이 21자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 3
+   "comments": 4
   },
   {
    "id": "20261018-cb-sun-night",
