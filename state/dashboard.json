@@ -1,9 +1,10 @@
 {
- "generated_at": "2026-10-18T17:06:55.456656+09:00",
- "watch_last_check": "2026-10-18T17:05:26.250353+09:00",
+ "generated_at": "2026-10-18T17:13:16.911869+09:00",
+ "watch_last_check": "2026-10-18T17:13:00.332719+09:00",
  "comments": {
   "skipped": 29,
-  "sent": 43
+  "sent": 43,
+  "pending": 2
  },
  "posts": [
   {
@@ -716,7 +717,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261018-life-market",
@@ -731,7 +732,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261018-life-sunday",
