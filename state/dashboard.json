@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-18T15:20:33.632467+09:00",
- "watch_last_check": "2026-10-18T15:20:15.164628+09:00",
+ "generated_at": "2026-10-18T15:31:11.378751+09:00",
+ "watch_last_check": "2026-10-18T15:31:00.414967+09:00",
  "comments": {
   "skipped": 29,
   "sent": 40
@@ -535,7 +535,7 @@
    "account": "B",
    "source": "coupang",
    "mode": "experience",
-   "status": "held",
+   "status": "approved",
    "scheduled_at": "2026-10-18T18:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -544,7 +544,7 @@
    "warnings": [
     "광고 느낌 단어: 무조건"
    ],
-   "note": "득템 정지 여파로 찬복 광고 잠시 보류",
+   "note": "",
    "comments": 0
   },
   {
@@ -614,14 +614,14 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "failed",
+   "status": "held",
    "scheduled_at": "2026-10-18T02:20:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "닭다리 100g에 576원🍗",
    "replies": 3,
    "warnings": [],
-   "note": "스레드 조회 실패 (400): {'error': {'message': 'Error validating access token: You cannot access the app till you log in to www.threads.com and follow the instructions given.', 'code': 190, 'type': 'OAuthException', 'error_subcode': 0, 'fbtrace_id': 'AUnMy-3ma58w5Pm6I2vAMFU'}}",
+   "note": "10/18 링크 글 상한 초과(이미 9개). 10/19 낮에 토스 앱 가격 다시 확인 후 재개",
    "comments": 0
   },
   {
@@ -676,7 +676,7 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "failed",
+   "status": "rejected",
    "scheduled_at": "2026-10-18T14:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -685,7 +685,7 @@
    "warnings": [
     "첫 줄이 27자예요 (20자 이내 권장)"
    ],
-   "note": "게시 도중 실행이 끊겼어요. 스레드에 올라갔는지 확인 후 필요하면 Actions의 tools → publish로 올려 주세요.",
+   "note": "14:00 게시 실행이 끊겨 안 올라감. 일요일 오후 내용이라 다시 안 올림",
    "comments": 0
   },
   {
