@@ -618,6 +618,16 @@ def handle_updates() -> bool:
             if str(cq["message"]["chat"]["id"]) != chat:
                 continue
             act, _, pid = cq.get("data", "").partition(":")
+            if act == "cfw":
+                try:
+                    note = mark_followed(pid)
+                except Exception as e:
+                    note = f"⚠️ 표시 실패: {str(e)[:150]}"
+                try:
+                    tg("answerCallbackQuery", {"callback_query_id": cq["id"], "text": note[:180]})
+                except Exception:
+                    pass
+                continue
             if act in ("cok", "cno"):
                 try:
                     if act == "cok":
@@ -631,7 +641,8 @@ def handle_updates() -> bool:
                     tg("answerCallbackQuery", {"callback_query_id": cq["id"], "text": note[:180]})
                 except Exception:
                     pass
-                tg_text(note)
+                if note.startswith("⚠️") or note.startswith("초안이"):
+                    tg_text(note)
                 continue
             post = load_post(pid)
             note = "이미 처리된 글이에요"
@@ -667,7 +678,8 @@ def handle_updates() -> bool:
         text = (msg.get("text") or "").strip()
         target = None
         rt = (msg.get("reply_to_message") or {}).get("message_id")
-        cmt = next((cid for cid, it in load_comments()["items"].items() if it.get("msg_id") == rt), None) if rt else None
+        cmt = next((cid for cid, it in load_comments()["items"].items()
+                    if it.get("msg_id") == rt or rt in (it.get("msg_ids") or [])), None) if rt else None
         if cmt and text:
             try:
                 tg_text(send_comment_reply(cmt, text))
@@ -881,9 +893,69 @@ def recent_replies(store: dict, account: str, n: int = 20) -> set:
     return {(it.get("reply") or it.get("draft") or "") for it in items[:n]}
 
 
-def comment_buttons(cid: str) -> dict:
-    return {"inline_keyboard": [[{"text": "✅ 답글 보내기", "callback_data": f"cok:{cid}"},
-                                 {"text": "❌ 무시", "callback_data": f"cno:{cid}"}]]}
+def comment_buttons(cid: str, item: dict | None = None) -> dict:
+    """상태에 맞는 버튼: 대기 중이면 ✅/❌, 스하리 댓글이고 맞팔 전이면 🤝 맞팔했음"""
+    item = item or {}
+    rows = []
+    if item.get("status", "pending") in ("pending", "review_requested"):
+        row = []
+        if item.get("draft") or not item:
+            row.append({"text": "✅ 답글 보내기", "callback_data": f"cok:{cid}"})
+        row.append({"text": "❌ 무시", "callback_data": f"cno:{cid}"})
+        rows.append(row)
+    if item and is_shari(item.get("text", "")) and not item.get("followed"):
+        rows.append([{"text": "🤝 맞팔했음", "callback_data": f"cfw:{cid}"}])
+    return {"inline_keyboard": rows}
+
+
+def comment_header(item: dict) -> list[str]:
+    st = item.get("status")
+    if st == "sent":
+        head = [f"✅ 답글 완료: {item.get('reply', '')}"]
+    elif st == "skipped":
+        head = ["❌ 무시함"]
+    else:
+        head = ["⏳ 답글 대기"]
+    if is_shari(item.get("text", "")):
+        head.append("🤝 맞팔 완료" if item.get("followed") else f"🤝 맞팔 필요: https://www.threads.com/@{item.get('username', '')}")
+    return head
+
+
+def send_comment_msg(cid: str, item: dict, lines: list[str]) -> int:
+    """댓글 알림을 보내고 메시지 정보를 저장한다(나중에 상태가 바뀌면 이 메시지를 고쳐 씀)."""
+    text = "\n".join(lines)
+    item["msg_text"] = text
+    mid = tg_text("\n".join(comment_header(item) + ["", text]), reply_markup=comment_buttons(cid, item))
+    item["msg_id"] = mid
+    item.setdefault("msg_ids", []).append(mid)
+    return mid
+
+
+def refresh_comment_msg(cid: str, item: dict):
+    """✅/❌/🤝 누른 뒤 원래 텔레그램 메시지에 상태를 표시하고 버튼을 정리한다."""
+    body = item.get("msg_text") or "\n".join([f"💬 @{item.get('username', '')}", item.get("text", ""), "",
+                                               "✏️ 답글 초안", item.get("draft", "")])
+    text = "\n".join(comment_header(item) + ["", body])[:4000]
+    kb = comment_buttons(cid, item)
+    ids = list(dict.fromkeys((item.get("msg_ids") or []) + ([item["msg_id"]] if item.get("msg_id") else [])))
+    for mid in ids:
+        try:
+            tg("editMessageText", {"chat_id": env("TELEGRAM_CHAT_ID"), "message_id": str(mid), "text": text,
+                                   "disable_web_page_preview": "true", "reply_markup": json.dumps(kb)})
+        except Exception as e:
+            if "not modified" not in str(e):
+                log("댓글 메시지 수정 실패:", str(e)[:200])
+
+
+def mark_followed(cid: str) -> str:
+    store = load_comments()
+    item = store["items"].get(cid)
+    if not item:
+        return "댓글을 못 찾았어요"
+    item["followed"] = True
+    save_comments(store)
+    refresh_comment_msg(cid, item)
+    return f"🤝 @{item.get('username', '')} 맞팔 완료로 표시했어요"
 
 
 def check_comments(force: bool = False) -> bool:
@@ -912,7 +984,7 @@ def check_comments(force: bool = False) -> bool:
             item["draft"] = d
             lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
                      "✏️ 답글 초안", d, "", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
-            item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid))
+            send_comment_msg(cid, item, lines)
     shari_new = []  # 이번 확인에서 새로 들어온 스하리 댓글 → 맞팔 목록으로 한 번에 알림
     for post in recent_published(include_remote=True):
         try:
@@ -940,7 +1012,6 @@ def check_comments(force: bool = False) -> bool:
             lines = [f"💬 [{who}] '{snippet}' 글에 @{item['username']}", item["text"], ""]
             if is_shari(item["text"]):
                 shari_new.append((who, item["username"]))
-                lines += [f"🤝 맞팔: https://www.threads.com/@{item['username']}", ""]
             if item["draft"]:
                 lines += ["✏️ 답글 초안", item["draft"]]
                 if warn:
@@ -948,7 +1019,7 @@ def check_comments(force: bool = False) -> bool:
                 lines += ["", "다르게 쓰려면 이 메시지에 답장으로 보내 주세요."]
             else:
                 lines += ["(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요."]
-            item["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid) if item["draft"] else None)
+            send_comment_msg(cid, item, lines)
             store["items"][cid] = item
     if shari_new:
         seen, rows = set(), []
@@ -974,6 +1045,7 @@ def send_comment_reply(cid: str, text: str) -> str:
     rid = create_reply(item["account"], cid, text)
     item.update({"status": "sent", "reply": text, "reply_id": rid, "sent_at": now().isoformat()})
     save_comments(store)
+    refresh_comment_msg(cid, item)
     return f"✅ @{item['username']}에게 답글 달았어요"
 
 
@@ -984,6 +1056,7 @@ def skip_comment(cid: str) -> str:
         return "이미 처리된 댓글이에요"
     item["status"] = "skipped"
     save_comments(store)
+    refresh_comment_msg(cid, item)
     return "❌ 무시했어요"
 
 
@@ -1067,9 +1140,8 @@ def send_review_requests() -> bool:
                  "✏️ 답글 초안", it["draft"]]
         if it.get("note"):
             lines += ["", "ℹ️ " + it["note"]]
-        if is_shari(it.get("text", "")):
-            lines += ["", f"🤝 맞팔: https://www.threads.com/@{it.get('username', '')}"]
-        it["msg_id"] = tg_text("\n".join(lines), reply_markup=comment_buttons(cid))
+        it["status"] = "pending"
+        send_comment_msg(cid, it, lines)
         it["status"] = "pending"
         save_comments(store)
         time.sleep(0.5)
