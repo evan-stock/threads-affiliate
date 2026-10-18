@@ -133,6 +133,10 @@ def git_pull():
         r = git("pull", "--rebase", "--autostash", "-q", check=False)
         if r.returncode != 0:
             log("git pull 실패:", r.stderr[:300])
+            git("rebase", "--abort", check=False)  # 충돌로 멈춘 rebase가 남으면 이후 모든 git이 실패함
+            r2 = git("pull", "--no-rebase", "--no-edit", "-X", "ours", "-q", check=False)
+            if r2.returncode != 0:
+                git("merge", "--abort", check=False)
 
 
 DASHBOARD = ROOT / "state" / "dashboard.json"
@@ -203,7 +207,14 @@ def git_push(msg: str):
     for i in range(5):
         if git("push", "-q", check=False).returncode == 0:
             return
-        git("pull", "--rebase", "--autostash", "-q", check=False)
+        # 대화창에서 같은 파일(comments.json 등)을 동시에 고치면 rebase가 충돌로 멈춰 감시가 죽었음(10/18 19:26).
+        # 충돌하면 rebase를 취소하고 병합으로 다시 시도한다(겹치는 부분은 감시 쪽 내용 우선).
+        r = git("pull", "--rebase", "--autostash", "-q", check=False)
+        if r.returncode != 0:
+            git("rebase", "--abort", check=False)
+            r2 = git("pull", "--no-rebase", "--no-edit", "-X", "ours", "-q", check=False)
+            if r2.returncode != 0:
+                git("merge", "--abort", check=False)
         time.sleep(2 + i * 2)
     raise RuntimeError("git push 5회 실패")
 
