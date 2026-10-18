@@ -596,9 +596,9 @@
       "username": "dobejug10",
       "text": "시가랄때 한번 들러줘.",
       "draft": "당연하지ㅋㅋ 시간은 남아도니까 꼭 들를게",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T08:15:35.154580+09:00",
-      "msg_id": 427,
+      "msg_id": 433,
       "redrafted": true,
       "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
     },
@@ -659,9 +659,9 @@
       "username": "jeju88888888888",
       "text": "안녕👋난 제주귤이야🍊스하리하고가~🤎",
       "draft": "제주귤 반가워🍊 반하리 간다! 귤 철이라 더 반갑네ㅋㅋ",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T09:28:24.719325+09:00",
-      "msg_id": 428,
+      "msg_id": 434,
       "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
     },
     "17966020602193083": {
@@ -670,9 +670,9 @@
       "username": "dobejug10",
       "text": "감사하리! 가끔씩 소통해^^",
       "draft": "나도 고마워ㅋㅋ 자주 소통하자!",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T09:28:25.685526+09:00",
-      "msg_id": 429,
+      "msg_id": 435,
       "redrafted": true,
       "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
     },
