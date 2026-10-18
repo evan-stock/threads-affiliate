@@ -773,8 +773,8 @@
       "account": "A",
       "username": "cozy_3553",
       "text": "응 소품같은건 괜찮은데 옷뜨기시작하면 아무래도 실도 많이들고 점점 욕심이 생겨서 ㅎㅎ일단 시도는해봐 재밌어",
-      "draft": "",
-      "status": "pending",
+      "draft": "맞아 옷 뜨기 시작하면 끝이 없을 것 같아ㅋㅋ 일단 작은 소품부터 해 볼게! 응원 고마워💕",
+      "status": "review_requested",
       "created_at": "2026-10-18T13:01:23.877760+09:00",
       "msg_id": 436,
       "redrafted": true
@@ -784,8 +784,8 @@
       "account": "A",
       "username": "mungu_jogakdal",
       "text": "코바늘 대바늘에 따라 다른데\n대바늘이라면 역시 목도리!?",
-      "draft": "",
-      "status": "pending",
+      "draft": "대바늘로 목도리 좋다! 겨울 오기 전에 하나 완성해 보는 게 목표야ㅎㅎ",
+      "status": "review_requested",
       "created_at": "2026-10-18T13:01:24.657643+09:00",
       "msg_id": 437,
       "redrafted": true
@@ -795,8 +795,8 @@
       "account": "B",
       "username": "mitzziyo",
       "text": "별차이 없어요. 해장국으로 드시거나 혼자 전골 소자드시거나",
-      "draft": "",
-      "status": "pending",
+      "draft": "전골 소자도 있었구나ㅋㅋ 다음엔 당당하게 소자 시켜 본다",
+      "status": "review_requested",
       "created_at": "2026-10-18T13:01:28.431044+09:00",
       "msg_id": 438,
       "redrafted": true
@@ -806,8 +806,8 @@
       "account": "B",
       "username": "insulatea_yrw",
       "text": "반하링~✨️✨️리포완🍀🍀🍀\n열심히 살아보자궁~\n좋은하루보내~",
-      "draft": "",
-      "status": "pending",
+      "draft": "리포까지 고마워ㅋㅋ 반하리 간다! 너도 좋은 하루 보내, 열심히 살아 보자",
+      "status": "review_requested",
       "created_at": "2026-10-18T13:33:21.698563+09:00",
       "msg_id": 439,
       "redrafted": true
