@@ -558,11 +558,15 @@
       "username": "hyemi4073",
       "text": "럽리💓 스하 💓 나한테 안옴 삐진당!🤔💓",
       "draft": "헉 미안해🥹 지금 바로 반하리 갈게! 삐지지 마💕",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T04:58:43.947598+09:00",
-      "msg_id": 378,
+      "msg_id": 459,
       "redrafted": true,
-      "note": "반하리가 안 갔다는 댓글 → 팔로우 먼저 하고 ✅"
+      "note": "반하리가 안 갔다는 댓글 → 팔로우 먼저 하고 ✅",
+      "msg_text": "💬 [gotitem.lab] '잠 안 오는 스친 손🙋‍♀️' 글에 @hyemi4073\n럽리💓 스하 💓 나한테 안옴 삐진당!🤔💓\n\n✏️ 답글 초안\n헉 미안해🥹 지금 바로 반하리 갈게! 삐지지 마💕\n\nℹ️ 반하리가 안 갔다는 댓글 → 팔로우 먼저 하고 ✅",
+      "msg_ids": [
+        459
+      ]
     },
     "17903788926600310": {
       "post_id": "20261018-cb-night-shari",
@@ -596,11 +600,15 @@
       "username": "dobejug10",
       "text": "시가랄때 한번 들러줘.",
       "draft": "당연하지ㅋㅋ 주말엔 시간 많으니까 꼭 들를게",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T08:15:35.154580+09:00",
-      "msg_id": 433,
+      "msg_id": 460,
       "redrafted": true,
-      "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요"
+      "note": "반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요",
+      "msg_text": "💬 [just.chanbok (일상)] '새벽 4시에 눈이 떠졌다.' 글에 @dobejug10\n시가랄때 한번 들러줘.\n\n✏️ 답글 초안\n당연하지ㅋㅋ 주말엔 시간 많으니까 꼭 들를게\n\nℹ️ 반말 최종본이에요. 앞에 온 같은 댓글 메시지는 무시해 주세요",
+      "msg_ids": [
+        460
+      ]
     },
     "18176572180446571": {
       "post_id": "20261017-life-hobby",
@@ -846,12 +854,13 @@
       "username": "mungu_jogakdal",
       "text": "비니 잘 쓰면 비니도 금방 뜨고 좋아💜",
       "draft": "오 비니 좋다! 올겨울엔 내가 뜬 비니 쓰고 다니는 게 목표야ㅋㅋ🧶",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T14:15:40.528574+09:00",
-      "msg_text": "💬 [gotitem.lab] '합정 쪽 지나가다 뜨개질 공방 보고 혹해서' 글에 @mungu_jogakdal\n비니 잘 쓰면 비니도 금방 뜨고 좋아💜\n\n(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요.",
-      "msg_id": 455,
+      "msg_text": "💬 [gotitem.lab] '합정 쪽 지나가다 뜨개질 공방 보고 혹해서' 글에 @mungu_jogakdal\n비니 잘 쓰면 비니도 금방 뜨고 좋아💜\n\n✏️ 답글 초안\n오 비니 좋다! 올겨울엔 내가 뜬 비니 쓰고 다니는 게 목표야ㅋㅋ🧶",
+      "msg_id": 461,
       "msg_ids": [
-        455
+        455,
+        461
       ],
       "redrafted": true
     },
@@ -877,12 +886,13 @@
       "username": "mitzziyo",
       "text": "감자탕이 전골식이쥬?",
       "draft": "맞아 전골식이라 냄비째 나오더라ㅋㅋ 혼자 그거 시키면 옆 테이블이 날 구경할 판",
-      "status": "review_requested",
+      "status": "pending",
       "created_at": "2026-10-18T14:26:15.513368+09:00",
-      "msg_text": "💬 [just.chanbok (일상)] '일요일 점심에 동네 감자탕집 갔는데' 글에 @mitzziyo\n감자탕이 전골식이쥬?\n\n(초안 없음) 답글을 쓰려면 이 메시지에 답장으로 보내 주세요.",
-      "msg_id": 457,
+      "msg_text": "💬 [just.chanbok (일상)] '일요일 점심에 동네 감자탕집 갔는데' 글에 @mitzziyo\n감자탕이 전골식이쥬?\n\n✏️ 답글 초안\n맞아 전골식이라 냄비째 나오더라ㅋㅋ 혼자 그거 시키면 옆 테이블이 날 구경할 판",
+      "msg_id": 462,
       "msg_ids": [
-        457
+        457,
+        462
       ]
     }
   }
