@@ -829,7 +829,7 @@ def draft_reply(post: dict, comment: dict) -> str:
     return no_middot("".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip())
 
 
-SHARI_RE = re.compile(r"스하리|스하링|반하리|맞팔|선팔|맞스|스친")
+SHARI_RE = re.compile(r"스하|반하리|맞팔|선팔|맞스|스친|팔로우|럽리")
 
 
 def is_shari(text: str) -> bool:
@@ -924,6 +924,8 @@ def comment_header(item: dict) -> list[str]:
         head = ["⏳ 답글 대기"]
     if is_shari(item.get("text", "")):
         head.append("🤝 맞팔 완료" if item.get("followed") else f"🤝 맞팔 필요: https://www.threads.com/@{item.get('username', '')}")
+    else:
+        head.append(f"👤 프로필: https://www.threads.com/@{item.get('username', '')}")
     return head
 
 
