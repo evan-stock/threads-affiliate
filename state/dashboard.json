@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T10:11:29.131616+09:00",
- "watch_last_check": "2026-10-18T10:10:52.573212+09:00",
+ "generated_at": "2026-10-18T10:21:58.102880+09:00",
+ "watch_last_check": "2026-10-18T10:21:36.951301+09:00",
  "comments": {
   "skipped": 22,
   "sent": 29,
-  "pending": 4
+  "pending": 6
  },
  "posts": [
   {
@@ -593,7 +593,7 @@
     "첫 줄이 21자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261018-cb-sun-night",
@@ -670,7 +670,7 @@
     "첫 줄이 26자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261018-life-drama",
