@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T23:30:02.717207+09:00",
+ "generated_at": "2026-10-18T23:30:15.773527+09:00",
  "watch_last_check": "2026-10-18T23:24:34.511628+09:00",
  "comments": {
   "skipped": 34,
@@ -847,10 +847,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-18T23:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-18T23:30:15.124931+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/Deo5q2UGxFY",
    "title": "일요일 밤 11시 반이다.",
    "replies": 0,
    "warnings": [],
