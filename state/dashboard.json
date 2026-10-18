@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-18T18:56:38.907268+09:00",
- "watch_last_check": "2026-10-18T18:56:23.042061+09:00",
+ "generated_at": "2026-10-18T19:06:05.125342+09:00",
+ "watch_last_check": "2026-10-18T19:05:36.036490+09:00",
  "comments": {
   "skipped": 30,
   "sent": 48,
-  "pending": 6
+  "pending": 8
  },
  "posts": [
   {
@@ -670,7 +670,7 @@
     "첫 줄이 26자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 9
+   "comments": 10
   },
   {
    "id": "20261018-life-drama",
@@ -717,7 +717,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 7
+   "comments": 8
   },
   {
    "id": "20261018-life-market",
