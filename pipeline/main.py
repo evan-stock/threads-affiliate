@@ -1116,7 +1116,7 @@ def check_comments(force: bool = False) -> bool:
             except Exception as e:
                 log(str(e)[:200])
                 continue
-            if not d or d.strip().upper() == "SKIP":
+            if not d or (d.strip().upper().startswith("SKIP") or len(d.strip()) <= 2):
                 continue
             item["draft"] = d
             lines = [f"💬 [{post['id']}] @{item.get('username', '')}", item.get("text", ""), "",
@@ -1144,12 +1144,12 @@ def check_comments(force: bool = False) -> bool:
                     draft, draft_err = "", str(e)[:160]
                     log(draft_err)
                     time.sleep(3)
-            if draft.strip().upper() == "SKIP":
+            if (draft.strip().upper().startswith("SKIP") or len(draft.strip()) <= 2):
                 draft_err = "AI가 답 안 해도 되는 댓글로 봤어요(SKIP)"
             if not draft.strip() and is_shari(c.get("text", "")):
                 draft = shari_template(post["account"], cid, c.get("text", ""), recent_replies(store, post["account"]))
             item = {"post_id": post["id"], "account": post["account"], "username": c.get("username", ""),
-                    "text": c["text"], "draft": "" if draft.strip().upper() == "SKIP" else draft,
+                    "text": c["text"], "draft": "" if (draft.strip().upper().startswith("SKIP") or len(draft.strip()) <= 2) else draft,
                     "status": "pending", "created_at": now().isoformat()}
             warn = [w for w in CONFIG["claim_warning_words"] if w in item["draft"]]
             who = CONFIG["accounts"].get(post["account"], {}).get("label", post["account"])
@@ -1326,7 +1326,7 @@ def regen_draft(cid: str, extra: str = "") -> str:
     old = item.get("draft", "")
     d = draft_reply(post_for_item(item), {"username": item.get("username"), "text": item.get("text", "")},
                     (extra + " " if extra else "") + (f"이전 초안('{old}')과 다르게" if old else ""))
-    if not d or d.strip().upper() == "SKIP":
+    if not d or (d.strip().upper().startswith("SKIP") or len(d.strip()) <= 2):
         return "AI가 답할 필요 없는 댓글로 봤어요(SKIP). 직접 답장으로 문장을 보내거나 ❌ 해 주세요"
     item["draft"] = d
     item["msg_text"] = with_draft(item.get("msg_text") or f"💬 @{item.get('username', '')}\n{item.get('text', '')}", d)
@@ -1359,7 +1359,7 @@ def comments_command() -> None:
             except Exception as e:
                 log(str(e)[:200])
                 continue
-            if not d or d.strip().upper() == "SKIP":
+            if not d or (d.strip().upper().startswith("SKIP") or len(d.strip()) <= 2):
                 continue
             it["draft"] = d
             it["msg_text"] = with_draft(it.get("msg_text") or f"💬 @{it.get('username', '')}\n{it.get('text', '')}", d)
