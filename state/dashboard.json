@@ -1,9 +1,10 @@
 {
- "generated_at": "2026-10-18T14:48:52.065177+09:00",
- "watch_last_check": "2026-10-18T14:48:23.487342+09:00",
+ "generated_at": "2026-10-18T14:59:28.577931+09:00",
+ "watch_last_check": "2026-10-18T14:58:59.782431+09:00",
  "comments": {
   "skipped": 28,
-  "sent": 40
+  "sent": 40,
+  "pending": 1
  },
  "posts": [
   {
@@ -284,7 +285,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 5
+   "comments": 6
   },
   {
    "id": "20261017-life-night",
