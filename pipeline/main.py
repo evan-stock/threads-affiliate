@@ -1374,13 +1374,30 @@ def comments_command() -> None:
         lines += [""] + [f"@{it.get('username', '')} https://www.threads.com/@{it.get('username', '')}" for _, it in follow[:15]]
         lines += ["", "맞팔한 사람은 아래 버튼으로 지워 주세요(스레드 API로는 맞팔 여부를 확인할 수 없어요)."]
     if pend:
-        lines += ["", "버튼이 남아 있는 댓글 메시지가 처리할 것이에요. 초안 메시지에 고칠 점('다시', '짧게', '물음표 빼고' 등)을 답장하면 새 초안을 써요. 직접 쓴 문장은 '그대로: 문장'. 게시는 항상 ✅."]
+        lines += ["", "아래에 대기 중인 댓글을 다시 보내 드려요. 초안 메시지에 고칠 점('다시', '짧게', '물음표 빼고' 등)을 답장하면 새 초안을 써요. 직접 쓴 문장은 '그대로: 문장'. 게시는 항상 ✅."]
     kb = None
     if follow:
         rows = [[{"text": f"🤝 @{it.get('username', '')} 맞팔함", "callback_data": f"cfw:{k}"}] for k, it in follow[:10]]
         rows.append([{"text": "🤝 전부 맞팔 완료", "callback_data": "cfwall:0"}])
         kb = {"inline_keyboard": rows}
     tg_text("\n".join(lines), reply_markup=kb)
+    # 대기 중인 댓글을 맨 아래로 다시 보내 준다(예전 메시지는 위로 묻혀서 찾기 어려움). 버튼은 어느 메시지에서 눌러도 같이 반영됨
+    pend = sorted(pend, key=lambda x: x[1].get("created_at", ""))
+    for cid, it in pend[:15]:
+        it = load_comments()["items"].get(cid) or it
+        body = it.get("msg_text") or "\n".join([f"💬 @{it.get('username', '')}", it.get("text", "")] +
+                                                (["", "✏️ 답글 초안", it["draft"]] if it.get("draft") else []))
+        try:
+            mid = tg_text("\n".join(comment_header(it) + ["", body])[:4000], reply_markup=comment_buttons(cid, it))
+            st2 = load_comments()
+            st2["items"][cid].setdefault("msg_ids", []).append(mid)
+            st2["items"][cid]["msg_id"] = mid
+            save_comments(st2)
+            time.sleep(0.4)
+        except Exception as e:
+            log("대기 댓글 다시 보내기 실패:", str(e)[:200])
+    if len(pend) > 15:
+        tg_text(f"대기 댓글이 {len(pend)}개라 먼저 온 15개만 보냈어요. 처리한 뒤 /댓글 을 다시 보내 주세요.")
 
 
 def clear_follow_all() -> str:
