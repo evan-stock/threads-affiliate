@@ -729,6 +729,17 @@ def handle_updates() -> bool:
         m = re.match(r"^/link\s+(\S+)\s+(\S+)", text)
         if m:
             target = load_post(m.group(1))
+        if text.split(" ")[0] in ("/ai", "/AI", "/점검"):
+            try:
+                a = draft_reply({"account": "A", "main_text": "주말 저녁 메뉴 골라줘 1. 치킨 2. 삼겹살 3. 떡볶이"},
+                                {"username": "test", "text": "치킨이지!"})
+                b = draft_reply({"account": "B", "main_text": "일요일 점심에 감자탕집 갔는데 메뉴판이 2인분부터 시작함."},
+                                {"username": "test", "text": "저도 혼밥러예요ㅠ"})
+                tg_text(("✅ AI 초안 정상 작동\n\n[득템] 치킨이지! → " + a + "\n[찬복] 저도 혼밥러예요ㅠ → " + b) if (a or b)
+                        else "⚠️ API 키가 설정돼 있지 않아요")
+            except Exception as e:
+                tg_text(f"⚠️ AI 초안 실패: {str(e)[:300]}")
+            continue
         if text.split(" ")[0] in ("/댓글", "/comments", "댓글"):
             try:
                 comments_command()
