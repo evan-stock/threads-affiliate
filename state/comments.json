@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-10-18T11:57:03.764536+09:00",
+  "last_check": "2026-10-18T12:07:41.546476+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -729,7 +729,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T11:57:09.974434+09:00",
-      "msg_id": 415
+      "msg_id": 415,
+      "redrafted": true
     },
     "18112553636596330": {
       "post_id": "20261018-life-market",
@@ -739,7 +740,8 @@
       "draft": "",
       "status": "pending",
       "created_at": "2026-10-18T11:57:16.800782+09:00",
-      "msg_id": 416
+      "msg_id": 416,
+      "redrafted": true
     }
   }
 }
