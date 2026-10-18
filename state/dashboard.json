@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-10-18T19:28:54.963949+09:00",
- "watch_last_check": "2026-10-18T19:20:23.806453+09:00",
+ "generated_at": "2026-10-18T19:31:25.159827+09:00",
+ "watch_last_check": "2026-10-18T19:30:58.024803+09:00",
  "comments": {
-  "skipped": 33,
+  "skipped": 34,
   "sent": 52,
   "pending": 1
  },
@@ -717,7 +717,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 8
+   "comments": 9
   },
   {
    "id": "20261018-life-market",
@@ -739,7 +739,7 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "publishing",
    "scheduled_at": "2026-10-18T19:30:00+09:00",
    "published_at": "",
    "permalink": "",
