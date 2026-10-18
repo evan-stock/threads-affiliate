@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:12:31.172643+09:00",
+ "generated_at": "2026-10-18T16:15:59.970939+09:00",
  "watch_last_check": "2026-10-18T16:12:13.759563+09:00",
  "comments": {
   "skipped": 29,
@@ -614,14 +614,14 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "held",
+   "status": "rejected",
    "scheduled_at": "2026-10-18T02:20:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "닭다리 100g에 576원🍗",
    "replies": 3,
    "warnings": [],
-   "note": "10/18 링크 글 상한 초과(이미 9개). 10/19 낮에 토스 앱 가격 다시 확인 후 재개",
+   "note": "10/18 16:13 사용자 요청으로 취소",
    "comments": 0
   },
   {
@@ -960,6 +960,21 @@
    "permalink": "",
    "title": "대학 동기한테 오랜만에 카톡 옴.",
    "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261019-cupcoffee",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-19T10:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "컵커피 한 개 645원☕",
+   "replies": 3,
    "warnings": [],
    "note": "",
    "comments": 0
