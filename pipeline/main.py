@@ -712,6 +712,12 @@ def handle_updates() -> bool:
         rt = (msg.get("reply_to_message") or {}).get("message_id")
         cmt = next((cid for cid, it in load_comments()["items"].items()
                     if it.get("msg_id") == rt or rt in (it.get("msg_ids") or [])), None) if rt else None
+        if cmt and text and text in REGEN_WORDS:
+            try:
+                tg_text(regen_draft(cmt, REGEN_WORDS[text]))
+            except Exception as e:
+                tg_text(f"⚠️ 새 초안 실패: {str(e)[:200]}")
+            continue
         if cmt and text:
             try:
                 tg_text(queue_reply(cmt, text))
@@ -723,6 +729,12 @@ def handle_updates() -> bool:
         m = re.match(r"^/link\s+(\S+)\s+(\S+)", text)
         if m:
             target = load_post(m.group(1))
+        if text.split(" ")[0] in ("/댓글", "/comments", "댓글"):
+            try:
+                comments_command()
+            except Exception as e:
+                tg_text(f"⚠️ 댓글 현황 실패: {str(e)[:200]}")
+            continue
         if text.startswith("/list"):
             act = [p for p in all_posts() if p["status"] in ACTIVE]
             tg_text("대기 중\n" + ("\n".join(f"· {p['id']} {p['status']} {parse_time(p['scheduled_at']):%m/%d %H:%M} {'🔗' if p.get('link') else '링크없음'}" for p in act) or "없음"))
@@ -841,7 +853,7 @@ def no_middot(text: str) -> str:
     return re.sub(r"\s*·\s*", ", ", text or "")
 
 
-def draft_reply(post: dict, comment: dict) -> str:
+def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key:
         return ""
@@ -849,7 +861,8 @@ def draft_reply(post: dict, comment: dict) -> str:
     body = {
         "model": ANTHROPIC_MODEL, "max_tokens": 200, "system": system,
         "messages": [{"role": "user", "content":
-            f"내 글:\n{post['main_text']}\n\n댓글 (@{comment.get('username', '?')}):\n{comment['text']}\n\n답글:"}],
+            f"내 글:\n{post['main_text']}\n\n댓글 (@{comment.get('username', '?')}):\n{comment['text']}\n\n"
+            + (f"요청: {extra}\n\n" if extra else "") + "답글:"}],
     }
     r = requests.post(f"{ANTHROPIC_API}/v1/messages", json=body, timeout=60,
                       headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
@@ -1152,6 +1165,86 @@ def do_publish(post: dict, sync_msg: str = "publish"):
 
 # ---- 답글 보내기 줄: ✅를 여러 개 눌러도 한꺼번에 올리지 않고 계정마다 간격을 둔다 (10/18 정지 재발 방지)
 REPLY_MIN_GAP_SEC = float(os.environ.get("REPLY_MIN_GAP_SEC", str(CONFIG.get("reply_min_gap_sec", 150))))
+
+
+REGEN_WORDS = {"다시": "", "/다시": "", "다른거": "앞 초안과 다른 문장으로", "짧게": "더 짧게 한 문장으로",
+               "더 짧게": "더 짧게 한 문장으로", "길게": "조금 더 길게 두 문장으로", "더 웃기게": "조금 더 웃기게"}
+
+
+def post_for_item(item: dict) -> dict:
+    """댓글이 달린 글(본문 포함). 앱에서 직접 쓴 글(th-계정-미디어id)은 API로 본문을 가져온다."""
+    pid = item.get("post_id", "")
+    for p in all_posts():
+        if p["id"] == pid:
+            return p
+    if pid.startswith("th-"):
+        _, acc, mid = pid.split("-", 2)
+        try:
+            txt = th_get(acc, mid, "text").get("text", "")
+        except Exception:
+            txt = ""
+        return {"id": pid, "account": acc, "main_text": txt}
+    return {"id": pid, "account": item.get("account"), "main_text": ""}
+
+
+def regen_draft(cid: str, extra: str = "") -> str:
+    """텔레그램에서 '다시', '짧게' 등으로 초안을 새로 받는다."""
+    store = load_comments()
+    item = store["items"].get(cid)
+    if not item or item.get("status") != "pending":
+        return "이미 처리된 댓글이에요"
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        return "API 키가 없어서 새 초안을 못 만들어요"
+    old = item.get("draft", "")
+    d = draft_reply(post_for_item(item), {"username": item.get("username"), "text": item.get("text", "")},
+                    (extra + " " if extra else "") + (f"이전 초안('{old}')과 다르게" if old else ""))
+    if not d or d.strip().upper() == "SKIP":
+        return "AI가 답할 필요 없는 댓글로 봤어요(SKIP). 직접 답장으로 문장을 보내거나 ❌ 해 주세요"
+    item["draft"] = d
+    lines = (item.get("msg_text") or "").split("\n")
+    if "✏️ 답글 초안" in lines:
+        lines = lines[:lines.index("✏️ 답글 초안")]
+    item["msg_text"] = "\n".join(lines + ["✏️ 답글 초안", d]).strip()
+    save_comments(store)
+    refresh_comment_msg(cid, item)
+    return f"✏️ 새 초안: {d}"
+
+
+def comments_command() -> None:
+    """/댓글: 남은 일 요약 + 초안 없는 댓글은 초안을 만들어 다시 보낸다."""
+    store = load_comments()
+    items = store["items"]
+    pend = [(k, it) for k, it in items.items() if it.get("status") == "pending"]
+    queued = [k for k, it in items.items() if it.get("status") == "approved_send"]
+    follow = [it for it in items.values() if is_shari(it.get("text", "")) and not it.get("followed")
+              and it.get("created_at", "") >= (now() - dt.timedelta(days=3)).isoformat()
+              and it.get("status") in ("pending", "approved_send", "sent")]
+    made = 0
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        for cid, it in pend:
+            if it.get("draft") or made >= 15:
+                continue
+            try:
+                d = draft_reply(post_for_item(it), {"username": it.get("username"), "text": it.get("text", "")})
+            except Exception as e:
+                log(str(e)[:200])
+                break
+            if not d or d.strip().upper() == "SKIP":
+                continue
+            it["draft"] = d
+            it["msg_text"] = (it.get("msg_text") or "\n".join([f"💬 @{it.get('username', '')}", it.get("text", "")])) + f"\n\n✏️ 답글 초안\n{d}"
+            save_comments(store)
+            refresh_comment_msg(cid, it)
+            made += 1
+    lines = ["📋 댓글 현황",
+             f"⏳ 답글 대기 {len(pend)}개" + (f" (방금 초안 {made}개 새로 씀)" if made else ""),
+             f"🕒 보낼 순서 대기 {len(queued)}개",
+             f"🤝 맞팔 필요 {len(follow)}명"]
+    if follow:
+        lines += [""] + [f"@{it.get('username', '')} https://www.threads.com/@{it.get('username', '')}" for it in follow[:20]]
+    if pend:
+        lines += ["", "버튼이 남아 있는 댓글 메시지가 처리할 것이에요. 초안 메시지에 '다시', '짧게', '길게', '더 웃기게'라고 답장하면 새로 써요."]
+    tg_text("\n".join(lines))
 
 
 def queue_reply(cid: str, text: str) -> str:
