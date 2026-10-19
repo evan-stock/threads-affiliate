@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T21:00:49.058661+09:00",
+ "generated_at": "2026-10-19T21:01:02.904406+09:00",
  "watch_last_check": "2026-10-19T20:57:26.069655+09:00",
  "comments": {
   "skipped": 37,
@@ -955,10 +955,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-19T21:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-19T21:01:02.243149+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DerNYwXm818",
    "title": "대학 동기한테 오랜만에 카톡 옴.",
    "replies": 0,
    "warnings": [],
