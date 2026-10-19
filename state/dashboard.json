@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T21:29:27.550682+09:00",
+ "generated_at": "2026-10-19T21:37:08.609604+09:00",
  "watch_last_check": "2026-10-19T21:29:11.939850+09:00",
  "comments": {
   "skipped": 37,
@@ -981,6 +981,21 @@
    "comments": 0
   },
   {
+   "id": "20261019-lagalbi",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-19T21:50:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "LA갈비 100g 1,580원🍖",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
    "id": "20261019-shari-A",
    "account": "A",
    "source": "none",
@@ -1022,6 +1037,21 @@
    "published_at": "2026-10-17T19:01:42.663215+09:00",
    "permalink": "https://www.threads.com/@just.chanbok/post/Del2Dv2oHwB",
    "title": "혼자 살면서 깨달은 거.",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261020-cb-lagalbi",
+   "account": "B",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-20T18:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "토스쇼핑이 싸서 요즘 자주 들어가는데",
    "replies": 3,
    "warnings": [],
    "note": "",

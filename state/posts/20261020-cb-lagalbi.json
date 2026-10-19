@@ -1,0 +1,26 @@
+{
+  "id": "20261020-cb-lagalbi",
+  "account": "B",
+  "source": "toss",
+  "mode": "curation",
+  "scheduled_at": "2026-10-20T18:30:00+09:00",
+  "main_text": "[광고] 링크로 사면 수수료 받음\n\n토스쇼핑이 싸서 요즘 자주 들어가는데\nLA갈비 500g 한 팩에 7,900원이 떠 있었음.\n다나와 제일 싼 데가 10,450원.\n\n명절도 아닌데 혼자 LA갈비 굽는 40대.\n근데 굽는 냄새 맡는 순간\n이게 노총각의 특권이다 싶음.",
+  "reply_texts": [
+    "양념 다 돼 있어서 프라이팬에 굽기만 하면 됨.\n요리 못하는 나도 가능.",
+    "리뷰가 1만 4천 개 넘음.\n나 말고도 혼자 굽는 사람 많다는 뜻이라 믿음.",
+    "이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.\n\n7,900원은 10/19 밤 기준.\n지금 가격은 여기서 확인해 봐.\n{링크}"
+  ],
+  "reply_ids": [],
+  "link": "https://toss.shopping/_m/D7jIkWH",
+  "images": [
+    "media/20261020-cb-lagalbi/1.jpg"
+  ],
+  "warnings": [],
+  "experience_note": "",
+  "status": "pending",
+  "approved": false,
+  "created_at": "2026-10-19T21:37:06.940214+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 669,
+  "updated_at": "2026-10-19T21:37:08.604239+09:00"
+}
