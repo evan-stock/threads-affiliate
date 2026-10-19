@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-19T21:38:39.535779+09:00",
- "watch_last_check": "2026-10-19T21:29:11.939850+09:00",
+ "generated_at": "2026-10-19T21:39:54.781320+09:00",
+ "watch_last_check": "2026-10-19T21:39:43.037673+09:00",
  "comments": {
   "skipped": 37,
   "sent": 92,
@@ -1047,14 +1047,14 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-20T18:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "토스쇼핑이 싸서 요즘 자주 들어가는데",
    "replies": 3,
    "warnings": [],
-   "note": "",
+   "note": "사용자 요청으로 취소(득템과 같은 링크)",
    "comments": 0
   },
   {
