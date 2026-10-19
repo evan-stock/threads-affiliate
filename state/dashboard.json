@@ -1,10 +1,11 @@
 {
- "generated_at": "2026-10-19T12:13:11.878023+09:00",
- "watch_last_check": "2026-10-19T12:03:18.684281+09:00",
+ "generated_at": "2026-10-19T12:14:39.069363+09:00",
+ "watch_last_check": "2026-10-19T12:14:20.105587+09:00",
  "comments": {
   "skipped": 37,
   "sent": 82,
-  "pending": 2
+  "pending": 2,
+  "approved_send": 1
  },
  "posts": [
   {
@@ -670,7 +671,7 @@
     "첫 줄이 26자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 11
+   "comments": 12
   },
   {
    "id": "20261018-life-drama",
