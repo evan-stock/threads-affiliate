@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T23:30:04.916940+09:00",
+ "generated_at": "2026-10-19T23:30:17.127855+09:00",
  "watch_last_check": "2026-10-19T23:27:43.667062+09:00",
  "comments": {
   "skipped": 38,
@@ -1017,10 +1017,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-19T23:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-19T23:30:16.462105+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DereeAyG58T",
    "title": "월요일 버텼다.",
    "replies": 0,
    "warnings": [],
