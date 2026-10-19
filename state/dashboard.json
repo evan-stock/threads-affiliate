@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T00:08:17.861970+09:00",
- "watch_last_check": "2026-10-19T23:59:12.928538+09:00",
+ "generated_at": "2026-10-20T00:09:37.512497+09:00",
+ "watch_last_check": "2026-10-20T00:09:20.276988+09:00",
  "comments": {
   "skipped": 38,
   "sent": 94,
-  "pending": 1
+  "pending": 2
  },
  "posts": [
   {
@@ -1025,7 +1025,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261020-cb-ashley",
