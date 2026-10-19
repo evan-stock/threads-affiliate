@@ -147,7 +147,7 @@ def _first_line(text: str) -> str:
     for line in (text or "").splitlines():
         s = line.strip()
         if s and not s.startswith("[광고]"):
-            return s[:60]
+            return s.replace(" (광고)", "")[:60]
     return ""
 
 
@@ -377,7 +377,16 @@ def build_texts(d: dict) -> tuple[str, list[str]]:
     main = d["text"].strip()
     if acct.get("persona_notice"):
         main += "\n\n" + acct["persona_notice"]
-    if CONFIG.get("header_position", "top") == "bottom":
+    pos = CONFIG.get("header_position", "top")
+    if pos == "first_line_end":
+        # 10/20: 후킹을 맨 앞에 두고 첫 줄 끝에 "(광고)" (추천보증 지침: 첫 부분 표시). 정식 문구는 마지막 댓글
+        tag = CONFIG.get("inline_ad_tag", "(광고)")
+        lines = main.split("\n")
+        i = next((k for k, l in enumerate(lines) if l.strip()), 0)
+        if tag not in lines[i]:
+            lines[i] = lines[i].rstrip() + " " + tag
+        main = "\n".join(lines)
+    elif pos == "bottom":
         main = main + "\n\n" + src["header"]
     else:
         main = src["header"] + "\n\n" + main
