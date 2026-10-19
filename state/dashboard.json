@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-19T13:08:00.061410+09:00",
- "watch_last_check": "2026-10-19T13:07:42.671824+09:00",
+ "generated_at": "2026-10-19T13:18:26.409914+09:00",
+ "watch_last_check": "2026-10-19T13:18:08.038856+09:00",
  "comments": {
   "skipped": 37,
   "sent": 84,
-  "pending": 2
+  "pending": 3
  },
  "posts": [
   {
@@ -933,7 +933,7 @@
     "첫 줄이 21자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261019-cb-mon-morning",
