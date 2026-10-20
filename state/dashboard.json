@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:11:49.419704+09:00",
+ "generated_at": "2026-10-20T20:18:47.746546+09:00",
  "watch_last_check": "2026-10-20T20:11:28.367700+09:00",
  "comments": {
   "skipped": 41,
@@ -1196,6 +1196,21 @@
    "replies": 0,
    "warnings": [],
    "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
+   "comments": 0
+  },
+  {
+   "id": "20261021-cb-nosehair",
+   "account": "B",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-21T18:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "코털 정리기 8,600원",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
    "comments": 0
   },
   {
