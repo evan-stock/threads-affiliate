@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T16:16:30.460052+09:00",
- "watch_last_check": "2026-10-20T16:08:51.166537+09:00",
+ "generated_at": "2026-10-20T16:19:51.364112+09:00",
+ "watch_last_check": "2026-10-20T16:19:33.125365+09:00",
  "comments": {
   "skipped": 40,
   "sent": 98,
-  "pending": 1
+  "pending": 3
  },
  "posts": [
   {
@@ -1121,7 +1121,7 @@
     "첫 줄이 32자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261020-life-knit2",
@@ -1136,7 +1136,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261020-life-market-night",
