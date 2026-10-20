@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T13:00:50.697196+09:00",
- "watch_last_check": "2026-10-20T12:52:14.681230+09:00",
+ "generated_at": "2026-10-20T13:03:11.952936+09:00",
+ "watch_last_check": "2026-10-20T13:02:52.934630+09:00",
  "comments": {
   "skipped": 39,
   "sent": 95,
-  "pending": 2
+  "pending": 3
  },
  "posts": [
   {
@@ -1072,7 +1072,7 @@
     "첫 줄이 23자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261020-cb-tue-night",
