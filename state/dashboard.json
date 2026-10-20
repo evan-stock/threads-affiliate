@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T19:00:36.592583+09:00",
- "watch_last_check": "2026-10-20T18:57:01.127591+09:00",
+ "generated_at": "2026-10-20T19:08:05.884505+09:00",
+ "watch_last_check": "2026-10-20T19:07:42.540852+09:00",
  "comments": {
   "skipped": 41,
   "sent": 102,
-  "pending": 2
+  "pending": 3
  },
  "posts": [
   {
@@ -1151,7 +1151,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261020-shari-A",
