@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": "20261020-acv",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-20T22:30",
+      "text": "애사비 한 병 535원\n웅진 애사비 오리지널 500ml 24개가 12,850원\n쿠팡 같은 상품 24개는 17,900원이라 5,050원 차이야\n회사 갈 때 하나씩 들고 가기 딱 좋은 사이즈🧃\n다들 애사비 마셔 봤어? 호불호 갈린다던데 궁금해💕",
+      "images": [
+        "https://shopping.toss.im/live/taca/ai/MjJhNmY0/QUpsanJKbTFZMjM3dm9kMmxFSDRtMk9TbkdscmRwUkphMzRVYkp4L0hiYVU.png"
+      ],
+      "compare": {
+        "title": "웅진 애사비 오리지널 500ml",
+        "unit": "1병",
+        "per": 1,
+        "checked_at": "10/20 20:25",
+        "note": "쿠팡 같은 상품 24개 17,900원보다 5,050원 쌈",
+        "rows": [
+          {"name": "토스쇼핑", "price": 12850, "amount": 24, "amount_label": "500ml×24", "source": "토스쇼핑 앱 가격"}
+        ]
+      },
+      "link": "https://toss.shopping/_m/rpLHs1Mf",
+      "replies": [
+        "토스쇼핑 기타탄산음료 6위, 리뷰 2,309개에 평점 4.9\n웅진식품 공식 판매고 10/24 도착으로 떠",
+        "다들 탄산 뭐 마셔? 제로파야 그냥파야ㅋㅋ\n스하리 해주면 반하리 갈게🫶",
+        "12,850원이랑 쿠팡 가격 둘 다 10/20 밤 8시 반 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
