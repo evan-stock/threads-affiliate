@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-20T15:27:32.716274+09:00",
- "watch_last_check": "2026-10-20T15:27:22.711122+09:00",
+ "generated_at": "2026-10-20T15:37:51.232197+09:00",
+ "watch_last_check": "2026-10-20T15:37:39.490548+09:00",
  "comments": {
   "skipped": 39,
   "sent": 97,
-  "pending": 1
+  "pending": 2
  },
  "posts": [
   {
@@ -1104,7 +1104,7 @@
     "첫 줄이 27자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261020-life-cold",
