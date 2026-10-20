@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T13:00:38.136223+09:00",
+ "generated_at": "2026-10-20T13:00:49.593041+09:00",
  "watch_last_check": "2026-10-20T12:52:14.681230+09:00",
  "comments": {
   "skipped": 39,
@@ -1094,10 +1094,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-20T13:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-20T13:00:49.079756+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Des7Oq4HO1T",
    "title": "오전 내내 엑셀에서 1원 안 맞아서 찾았어🥲",
    "replies": 0,
    "warnings": [
