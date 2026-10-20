@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-20T09:36:36.271921+09:00",
- "watch_last_check": "2026-10-20T09:30:44.807973+09:00",
+ "generated_at": "2026-10-20T09:42:08.337023+09:00",
+ "watch_last_check": "2026-10-20T09:41:40.451045+09:00",
  "comments": {
   "skipped": 39,
   "sent": 95,
@@ -1158,14 +1158,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-20T23:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "화요일 밤 스친 모집💌",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   },
   {
@@ -1173,14 +1173,14 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-20T23:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "자려고 누웠는데",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   },
   {
@@ -1346,14 +1346,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-22T23:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "목요일 밤은 금요일 전야제",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   },
   {
@@ -1361,14 +1361,14 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-22T23:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "목요일 밤.",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   },
   {
@@ -1376,7 +1376,7 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-23T23:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -1385,7 +1385,7 @@
    "warnings": [
     "첫 줄이 27자예요 (20자 이내 권장)"
    ],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   },
   {
@@ -1393,14 +1393,14 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-23T23:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "불금이다.",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   },
   {
@@ -1438,14 +1438,14 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "rejected",
    "scheduled_at": "2026-10-25T23:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "주말 끝나는 거 실화야?",
    "replies": 0,
    "warnings": [],
-   "note": "",
+   "note": "스하리 글 주 2회(수, 토)로 줄임 (10/20 사용자)",
    "comments": 0
   }
  ],
