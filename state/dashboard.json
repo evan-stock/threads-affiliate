@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T23:01:15.520314+09:00",
+ "generated_at": "2026-10-20T23:01:27.524796+09:00",
  "watch_last_check": "2026-10-20T23:00:55.440598+09:00",
  "comments": {
   "skipped": 41,
@@ -1094,10 +1094,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-20T23:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-20T23:01:26.964384+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/Det_940lPY6",
    "title": "후배가 요즘은 다 앱으로 만난다길래",
    "replies": 0,
    "warnings": [],
