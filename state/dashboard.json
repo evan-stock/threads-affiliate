@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:32:02.992579+09:00",
+ "generated_at": "2026-10-20T20:32:58.540854+09:00",
  "watch_last_check": "2026-10-20T20:22:00.218631+09:00",
  "comments": {
   "skipped": 41,
@@ -1233,10 +1233,10 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-20T20:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-20T20:32:57.983290+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/Detu4-KFOF2",
    "title": "코털 정리기 8,600원",
    "replies": 3,
    "warnings": [],
