@@ -1169,6 +1169,21 @@
    "comments": 2
   },
   {
+   "id": "20261020-mold",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-20T22:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "곰팡이 제거제 한 통 3,250원",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
    "id": "20261020-shari-A",
    "account": "A",
    "source": "none",
