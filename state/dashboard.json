@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:24:23.580570+09:00",
+ "generated_at": "2026-10-20T20:24:29.642249+09:00",
  "watch_last_check": "2026-10-20T20:22:00.218631+09:00",
  "comments": {
   "skipped": 41,
@@ -1026,6 +1026,21 @@
    "warnings": [],
    "note": "",
    "comments": 1
+  },
+  {
+   "id": "20261020-acv",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-20T22:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "애사비 한 병 535원",
+   "replies": 3,
+   "warnings": [],
+   "note": "",
+   "comments": 0
   },
   {
    "id": "20261020-cb-ashley",
