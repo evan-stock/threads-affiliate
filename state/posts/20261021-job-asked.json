@@ -1,0 +1,20 @@
+{
+  "id": "20261021-job-asked",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-21T17:00:00+09:00",
+  "main_text": "회계사라고 하면 제일 많이 듣는 말\n1. 그럼 세금 좀 줄여줘\n2. 계산 엄청 빠르겠다\n3. 돈 많이 모았겠네\n사실 계산은 엑셀이 하고 내 통장은 카드값이 지켜😇\n다들 직업 말하면 꼭 듣는 말 있어?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-20T09:15:01.832888+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 700,
+  "updated_at": "2026-10-20T09:15:02.391251+09:00"
+}

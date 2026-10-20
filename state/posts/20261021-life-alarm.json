@@ -1,0 +1,22 @@
+{
+  "id": "20261021-life-alarm",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-21T08:00:00+09:00",
+  "main_text": "알람 5개 맞춰놓고 마지막 거에 일어나는 사람 손🙋‍♀️\n앞에 4개는 그냥 마음의 준비용이야ㅋㅋ\n수요일 아침은 유독 이불 밖이 춥다\n스친들은 알람 몇 개 맞춰?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 40자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-20T09:15:00.203591+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 697,
+  "updated_at": "2026-10-20T09:15:00.742425+09:00"
+}
