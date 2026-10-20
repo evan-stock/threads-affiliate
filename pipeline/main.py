@@ -915,6 +915,25 @@ def no_middot(text: str) -> str:
     return re.sub(r"\s*·\s*", ", ", text or "")
 
 
+META_RE = re.compile(r"\b(Wait|Let me|I must|I should|Final|output|reply|sentences?|rules?|correct)\b", re.I)
+
+
+def has_meta(text: str) -> bool:
+    """AI 속생각(영어 메모)이 섞였는지. 영어 단어 4개 이상 또는 메타 단어가 보이면 오염으로 본다."""
+    t = text or ""
+    return len(re.findall(r"[A-Za-z]{2,}", t)) >= 4 or bool(META_RE.search(t))
+
+
+def clean_draft(text: str) -> str:
+    """오염된 초안이면 깨끗한 마지막 문단만 남긴다(2026-10-20 영어 속생각 게시 사고 대응)."""
+    t = (text or "").strip()
+    if not has_meta(t):
+        return t
+    paras = [x.strip() for x in re.split(r"\n\s*\n", t) if x.strip()]
+    good = [x for x in paras if not has_meta(x) and not x.startswith("(")]
+    return good[-1] if good else ""
+
+
 # 사용자가 승인한 실제 답글 예시(말투 기준). AI 초안은 이 말투를 따라 쓴다.
 REPLY_EXAMPLES = {
     "A": [
@@ -950,7 +969,7 @@ def reply_examples(account: str, n_recent: int = 6) -> list[tuple[str, str]]:
     for it in rec:
         if len(base) >= len(REPLY_EXAMPLES.get(account, [])) + n_recent:
             break
-        if it["reply"] not in seen:
+        if it["reply"] not in seen and not has_meta(it["reply"]):
             base.append((it.get("text", "")[:80], it["reply"]))
             seen.add(it["reply"])
     return base
@@ -977,7 +996,10 @@ def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     j = r.json()
     if r.status_code >= 400:
         raise RuntimeError(f"답글 초안 생성 실패: {str(j)[:300]}")
-    out = no_middot("".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip())
+    raw = "".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip()
+    out = no_middot(clean_draft(raw))
+    if raw and not out:
+        raise RuntimeError("AI 초안에 영어 속생각이 섞여 버렸어요. '다시'를 눌러 주세요")
     if not out:
         raise RuntimeError(f"AI 응답이 비어 있음(stop_reason={j.get('stop_reason')})")
     return out
@@ -1228,6 +1250,8 @@ def send_comment_reply(cid: str, text: str) -> str:
     if not item or item["status"] != "pending":
         return "이미 처리된 댓글이에요"
     text = no_middot(text)
+    if has_meta(text):
+        raise RuntimeError("답글에 영어 속생각 같은 문장이 섞여 있어서 게시를 막았어요. 직접 답장으로 고친 문장을 보내 주세요")
     rid = create_reply(item["account"], cid, text)
     item.update({"status": "sent", "reply": text, "reply_id": rid, "sent_at": now().isoformat()})
     save_comments(store)
