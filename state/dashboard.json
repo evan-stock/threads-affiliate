@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:30:29.188878+09:00",
+ "generated_at": "2026-10-20T20:32:01.795136+09:00",
  "watch_last_check": "2026-10-20T20:22:00.218631+09:00",
  "comments": {
   "skipped": 41,
@@ -1188,10 +1188,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-20T20:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-20T20:32:01.162376+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DetuuxHFJ1S",
    "title": "곰팡이 제거제 한 통 3,250원",
    "replies": 3,
    "warnings": [],
