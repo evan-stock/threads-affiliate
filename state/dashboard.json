@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T19:08:05.884505+09:00",
+ "generated_at": "2026-10-20T19:18:25.570287+09:00",
  "watch_last_check": "2026-10-20T19:07:42.540852+09:00",
  "comments": {
   "skipped": 41,
@@ -1122,6 +1122,21 @@
    ],
    "note": "",
    "comments": 1
+  },
+  {
+   "id": "20261020-life-gomtang",
+   "account": "A",
+   "source": "none",
+   "mode": "talk",
+   "status": "approved",
+   "scheduled_at": "2026-10-20T22:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "오늘 점심은 맑은 서울식 곰탕🍲",
+   "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
   },
   {
    "id": "20261020-life-knit2",
