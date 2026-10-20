@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-21T00:45:30.249941+09:00",
- "watch_last_check": "2026-10-21T00:45:18.241931+09:00",
+ "generated_at": "2026-10-21T00:55:50.899459+09:00",
+ "watch_last_check": "2026-10-21T00:55:37.071982+09:00",
  "comments": {
   "skipped": 41,
   "sent": 105,
-  "pending": 4
+  "pending": 5
  },
  "posts": [
   {
@@ -1102,7 +1102,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261020-job-onewon",
