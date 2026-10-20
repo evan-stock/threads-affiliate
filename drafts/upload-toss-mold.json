@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": "20261020-mold",
+      "account": "A",
+      "source": "toss",
+      "mode": "curation",
+      "scheduled_at": "2026-10-20T22:00",
+      "text": "곰팡이 제거제 한 통 3,250원\n스페시핏 뿌리는 곰팡이 제거제 500ml 2개가 6,500원\n쿠팡에서 같은 상품 2개는 17,800원이라 11,300원 차이야\n날 추워지니까 창틀이랑 욕실 실리콘 까매지는 거 벌써 신경 쓰여🥲\n다들 곰팡이 청소 얼마나 자주 해?💕",
+      "images": [
+        "https://shopping.toss.im/live/temp/2025-12-06/bc7b10ed-6617-4bbb-aa8e-c8f4b9bd9bd9.jpeg"
+      ],
+      "compare": {
+        "title": "스페시핏 뿌리는 곰팡이 제거제",
+        "unit": "100ml",
+        "per": 100,
+        "checked_at": "10/20 20:20",
+        "rows": [
+          {"name": "토스쇼핑", "price": 6500, "amount": 1000, "amount_label": "500ml×2", "source": "토스쇼핑 앱 가격"},
+          {"name": "쿠팡 같은 상품", "price": 17800, "amount": 1000, "amount_label": "500ml×2", "source": "쿠팡 검색"},
+          {"name": "쿠팡 1개", "price": 12540, "amount": 500, "amount_label": "500ml×1", "source": "쿠팡 검색"}
+        ]
+      },
+      "link": "https://toss.shopping/_m/p2mQQsj8",
+      "replies": [
+        "토스쇼핑 곰팡이세정제 3위, 리뷰 3,786개에 평점 4.6\n신세계리빙 판매고 내일 도착으로 떠",
+        "곰팡이 청소 계속 미루는 사람 나만 아니지?ㅋㅋ\n스하리 해주면 반하리 갈게🫶",
+        "6,500원이랑 쿠팡 가격 둘 다 10/20 밤 8시 20분 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~"
+      ]
+    }
+  ]
+}
