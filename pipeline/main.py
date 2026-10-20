@@ -882,7 +882,7 @@ def fetch_comments(post: dict) -> list[dict]:
 REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)'의 주인이다. 30대 초반 여성 회계사, 서울 망원동 원룸 자취 4년 차.
 내 글에 달린 댓글에 답글을 쓴다.
 - 반말, 밝고 부드러운 여성 말투("~했어", "~야", "~인 듯", "~잖아"). 상대가 존댓말이어도 반말로 통일하고 존댓말("~시다", "~세요")을 섞지 않는다.
-- 최대 2문장, 70자 안팎. ㅋㅋ, ㅎㅎ는 가끔.
+- 최대 2문장, 70자 안팎. 웃음은 가끔, 길이는 매번 다르게(ㅋ, ㅋㅋㅋ, ㅋㅋㅋㅋㅋ, ㅎㅎ 등). 늘 ㅋㅋ 두 개만 쓰지 않는다.
 - 이모지는 0~1개(💕🥹🙈🫶 등). 줄마다 붙이지 않는다.
 - 가운뎃점(·)은 절대 쓰지 않는다. 나열은 쉼표나 '랑', '이나'로 자연스럽게.
 - 상대 말에 공감하거나 맞장구치고 마침표나 감탄으로 끝낸다. 질문으로 끝내는 건 3개 중 1개 정도.
@@ -897,7 +897,7 @@ REPLY_SYSTEM = """너는 스레드 계정 '득템연구소(@gotitem.lab)'의 주
 
 REPLY_SYSTEM_B = """너는 스레드 계정 @just.chanbok의 주인 '김찬복'이다. 40대 남자 직장인, 혼자 산다.
 내 글에 달린 댓글에 답글을 쓴다.
-- 스레드 콘셉트라 항상 반말. 상대가 존댓말이어도 반말로 통일하고 존댓말을 섞지 않는다. 친근한 40대 아저씨 말투, 최대 2문장, 70자 안팎. ㅋㅋ는 가끔. 이모지는 0~1개.
+- 스레드 콘셉트라 항상 반말. 상대가 존댓말이어도 반말로 통일하고 존댓말을 섞지 않는다. 친근한 40대 아저씨 말투, 최대 2문장, 70자 안팎. 웃음은 가끔, 길이는 매번 다르게(ㅋ, ㅋㅋㅋ, ㅋㅋㅋㅋ 등). 이모지는 0~1개.
 - 가운뎃점(·)은 절대 쓰지 않는다. 나열은 쉼표나 '랑', '이나'로 자연스럽게.
 - 자조적인 유머가 기본: 노총각(연애 세포, 결혼한 친구들, 혼자 1인분), 나이, 체력, 무릎, 지갑, 아재 개그, 허당 같은 걸로 자기를 살짝 놀리며 웃긴다.
 - 다만 친구 없음, 말 걸 사람 없음, 인생 망함처럼 사회부적응자로 보이는 자조는 하지 않는다.
@@ -975,6 +975,15 @@ def reply_examples(account: str, n_recent: int = 6) -> list[tuple[str, str]]:
     return base
 
 
+def humanize_laugh(text: str) -> str:
+    """'ㅋㅋ'만 반복하면 AI 티가 남(10/21 사용자 지적). 웃음 길이를 사람처럼 섞는다(초안 단계에서만, 승인 후엔 안 바꿈)."""
+    def rep(m):
+        if m.group(0)[0] == "ㅋ":
+            return random.choice(["ㅋ", "ㅋㅋㅋ", "ㅋㅋㅋ", "ㅋㅋㅋㅋ", "ㅋㅋㅋㅋㅋ", "ㅋㅋ", "ㅋㅋㅋㅋㅋㅋ"])
+        return random.choice(["ㅎ", "ㅎㅎ", "ㅎㅎㅎ", "ㅎㅎㅎ", "ㅎㅎㅎㅎ"])
+    return re.sub(r"ㅋ{2,}|ㅎ{2,}", rep, text or "")
+
+
 def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key:
@@ -997,7 +1006,7 @@ def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     if r.status_code >= 400:
         raise RuntimeError(f"답글 초안 생성 실패: {str(j)[:300]}")
     raw = "".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip()
-    out = no_middot(clean_draft(raw))
+    out = humanize_laugh(no_middot(clean_draft(raw)))
     if raw and not out:
         raise RuntimeError("AI 초안에 영어 속생각이 섞여 버렸어요. '다시'를 눌러 주세요")
     if not out:
@@ -1062,7 +1071,7 @@ def shari_template(account: str, cid: str, text: str = "", used: set | None = No
         out = " ".join(parts)
         if out not in used:
             break
-    return out
+    return humanize_laugh(out)
 
 
 def recent_replies(store: dict, account: str, n: int = 20) -> set:
