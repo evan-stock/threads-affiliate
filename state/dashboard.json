@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:22:16.062652+09:00",
+ "generated_at": "2026-10-20T20:24:23.580570+09:00",
  "watch_last_check": "2026-10-20T20:22:00.218631+09:00",
  "comments": {
   "skipped": 41,
@@ -1173,8 +1173,8 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
-   "scheduled_at": "2026-10-20T22:00:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-20T20:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "곰팡이 제거제 한 통 3,250원",
