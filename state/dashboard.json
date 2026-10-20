@@ -1,9 +1,10 @@
 {
- "generated_at": "2026-10-21T05:27:29.015888+09:00",
- "watch_last_check": "2026-10-21T05:27:11.061837+09:00",
+ "generated_at": "2026-10-21T05:38:03.333135+09:00",
+ "watch_last_check": "2026-10-21T05:37:39.157477+09:00",
  "comments": {
   "skipped": 44,
-  "sent": 107
+  "sent": 107,
+  "pending": 1
  },
  "posts": [
   {
@@ -1165,7 +1166,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 4
+   "comments": 5
   },
   {
    "id": "20261020-life-market-night",
