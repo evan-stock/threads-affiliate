@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:18:47.746546+09:00",
+ "generated_at": "2026-10-20T20:19:57.316257+09:00",
  "watch_last_check": "2026-10-20T20:11:28.367700+09:00",
  "comments": {
   "skipped": 41,
@@ -1080,7 +1080,7 @@
    "source": "none",
    "mode": "talk",
    "status": "approved",
-   "scheduled_at": "2026-10-20T21:00:00+09:00",
+   "scheduled_at": "2026-10-20T23:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "후배가 요즘은 다 앱으로 만난다길래",
@@ -1203,8 +1203,8 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "pending",
-   "scheduled_at": "2026-10-21T18:00:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-20T20:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "코털 정리기 8,600원",
