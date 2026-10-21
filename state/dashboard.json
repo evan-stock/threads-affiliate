@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T23:30:55.015107+09:00",
+ "generated_at": "2026-10-21T23:31:06.737528+09:00",
  "watch_last_check": "2026-10-21T23:24:44.231038+09:00",
  "comments": {
   "skipped": 49,
@@ -1374,10 +1374,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-21T23:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-21T23:31:06.233763+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DewoJ17FHrB",
    "title": "수요일 밤이다.",
    "replies": 0,
    "warnings": [],
