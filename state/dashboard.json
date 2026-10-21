@@ -1,9 +1,10 @@
 {
- "generated_at": "2026-10-21T09:57:54.165097+09:00",
- "watch_last_check": "2026-10-21T09:57:33.563052+09:00",
+ "generated_at": "2026-10-21T10:08:21.732297+09:00",
+ "watch_last_check": "2026-10-21T10:08:00.370880+09:00",
  "comments": {
   "skipped": 45,
-  "sent": 108
+  "sent": 108,
+  "pending": 1
  },
  "posts": [
   {
@@ -1270,7 +1271,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261021-cb-wed-night",
