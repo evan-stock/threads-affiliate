@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-21T22:12:18.406642+09:00",
- "watch_last_check": "2026-10-21T22:12:01.849294+09:00",
+ "generated_at": "2026-10-21T22:23:13.458792+09:00",
+ "watch_last_check": "2026-10-21T22:23:00.263451+09:00",
  "comments": {
   "skipped": 47,
   "sent": 117,
-  "pending": 4
+  "pending": 5
  },
  "posts": [
   {
@@ -1301,7 +1301,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 9
+   "comments": 10
   },
   {
    "id": "20261021-life-alarm",
