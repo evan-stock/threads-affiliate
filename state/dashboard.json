@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-21T20:28:43.217901+09:00",
- "watch_last_check": "2026-10-21T20:28:33.670826+09:00",
+ "generated_at": "2026-10-21T20:39:10.216386+09:00",
+ "watch_last_check": "2026-10-21T20:38:53.369182+09:00",
  "comments": {
   "skipped": 46,
   "sent": 108,
-  "pending": 5
+  "pending": 7
  },
  "posts": [
   {
@@ -1301,7 +1301,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 3
+   "comments": 4
   },
   {
    "id": "20261021-life-alarm",
@@ -1352,7 +1352,7 @@
     "첫 줄이 23자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261021-shari-A",
