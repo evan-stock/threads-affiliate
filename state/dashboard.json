@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T11:00:25.419088+09:00",
+ "generated_at": "2026-10-21T11:00:38.671958+09:00",
  "watch_last_check": "2026-10-21T11:00:07.307948+09:00",
  "comments": {
   "skipped": 46,
@@ -1388,10 +1388,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-21T11:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-21T11:00:38.096004+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DevSREgjo4L",
    "title": "자취하는 직장인이면 월세도 연말정산에서 일부 돌려받을 수 있어🏠",
    "replies": 0,
    "warnings": [
