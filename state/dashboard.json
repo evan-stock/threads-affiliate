@@ -1,10 +1,9 @@
 {
- "generated_at": "2026-10-21T10:30:15.631947+09:00",
+ "generated_at": "2026-10-21T10:38:22.603234+09:00",
  "watch_last_check": "2026-10-21T10:28:55.113104+09:00",
  "comments": {
-  "skipped": 45,
-  "sent": 108,
-  "pending": 1
+  "skipped": 46,
+  "sent": 108
  },
  "posts": [
   {
@@ -1032,14 +1031,14 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "expired",
-   "scheduled_at": "2026-10-20T22:30:00+09:00",
+   "status": "approved",
+   "scheduled_at": "2026-10-21T11:30:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "애사비 한 병 535원",
    "replies": 3,
    "warnings": [],
-   "note": "",
+   "note": "10/21 사용자 요청으로 만료 후 재예약",
    "comments": 0
   },
   {
