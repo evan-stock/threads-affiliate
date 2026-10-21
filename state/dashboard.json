@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T21:00:55.407570+09:00",
+ "generated_at": "2026-10-21T21:01:03.198234+09:00",
  "watch_last_check": "2026-10-21T20:59:42.759962+09:00",
  "comments": {
   "skipped": 46,
@@ -1278,10 +1278,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-21T21:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-21T21:01:02.413001+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DewW_S9lZGW",
    "title": "엄마 반찬 택배 도착함.",
    "replies": 0,
    "warnings": [],
