@@ -88,5 +88,6 @@
   "link_daily_max": 2,
   "link_gap_hours": 2,
   "link_quiet_end_hour": 8,
-  "inline_ad_tag": "(광고)"
+  "inline_ad_tag": "(광고)",
+  "link_comment_position": "first"
 }

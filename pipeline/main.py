@@ -369,7 +369,7 @@ def create_reply(account: str, reply_to: str, text: str) -> str:
 
 # ---------------------------------------------------------------- 원고 → 게시물
 def build_texts(d: dict) -> tuple[str, list[str]]:
-    """본문과 댓글 체인. 링크와 정식 대가성 문구는 마지막 댓글에 자동으로 붙는다."""
+    """본문과 댓글 체인. 링크와 정식 대가성 문구는 링크 댓글에 자동으로 붙는다(config link_comment_position: first면 첫 댓글)."""
     src = CONFIG["sources"][d["source"]]
     acct = CONFIG["accounts"][d["account"]]
     if d["source"] == "none":
@@ -396,7 +396,12 @@ def build_texts(d: dict) -> tuple[str, list[str]]:
     else:
         last_intro = (d.get("reply_text") or CONFIG["default_reply_intro"]).strip()
     link = d.get("link") or "{링크}"
-    chain.append(f"{src['disclosure']}\n\n{last_intro}\n{link}")
+    link_reply = f"{src['disclosure']}\n\n{last_intro}\n{link}"
+    if CONFIG.get("link_comment_position", "last") == "first":
+        # 10/21: 링크 댓글을 첫 댓글로, 정보 댓글은 그 뒤로 (replies 마지막 줄은 그대로 링크 앞 한 줄)
+        chain.insert(0, link_reply)
+    else:
+        chain.append(link_reply)
     return main, chain
 
 
