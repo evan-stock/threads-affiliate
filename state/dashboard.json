@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T12:30:00.494956+09:00",
+ "generated_at": "2026-10-21T12:30:14.105278+09:00",
  "watch_last_check": "2026-10-21T12:24:44.223238+09:00",
  "comments": {
   "skipped": 46,
@@ -1247,10 +1247,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-21T12:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-21T12:30:13.623606+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DevchQEjcqO",
    "title": "점심에 혼자 분식집 감.",
    "replies": 0,
    "warnings": [],
