@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T11:21:32.776228+09:00",
+ "generated_at": "2026-10-21T11:30:38.238231+09:00",
  "watch_last_check": "2026-10-21T11:21:13.491453+09:00",
  "comments": {
   "skipped": 46,
@@ -1031,7 +1031,7 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "approved",
+   "status": "publishing",
    "scheduled_at": "2026-10-21T11:30:00+09:00",
    "published_at": "",
    "permalink": "",
