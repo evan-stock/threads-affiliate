@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T09:42:31.204003+09:00",
+ "generated_at": "2026-10-22T09:50:21.716888+09:00",
  "watch_last_check": "2026-10-22T09:42:22.073872+09:00",
  "comments": {
   "skipped": 50,
@@ -1398,6 +1398,21 @@
    "warnings": [
     "첫 줄이 38자예요 (20자 이내 권장)"
    ],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261022-daepae",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-22T12:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "대패 2kg, 100g당 845원꼴",
+   "replies": 3,
+   "warnings": [],
    "note": "",
    "comments": 0
   },
