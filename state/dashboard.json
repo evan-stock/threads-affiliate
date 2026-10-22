@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T08:03:47.118633+09:00",
- "watch_last_check": "2026-10-23T08:03:40.298297+09:00",
+ "generated_at": "2026-10-23T08:14:02.533973+09:00",
+ "watch_last_check": "2026-10-23T08:13:53.702503+09:00",
  "comments": {
   "skipped": 52,
   "sent": 124,
-  "pending": 5
+  "pending": 6
  },
  "posts": [
   {
@@ -1653,7 +1653,7 @@
     "첫 줄이 25자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261023-life-knit3",
