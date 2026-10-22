@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T10:30:11.341308+09:00",
+ "generated_at": "2026-10-22T10:30:21.932614+09:00",
  "watch_last_check": "2026-10-22T10:23:42.127677+09:00",
  "comments": {
   "skipped": 50,
@@ -1500,10 +1500,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-22T10:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-22T10:30:21.440669+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DexzmeglG68",
    "title": "목요일 아침인데 자꾸 금요일인 줄 알았어ㅋㅋㅋㅋ",
    "replies": 0,
    "warnings": [
