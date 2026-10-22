@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T08:45:21.340123+09:00",
+ "generated_at": "2026-10-23T08:49:19.892226+09:00",
  "watch_last_check": "2026-10-23T08:45:03.655455+09:00",
  "comments": {
   "skipped": 52,
@@ -1666,6 +1666,21 @@
    "permalink": "",
    "title": "뜨개질 3탄🧶",
    "replies": 0,
+   "warnings": [],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261023-protein",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-23T18:30:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "토스 프로틴 가격 왜 이래?",
+   "replies": 3,
    "warnings": [],
    "note": "",
    "comments": 0
