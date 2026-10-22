@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T21:30:07.711008+09:00",
+ "generated_at": "2026-10-22T21:30:17.671036+09:00",
  "watch_last_check": "2026-10-22T21:24:50.248913+09:00",
  "comments": {
   "skipped": 52,
@@ -1468,10 +1468,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-22T21:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-22T21:30:17.083487+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dey_ICpEeOc",
    "title": "오늘 드디어 두꺼운 이불 꺼냈어🛏️",
    "replies": 0,
    "warnings": [
