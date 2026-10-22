@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T04:07:36.395548+09:00",
- "watch_last_check": "2026-10-23T04:07:29.278938+09:00",
+ "generated_at": "2026-10-23T04:17:56.185437+09:00",
+ "watch_last_check": "2026-10-23T04:17:42.691213+09:00",
  "comments": {
   "skipped": 52,
   "sent": 124,
-  "pending": 3
+  "pending": 4
  },
  "posts": [
   {
@@ -1429,7 +1429,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261022-daepae",
