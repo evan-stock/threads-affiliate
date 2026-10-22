@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T04:58:52.455784+09:00",
- "watch_last_check": "2026-10-23T04:58:44.280853+09:00",
+ "generated_at": "2026-10-23T05:09:11.943767+09:00",
+ "watch_last_check": "2026-10-23T05:08:58.770108+09:00",
  "comments": {
   "skipped": 52,
   "sent": 124,
-  "pending": 4
+  "pending": 5
  },
  "posts": [
   {
@@ -1444,7 +1444,7 @@
    "replies": 3,
    "warnings": [],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261022-job-stock",
