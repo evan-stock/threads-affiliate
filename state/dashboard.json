@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T08:00:24.229103+09:00",
+ "generated_at": "2026-10-23T08:00:36.713916+09:00",
  "watch_last_check": "2026-10-23T07:53:00.621428+09:00",
  "comments": {
   "skipped": 52,
@@ -1643,10 +1643,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-23T08:00:36.185300+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De0HQVmGvT-",
    "title": "금요일이라 오늘은 니트에 청바지로 출근🧶",
    "replies": 0,
    "warnings": [
