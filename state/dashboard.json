@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T21:00:16.246688+09:00",
+ "generated_at": "2026-10-22T21:00:32.377689+09:00",
  "watch_last_check": "2026-10-22T20:52:58.891316+09:00",
  "comments": {
   "skipped": 52,
@@ -1421,10 +1421,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-22T21:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-22T21:00:31.802696+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/Dey7tbxIO8o",
    "title": "퇴근하고 헬스장 등록하러 갔다.",
    "replies": 0,
    "warnings": [],
