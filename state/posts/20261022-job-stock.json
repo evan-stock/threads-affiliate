@@ -1,0 +1,22 @@
+{
+  "id": "20261022-job-stock",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-22T15:30:00+09:00",
+  "main_text": "오늘 오후는 재고실사 나와 있어📦\n창고에서 박스 세다 보면 머릿속에 숫자만 둥둥 떠다녀\n그래도 장부랑 딱 맞는 순간은 진짜 짜릿해ㅋㅋ\n다들 일하다가 제일 뿌듯한 순간은 언제야?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 21자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-22T09:55:58.953285+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 821,
+  "updated_at": "2026-10-22T09:55:59.584542+09:00"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "20261023-job-receipt",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-23T11:00:00+09:00",
+  "main_text": "증빙 부탁드린다고 메일 보낸 지 3일째📩\n읽음 표시는 떴는데 답장이 없어ㅋㅋ\n'혹시 확인하셨을까요?' 쓸까 말까 30분째 고민 중\n다들 일하면서 답장 기다리다 속 터진 적 있지?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 25자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-22T09:56:01.593148+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 825,
+  "updated_at": "2026-10-22T09:56:02.286108+09:00"
+}
