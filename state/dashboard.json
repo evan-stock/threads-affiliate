@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T18:30:19.965499+09:00",
+ "generated_at": "2026-10-22T18:30:31.973293+09:00",
  "watch_last_check": "2026-10-22T18:27:10.211676+09:00",
  "comments": {
   "skipped": 51,
@@ -1485,10 +1485,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-22T18:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-22T18:30:31.375259+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DeyqjMQloO9",
    "title": "퇴근길 저녁 메뉴 고민 중🍚",
    "replies": 0,
    "warnings": [],
