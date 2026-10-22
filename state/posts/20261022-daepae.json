@@ -10,7 +10,11 @@
     "토스쇼핑 생고기 10위, 리뷰 1,056개에 평점 4.5\n2kg 1개 구성이고 오늘출발 상품이야",
     "후기 보니까 제육이나 불백용으로 쓴다는 사람도 있더라ㅋㅋㅋ\n스하리 해주면 반하리 갈게🫶"
   ],
-  "reply_ids": [],
+  "reply_ids": [
+    "17963573958212159",
+    "17908963842580437",
+    "18146651653569260"
+  ],
   "link": "https://toss.shopping/_m/t0UnmR8g",
   "images": [
     "media/20261022-daepae/compare.jpg",
@@ -19,10 +23,13 @@
   ],
   "warnings": [],
   "experience_note": "",
-  "status": "publishing",
+  "status": "published",
   "approved": true,
   "created_at": "2026-10-22T09:59:29.422292+09:00",
   "reply_attempts": 0,
   "preview_msg_id": 858,
-  "updated_at": "2026-10-22T19:13:37.440633+09:00"
+  "updated_at": "2026-10-22T19:14:53.847003+09:00",
+  "main_id": "17911040400304369",
+  "permalink": "https://www.threads.com/@gotitem.lab/post/Deyvh7BoEsb",
+  "published_at": "2026-10-22T19:14:53.846980+09:00"
 }
