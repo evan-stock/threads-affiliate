@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T12:30:25.775641+09:00",
+ "generated_at": "2026-10-22T12:30:37.344864+09:00",
  "watch_last_check": "2026-10-22T12:27:11.846391+09:00",
  "comments": {
   "skipped": 50,
@@ -1406,10 +1406,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-22T12:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-22T12:30:36.873286+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/DeyBXKijcmD",
    "title": "점심에 편의점 도시락 고르는데",
    "replies": 0,
    "warnings": [],
