@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-22T19:14:55.734262+09:00",
- "watch_last_check": "2026-10-22T19:09:18.935424+09:00",
+ "generated_at": "2026-10-22T19:20:15.109322+09:00",
+ "watch_last_check": "2026-10-22T19:20:00.859954+09:00",
  "comments": {
   "skipped": 52,
   "sent": 121,
-  "pending": 3
+  "pending": 4
  },
  "posts": [
   {
@@ -1493,7 +1493,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261022-life-thu",
