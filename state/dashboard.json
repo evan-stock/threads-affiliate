@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T11:00:21.168246+09:00",
+ "generated_at": "2026-10-23T11:00:33.304439+09:00",
  "watch_last_check": "2026-10-23T11:00:08.533364+09:00",
  "comments": {
   "skipped": 53,
@@ -1596,10 +1596,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T11:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-23T11:00:32.646412+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De0b2UPmpx6",
    "title": "증빙 부탁드린다고 메일 보낸 지 3일째📩",
    "replies": 0,
    "warnings": [
