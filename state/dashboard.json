@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T20:50:33.865771+09:00",
- "watch_last_check": "2026-10-23T20:50:26.315003+09:00",
+ "generated_at": "2026-10-23T21:00:55.462975+09:00",
+ "watch_last_check": "2026-10-23T21:00:42.966560+09:00",
  "comments": {
   "skipped": 54,
   "sent": 137,
-  "pending": 11
+  "pending": 13
  },
  "posts": [
   {
@@ -1579,7 +1579,7 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "publishing",
    "scheduled_at": "2026-10-23T21:00:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -1636,7 +1636,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261023-life-friday",
@@ -1668,7 +1668,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 10
+   "comments": 11
   },
   {
    "id": "20261023-protein",
