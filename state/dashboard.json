@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T22:44:36.115471+09:00",
- "watch_last_check": "2026-10-23T22:44:26.797824+09:00",
+ "generated_at": "2026-10-23T22:54:59.517027+09:00",
+ "watch_last_check": "2026-10-23T22:54:44.270303+09:00",
  "comments": {
   "skipped": 54,
   "sent": 143,
-  "pending": 13
+  "pending": 15
  },
  "posts": [
   {
@@ -1668,7 +1668,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 14
+   "comments": 16
   },
   {
    "id": "20261023-protein",
