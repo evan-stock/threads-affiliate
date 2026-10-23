@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T12:30:24.774087+09:00",
+ "generated_at": "2026-10-23T12:30:34.285239+09:00",
  "watch_last_check": "2026-10-23T12:23:03.016419+09:00",
  "comments": {
   "skipped": 53,
@@ -1547,10 +1547,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T12:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-23T12:30:33.651628+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/De0mJ-wG19i",
    "title": "점심에 후배들이 다음 주 회식 메뉴 정하자고 함.",
    "replies": 0,
    "warnings": [
