@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T17:00:42.800209+09:00",
+ "generated_at": "2026-10-23T17:00:54.632091+09:00",
  "watch_last_check": "2026-10-23T16:52:30.337718+09:00",
  "comments": {
   "skipped": 54,
@@ -1613,10 +1613,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T17:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-23T17:00:54.090622+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De1FFrTHN0V",
    "title": "불금인데 약속 하나도 없음ㅋㅋㅋㅋ",
    "replies": 0,
    "warnings": [],
