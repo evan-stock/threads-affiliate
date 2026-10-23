@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T18:30:20.148102+09:00",
+ "generated_at": "2026-10-23T18:31:32.412324+09:00",
  "watch_last_check": "2026-10-23T18:25:15.631376+09:00",
  "comments": {
   "skipped": 54,
@@ -1676,10 +1676,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T18:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-23T18:31:31.860775+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De1PXdbHNjY",
    "title": "토스 프로틴 가격 왜 이래?",
    "replies": 3,
    "warnings": [],
