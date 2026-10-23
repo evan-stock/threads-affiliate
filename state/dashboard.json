@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T20:00:54.729650+09:00",
+ "generated_at": "2026-10-23T20:01:07.538339+09:00",
  "watch_last_check": "2026-10-23T19:58:38.064237+09:00",
  "comments": {
   "skipped": 54,
@@ -1628,10 +1628,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T20:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-23T20:01:06.966179+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De1ZthuoHo1",
    "title": "내일은 대청소하는 날로 정했어🧽",
    "replies": 0,
    "warnings": [],
