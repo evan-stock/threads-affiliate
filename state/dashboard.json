@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-23T18:04:45.910596+09:00",
- "watch_last_check": "2026-10-23T18:04:35.789237+09:00",
+ "generated_at": "2026-10-23T18:15:06.617574+09:00",
+ "watch_last_check": "2026-10-23T18:14:53.784443+09:00",
  "comments": {
   "skipped": 54,
   "sent": 133,
-  "pending": 12
+  "pending": 13
  },
  "posts": [
   {
@@ -1621,7 +1621,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261023-life-clean",
