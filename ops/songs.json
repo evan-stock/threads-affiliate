@@ -1,0 +1,200 @@
+{
+ "20261018-marseille": {
+  "none": "원본 소리를 쓰는 릴스(예약 자동 게시)라 노래를 넣지 않습니다."
+ },
+ "20261018-limoges": {
+  "none": "원본 소리를 쓰는 릴스(예약 자동 게시)라 노래를 넣지 않습니다."
+ },
+ "20261018-blinker": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Life Is a Highway",
+    "artist": "Rascal Flatts",
+    "why": "운전·도로 소재와 바로 연결되는 밝은 곡",
+    "part": "도입부 기타~첫 후렴 전",
+    "pick": true
+   },
+   {
+    "title": "Lovely Day",
+    "artist": "Bill Withers",
+    "why": "가볍고 편안해 저장형 꿀팁과 잘 맞음",
+    "part": "도입부 베이스"
+   },
+   {
+    "title": "Walking On Sunshine",
+    "artist": "Katrina & The Waves",
+    "why": "경쾌하게 넘기기 좋은 템포",
+    "part": "도입부 기타 리프"
+   }
+  ]
+ },
+ "20261018-grokamazon": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "The Pink Panther Theme",
+    "artist": "Henry Mancini",
+    "why": "몰래 쇼핑하다 걸린 AI라는 엉뚱한 반전에 어울림",
+    "part": "도입부 색소폰",
+    "pick": true
+   },
+   {
+    "title": "In the Hall of the Mountain King",
+    "artist": "Edvard Grieg",
+    "why": "점점 커지는 머스크 대 아마존 구도",
+    "part": "빨라지기 시작하는 중반부"
+   },
+   {
+    "title": "Billionaire",
+    "artist": "Travie McCoy ft. Bruno Mars",
+    "why": "억만장자 소재와 맞는 가벼운 분위기",
+    "part": "도입부 기타"
+   }
+  ]
+ },
+ "20261018-braincomputer": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Oxygène (Part 4)",
+    "artist": "Jean-Michel Jarre",
+    "why": "신스 리프가 '미래 기술' 느낌을 줌",
+    "part": "메인 신스 리프",
+    "pick": true
+   },
+   {
+    "title": "Experience",
+    "artist": "Ludovico Einaudi",
+    "why": "신비롭고 경이로운 분위기의 연주곡",
+    "part": "도입부 피아노"
+   },
+   {
+    "title": "Strobe",
+    "artist": "deadmau5",
+    "why": "천천히 쌓이는 빌드업이 과학 반전과 맞음",
+    "part": "빌드업 구간"
+   }
+  ]
+ },
+ "20261017-worstweek": {
+  "origin": "record",
+  "songs": [
+   {
+    "title": "Lux Æterna",
+    "artist": "Clint Mansell",
+    "why": "긴장감",
+    "part": "",
+    "pick": true
+   },
+   {
+    "title": "Time",
+    "artist": "Hans Zimmer",
+    "why": "",
+    "part": ""
+   },
+   {
+    "title": "In the Air Tonight",
+    "artist": "Phil Collins",
+    "why": "",
+    "part": ""
+   }
+  ]
+ },
+ "20261018-francetotal": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Mars, the Bringer of War",
+    "artist": "Gustav Holst",
+    "why": "불타고 무너지는 현장의 긴박감을 키우는 행진 리듬",
+    "part": "도입부 현악 리듬",
+    "pick": true
+   },
+   {
+    "title": "Why So Serious?",
+    "artist": "Hans Zimmer & James Newton Howard",
+    "why": "혼돈과 경각심을 주는 날 선 긴장감",
+    "part": "점점 고조되는 도입부"
+   },
+   {
+    "title": "O Fortuna",
+    "artist": "Carl Orff",
+    "why": "하루 만에 벌어진 대형 사태의 웅장한 무게감",
+    "part": "첫 합창 터지는 도입부"
+   }
+  ]
+ },
+ "20261020-refund": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Gymnopédie No.1",
+    "artist": "Erik Satie",
+    "why": "꼭 챙겨야 할 환급 정보를 차분하게 전하는 피아노곡",
+    "part": "도입부 피아노",
+    "pick": true
+   },
+   {
+    "title": "Take Five",
+    "artist": "Dave Brubeck",
+    "why": "무겁지 않게 정보를 넘기기 좋은 연주곡",
+    "part": "도입부 피아노·드럼"
+   },
+   {
+    "title": "Lovely Day",
+    "artist": "Bill Withers",
+    "why": "돌려받는 돈이라는 반가운 소식에 맞는 밝은 곡",
+    "part": "도입부 베이스"
+   }
+  ]
+ },
+ "20261021-trumpmeta": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Time",
+    "artist": "Hans Zimmer",
+    "why": "큰돈이 오간 거래 내역을 무게감 있게 받쳐 주는 연주곡",
+    "part": "도입부 피아노",
+    "pick": true
+   },
+   {
+    "title": "Take Five",
+    "artist": "Dave Brubeck",
+    "why": "숫자 정보를 차분하게 넘기기 좋은 재즈 연주곡",
+    "part": "도입부 피아노·드럼"
+   },
+   {
+    "title": "Lux Æterna",
+    "artist": "Clint Mansell",
+    "why": "'대통령 계좌'라는 긴장감을 살리는 현악곡",
+    "part": "도입부 현악"
+   }
+  ]
+ },
+ "20261024-babavanga": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "The X-Files Theme",
+    "artist": "Mark Snow",
+    "why": "예언·외계 접촉 소재와 바로 연결되는 으스스한 미스터리 곡",
+    "part": "도입부 휘파람 신스",
+    "pick": true
+   },
+   {
+    "title": "Lux Æterna",
+    "artist": "Clint Mansell",
+    "why": "세계대전·권력 상실 예언의 긴장감을 키우는 현악곡",
+    "part": "도입부 현악"
+   },
+   {
+    "title": "Time",
+    "artist": "Hans Zimmer",
+    "why": "'두 달 남았다'는 카운트다운 느낌의 묵직한 연주곡",
+    "part": "도입부 피아노"
+   }
+  ]
+ }
+}

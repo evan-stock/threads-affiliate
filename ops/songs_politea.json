@@ -1,0 +1,137 @@
+{
+ "20261018-chustraw": {
+  "none": "국감·뉴스 원본 소리를 쓰는 릴스라 노래를 넣지 않습니다."
+ },
+ "20261018-grokroast": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Monkeys Spinning Monkeys",
+    "artist": "Kevin MacLeod",
+    "why": "AI한테 역으로 혼나는 황당한 반전에 맞는 엉뚱한 곡",
+    "part": "도입부",
+    "pick": true
+   },
+   {
+    "title": "The Pink Panther Theme",
+    "artist": "Henry Mancini",
+    "why": "슬쩍 들킨 느낌의 코믹한 분위기",
+    "part": "도입부 색소폰"
+   },
+   {
+    "title": "Sneaky Snitch",
+    "artist": "Kevin MacLeod",
+    "why": "가볍게 비꼬는 짤 톤",
+    "part": "도입부 피치카토"
+   }
+  ]
+ },
+ "20261018-equalpay": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Take Five",
+    "artist": "Dave Brubeck",
+    "why": "차분하게 정책을 정리하는 해설형 카드와 어울리는 연주곡",
+    "part": "도입부 피아노·드럼",
+    "pick": true
+   },
+   {
+    "title": "Money",
+    "artist": "Pink Floyd",
+    "why": "월급·임금 주제와 바로 연결",
+    "part": "도입부 금전등록기 소리"
+   },
+   {
+    "title": "Lovely Day",
+    "artist": "Bill Withers",
+    "why": "무겁지 않게 넘기기 좋은 밝은 곡",
+    "part": "도입부 베이스"
+   }
+  ]
+ },
+ "20261019-jujeok": {
+  "none": "뉴스·원본 소리를 쓰는 릴스라 노래를 넣지 않습니다."
+ },
+ "20261020-jj1644": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Lux Æterna",
+    "artist": "Clint Mansell",
+    "why": "발언 논란과 반발의 긴장감을 살리는 현악 연주곡",
+    "part": "도입부 현악",
+    "pick": true
+   },
+   {
+    "title": "Time",
+    "artist": "Hans Zimmer",
+    "why": "무겁게 쌓이는 분위기로 경각심 전달",
+    "part": "도입부 피아노"
+   },
+   {
+    "title": "Requiem for a Dream (Summer Overture)",
+    "artist": "Clint Mansell",
+    "why": "점점 고조되는 날 선 긴장감",
+    "part": "첫 현악 반복 구간"
+   }
+  ]
+ },
+ "20261020-tohuje": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Gymnopédie No.1",
+    "artist": "Erik Satie",
+    "why": "수치를 차분히 짚는 정책 해설형 카드에 맞는 잔잔한 피아노",
+    "part": "도입부 피아노",
+    "pick": true
+   },
+   {
+    "title": "Take Five",
+    "artist": "Dave Brubeck",
+    "why": "무겁지 않게 정리해 넘기기 좋은 연주곡",
+    "part": "도입부 피아노·드럼"
+   },
+   {
+    "title": "Experience",
+    "artist": "Ludovico Einaudi",
+    "why": "규제의 역설을 서서히 드러내는 흐름과 맞음",
+    "part": "도입부 피아노"
+   }
+  ]
+ },
+ "20261020-jj1691": {
+  "none": "뉴스·원본 소리를 쓰는 릴스라 노래를 넣지 않습니다."
+ },
+ "20261020-ihj518": {
+  "none": "뉴스·원본 소리를 쓰는 릴스라 노래를 넣지 않습니다."
+ },
+ "20261021-codmw4": {
+  "none": "뉴스·원본 소리를 쓰는 릴스라 노래를 넣지 않습니다."
+ },
+ "20261024-jj2087": {
+  "origin": "new",
+  "songs": [
+   {
+    "title": "Time",
+    "artist": "Hans Zimmer",
+    "why": "판결 뒤 정치권 공방의 무게감을 받쳐 주는 연주곡",
+    "part": "도입부 피아노",
+    "pick": true
+   },
+   {
+    "title": "Lux Æterna",
+    "artist": "Clint Mansell",
+    "why": "탄핵 요구로 커지는 긴장감을 살리는 현악곡",
+    "part": "도입부 현악"
+   },
+   {
+    "title": "Take Five",
+    "artist": "Dave Brubeck",
+    "why": "발언과 반응을 차분하게 정리해 넘기기 좋은 연주곡",
+    "part": "도입부 피아노·드럼"
+   }
+  ]
+ }
+}
