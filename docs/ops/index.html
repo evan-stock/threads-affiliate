@@ -1,0 +1,866 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>운영판</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0d0c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="운영판">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: channel switch on top (오늘의쓸모 yellow / 폴리티커 purple), then one column feed — sticky "next post" bar, then posts grouped by day; tap a post to open slides, slide text and caption. Brand: black + white bold + yellow #FFD84D (same as the cards). */
+:root{
+  --bg:#0d0d0c; --panel:#171715; --panel2:#201f1c; --line:#2d2c28;
+  --fg:#f4f2ea; --muted:#9a978c; --accent:#FFD84D; --accent-ink:#1a1600;
+  --ok:#5fd28a; --warn:#ffb547; --bad:#ff6b5e; --info:#7cb8ff;
+  --f-body:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+body[data-ch="politea"]{--accent:#9F7BFF;--accent-ink:#140a33}
+*{box-sizing:border-box}
+.plat{display:flex;margin-top:14px;border-bottom:1px solid var(--line)}
+.pl{flex:1;appearance:none;border:0;background:none;color:var(--muted);font:inherit;font-weight:700;font-size:14.5px;padding:10px 2px 11px;flex-direction:column;align-items:center;gap:0;line-height:1.3;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;display:flex;gap:7px;justify-content:center;align-items:baseline}
+.pl small{font-family:var(--f-num);font-weight:500;font-size:11px;color:var(--muted)}
+.pl small.hot{color:var(--warn)}
+.pl[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--fg)}
+.pl:focus-visible{outline:2px solid var(--fg);outline-offset:-2px}
+.chan[hidden]{display:none}
+.chan{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px;padding:4px;margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.ch{appearance:none;border:0;background:none;color:var(--muted);font:inherit;font-weight:700;font-size:15px;padding:10px 8px;border-radius:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1.25}
+.ch small{font-family:var(--f-num);font-weight:500;font-size:11px;letter-spacing:.08em}
+.ch[aria-selected="true"]{color:var(--ch-ink);background:var(--ch-bg)}
+.ch:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.ch .dotn{font-family:var(--f-num);font-size:11px;font-weight:600;opacity:.8}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto}
+header{padding-block:22px 6px;display:flex;flex-direction:column;gap:4px}
+.brand{font-family:var(--f-num);font-size:12px;letter-spacing:.14em;color:var(--muted)}
+.brand b{color:var(--accent);font-weight:600}
+h1{font-size:24px;line-height:1.25;margin:0;text-wrap:balance;font-weight:700}
+.asof{font-size:12.5px;color:var(--muted)}
+
+.next{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px}
+.next-in{background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:14px 16px;display:flex;gap:14px;align-items:center}
+.next-in img{width:54px;height:68px;object-fit:cover;border-radius:6px;flex:none;background:#0003}
+.next-txt{min-width:0;flex:1}
+.next-k{font-size:12px;font-weight:700;letter-spacing:.06em;opacity:.75}
+.next-t{font-weight:700;font-size:16px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.next-when{font-family:var(--f-num);font-weight:600;font-size:20px;text-align:right;flex:none;font-variant-numeric:tabular-nums;line-height:1.15}
+.next-when small{display:block;font-size:12px;font-family:var(--f-body);font-weight:500;opacity:.75}
+
+.counts{display:flex;flex-wrap:wrap;gap:8px;padding-block:6px 4px}
+.tab{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:13.5px;
+  padding:7px 13px;border-radius:999px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.tab span{font-family:var(--f-num);color:var(--muted);font-size:12.5px}
+.tab[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab[aria-pressed="true"] span{color:var(--bg);opacity:.7}
+.tab:focus-visible,.post-head:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.day{margin-top:22px}
+.day h2{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;margin:0 0 10px;display:flex;gap:8px;align-items:baseline}
+.day h2 em{font-style:normal;color:var(--accent)}
+.list{display:flex;flex-direction:column;gap:10px}
+
+.post{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.post.dim{opacity:.55}
+.post-head{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:12px;cursor:pointer;width:100%;text-align:left;background:none;border:0;color:inherit;font:inherit}
+.cov{width:84px;aspect-ratio:4/5;border-radius:8px;object-fit:cover;background:var(--panel2);display:block}
+.cov.reel{aspect-ratio:9/16;width:68px}
+.meta{min-width:0;display:flex;flex-direction:column;gap:5px}
+.row1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.time{font-family:var(--f-num);font-weight:600;font-size:19px;font-variant-numeric:tabular-nums}
+.chip{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid currentColor;line-height:1.5;white-space:nowrap}
+.s-approved{color:var(--info)} .s-published{color:var(--ok)} .s-held{color:var(--warn)} .s-rejected{color:var(--muted)}
+.s-draft{color:var(--accent)} .s-late{color:var(--bad)} .s-other{color:var(--muted)}
+.fmt{font-size:11.5px;color:var(--muted);font-weight:500}
+.ctitle{font-weight:700;font-size:15.5px;line-height:1.38;white-space:pre-line;word-break:keep-all}
+.ctitle q{quotes:none;color:var(--accent)}
+.topic{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.note{font-size:12.5px;color:var(--warn)}
+
+.detail{border-top:1px solid var(--line);padding:14px 12px 16px;display:flex;flex-direction:column;gap:16px}
+.detail h3{margin:0 0 8px;font-size:12px;color:var(--muted);letter-spacing:.08em;font-weight:700}
+.strip{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.strip figure{margin:0;flex:none;width:118px;scroll-snap-align:start;display:flex;flex-direction:column;gap:4px}
+.strip img{width:118px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:var(--panel2)}
+.strip figcaption{font-family:var(--f-num);font-size:11px;color:var(--muted)}
+.reelcov{width:220px;background:#000;max-width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px}
+ol.slides{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;counter-reset:s}
+ol.slides li{display:grid;grid-template-columns:28px 1fr;gap:8px;counter-increment:s}
+ol.slides li::before{content:counter(s);font-family:var(--f-num);font-size:12px;color:var(--accent);padding-top:2px}
+.sl-t{font-weight:700;white-space:pre-line;word-break:keep-all}
+.sl-sub{font-size:13px;color:var(--accent)}
+.sl-b{font-size:13.5px;color:#cfccc1;white-space:pre-line}
+.vid{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-left:6px;font-weight:500}
+.cap{background:var(--panel2);border-radius:10px;padding:12px 14px;font-size:13.5px;white-space:pre-wrap;word-break:break-word;max-height:320px;overflow:auto;color:#dedbd0}
+.caphead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.caphead h3{margin:0}
+.copy{appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--fg);font:inherit;font-size:12.5px;padding:5px 11px;border-radius:8px;cursor:pointer}
+.links{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.links a{color:var(--accent)}
+.song-line{font-size:12.5px;color:var(--accent);display:flex;gap:6px;align-items:baseline;min-width:0}
+.song-line span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.song-line.none{color:var(--muted)}
+.songs{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.songs li{background:var(--panel2);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:start}
+.songs li.pick{outline:1px solid var(--accent)}
+.sg-t{font-weight:700;font-size:14px;min-width:0}
+.sg-t small{font-weight:500;color:var(--muted);font-size:12.5px}
+.sg-pick{font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+.sg-d{grid-column:1;font-size:12.5px;color:#cfccc1}
+.sg-c{grid-row:1/3;grid-column:2;align-self:center}
+.sg-note{font-size:12px;color:var(--muted)}
+.refresh{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.refresh:disabled{opacity:.6;cursor:default}
+.refresh:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.asof-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rmsg{font-size:12.5px;color:var(--muted)}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+.srcs{margin:0;padding:0 0 0 18px;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.srcs a{color:var(--accent);word-break:break-all}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:12px;color:#cfccc1;background:var(--panel2);border-radius:999px;padding:2px 9px}
+.post-head.nocov{grid-template-columns:1fr}
+.replies{margin:0;padding:0 0 0 18px;font-size:13.5px;color:#dedbd0;display:flex;flex-direction:column;gap:6px;white-space:pre-wrap}
+.ov-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.ov-stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center}
+.ov-stat b{display:block;font-family:var(--f-num);font-size:26px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.ov-stat span{font-size:12.5px;color:var(--muted)}
+.ov-stat.warn b{color:var(--warn)} .ov-stat.bad b{color:var(--bad)} .ov-stat.ok b{color:var(--ok)}
+.ov-h{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;margin:26px 0 10px;display:flex;gap:8px;align-items:baseline}
+.ov-h span{font-family:var(--f-num);font-weight:500}
+.todo{display:flex;flex-direction:column;gap:8px}
+.ti{width:100%;text-align:left;color:inherit;cursor:pointer;position:relative;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--k);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:3px}
+.ti:focus-visible,.tile:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.ti .r1{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px}
+.ti .kind{font-weight:700;color:var(--k)}
+.ti .chn{color:var(--muted)}
+.ti .ago{margin-left:auto;font-family:var(--f-num);color:var(--muted)}
+.ti .tt{font-weight:700;font-size:15px;line-height:1.38;word-break:keep-all}
+.ti .mm{font-size:13px;color:#cfccc1}
+.ti .ack{align-self:flex-start;margin-top:6px;appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--fg);font:inherit;font-size:12.5px;padding:5px 11px;border-radius:8px;cursor:pointer}
+.ti .ack:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.ackline{font-size:12.5px;color:var(--muted);margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ackline button{appearance:none;border:0;background:none;color:var(--fg);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0}
+.k-fail{--k:var(--bad)} .k-late{--k:var(--bad)} .k-approve{--k:var(--warn)} .k-held{--k:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tile{appearance:none;text-align:left;font:inherit;color:inherit;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tile .tn{font-weight:700;font-size:14px;display:flex;gap:6px;align-items:center}
+.tile .tn i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.tile .tc{display:flex;gap:10px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.tile .tc b{font-family:var(--f-num);font-weight:600;color:var(--fg)}
+.tile .tc b.w{color:var(--warn)} .tile .tc b.x{color:var(--bad)}
+.tile .tx{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rows{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.rw{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:baseline;padding:9px 12px;border-top:1px solid var(--line);font-size:13.5px;color:inherit;text-decoration:none}
+.rw:first-child{border-top:0}
+.rw .t{font-family:var(--f-num);font-weight:600;font-variant-numeric:tabular-nums}
+.rw .c{font-size:12px;color:var(--muted);white-space:nowrap}
+.rw .x{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+a.rw .x{color:var(--fg);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.none{color:var(--muted);font-size:13.5px;padding:4px 2px}
+.recsel{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.rec{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-top:12px;overflow:hidden}
+.rec-h{appearance:none;width:100%;text-align:left;background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.rec-h:focus-visible{outline:2px solid var(--fg);outline-offset:-2px}
+.rec-h .r1{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
+.rec-h .r1 b{color:var(--fg);font-size:14.5px}
+.rec-h .r1 i{font-style:normal;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.rec-top{font-size:13.5px;color:#dedbd0;white-space:pre-wrap;line-height:1.55}
+.md{border-top:1px solid var(--line);padding:6px 14px 16px;font-size:14px;line-height:1.65;color:#e6e3d8;word-break:break-word}
+.md h1,.md h2,.md h3,.md h4{font-size:15px;margin:18px 0 6px;color:var(--fg);line-height:1.4}
+.md h1,.md h2{font-size:16px}
+.md p{margin:6px 0}
+.md ul,.md ol{margin:6px 0;padding-left:20px}
+.md li{margin:3px 0}
+.md a{color:var(--accent);word-break:break-all}
+.md code{font-family:var(--f-num);font-size:12.5px;background:var(--panel2);padding:1px 4px;border-radius:4px}
+.md hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.md blockquote{margin:6px 0;padding-left:10px;border-left:3px solid var(--line);color:var(--muted)}
+.md table{border-collapse:collapse;font-size:12.5px;display:block;overflow-x:auto}
+.md td,.md th{border:1px solid var(--line);padding:4px 6px;text-align:left}
+.recnote{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:3px;cursor:pointer;appearance:none;width:100%;text-align:left;font:inherit;color:inherit}
+.recnote small{color:var(--muted);font-size:12px}
+footer{margin-top:36px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html,body{margin:0}
+body{padding-top:env(safe-area-inset-top,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+.apv{display:flex;gap:8px;padding:0 12px 12px}
+.ti .apv{padding:6px 0 0}
+.apv button{appearance:none;flex:1;border:1px solid var(--line);background:var(--panel2);color:var(--fg);font:inherit;font-size:14px;font-weight:700;padding:9px 10px;border-radius:10px;cursor:pointer}
+.apv button[data-act="ok"]{border-color:#2f6b45;background:#173322}
+.apv button[data-act="no"]{color:#e6b3ad}
+.apv button.armed{outline:2px solid var(--warn);outline-offset:1px}
+.apv button:disabled{opacity:.6;cursor:default}
+.apv button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.apv-msg{font-size:12.5px;color:var(--muted);padding:0 12px 10px}
+.ti .apv-msg{padding:4px 0 0}
+.gate{max-width:520px;margin:40px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.gate h2{margin:0;font-size:19px}
+.gate ol{margin:0;padding-left:20px;font-size:14px;line-height:1.7;color:#dedbd0}
+.gate a{color:var(--accent)}
+.gate input{font:inherit;font-size:15px;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--fg);width:100%}
+.gate button{appearance:none;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;font-size:15px;padding:11px;border-radius:10px;cursor:pointer}
+.gate .err{color:var(--bad);font-size:13px}
+.gate small{color:var(--muted);font-size:12.5px;line-height:1.6}
+.linkbtn{appearance:none;border:0;background:none;color:var(--muted);font:inherit;font-size:12.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="plat" id="plat" role="tablist" aria-label="플랫폼">
+    <button class="pl" id="pl-home" data-pl="home" role="tab" aria-selected="true">한눈에<small></small></button>
+    <button class="pl" id="pl-insta" data-pl="insta" role="tab" aria-selected="false">인스타<small></small></button>
+    <button class="pl" id="pl-yt" data-pl="yt" role="tab" aria-selected="false">유튜브<small></small></button>
+    <button class="pl" id="pl-th" data-pl="th" role="tab" aria-selected="false">스레드<small></small></button>
+    <button class="pl" id="pl-rec" data-pl="rec" role="tab" aria-selected="false">추천<small></small></button>
+  </nav>
+  <nav class="chan" id="chan" role="tablist" aria-label="채널"></nav>
+  <header>
+    <div class="brand" id="brand">● <b>TODAY.WORTHY</b> · 카드뉴스·릴스</div>
+    <h1 id="h1">오늘의쓸모 예약판</h1>
+    <div class="asof-row"><div class="asof" id="asof"></div><button class="refresh" id="refresh" type="button">↻ 새로고침</button><span class="rmsg" id="rmsg" role="status"></span></div>
+  </header>
+  <div class="next" id="next" hidden></div>
+  <div class="counts" id="tabs" role="group" aria-label="보기"></div>
+  <main id="feed"></main>
+  <footer>
+    저장소(cardnews·politea·threads-affiliate)를 직접 읽어 보여 줍니다. 화면을 켤 때와 1분마다 자동으로 새로 읽습니다.
+    승인·거절은 이 휴대폰에 넣은 GitHub 열쇠로 저장소에 바로 반영되고, 감시 장치가 1분 안에 게시합니다. 스레드 승인은 텔레그램에서 합니다.
+    '확인함'은 이 기기에만 기억됩니다. <button class="linkbtn" id="resetkey" type="button">열쇠 바꾸기</button>
+  </footer>
+</div>
+
+<script>
+let OV_LIVE = null;
+let RECS = null; // null = 아직 못 받음, [] = 없음
+const REC_CH = {worthy:{name:'오늘의쓸모', c:'#FFD84D'}, politea:{name:'폴리티커', c:'#9F7BFF'}};
+let REC_FILTER = 'all';
+try { REC_FILTER = localStorage.getItem('rec_filter') || 'all'; } catch(e){}
+const REC_OPEN = new Set();
+function mdToHtml(src){
+  const esc = t => String(t||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const inline = t => esc(t)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+  const out = []; let list = null, para = [], table = null;
+  const flushP = () => { if (para.length){ out.push('<p>'+para.map(inline).join('<br>')+'</p>'); para=[]; } };
+  const flushL = () => { if (list){ out.push(`<${list.t}>`+list.items.map(i=>'<li>'+inline(i)+'</li>').join('')+`</${list.t}>`); list=null; } };
+  const flushT = () => { if (table){ out.push('<table>'+table.map((r,i)=>'<tr>'+r.map(c=>i===0?'<th>'+inline(c)+'</th>':'<td>'+inline(c)+'</td>').join('')+'</tr>').join('')+'</table>'); table=null; } };
+  for (const raw of String(src||'').split('\n')){
+    const line = raw.replace(/\s+$/,'');
+    let m;
+    if (/^\s*\|.*\|\s*$/.test(line)){ flushP(); flushL(); if (/^\s*\|[\s:|-]+\|\s*$/.test(line)) continue; (table=table||[]).push(line.trim().slice(1,-1).split('|').map(c=>c.trim())); continue; }
+    flushT();
+    if (!line.trim()){ flushP(); flushL(); continue; }
+    if ((m = line.match(/^(#{1,4})\s+(.*)/))){ flushP(); flushL(); out.push(`<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`); continue; }
+    if (/^\s*(-{3,}|\*{3,})\s*$/.test(line)){ flushP(); flushL(); out.push('<hr>'); continue; }
+    if ((m = line.match(/^>\s?(.*)/))){ flushP(); flushL(); out.push('<blockquote>'+inline(m[1])+'</blockquote>'); continue; }
+    if ((m = line.match(/^\s*[-*•]\s+(.*)/))){ flushP(); if(!list||list.t!=='ul'){ flushL(); list={t:'ul',items:[]}; } list.items.push(m[1]); continue; }
+    if ((m = line.match(/^\s*\d+[.)]\s+(.*)/))){ flushP(); if(!list||list.t!=='ol'){ flushL(); list={t:'ol',items:[]}; } list.items.push(m[1]); continue; }
+    if (list && /^\s{2,}\S/.test(raw)){ list.items[list.items.length-1] += ' ' + line.trim(); continue; }
+    flushL(); para.push(line);
+  }
+  flushP(); flushL(); flushT();
+  return out.join('');
+}
+let ACKS = new Set(), ACK_DB = null;
+try { ACKS = new Set(JSON.parse(localStorage.getItem('ov_acks')||'[]')); } catch(e){}
+const ackKey = x => `${x.ch}:${x.id}:${x.kind}`;
+function liveTodo(O){ return (O && O.todo || []).filter(x => x.kind==='approve' || !ACKS.has(ackKey(x))); }
+function saveLocalAcks(){ try { localStorage.setItem('ov_acks', JSON.stringify([...ACKS])); } catch(e){} }
+function currentOV(){ const a=window.OV_DATA, b=OV_LIVE; if(!b) return a||null; if(!a) return b; return (b.generated_at||'') > (a.generated_at||'') ? b : a; }
+function thData(a){ const D=window.TH_DATA; return D ? {generated_at:D.generated_at, posts:D.posts.filter(p=>p.th_account===a)} : null; }
+function ytData(ch){ const D=window.YT_DATA; return D ? {generated_at:D.generated_at, posts:D.posts.filter(p=>p.yt_channel===ch)} : null; }
+const CHANNELS = {
+  worthy:{plat:'insta', name:'오늘의쓸모', sub:'@today.worthy', bg:'#FFD84D', ink:'#1a1600', data:()=>window.CN_DATA, brand:'● <b>TODAY.WORTHY</b> · 카드뉴스·릴스', h1:'오늘의쓸모 예약판'},
+  politea:{plat:'insta', name:'폴리티커', sub:'@politea.kr', bg:'#9F7BFF', ink:'#140a33', data:()=>window.PT_DATA, brand:'● <b>POLITEA.KR</b> · 정치·사회·경제', h1:'폴리티커 예약판'},
+  ytworthy:{plat:'yt', name:'오늘의쓸모', sub:'신기한 이유', bg:'#FFD84D', ink:'#1a1600', data:()=>ytData('worthy'), brand:'● <b>YOUTUBE · 오늘의쓸모</b> · 쇼츠', h1:'오늘의쓸모 쇼츠'},
+  ytfur:{plat:'yt', name:'털뭉치', sub:'귀여운 동물', bg:'#FF9E6B', ink:'#2a1000', data:()=>ytData('fur'), brand:'● <b>YOUTUBE · 오늘의 털뭉치</b> · 쇼츠', h1:'오늘의 털뭉치 쇼츠'},
+  ytlife:{plat:'yt', name:'인생댓글', sub:'댓글로 정함', bg:'#7FD8A6', ink:'#06210f', data:()=>ytData('life'), brand:'● <b>YOUTUBE · 인생 댓글로 정함</b> · 쇼츠', h1:'인생 댓글로 정함 쇼츠'},
+  thA:{plat:'th', name:'득템연구소', sub:'@gotitem.lab', bg:'#F4F2EA', ink:'#111', data:()=>thData('A'), brand:'● <b>THREADS · 득템연구소</b> · 제휴·일반 글', h1:'득템연구소 스레드'},
+  thB:{plat:'th', name:'찬복', sub:'@just.chanbok', bg:'#8FC7FF', ink:'#04182c', data:()=>thData('B'), brand:'● <b>THREADS · 찬복</b> · 제휴·일반 글', h1:'찬복 스레드'},
+  rec:{plat:'rec', name:'소재 추천', sub:'', bg:'#F4F2EA', ink:'#111', data:()=>null, brand:'● <b>IDEAS</b> · 소재 추천 보고서', h1:'소재 추천'},
+  home:{plat:'home', name:'한눈에', sub:'', bg:'#F4F2EA', ink:'#111', data:()=>currentOV(), brand:'● <b>ALL CHANNELS</b> · 7개 채널', h1:'오늘 운영판'}
+};
+const PLAT_DEFAULT = {home:'home', insta:'worthy', yt:'ytworthy', th:'thA', rec:'rec'};
+function pendingN(k){
+  if (k==='home'||k==='rec') return null;
+  const D = CHANNELS[k].data(); if(!D) return null; const now=new Date();
+  return CHANNELS[k].plat==='yt' ? D.posts.filter(p=>p.status==='pending').length
+    : D.posts.filter(p=>['approved','draft_queued','pending'].includes(p.status) && p.publish_at && new Date(p.publish_at)>=now).length;
+}
+function drawChan(CH){
+  const plat = CHANNELS[CH].plat;
+  document.querySelectorAll('.pl').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.pl===plat)));
+  document.getElementById('chan').hidden = plat==='home' || plat==='rec';
+  document.getElementById('chan').innerHTML = Object.keys(CHANNELS).filter(k=>CHANNELS[k].plat===plat).map(k=>{
+    const c=CHANNELS[k], n=pendingN(k);
+    return `<button class="ch" id="ch-${k}" data-ch="${k}" role="tab" aria-selected="${k===CH}" style="--ch-bg:${c.bg};--ch-ink:${c.ink}">${c.name}<small>${c.sub}</small><span class="dotn">${n===null?'데이터 없음':(c.plat==='yt'?'승인 대기 ':'예정 ')+n}</span></button>`;
+  }).join('');
+}
+function setupRefresh(){
+  const rb = document.getElementById('refresh');
+  rb.addEventListener('click', () => loadAll(true));
+}
+function bootRec(){
+  document.getElementById('tabs').innerHTML='';
+  document.getElementById('asof').textContent='';
+  document.getElementById('feed').innerHTML = `<div class="gate"><h2>소재 추천 보고서</h2>
+    <small>추천 보고서는 Claude의 통합 운영판에 저장됩니다. 아래를 누르면 Claude 앱(또는 브라우저)에서 '추천' 탭이 열립니다.</small>
+    <button type="button" onclick="window.open('https://claude.ai/artifact/JYgcKWAgUvn2oqLMcTkLPD','_blank','noopener')">Claude 운영판에서 추천 보기</button></div>`;
+}
+function bootHome(){
+  const O = currentOV();
+  const feed = document.getElementById('feed'), esc = s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  document.getElementById('tabs').innerHTML='';
+  if (!O){ document.getElementById('asof').textContent=''; feed.innerHTML='<div class="empty">요약 데이터를 아직 못 불러왔습니다.</div>'; return; }
+  const fmt=(iso,o)=>new Intl.DateTimeFormat('ko-KR',Object.assign({timeZone:'Asia/Seoul'},o)).format(new Date(iso));
+  const hm=iso=>iso?fmt(iso,{hour:'2-digit',minute:'2-digit',hour12:false}):'--:--';
+  const now=new Date();
+  const ago=iso=>{ if(!iso) return ''; const m=Math.round((now-new Date(iso))/60000); return m<0? hm(iso) : m<60? m+'분 전' : m<1440? Math.floor(m/60)+'시간 전' : Math.floor(m/1440)+'일 전'; };
+  const dayLbl=iso=>{ const k=fmt(iso,{month:'numeric',day:'numeric'}); return k===fmt(now.toISOString(),{month:'numeric',day:'numeric'})?'오늘':k; };
+  document.getElementById('asof').textContent='저장소 기준 '+fmt(O.generated_at,{month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+  const TODO = liveTodo(O), hidden = O.todo.length - TODO.length;
+  const N = O.names, ap = TODO.filter(x=>x.kind==='approve'), pr = TODO.filter(x=>x.kind!=='approve');
+  const KIND = {approve:'승인 대기', fail:'실패', late:'지연', held:'보류'};
+  const ti = x => `<div class="ti k-${x.kind}" data-go="${x.ch}" role="link" tabindex="0"><div class="r1"><span class="kind">${KIND[x.kind]}</span><span class="chn">${esc(N[x.ch])}</span><span class="ago">${ago(x.t)}</span></div>
+    <div class="tt">${esc(x.title)}</div><div class="mm">${esc(x.msg)}</div>${x.kind==='approve'?approveBar(x.ch, x.id):`<button class="ack" type="button" data-ack="${esc(ackKey(x))}">확인함 · 목록에서 빼기</button>`}</div>`;
+  const tile = c0 => { const C=CHANNELS[c0.key]; const mine=TODO.filter(x=>x.ch===c0.key);
+    const c = Object.assign({}, c0, {approve: mine.filter(x=>x.kind==='approve').length, problem: mine.filter(x=>x.kind!=='approve').length});
+    return `<button class="tile" data-go="${c.key}" style="--c:${C.bg}"><div class="tn"><i></i>${esc(N[c.key])}</div>
+    <div class="tc"><span>승인 <b class="${c.approve?'w':''}">${c.approve}</b></span><span>문제 <b class="${c.problem?'x':''}">${c.problem}</b></span><span>오늘 <b>${c.today}</b></span></div>
+    <div class="tx">${c.next?'다음 '+dayLbl(c.next.t)+' '+hm(c.next.t)+' · '+esc(c.next.title):'예약 없음'}</div></button>`; };
+  const row = (x, link) => { const inner = `<span class="t">${hm(x.t)}</span><span class="c">${esc(N[x.ch])}</span><span class="x">${esc(x.title)}</span>`;
+    return link && x.url ? `<a class="rw" href="${esc(x.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="rw">${inner}</div>`; };
+  feed.innerHTML = `
+    <div class="ov-stats">
+      <div class="ov-stat ${pr.length?'bad':''}"><b>${pr.length}</b><span>문제</span></div>
+      <div class="ov-stat ${ap.length?'warn':''}"><b>${ap.length}</b><span>승인 대기</span></div>
+      <div class="ov-stat ok"><b>${O.today.length}</b><span>오늘 올라감</span></div>
+    </div>
+    <h2 class="ov-h">지금 할 일 <span>${TODO.length}</span></h2>
+    ${TODO.length?`<div class="todo">${TODO.map(ti).join('')}</div>`:'<div class="none">할 일이 없습니다.</div>'}
+    ${hidden?`<div class="ackline">확인한 문제 ${hidden}건 숨김 <button type="button" data-unack="1">다시 보기</button></div>`:''}
+    ${O.extra&&O.extra.th_comments_pending?`<div class="none" style="margin-top:8px">스레드 답글 대기 댓글 ${O.extra.th_comments_pending}개</div>`:''}
+    ${RECS && RECS[0] ? `<button class="recnote" data-go="rec"><small>새 소재 추천 · ${esc((REC_CH[RECS[0].channel]||{}).name||'')} ${esc(RECS[0].slot||'')} · ${ago(RECS[0].created_at)}</small><span>${esc(String(RECS[0].top3||'추천 보고서 보기').split('\n').filter(Boolean)[0]||'')}</span></button>` : ''}
+    <h2 class="ov-h">채널별</h2>
+    <div class="tiles">${O.channels.map(tile).join('')}</div>
+    <h2 class="ov-h">다음 예약 <span>${O.upcoming.length}</span></h2>
+    ${O.upcoming.length?`<div class="rows">${O.upcoming.map(x=>row(x,false)).join('')}</div>`:'<div class="none">예약된 게시물이 없습니다.</div>'}
+    <h2 class="ov-h">오늘 올라간 것 <span>${O.today.length}</span></h2>
+    ${O.today.length?`<div class="rows">${O.today.map(x=>row(x,true)).join('')}</div>`:'<div class="none">아직 없습니다.</div>'}`;
+  feed.onclick = async e => {
+    const a = e.target.closest('[data-ack]');
+    if (a){ a.disabled = true; await setAck(a.dataset.ack, true); return; }
+    if (e.target.closest('[data-unack]')){ const keys = O.todo.filter(x=>x.kind!=='approve' && ACKS.has(ackKey(x))).map(ackKey); for (const k of keys) await setAck(k, false); return; }
+    const b=e.target.closest('[data-go]'); if(b) go(b.dataset.go); };
+  feed.onkeydown = e => { if (e.key==='Enter' && e.target.matches('.ti')) go(e.target.dataset.go); };
+}
+function rerenderHome(){ platCounts(); if (CUR==='home'){ const y=window.scrollY; boot('home'); window.scrollTo(0,y); } }
+async function setAck(key, on){
+  if (on) ACKS.add(key); else ACKS.delete(key);
+  saveLocalAcks(); rerenderHome();
+  if (!ACK_DB) return;
+  const id = key.replace(/[^A-Za-z0-9_\-.~:@+]/g,'_');
+  try { const ref = ACK_DB.doc('ack/'+id); if (on) await ref.set({key, at: new Date().toISOString()}); else await ref.delete(); } catch(e){}
+}
+function fresh(id){ const o=document.getElementById(id), n=o.cloneNode(false); o.replaceWith(n); return n; }
+function boot(CH){
+  const C = CHANNELS[CH];
+  document.body.dataset.ch = CH;
+  document.body.style.setProperty('--accent', C.bg); document.body.style.setProperty('--accent-ink', C.ink);
+  const isYT = C.plat==='yt';
+  drawChan(CH);
+  document.getElementById('brand').innerHTML = C.brand;
+  document.getElementById('h1').textContent = C.h1;
+  ['tabs','feed','next'].forEach(fresh);
+  const oldRb = document.getElementById('refresh'), newRb = oldRb.cloneNode(true); oldRb.replaceWith(newRb); newRb.disabled=false;
+  document.getElementById('rmsg').textContent='';
+  setupRefresh();
+  if (CH==='home'){ bootHome(); return; }
+  if (CH==='rec'){ bootRec(); return; }
+  const D = C.data() || {posts:[], generated_at:new Date().toISOString()};
+  const posts = D.posts.map(p=>Object.assign({},p));
+  const KST = 9*60;
+  const now = new Date();
+  const fmt = (iso, o) => new Intl.DateTimeFormat('ko-KR', Object.assign({timeZone:'Asia/Seoul'}, o)).format(new Date(iso));
+  const hm = iso => fmt(iso,{hour:'2-digit',minute:'2-digit',hour12:false});
+  const dayKey = iso => fmt(iso,{year:'numeric',month:'2-digit',day:'2-digit'});
+  const todayKey = dayKey(now.toISOString());
+  const tomorrowKey = dayKey(new Date(now.getTime()+864e5).toISOString());
+
+  const STATUS = {
+    approved:['예약됨','s-approved'], published:['게시됨','s-published'], held:['보류','s-held'],
+    rejected:['취소','s-rejected'], draft_queued:['원고 등록 · 예약 처리 대기','s-draft'],
+    pending:['승인 대기','s-draft'], expired:['만료','s-rejected'], failed:['실패','s-late']
+  };
+  function status(p){
+    const late = (p.status==='approved'||p.status==='draft_queued') && p.publish_at && new Date(p.publish_at) < now;
+    if (late) return ['확인 필요 · 시각 지남','s-late','upcoming'];
+    const s = (p.format==='short' && p.status==='published') ? ['업로드됨','s-published'] : (STATUS[p.status] || [p.status,'s-other']);
+    const group = (p.status==='approved'||p.status==='draft_queued'||p.status==='pending') ? 'upcoming'
+                : p.status==='published' ? 'done' : 'off';
+    return [s[0], s[1], group];
+  }
+  posts.forEach(p => { const s = status(p); p._label=s[0]; p._cls=s[1]; p._group=s[2]; });
+
+  document.getElementById('asof').textContent =
+    '저장소 기준 ' + fmt(D.generated_at,{month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+
+  function esc(s){ return String(s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+  function hl(s){ return esc(s).replace(/'([^'\n]+)'/g, '<q>$1</q>'); }
+  function summaryTitle(p){
+    if (p.cover_title) return p.cover_title;
+    const first = (p.caption||'').split('\n')[0].replace(/^🚨\s*/,'');
+    return first || p.topic;
+  }
+  function rel(ms){
+    const m = Math.round(ms/60000);
+    if (m < 60) return m + '분 후';
+    const h = Math.floor(m/60), r = m%60;
+    if (h < 24) return h + '시간' + (r? ' ' + r + '분':'') + ' 후';
+    return Math.round(h/24) + '일 후';
+  }
+
+  function nextSong(p){
+    const m=p.music; if(!m||m.none) return '';
+    const s=(m.songs||[]).find(x=>x.pick)||(m.songs||[])[0];
+    return s?`<div class="next-k" style="margin-top:2px">♪ ${esc(s.title)} – ${esc(s.artist)}</div>`:'';
+  }
+  // next bar
+  const upcoming = posts.filter(p => p._group==='upcoming' && p.publish_at && new Date(p.publish_at) >= now)
+                        .sort((a,b)=>a.publish_at.localeCompare(b.publish_at));
+  const nx = document.getElementById('next'); nx.hidden = true;
+  function ago(ms){ const m=Math.max(0,Math.round(ms/60000)); return m<60? m+'분째' : Math.floor(m/60)<24 ? Math.floor(m/60)+'시간째' : Math.floor(m/1440)+'일째'; }
+  const waiting = isYT ? posts.filter(p=>p.status==='pending').sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||'')) : [];
+  if (isYT && waiting.length){
+    const p = waiting[0];
+    nx.innerHTML = `<div class="next-in">
+      ${p.cover?`<img src="${p.cover}" ${p.cover_alt?`data-alt="${p.cover_alt}"`:''} alt="">`:''}
+      <div class="next-txt"><div class="next-k">승인 대기 ${waiting.length}편 · 아래 카드에서 승인</div>
+      <div class="next-t">${esc(summaryTitle(p))}</div></div>
+      <div class="next-when">${hm(p.created_at||p.publish_at)}<small>${ago(now-new Date(p.created_at||p.publish_at))}</small></div></div>`;
+    nx.hidden = false;
+  } else if (!isYT && upcoming.length){
+    const p = upcoming[0];
+    nx.innerHTML = `<div class="next-in">
+      ${p.cover?`<img src="${p.cover}" ${p.cover_alt?`data-alt="${p.cover_alt}"`:''} alt="">`:''}
+      <div class="next-txt"><div class="next-k">다음 게시 · ${p.format==='reel'?'릴스':p.format==='thread'?'스레드':'카드뉴스'}</div>
+      <div class="next-t">${esc(summaryTitle(p).replace(/\n/g,' '))}</div>${nextSong(p)}</div>
+      <div class="next-when">${hm(p.publish_at)}<small>${rel(new Date(p.publish_at)-now)}</small></div></div>`;
+    nx.hidden = false;
+  }
+
+  // tabs
+  const views = [['upcoming', isYT?'승인 대기':'예정'],['done', isYT?'업로드됨':'게시됨'],['all','전체']];
+  let view = 'upcoming';
+  try { view = localStorage.getItem('cn_view_'+CH) || view; } catch(e){}
+  const tabs = document.getElementById('tabs');
+  function count(v){ return posts.filter(p => v==='all' || p._group===v).length; }
+  function drawTabs(){
+    tabs.innerHTML = views.map(([v,l]) => `<button class="tab" id="tab-${v}" data-v="${v}" aria-pressed="${v===view}">${l}<span>${count(v)}</span></button>`).join('');
+  }
+  tabs.addEventListener('click', e => {
+    const b = e.target.closest('.tab'); if(!b) return;
+    view = b.dataset.v; try{localStorage.setItem('cn_view_'+CH,view)}catch(e){}
+    drawTabs(); drawFeed();
+  });
+
+  function songLine(p){
+    if (p.format==='short') return '';
+    const m = p.music;
+    if (!m) return p._group==='upcoming' ? '<div class="song-line none">♪ 추천 노래 없음 · 새로고침하면 골라집니다</div>' : '';
+    if (m.none) return '<div class="song-line none">♪ 원본 소리 사용</div>';
+    const s = (m.songs||[]).find(x=>x.pick) || (m.songs||[])[0];
+    return s ? `<div class="song-line">♪ <span>${esc(s.title)} – ${esc(s.artist)}</span></div>` : '';
+  }
+  function songBlock(p){
+    const m = p.music;
+    if (!m) return '';
+    if (m.none) return `<div><h3>추천 노래</h3><div class="sg-note">${esc(m.none)}</div></div>`;
+    return `<div><h3>추천 노래</h3><ul class="songs">${(m.songs||[]).map((s,i)=>`<li class="${s.pick?'pick':''}">
+      <div class="sg-t">${esc(s.title)} <small>– ${esc(s.artist)}</small>${s.pick?'<span class="sg-pick">추천</span>':''}</div>
+      ${(s.why||s.part)?`<div class="sg-d">${esc(s.why)}${s.why&&s.part?' · ':''}${s.part?'쓸 구간: '+esc(s.part):''}</div>`:''}
+      <button class="copy sg-c" id="song-${p.id}-${i}" data-song="${esc(s.title+' '+s.artist)}">곡명 복사</button></li>`).join('')}</ul>
+      <div class="sg-note" style="margin-top:6px">인스타 앱 음악 검색에서 곡명으로 찾아 넣으세요. 라이브러리에 없을 수도 있습니다.</div></div>`;
+  }
+  const open = new Set();
+  function detailShort(p){
+    const media = p.video ? `<div><h3>영상 미리보기</h3><video class="reelcov" src="${p.video}" poster="${p.cover||''}" controls playsinline preload="none"></video></div>` : p.cover ? `<div><h3>표지</h3><img class="reelcov" src="${p.cover}" ${p.cover_alt?`data-alt="${p.cover_alt}"`:''} alt="쇼츠 표지"></div>` : '';
+    const src = (p.sources||[]).length ? `<div><h3>출처</h3><ul class="srcs">${p.sources.map(x=>
+      `<li>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.publisher||x.url)}</a>`:esc(x.publisher)}${x.date?' · '+esc(x.date):''}</li>`).join('')}</ul></div>` : '';
+    const tags = (p.tags||[]).length ? `<div><h3>태그</h3><div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div>` : '';
+    const cap = p.caption ? `<div><div class="caphead"><h3>설명란</h3><button class="copy" id="copy-${p.id}" data-id="${p.id}" data-label="설명 복사">설명 복사</button></div>
+      <div class="cap" id="cap-${p.id}">${esc(p.caption)}</div></div>` : '';
+    const links = `<div class="links">${p.permalink?`<a href="${esc(p.permalink)}" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>`:''}
+      <span style="color:var(--muted)">ID ${esc(p.id)}</span></div>`;
+    return `<div class="detail">${media}${cap}${tags}${src}${links}</div>`;
+  }
+  function detailThread(p){
+    const cap = p.caption ? `<div><div class="caphead"><h3>본문</h3><button class="copy" id="copy-${p.id}" data-id="${p.id}">본문 복사</button></div>
+      <div class="cap" id="cap-${p.id}">${esc(p.caption)}</div></div>` : '';
+    const rp = (p.replies||[]).length ? `<div><h3>답글 ${p.replies.length}개</h3><ol class="replies">${p.replies.map(r=>`<li>${esc(r)}</li>`).join('')}</ol></div>` : '';
+    const links = `<div class="links">${p.permalink?`<a href="${esc(p.permalink)}" target="_blank" rel="noopener">스레드에서 보기 ↗</a>`:''}${p.link?`<a href="${esc(p.link)}" target="_blank" rel="noopener">제휴 링크 ↗</a>`:''}
+      <span style="color:var(--muted)">ID ${esc(p.id)}</span></div>`;
+    return `<div class="detail">${cap}${rp}${links}</div>`;
+  }
+  function detail(p){
+    if (p.format==='short') return detailShort(p);
+    if (p.format==='thread') return detailThread(p);
+    let media = '';
+    if (p.format==='reel'){
+      media = p.cover ? `<div><h3>릴스 커버</h3><img class="reelcov" src="${p.cover}" alt="릴스 커버"></div>` : '';
+    } else if (p.slide_imgs && p.slide_imgs.length){
+      media = `<div><h3>카드 ${p.slide_imgs.length}장</h3><div class="strip">${p.slide_imgs.map((s,i)=>
+        `<figure>${s?`<img src="${s}" alt="${i+1}장" loading="lazy">`:'<img alt="">'}<figcaption>${String(i+1).padStart(2,'0')}${i===0?' · 표지':''}</figcaption></figure>`).join('')}</div></div>`;
+    }
+    const sl = (p.slides||[]).length ? `<div><h3>장별 문구</h3><ol class="slides">${p.slides.map(s=>
+      `<li><div><div class="sl-t">${hl(s.t)||'<span style="color:var(--muted)">(글자 없음)</span>'}${s.video?'<span class="vid">영상</span>':''}</div>
+       ${s.sub?`<div class="sl-sub">${esc(s.sub)}</div>`:''}${s.b?`<div class="sl-b">${esc(s.b)}</div>`:''}</div></li>`).join('')}</ol></div>` : '';
+    const cap = p.caption ? `<div><div class="caphead"><h3>본문</h3><button class="copy" id="copy-${p.id}" data-id="${p.id}">본문 복사</button></div>
+      <div class="cap" id="cap-${p.id}">${esc(p.caption)}</div></div>` : '';
+    const links = `<div class="links">${p.permalink?`<a href="${esc(p.permalink)}" target="_blank" rel="noopener">인스타에서 보기 ↗</a>`:''}
+      <span style="color:var(--muted)">ID ${esc(p.id)}</span></div>`;
+    return `<div class="detail">${media}${songBlock(p)}${sl}${cap}${links}</div>`;
+  }
+  function card(p){
+    const t = p.publish_at ? hm(p.publish_at) : '--:--';
+    const isS = p.format==='short', isT = p.format==='thread';
+    const pubNote = isS ? '' : p.status==='published' && p.published_at ? ` · 실제 ${hm(p.published_at)}` : '';
+    const fmtLabel = isS ? '쇼츠' + (p.seconds?` · ${Math.round(p.seconds)}초`:'') + (p.voice&&p.voice.length&&!/없음/.test(p.voice.join(''))?' · 내레이션':'') + (p.app_upload?' · 앱 업로드':'') + (p.status==='published'?'':' · 만든 시각')
+      : isT ? '스레드' + (p.category?' · '+esc(p.category):'') + (p.comments?` · 댓글 ${p.comments}`:'')
+      : (p.format==='reel'?'릴스':'카드뉴스') + (p.slot_label?' · '+esc(p.slot_label):'');
+    const waitNote = isS && p.status==='pending' && p.created_at ? `${ago(now-new Date(p.created_at))} 대기 · 아래 버튼이나 텔레그램에서 승인` : '';
+    return `<article class="post ${p._group==='off'?'dim':''}">
+      <button class="post-head ${isT?'nocov':''}" data-id="${p.id}" aria-expanded="${open.has(p.id)}">
+        ${isT?'':p.cover?`<img class="cov ${p.format!=='carousel'?'reel':''}" src="${p.cover}" ${p.cover_alt?`data-alt="${p.cover_alt}"`:''} alt="" loading="lazy">`:`<div class="cov ${isS?'reel':''}"></div>`}
+        <div class="meta">
+          <div class="row1"><span class="time">${t}</span><span class="chip ${p._cls}">${esc(p._label)}</span>
+            <span class="fmt">${fmtLabel}${pubNote}</span></div>
+          <div class="ctitle">${hl(summaryTitle(p))}</div>
+          ${isT?'':`<div class="topic">${esc(p.category?p.category+' · ':'')}${esc(isS?p.topic.replace(/^\[[^\]]+\]\s*/,''):p.topic)}</div>`}
+          ${songLine(p)}
+          ${(p.note||waitNote)?`<div class="note">${esc(p.note||waitNote)}</div>`:''}
+        </div>
+      </button>
+      ${p.status==='pending'?approveBar(CH, p.id):''}
+      ${open.has(p.id)?detail(p):''}
+    </article>`;
+  }
+  const feed = document.getElementById('feed');
+  function drawFeed(){
+    let list = posts.filter(p => view==='all' || p._group===view);
+    list.sort((a,b)=> view==='done' ? (b.publish_at||'').localeCompare(a.publish_at||'') : (a.publish_at||'').localeCompare(b.publish_at||''));
+    if (!list.length){ feed.innerHTML = `<div class="empty">${view==='upcoming'?(isYT?'승인 대기 중인 쇼츠가 없습니다.':'예약된 게시물이 없습니다.'):'표시할 게시물이 없습니다.'}</div>`; return; }
+    const groups = new Map();
+    list.forEach(p => { const k = p.publish_at?dayKey(p.publish_at):'날짜 없음'; if(!groups.has(k)) groups.set(k,[]); groups.get(k).push(p); });
+    feed.innerHTML = [...groups].map(([k,arr]) => {
+      const d = arr[0].publish_at;
+      const label = d ? fmt(d,{month:'long',day:'numeric',weekday:'short'}) : k;
+      const tag = k===todayKey?'<em>오늘</em>':k===tomorrowKey?'<em>내일</em>':'';
+      return `<section class="day"><h2>${label} ${tag}<span>${arr.length}건</span></h2><div class="list">${arr.map(card).join('')}</div></section>`;
+    }).join('');
+  }
+  feed.addEventListener('click', async e => {
+    const c = e.target.closest('.copy');
+    if (c && c.dataset.song){
+      try { await navigator.clipboard.writeText(c.dataset.song); c.textContent='복사됨'; } catch(err){ c.textContent=c.dataset.song; }
+      setTimeout(()=>c.textContent='곡명 복사',2000);
+      return;
+    }
+    if (c){
+      const p = posts.find(x=>x.id===c.dataset.id);
+      try { await navigator.clipboard.writeText(p.caption); c.textContent='복사됨'; }
+      catch(err){ const r=document.createRange(); r.selectNodeContents(document.getElementById('cap-'+p.id)); const s=getSelection(); s.removeAllRanges(); s.addRange(r); c.textContent='선택됨 · 길게 눌러 복사'; }
+      setTimeout(()=>c.textContent=c.dataset.label||'본문 복사',2000);
+      return;
+    }
+    const h = e.target.closest('.post-head'); if(!h) return;
+    const id = h.dataset.id; open.has(id)?open.delete(id):open.add(id);
+    drawFeed();
+  });
+
+  if (!count(view)) view = 'all';
+  drawTabs(); drawFeed();
+}
+let CUR = 'home';
+try { const h=(location.hash||'').slice(1); CUR = (h in CHANNELS) ? h : 'home'; } catch(e){}
+if (!(CUR in CHANNELS)) CUR = 'home';
+function go(k){ CUR=k; try{localStorage.setItem('cn_channel',k); localStorage.setItem('cn_ch_'+CHANNELS[k].plat,k)}catch(e){} boot(k); window.scrollTo(0,0); }
+document.getElementById('chan').addEventListener('click', e => {
+  const b = e.target.closest('.ch'); if(!b || b.dataset.ch===CUR) return; go(b.dataset.ch);
+});
+document.getElementById('plat').addEventListener('click', e => {
+  const b = e.target.closest('.pl'); if(!b || b.dataset.pl===CHANNELS[CUR].plat) return;
+  let k = PLAT_DEFAULT[b.dataset.pl]; try{ const m=localStorage.getItem('cn_ch_'+b.dataset.pl); if(m in CHANNELS && CHANNELS[m].plat===b.dataset.pl) k=m; }catch(e){}
+  go(k);
+});
+function platCounts(){
+  const O = currentOV(), plOf = k => CHANNELS[k] ? CHANNELS[k].plat : '';
+  const set = (pl, txt, hot) => { const e=document.querySelector('#pl-'+pl+' small'); e.textContent=txt; e.classList.toggle('hot', !!hot); };
+  if (RECS && RECS[0]){ const h=(Date.now()-new Date(RECS[0].created_at))/36e5; set('rec', h<12?'새 보고서':'', h<12); } else set('rec','');
+  if (!O){ ['home','insta','yt','th'].forEach(pl=>set(pl,'')); return; }
+  const T = liveTodo(O);
+  set('home', '할 일 '+T.length, T.length);
+  ['insta','yt','th'].forEach(pl=>{ const n=T.filter(x=>plOf(x.ch)===pl).length; set(pl, n?'할 일 '+n:'정상', n); });
+}
+// ===== 운영판 앱: 저장소를 직접 읽고, 본인 GitHub 열쇠로 승인한다 =====
+const OWNER = 'evan-stock';
+const GH = 'https://api.github.com';
+const REPO_OF = {worthy:'cardnews', ytworthy:'cardnews', ytfur:'cardnews', ytlife:'cardnews', politea:'politea'};
+let TOKEN = ''; try { TOKEN = localStorage.getItem('gh_token') || ''; } catch(e){}
+let LAST_LOAD = 0, LOADING = false;
+const RAW = (repo, path) => `https://raw.githubusercontent.com/${OWNER}/${repo}/main/` + String(path).split('/').map(encodeURIComponent).join('/');
+const isImg = f => /\.(jpe?g|png|webp)$/i.test(f||'');
+function nt(v){ if (!v) return v || null; let s = String(v).replace(/(\.\d{3})\d+/, '$1'); if (/T\d/.test(s) && !/(Z|[+-]\d\d:?\d\d)$/.test(s)) s += '+09:00'; return s; }
+function tms(v){ const t = Date.parse(nt(v)); return isNaN(t) ? null : t; }
+function kstParts(ms){ const p = {}; new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(new Date(ms)).forEach(x=>p[x.type]=x.value); if (p.hour==='24') p.hour='00'; return p; }
+function kstIso(ms){ const p = kstParts(ms==null?Date.now():ms); return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:${p.second}+09:00`; }
+function kstDay(ms){ const p = kstParts(ms); return `${p.year}-${p.month}-${p.day}`; }
+function since(){ return Date.parse(kstDay(Date.now()-2*864e5)+'T00:00:00+09:00'); }
+
+// ---- GitHub 호출 ----
+async function gh(path, opt){
+  opt = opt || {};
+  const r = await fetch(GH + path, Object.assign({}, opt, {cache:'no-store', headers: Object.assign({'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}, opt.headers||{})}));
+  if (!r.ok){ const t = await r.text(); const e = new Error(r.status + ' ' + t.slice(0,160)); e.status = r.status; throw e; }
+  return r.status === 204 ? null : r.json();
+}
+async function gql(query){
+  const r = await fetch(GH + '/graphql', {method:'POST', cache:'no-store', headers:{'Authorization':'Bearer '+TOKEN,'Content-Type':'application/json'}, body: JSON.stringify({query})});
+  if (r.status === 401) { const e = new Error('열쇠가 맞지 않거나 만료됐습니다.'); e.status = 401; throw e; }
+  const j = await r.json();
+  if (j.errors && j.errors.length) throw new Error(j.errors[0].message);
+  return j.data;
+}
+const Q = `{
+ cn: repository(owner:"${OWNER}", name:"cardnews"){ ...P }
+ pt: repository(owner:"${OWNER}", name:"politea"){ ...P }
+ ta: repository(owner:"${OWNER}", name:"threads-affiliate"){ ...P dash: object(expression:"HEAD:state/dashboard.json"){ ... on Blob { text } } }
+}
+fragment P on Repository { posts: object(expression:"HEAD:state/posts"){ ... on Tree { entries { name object { ... on Blob { text } } } } } }`;
+function parsePosts(repoNode){
+  const out = [];
+  const ents = (repoNode && repoNode.posts && repoNode.posts.entries) || [];
+  for (const e of ents){ if (!/\.json$/.test(e.name) || !e.object || e.object.text == null) continue; try { out.push(JSON.parse(e.object.text)); } catch(_){} }
+  return out;
+}
+
+// ---- 저장소 기록 → 화면 데이터 (build_data.py 와 같은 규칙) ----
+function buildInsta(d, repo){
+  const isReel = d.format === 'reel', files = d.files || [];
+  let cover = null;
+  if (isReel){
+    let cv = d.cover;
+    if (cv && typeof cv === 'object'){ const img = cv.img || ''; cv = img ? (img.indexOf('/') >= 0 ? img : `media/${d.id}/${img}`) : null; }
+    if (typeof cv !== 'string') cv = null;
+    cover = RAW(repo, cv || `media/${d.id}/reel_cover.jpg`);
+  } else if (files.length && isImg(files[0])) cover = RAW(repo, files[0]);
+  const slides = d.slides || [];
+  return {
+    id: d.id, source: 'state', format: isReel ? 'reel' : 'carousel', status: d.status || 'unknown',
+    publish_at: nt(d.publish_at), published_at: nt(d.published_at),
+    slot_label: d.slot_label || ({lunch:'점심', evening:'저녁'})[d.slot] || '',
+    topic: d.topic || '', category: d.category || '',
+    cover_title: isReel ? (d.cover_text || d.title || '') : (slides[0] ? slides[0].t || '' : ''),
+    slides: slides.map(x => ({t: x.t||'', sub: x.sub||'', b: x.b||'', video: !!x.video})),
+    caption: d.caption_full || '', permalink: d.permalink || d.reel_permalink || null,
+    note: d.held_note || d.note || d.error || '', cover, slide_imgs: isReel ? [] : files.map(f => isImg(f) ? RAW(repo, f) : null),
+    music: null, created_at: nt(d.created_at)
+  };
+}
+function buildShort(d){
+  const yt = (d.yt && typeof d.yt === 'object') ? d.yt : {};
+  const ch = ({shop:'worthy', life:'life'})[yt.channel] || 'fur';
+  const a = `media/${d.id}/short_card_cover.jpg`, b = `media/${d.id}/short_cover.jpg`;
+  const first = ch === 'worthy' ? a : b, second = ch === 'worthy' ? b : a;
+  const title = String(yt.title || '').replace('#shorts','').trim();
+  return {
+    id: d.id, source: 'state', format: 'short', yt_channel: ch, status: d.status || 'unknown',
+    publish_at: nt(d.published_at || d.created_at || d.publish_at), published_at: nt(d.published_at), created_at: nt(d.created_at),
+    slot_label: '', topic: d.topic || '', category: '', cover_title: title || d.topic || '', slides: [],
+    caption: yt.description || '', tags: yt.tags || [], seconds: d.seconds,
+    sources: (d.sources || []).filter(x => x && typeof x === 'object').map(x => ({publisher: x.publisher||'', url: x.url||'', date: x.date||''})),
+    app_upload: !!d.app_file, voice: (d.tts || []).filter(t => t !== 'silent'),
+    permalink: d.permalink || null, note: d.held_note || d.note || d.error || '',
+    cover: RAW('cardnews', first), cover_alt: RAW('cardnews', second), slide_imgs: [], music: null,
+    video: (d.files && d.files[0] && /\.mp4$/i.test(d.files[0])) ? RAW('cardnews', d.files[0]) : null
+  };
+}
+function buildThreads(dash, full){
+  const byId = {}; full.forEach(p => { if (p && p.id) byId[p.id] = p; });
+  return (dash.posts || []).map(p => { const f = byId[p.id] || {};
+    const when = p.published_at || p.scheduled_at || f.created_at;
+    return { id: p.id, source: 'state', format: 'thread', th_account: p.account, status: p.status || 'unknown',
+      publish_at: nt(p.scheduled_at || when), published_at: nt(p.published_at) || null, created_at: nt(f.created_at),
+      slot_label: '', topic: String(f.main_text || '').split('\n')[0].slice(0,60),
+      category: (p.source && p.source !== 'none') ? '광고' : '', cover_title: p.title || '', slides: [],
+      caption: f.main_text || '', replies: f.reply_texts || [], link: f.link || '', permalink: p.permalink || null,
+      note: p.note || (p.warnings || []).join('; ') || f.link_note || '', cover: null, slide_imgs: [], music: null, comments: p.comments || 0 };
+  });
+}
+function plainErr(e){ e = String(e || ''); if (e.indexOf('request limit') >= 0) return '인스타 API 요청 한도 초과'; if (e.indexOf('2207051') >= 0) return '인스타 활동 제한(스팸 의심)'; return e.slice(0,70); }
+const NAMES = {worthy:'인스타 쓸모', politea:'인스타 폴리티커', ytworthy:'유튜브 쓸모', ytfur:'유튜브 털뭉치', ytlife:'유튜브 인생댓글', thA:'스레드 득템', thB:'스레드 찬복'};
+function buildOV(cn, pt, th){
+  const now = Date.now(), recs = [];
+  const firstLine = s => String(s || '').replace(/\n/g, ' ').trim().slice(0,60);
+  const add = (ch, d, title, err) => recs.push({ch, id: d.id, status: d.status || '', title: firstLine(title),
+    publish_at: nt(d.publish_at || d.scheduled_at), published_at: nt(d.published_at) || null, created_at: nt(d.created_at),
+    url: d.permalink || d.reel_permalink || null, err: err || d.error || d.held_note || d.note || ''});
+  for (const [arr, insta] of [[cn,'worthy'],[pt,'politea']]){
+    for (const d of arr){
+      if (d.kind === 'short'){ const yt = (d.yt && typeof d.yt === 'object') ? d.yt : {};
+        add(({shop:'ytworthy', life:'ytlife'})[yt.channel] || 'ytfur', d, String(yt.title || d.topic || '').replace('#shorts',''));
+      } else { const sl = d.slides || []; add(insta, d, (d.format === 'reel' ? d.cover_text : (sl[0] && sl[0].t)) || d.topic || ''); }
+    }
+  }
+  th.forEach(p => add('th' + (p.th_account || 'A'), p, p.cover_title, p.note));
+  const todo = [], today = [], upcoming = [], tkey = kstDay(now);
+  for (const r of recs){
+    const st = r.status, ref = tms(r.published_at) || tms(r.publish_at) || tms(r.created_at), pa = tms(r.publish_at);
+    const base = {ch: r.ch, id: r.id, title: r.title, url: r.url};
+    if (st === 'pending'){ const sn = tms(r.created_at) || pa; todo.push(Object.assign({}, base, {kind:'approve', t: sn ? kstIso(sn) : null, msg: 'GitHub 열쇠로 바로 승인하거나 텔레그램에서'})); }
+    else if (st === 'failed' && ref && now - ref < 48*36e5) todo.push(Object.assign({}, base, {kind:'fail', t: kstIso(ref), msg: plainErr(r.err) || '실패'}));
+    else if (st === 'held' && ref && now - ref < 72*36e5) todo.push(Object.assign({}, base, {kind:'held', t: kstIso(ref), msg: String(r.err || '').slice(0,70) || '보류 중'}));
+    else if ((st === 'approved' || st === 'draft_queued') && pa && pa < now - 15*6e4) todo.push(Object.assign({}, base, {kind:'late', t: kstIso(pa), msg: '예약 시각이 지났는데 아직 안 올라감' + (r.err ? ' · ' + plainErr(r.err) : '')}));
+    if (st === 'published'){ const ptm = tms(r.published_at) || pa; if (ptm && kstDay(ptm) === tkey) today.push(Object.assign({}, base, {t: kstIso(ptm)})); }
+    if (st === 'approved' && pa && pa >= now - 15*6e4) upcoming.push(Object.assign({}, base, {t: kstIso(pa)}));
+  }
+  const order = {fail:0, late:1, approve:2, held:3};
+  todo.sort((a,b) => order[a.kind]-order[b.kind] || String(a.t||'').localeCompare(String(b.t||'')));
+  today.sort((a,b) => String(b.t).localeCompare(String(a.t)));
+  upcoming.sort((a,b) => String(a.t).localeCompare(String(b.t)));
+  const channels = Object.keys(NAMES).map(k => ({key:k, name:NAMES[k], approve:0, problem:0, today: today.filter(x=>x.ch===k).length, next: upcoming.find(x=>x.ch===k) || null}));
+  return {generated_at: kstIso(now), names: NAMES, todo, today, upcoming: upcoming.slice(0,8), channels, extra: {}};
+}
+
+// ---- 불러오기 ----
+async function loadAll(manual){
+  if (!TOKEN){ showGate(); return; }
+  if (LOADING) return; LOADING = true;
+  if (manual) say('불러오는 중…');
+  try {
+    const d = await gql(Q);
+    const cn = parsePosts(d.cn), pt = parsePosts(d.pt), taFull = parsePosts(d.ta);
+    let dash = {}; try { dash = JSON.parse((d.ta && d.ta.dash && d.ta.dash.text) || '{}'); } catch(_){}
+    const S = since(), now = kstIso();
+    const insta = (arr, repo) => arr.filter(x => x.kind !== 'short' && x.publish_at && tms(x.publish_at) >= S).map(x => buildInsta(x, repo)).sort((a,b)=>String(a.publish_at).localeCompare(String(b.publish_at)));
+    window.CN_DATA = {generated_at: now, posts: insta(cn, 'cardnews')};
+    window.PT_DATA = {generated_at: now, posts: insta(pt, 'politea')};
+    window.YT_DATA = {generated_at: now, posts: cn.filter(x => x.kind === 'short').filter(x => { const ref = tms(x.published_at || x.created_at || x.publish_at); return ref && (x.status === 'pending' || ref >= S); }).map(buildShort).sort((a,b)=>String(a.publish_at).localeCompare(String(b.publish_at)))};
+    const thAll = buildThreads(dash, taFull);
+    window.TH_DATA = {generated_at: now, posts: thAll.filter(p => { const t = tms(p.published_at || p.publish_at), pa = tms(p.publish_at); return p.status === 'pending' || (p.status === 'approved' && pa && pa >= Date.now() - 864e5) || (t && t >= S); }), comments: dash.comments || {}};
+    window.OV_DATA = buildOV(cn, pt, thAll);
+    window.OV_DATA.extra = {th_comments_pending: (dash.comments || {}).pending || 0};
+    LAST_LOAD = Date.now();
+    platCounts(); const y = window.scrollY; boot(CUR); window.scrollTo(0, y);
+    say(manual ? '방금 새로 읽었습니다.' : '');
+  } catch (e){
+    if (e.status === 401){ showGate('열쇠가 맞지 않거나 만료됐습니다. 새 열쇠를 넣어 주세요.'); }
+    else say('불러오기 실패: ' + String(e.message || e).slice(0,120));
+  } finally { LOADING = false; }
+}
+function say(t){ const m = document.getElementById('rmsg'); if (m) m.textContent = t; }
+
+// ---- 승인·거절 ----
+const PENDING_ACT = {};
+function approveBar(ch, id){
+  const repo = REPO_OF[ch];
+  if (!repo) return '<div class="apv-msg">스레드 승인은 텔레그램에서 합니다.</div>';
+  const st = PENDING_ACT[id];
+  if (st) return `<div class="apv-msg">${st}</div>`;
+  return `<div class="apv" data-repo="${repo}" data-id="${id}"><button type="button" data-act="ok">✅ 승인</button><button type="button" data-act="no">❌ 거절</button></div>`;
+}
+function b64dec(s){ const bin = atob(String(s).replace(/\s/g,'')); const u = new Uint8Array(bin.length); for (let i=0;i<bin.length;i++) u[i] = bin.charCodeAt(i); return new TextDecoder().decode(u); }
+function b64enc(s){ const u = new TextEncoder().encode(s); let bin = ''; for (let i=0;i<u.length;i+=0x8000) bin += String.fromCharCode.apply(null, u.subarray(i, i+0x8000)); return btoa(bin); }
+async function decide(repo, id, act){
+  const path = `/repos/${OWNER}/${repo}/contents/state/posts/${encodeURIComponent(id)}.json`;
+  for (let attempt = 0; attempt < 3; attempt++){
+    const f = await gh(path + '?ref=main');
+    const post = JSON.parse(b64dec(f.content));
+    if (post.status !== 'pending') return {ok:false, msg:'이미 처리된 게시물이에요(현재: ' + post.status + ').'};
+    post.status = act === 'ok' ? 'approved' : 'rejected';
+    post.decided_at = kstIso(); post.decided_via = 'app';
+    try {
+      await gh(path, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+        message: `운영판 앱에서 ${act === 'ok' ? '승인' : '거절'}: ${id}`, content: b64enc(JSON.stringify(post, null, 1)), sha: f.sha, branch: 'main'})});
+    } catch (e){ if (e.status === 409 || e.status === 422) continue; throw e; }
+    if (act === 'ok'){
+      try { await gh(`/repos/${OWNER}/${repo}/actions/workflows/pipeline.yml/dispatches`, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ref:'main', inputs:{cmd:'watch'}})}); }
+      catch (_){ return {ok:true, msg:'승인 반영됨 · 감시 장치를 깨우지 못해 다음 정기 확인(최대 3시간) 때 게시될 수 있어요.'}; }
+      return {ok:true, msg:'승인 반영됨 · 1~2분 안에 게시·업로드돼요.'};
+    }
+    return {ok:true, msg:'거절 반영됨.'};
+  }
+  return {ok:false, msg:'동시에 다른 변경이 있어 반영하지 못했어요. 잠시 뒤 다시 눌러 주세요.'};
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('.apv [data-act]'); if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const bar = b.closest('.apv'), act = b.dataset.act, label = act === 'ok' ? '승인' : '거절';
+  if (!b.classList.contains('armed')){
+    bar.querySelectorAll('button').forEach(x => { x.classList.remove('armed'); x.textContent = x.dataset.act === 'ok' ? '✅ 승인' : '❌ 거절'; });
+    b.classList.add('armed'); b.textContent = `한 번 더 누르면 ${label}`;
+    setTimeout(() => { if (b.isConnected && b.classList.contains('armed')){ b.classList.remove('armed'); b.textContent = act === 'ok' ? '✅ 승인' : '❌ 거절'; } }, 4000);
+    return;
+  }
+  bar.querySelectorAll('button').forEach(x => x.disabled = true); b.textContent = `${label} 중…`;
+  const id = bar.dataset.id, repo = bar.dataset.repo;
+  try { const r = await decide(repo, id, act); PENDING_ACT[id] = (r.ok ? '✔ ' : '⚠️ ') + r.msg; }
+  catch (err){ PENDING_ACT[id] = '⚠️ 실패: ' + (err.status === 403 || err.status === 404 ? '열쇠에 쓰기 권한이 없어요(Contents 읽기·쓰기 필요).' : String(err.message || err).slice(0,100)); }
+  const y = window.scrollY; boot(CUR); window.scrollTo(0, y);
+  setTimeout(() => loadAll(false), 2500);
+}, true);
+
+// ---- 이미지 대체·열쇠 화면·자동 새로고침 ----
+document.addEventListener('error', e => { const t = e.target; if (!t || t.tagName !== 'IMG') return; if (t.dataset.alt){ const a = t.dataset.alt; delete t.dataset.alt; t.src = a; } else t.style.visibility = 'hidden'; }, true);
+function showGate(err){
+  document.getElementById('plat').hidden = true; document.getElementById('chan').hidden = true;
+  document.querySelector('header').hidden = true; document.getElementById('next').hidden = true; document.getElementById('tabs').innerHTML = '';
+  document.getElementById('feed').innerHTML = `<div class="gate">
+    <h2>GitHub 열쇠 넣기 (처음 한 번)</h2>
+    <ol>
+      <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub 새 열쇠 만들기</a>를 엽니다(로그인 필요).</li>
+      <li>이름: <b>운영판 앱</b>, 만료: 1년, Resource owner: <b>evan-stock</b></li>
+      <li>Repository access → <b>Only select repositories</b> → cardnews, politea, threads-affiliate</li>
+      <li>Permissions → Repository permissions → <b>Contents: Read and write</b>, <b>Actions: Read and write</b></li>
+      <li>Generate token → 나온 github_pat_… 를 복사해 아래에 붙여 넣기</li>
+    </ol>
+    <input id="tok" type="password" autocomplete="off" placeholder="github_pat_…" aria-label="GitHub 열쇠">
+    <button id="tokSave" type="button">저장하고 열기</button>
+    ${err ? `<div class="err">${err}</div>` : ''}
+    <small>열쇠는 이 기기 안에만 저장되고 GitHub에만 보냅니다. 휴대폰을 잃어버리면 GitHub 설정 → Personal access tokens 에서 이 열쇠를 지우면 됩니다. 아이폰은 '홈 화면에 추가'로 연 앱 안에서 넣어야 앱에 저장됩니다.</small>
+  </div>`;
+  document.getElementById('tokSave').onclick = async () => {
+    const v = document.getElementById('tok').value.trim(); if (!v) return;
+    TOKEN = v; try { localStorage.setItem('gh_token', v); } catch(_){}
+    document.getElementById('plat').hidden = false; document.querySelector('header').hidden = false;
+    boot(CUR); loadAll(true);
+  };
+}
+document.getElementById('resetkey').addEventListener('click', () => { try { localStorage.removeItem('gh_token'); } catch(_){} TOKEN = ''; showGate(); });
+setInterval(() => { if (document.visibilityState === 'visible' && Date.now() - LAST_LOAD > 60000) loadAll(false); }, 15000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && Date.now() - LAST_LOAD > 20000) loadAll(false); });
+if (TOKEN){ platCounts(); boot(CUR); loadAll(false); } else showGate();
+
+</script>
+</body>
+</html>
