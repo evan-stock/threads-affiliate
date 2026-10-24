@@ -207,6 +207,9 @@ img{max-width:100%}
 .apv button.armed{outline:2px solid var(--warn);outline-offset:1px}
 .apv button:disabled{opacity:.6;cursor:default}
 .apv button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.mnl{display:flex;gap:8px;padding:0 12px 12px;flex-wrap:wrap}
+.mnl button{appearance:none;border:1px solid var(--line);background:var(--panel2);color:var(--fg);font:inherit;font-size:13px;padding:7px 11px;border-radius:9px;cursor:pointer}
+.mnl input{flex:1 1 200px;min-width:0;font:inherit;font-size:13.5px;padding:7px 10px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--fg)}
 .apv-msg{font-size:12.5px;color:var(--muted);padding:0 12px 10px}
 .ti .apv-msg{padding:4px 0 0}
 .gate{max-width:520px;margin:40px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
@@ -562,6 +565,7 @@ function boot(CH){
         </div>
       </button>
       ${p.status==='pending'?approveBar(CH, p.id):''}
+      ${['rejected','expired','manual'].includes(p.status) && REPO_OF[CH] ? manualBar(CH, p.id) : ''}
       ${open.has(p.id)?detail(p):''}
     </article>`;
   }
@@ -791,6 +795,48 @@ function approveBar(ch, id){
   if (st) return `<div class="apv-msg">${st}</div>`;
   return `<div class="apv" data-repo="${repo}" data-id="${id}"><button type="button" data-act="ok">✅ 승인</button><button type="button" data-act="no">❌ 거절</button></div>`;
 }
+const MANUAL_OPEN = new Set();
+function manualBar(ch, id){
+  const repo = REPO_OF[ch];
+  if (PENDING_ACT[id]) return `<div class="apv-msg">${PENDING_ACT[id]}</div>`;
+  if (!MANUAL_OPEN.has(id)) return `<div class="mnl"><button type="button" data-mnl-open="${id}">📱 직접 올렸어요</button></div>`;
+  const ph = ch.startsWith('yt') ? 'https://youtube.com/shorts/… (선택)' : 'https://www.instagram.com/reel/… (선택)';
+  return `<div class="mnl" data-repo="${repo}" data-id="${id}"><input type="url" inputmode="url" placeholder="${ph}" aria-label="올린 게시물 주소"><button type="button" data-mnl-save="1">게시됨으로 바꾸기</button><button type="button" data-mnl-cancel="${id}">취소</button></div>`;
+}
+async function markManual(repo, id, url){
+  const path = `/repos/${OWNER}/${repo}/contents/state/posts/${encodeURIComponent(id)}.json`;
+  for (let attempt = 0; attempt < 3; attempt++){
+    const f = await gh(path + '?ref=main');
+    const post = JSON.parse(b64dec(f.content));
+    if (post.status === 'pending' || post.status === 'approved') return {ok:false, msg:'아직 자동 게시 대기 중인 게시물이에요. 먼저 거절하거나 게시를 기다려 주세요.'};
+    if (post.status === 'published') return {ok:true, msg:'이미 게시됨으로 기록돼 있어요.'};
+    post.status = 'published'; post.published_at = kstIso(); post.published_via = 'manual';
+    if (url) post.permalink = url;
+    post.note = '사용자가 앱에서 직접 올림' + (post.note ? ' · 이전 메모: ' + post.note : '');
+    try {
+      await gh(path, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+        message: `운영판 앱: 직접 올림 기록 ${id}`, content: b64enc(JSON.stringify(post, null, 1)), sha: f.sha, branch: 'main'})});
+      return {ok:true, msg:'게시됨으로 기록했어요. 오늘 올라간 것·주간 평가에 들어가요.'};
+    } catch (e){ if (e.status === 409 || e.status === 422) continue; throw e; }
+  }
+  return {ok:false, msg:'동시에 다른 변경이 있어 반영하지 못했어요. 잠시 뒤 다시 눌러 주세요.'};
+}
+document.addEventListener('click', async e => {
+  const o = e.target.closest('[data-mnl-open]'), c = e.target.closest('[data-mnl-cancel]'), sv = e.target.closest('[data-mnl-save]');
+  if (!o && !c && !sv) return;
+  e.preventDefault(); e.stopPropagation();
+  const y = window.scrollY;
+  if (o){ MANUAL_OPEN.add(o.dataset.mnlOpen); boot(CUR); window.scrollTo(0, y); return; }
+  if (c){ MANUAL_OPEN.delete(c.dataset.mnlCancel); boot(CUR); window.scrollTo(0, y); return; }
+  const bar = sv.closest('.mnl'), id = bar.dataset.id, repo = bar.dataset.repo;
+  const url = (bar.querySelector('input').value || '').trim();
+  if (url && !/^https:\/\/(www\.)?(instagram\.com|youtube\.com|youtu\.be)\//.test(url)){ bar.querySelector('input').setCustomValidity('인스타·유튜브 주소만 넣을 수 있어요'); bar.querySelector('input').reportValidity(); return; }
+  sv.disabled = true; sv.textContent = '기록 중…';
+  try { const r = await markManual(repo, id, url); PENDING_ACT[id] = (r.ok ? '✔ ' : '⚠️ ') + r.msg; }
+  catch (err){ PENDING_ACT[id] = '⚠️ 실패: ' + String(err.message || err).slice(0,100); }
+  MANUAL_OPEN.delete(id); boot(CUR); window.scrollTo(0, y);
+  setTimeout(() => loadAll(false), 2500);
+}, true);
 function b64dec(s){ const bin = atob(String(s).replace(/\s/g,'')); const u = new Uint8Array(bin.length); for (let i=0;i<bin.length;i++) u[i] = bin.charCodeAt(i); return new TextDecoder().decode(u); }
 function b64enc(s){ const u = new TextEncoder().encode(s); let bin = ''; for (let i=0;i<u.length;i+=0x8000) bin += String.fromCharCode.apply(null, u.subarray(i, i+0x8000)); return btoa(bin); }
 async function decide(repo, id, act){
