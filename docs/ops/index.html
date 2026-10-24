@@ -243,7 +243,7 @@ img{max-width:100%}
   <div class="counts" id="tabs" role="group" aria-label="보기"></div>
   <main id="feed"></main>
   <footer>
-    저장소(cardnews·politea·threads-affiliate)를 직접 읽어 보여 줍니다. 화면을 켤 때와 1분마다 자동으로 새로 읽습니다.
+    저장소(cardnews·politea·threads-affiliate·humor-cards)를 직접 읽어 보여 줍니다. 화면을 켤 때와 1분마다 자동으로 새로 읽습니다.
     승인·거절은 이 휴대폰에 넣은 GitHub 열쇠로 저장소에 바로 반영되고, 감시 장치가 1분 안에 게시합니다. 스레드 승인은 텔레그램에서 합니다.
     '확인함'은 이 기기에만 기억됩니다. <button class="linkbtn" id="resetkey" type="button">열쇠 바꾸기</button>
   </footer>
@@ -295,6 +295,7 @@ function ytData(ch){ const D=window.YT_DATA; return D ? {generated_at:D.generate
 const CHANNELS = {
   worthy:{plat:'insta', name:'오늘의쓸모', sub:'@today.worthy', bg:'#FFD84D', ink:'#1a1600', data:()=>window.CN_DATA, brand:'● <b>TODAY.WORTHY</b> · 카드뉴스·릴스', h1:'오늘의쓸모 예약판'},
   politea:{plat:'insta', name:'폴리티커', sub:'@politea.kr', bg:'#9F7BFF', ink:'#140a33', data:()=>window.PT_DATA, brand:'● <b>POLITEA.KR</b> · 정치·사회·경제', h1:'폴리티커 예약판'},
+  kk:{plat:'insta', name:'ㅋㅋ상회', sub:'@kk.sanghoe', bg:'#FF6B6B', ink:'#2a0505', data:()=>window.HK_DATA, brand:'● <b>KK.SANGHOE</b> · 썰 카드', h1:'ㅋㅋ상회 예약판'},
   ytworthy:{plat:'yt', name:'오늘의쓸모', sub:'신기한 이유', bg:'#FFD84D', ink:'#1a1600', data:()=>ytData('worthy'), brand:'● <b>YOUTUBE · 오늘의쓸모</b> · 쇼츠', h1:'오늘의쓸모 쇼츠'},
   ytfur:{plat:'yt', name:'털뭉치', sub:'귀여운 동물', bg:'#FF9E6B', ink:'#2a1000', data:()=>ytData('fur'), brand:'● <b>YOUTUBE · 오늘의 털뭉치</b> · 쇼츠', h1:'오늘의 털뭉치 쇼츠'},
   ytlife:{plat:'yt', name:'인생댓글', sub:'댓글로 정함', bg:'#7FD8A6', ink:'#06210f', data:()=>ytData('life'), brand:'● <b>YOUTUBE · 인생 댓글로 정함</b> · 쇼츠', h1:'인생 댓글로 정함 쇼츠'},
@@ -415,6 +416,7 @@ function boot(CH){
   setupRefresh();
   if (CH==='home'){ bootHome(); return; }
   if (CH==='rec'){ bootRec(); return; }
+  if (CH==='kk' && !C.data() && HK_ERR){ document.getElementById('feed').innerHTML = `<div class="empty">ㅋㅋ상회 저장소(humor-cards)를 못 읽었어요.<br>GitHub 설정 → Personal access tokens → <b>운영판 앱</b> 열쇠 → Edit → Repository access 에 <b>humor-cards</b>를 추가하고 저장해 주세요. 열쇠 글자는 그대로라 앱에 다시 넣을 필요는 없어요.</div>`; return; }
   const D = C.data() || {posts:[], generated_at:new Date().toISOString()};
   const posts = D.posts.map(p=>Object.assign({},p));
   const KST = 9*60;
@@ -503,7 +505,7 @@ function boot(CH){
   });
 
   function songLine(p){
-    if (p.format==='short') return '';
+    if (p.format==='short' || p.source==='humor') return '';
     const m = p.music;
     if (!m) return p._group==='upcoming' ? '<div class="song-line none">♪ 추천 노래 준비 중 · 하루 2번 요약 때(또는 Claude 운영판 새로고침) 골라집니다</div>' : '';
     if (m.none) return '<div class="song-line none">♪ 원본 소리 사용</div>';
@@ -644,7 +646,7 @@ function platCounts(){
 // ===== 운영판 앱: 저장소를 직접 읽고, 본인 GitHub 열쇠로 승인한다 =====
 const OWNER = 'evan-stock';
 const GH = 'https://api.github.com';
-const REPO_OF = {worthy:'cardnews', ytworthy:'cardnews', ytfur:'cardnews', ytlife:'cardnews', politea:'politea'};
+const REPO_OF = {worthy:'cardnews', ytworthy:'cardnews', ytfur:'cardnews', ytlife:'cardnews', politea:'politea', kk:'humor-cards'};
 let TOKEN = ''; try { TOKEN = localStorage.getItem('gh_token') || ''; } catch(e){}
 let LAST_LOAD = 0, LOADING = false;
 const RAW = (repo, path) => `https://raw.githubusercontent.com/${OWNER}/${repo}/main/` + String(path).split('/').map(encodeURIComponent).join('/');
@@ -737,8 +739,8 @@ function buildThreads(dash, full){
   });
 }
 function plainErr(e){ e = String(e || ''); if (e.indexOf('request limit') >= 0) return '인스타 API 요청 한도 초과'; if (e.indexOf('2207051') >= 0) return '인스타 활동 제한(스팸 의심)'; return e.slice(0,70); }
-const NAMES = {worthy:'인스타 쓸모', politea:'인스타 폴리티커', ytworthy:'유튜브 쓸모', ytfur:'유튜브 털뭉치', ytlife:'유튜브 인생댓글', thA:'스레드 득템', thB:'스레드 찬복'};
-function buildOV(cn, pt, th){
+const NAMES = {worthy:'인스타 쓸모', politea:'인스타 폴리티커', kk:'인스타 ㅋㅋ상회', ytworthy:'유튜브 쓸모', ytfur:'유튜브 털뭉치', ytlife:'유튜브 인생댓글', thA:'스레드 득템', thB:'스레드 찬복'};
+function buildOV(cn, pt, th, hk){
   const now = Date.now(), recs = [];
   const firstLine = s => String(s || '').replace(/\n/g, ' ').trim().slice(0,60);
   const add = (ch, d, title, err) => recs.push({ch, id: d.id, status: d.status || '', title: firstLine(title),
@@ -752,6 +754,7 @@ function buildOV(cn, pt, th){
     }
   }
   th.forEach(p => add('th' + (p.th_account || 'A'), p, p.cover_title, p.note));
+  (hk || []).forEach(p => add('kk', p, p.cover_title, p.error || ''));
   const todo = [], today = [], upcoming = [], tkey = kstDay(now);
   for (const r of recs){
     const st = r.status, ref = tms(r.published_at) || tms(r.publish_at) || tms(r.created_at), pa = tms(r.publish_at);
@@ -771,13 +774,64 @@ function buildOV(cn, pt, th){
   return {generated_at: kstIso(now), names: NAMES, todo, today, upcoming: upcoming.slice(0,8), channels, extra: {}};
 }
 
+// ---- ㅋㅋ상회(humor-cards 저장소: jobs/<id>/post.json) ----
+const QH = `{ hc: repository(owner:"${OWNER}", name:"humor-cards"){ jobs: object(expression:"HEAD:jobs"){ ... on Tree { entries { name object { ... on Tree { entries { name object { ... on Blob { text } ... on Tree { entries { name } } } } } } } } } } }`;
+let HK_ERR = '';
+function buildHumor(d){
+  const out = [];
+  const ents = (d && d.hc && d.hc.jobs && d.hc.jobs.entries) || [];
+  for (const j of ents){
+    const files = {}, kids = (j.object && j.object.entries) || [];
+    kids.forEach(k => files[k.name] = k.object || {});
+    if (!files['post.json'] || files['post.json'].text == null) continue;
+    const js = n => { try { return files[n] && files[n].text != null ? JSON.parse(files[n].text) : null; } catch(_){ return null; } };
+    const post = js('post.json') || {}, pub = js('published.json'), err = js('publish_error.json'), spec = js('spec.json') || {};
+    const id = j.name, day = (id.match(/^\d{4}-\d{2}-\d{2}/) || [''])[0];
+    const outs = ((files.out && files.out.entries) || []).map(e => e.name).filter(n => /^\d\d\.jpg$/.test(n)).sort().map(n => 'out/' + n);
+    const imgs = (post.files && post.files.length ? post.files : outs).map(f => RAW('humor-cards', `jobs/${id}/${f}`));
+    const pa = post.publish_at && post.publish_at !== 'now' ? nt(post.publish_at) : null;
+    const status = pub ? 'published' : post.rejected ? 'rejected' : err ? 'failed' : post.approved ? 'approved' : 'pending';
+    const sl = spec.slides || [], cov = sl.find(x => x.type === 'cover') || {};
+    const cap = post.caption || '';
+    out.push({ id, source: 'humor', format: 'carousel', status,
+      publish_at: nt(pub && pub.published_at) || pa || (day ? day + 'T12:00:00+09:00' : null),
+      published_at: nt(pub && pub.published_at) || null, created_at: day ? day + 'T00:00:00+09:00' : null,
+      slot_label: '', topic: cap.split('\n')[0].slice(0,60), category: '',
+      cover_title: String(cov.title || cap.split('\n')[0] || id).replace(/\n/g, ' '),
+      slides: sl.map(x => x.type === 'cover' ? {t: String(x.title||'').replace(/\n/g,' '), sub:'', b:''} : {t: x.headline || '', sub:'', b: (x.paras||[]).map(p => p.text).join('\n\n')}),
+      caption: cap, permalink: (pub && pub.permalink) || null,
+      note: err ? '게시 실패: ' + String(err.error || '').slice(0,90) : status === 'approved' && !pa ? '승인됨 · 곧 게시' : '',
+      error: err ? err.error : '', cover: imgs[0] || null, slide_imgs: imgs, music: null });
+  }
+  return out;
+}
+async function decideHumor(id, act){
+  const path = `/repos/${OWNER}/humor-cards/contents/jobs/${encodeURIComponent(id)}/post.json`;
+  for (let attempt = 0; attempt < 3; attempt++){
+    const f = await gh(path + '?ref=main');
+    const post = JSON.parse(b64dec(f.content));
+    if (post.approved || post.rejected) return {ok:false, msg:'이미 처리된 게시물이에요.'};
+    const stamp = kstIso().slice(0,16).replace('T',' ') + ' KST 운영판 앱 ';
+    if (act === 'ok'){ post.approved = true; post.approved_note = stamp + '승인'; }
+    else { post.rejected = true; post.rejected_note = stamp + '거절'; }
+    try {
+      await gh(path, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+        message: `운영판 앱에서 ${act === 'ok' ? '승인' : '거절'}: ${id}`, content: b64enc(JSON.stringify(post, null, 1)), sha: f.sha, branch: 'main'})});
+    } catch (e){ if (e.status === 409 || e.status === 422) continue; throw e; }
+    if (act !== 'ok') return {ok:true, msg:'거절 반영됨.'};
+    const later = post.publish_at && post.publish_at !== 'now' && Date.parse(post.publish_at) > Date.now();
+    return {ok:true, msg: later ? '승인 반영됨 · 예약 시각에 게시돼요(30분 단위 확인).' : '승인 반영됨 · 1~2분 안에 인스타에 게시돼요.'};
+  }
+  return {ok:false, msg:'동시에 다른 변경이 있어 반영하지 못했어요. 잠시 뒤 다시 눌러 주세요.'};
+}
+
 // ---- 불러오기 ----
 async function loadAll(manual){
   if (!TOKEN){ showGate(); return; }
   if (LOADING) return; LOADING = true;
   if (manual) say('불러오는 중…');
   try {
-    const d = await gql(Q);
+    const [d, dh] = await Promise.all([gql(Q), gql(QH).then(x => { HK_ERR = ''; return x; }, e => { HK_ERR = String(e.message || e); return null; })]);
     const cn = parsePosts(d.cn), pt = parsePosts(d.pt), taFull = parsePosts(d.ta);
     let dash = {}; try { dash = JSON.parse((d.ta && d.ta.dash && d.ta.dash.text) || '{}'); } catch(_){}
     const S = since(), now = kstIso();
@@ -789,7 +843,9 @@ async function loadAll(manual){
     window.YT_DATA = {generated_at: now, posts: cn.filter(x => x.kind === 'short').filter(x => { const ref = tms(x.published_at || x.created_at || x.publish_at); return ref && (x.status === 'pending' || ref >= S); }).map(buildShort).sort((a,b)=>String(a.publish_at).localeCompare(String(b.publish_at)))};
     const thAll = buildThreads(dash, taFull);
     window.TH_DATA = {generated_at: now, posts: thAll.filter(p => { const t = tms(p.published_at || p.publish_at), pa = tms(p.publish_at); return p.status === 'pending' || (p.status === 'approved' && pa && pa >= Date.now() - 864e5) || (t && t >= S); }), comments: dash.comments || {}};
-    window.OV_DATA = buildOV(cn, pt, thAll);
+    const hkAll = dh ? buildHumor(dh) : [];
+    window.HK_DATA = dh ? {generated_at: now, posts: hkAll.filter(p => p.status === 'pending' || p.status === 'approved' || tms(p.publish_at) >= S).sort((a,b)=>String(a.publish_at).localeCompare(String(b.publish_at)))} : null;
+    window.OV_DATA = buildOV(cn, pt, thAll, hkAll);
     RECS = parsePosts({posts: d.ta && d.ta.recs}).filter(r => r && r.created_at && r.channel)
       .map(r => Object.assign({_id: (r.date||'') + '_' + (r.slot||'') + '_' + r.channel}, r, {created_at: nt(r.created_at)}))
       .sort((a,b) => String(b.created_at).localeCompare(String(a.created_at))).slice(0, 12);
@@ -890,7 +946,7 @@ document.addEventListener('click', async e => {
   }
   bar.querySelectorAll('button').forEach(x => x.disabled = true); b.textContent = `${label} 중…`;
   const id = bar.dataset.id, repo = bar.dataset.repo;
-  try { const r = await decide(repo, id, act); PENDING_ACT[id] = (r.ok ? '✔ ' : '⚠️ ') + r.msg; }
+  try { const r = repo === 'humor-cards' ? await decideHumor(id, act) : await decide(repo, id, act); PENDING_ACT[id] = (r.ok ? '✔ ' : '⚠️ ') + r.msg; }
   catch (err){ PENDING_ACT[id] = '⚠️ 실패: ' + (err.status === 403 || err.status === 404 ? '열쇠에 쓰기 권한이 없어요(Contents 읽기·쓰기 필요).' : String(err.message || err).slice(0,100)); }
   const y = window.scrollY; boot(CUR); window.scrollTo(0, y);
   setTimeout(() => loadAll(false), 2500);
@@ -906,7 +962,7 @@ function showGate(err){
     <ol>
       <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub 새 열쇠 만들기</a>를 엽니다(로그인 필요).</li>
       <li>이름: <b>운영판 앱</b>, 만료: 1년, Resource owner: <b>evan-stock</b></li>
-      <li>Repository access → <b>Only select repositories</b> → cardnews, politea, threads-affiliate</li>
+      <li>Repository access → <b>Only select repositories</b> → cardnews, politea, threads-affiliate, humor-cards</li>
       <li>Permissions → Repository permissions → <b>Contents: Read and write</b>, <b>Actions: Read and write</b></li>
       <li>Generate token → 나온 github_pat_… 를 복사해 아래에 붙여 넣기</li>
     </ol>
