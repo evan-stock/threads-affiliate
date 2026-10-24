@@ -1,10 +1,11 @@
 {
- "generated_at": "2026-10-25T00:09:32.996064+09:00",
- "watch_last_check": "2026-10-25T00:09:25.051718+09:00",
+ "generated_at": "2026-10-25T00:20:14.132428+09:00",
+ "watch_last_check": "2026-10-25T00:20:04.574807+09:00",
  "comments": {
   "skipped": 63,
-  "sent": 145,
-  "pending": 15
+  "sent": 146,
+  "pending": 14,
+  "approved_send": 1
  },
  "posts": [
   {
@@ -1745,7 +1746,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261025-shari-A",
