@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-26T08:15:26.721957+09:00",
- "watch_last_check": "2026-10-26T08:08:53.488364+09:00",
+ "generated_at": "2026-10-26T08:20:19.642397+09:00",
+ "watch_last_check": "2026-10-26T08:19:58.354960+09:00",
  "comments": {
   "skipped": 71,
   "sent": 152,
@@ -104,7 +104,7 @@
    "account": "A",
    "source": "coupang",
    "mode": "curation",
-   "status": "expired",
+   "status": "rejected",
    "scheduled_at": "2026-10-16T22:50:00+09:00",
    "published_at": "",
    "permalink": "",
@@ -615,14 +615,14 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "expired",
+   "status": "rejected",
    "scheduled_at": "2026-10-18T02:20:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "닭다리 100g에 576원🍗",
    "replies": 3,
    "warnings": [],
-   "note": "",
+   "note": "10/18 16:13 사용자 요청으로 취소",
    "comments": 0
   },
   {
@@ -908,14 +908,14 @@
    "account": "B",
    "source": "toss",
    "mode": "curation",
-   "status": "expired",
+   "status": "held",
    "scheduled_at": "2026-10-19T18:00:00+09:00",
    "published_at": "",
    "permalink": "",
    "title": "명절에 엄마가 구워주던 굴비",
    "replies": 3,
    "warnings": [],
-   "note": "",
+   "note": "득템 정지 여파로 찬복 광고 잠시 보류",
    "comments": 0
   },
   {
