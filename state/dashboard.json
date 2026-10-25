@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-26T03:15:22.217256+09:00",
- "watch_last_check": "2026-10-26T03:15:04.293144+09:00",
+ "generated_at": "2026-10-26T03:25:47.882005+09:00",
+ "watch_last_check": "2026-10-26T03:25:31.001849+09:00",
  "comments": {
   "skipped": 70,
   "sent": 152,
-  "pending": 28
+  "pending": 30
  },
  "posts": [
   {
@@ -1525,7 +1525,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261022-shari-B",
@@ -1760,7 +1760,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 6
+   "comments": 7
   },
   {
    "id": "20261026-life-drama",
