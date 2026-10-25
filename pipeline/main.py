@@ -578,6 +578,20 @@ def cmd_ingest(force: bool = False, only_id: str | None = None) -> bool:
         old = load_post(pid) if ID_RE.match(pid) else None
         if old and (not force or old["status"] in ("published", "publishing", "reply_failed")):
             continue
+        # 10/26 사고 재발 방지: 전체 force는 대기 중인 글(pending/approved)만 다시 만든다.
+        # 취소, 만료, 보류된 글은 --id로 그 글만 지정했을 때만 되살린다.
+        if old and not only_id and old["status"] not in ("pending", "approved"):
+            continue
+        # 예약 시각이 이미 지난 새 글은 대기열에 넣지 않는다(몰아서 게시 방지)
+        if not old or not only_id:
+            try:
+                late = now() - parse_time(d.get("scheduled_at"))
+            except Exception:
+                late = dt.timedelta(0)
+            if late > dt.timedelta(hours=float(CONFIG.get("late_publish_hours", 3))):
+                if not old:
+                    problems.append(f"⏭ [{pid}] 예약 시각이 지나서 넣지 않았어요")
+                continue
         errs, warns = lint(d)
         if errs:
             problems.append(f"❌ [{pid or '?'}] " + " / ".join(errs))
@@ -1623,6 +1637,13 @@ def cmd_tick() -> bool:
         when = parse_time(post["scheduled_at"])
         if st == "reply_failed":
             do_publish(post, "retry-reply")
+            changed = True
+        elif st == "approved" and t >= when + dt.timedelta(hours=float(CONFIG.get("late_publish_hours", 3))) and not post.get("allow_late"):
+            # 10/26 사고 재발 방지: 예약 시각보다 한참 지난 글은 몰아서 올리지 않고 만료
+            post["status"] = "expired"
+            post["note"] = "예약 시각이 3시간 넘게 지나 자동 게시하지 않음"
+            save_post(post)
+            safe_notify(f"⌛ [{post['id']}] 예약 시각({when:%m/%d %H:%M})이 한참 지나서 올리지 않았어요")
             changed = True
         elif st == "approved" and ready_link(post) and t >= when:
             wait = link_slot_wait(post)

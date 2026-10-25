@@ -9,7 +9,7 @@ on:
       force:
         description: "같은 ID 원고를 다시 만들기"
         type: boolean
-        default: true
+        default: false
       id:
         description: "이 글만 다시 만들기 (비우면 전체)"
         required: false

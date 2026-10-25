@@ -4,11 +4,11 @@
   "source": "toss",
   "mode": "curation",
   "scheduled_at": "2026-10-18T02:20:00+09:00",
-  "main_text": "닭다리 100g에 576원🍗 (광고)\n고기중독 닭다리 북채 1kg 2팩, 2kg이 11,510원\n다나와에선 같은 상품이 20,930원이라 거의 반값이야\n에어프라이어에 돌리면 퇴근 후 치킨 한 판 뚝딱\n다들 닭다리는 구이파야 닭볶음탕파야?",
+  "main_text": "[광고] 링크로 사면 수수료 받음\n\n닭다리 100g에 576원🍗\n고기중독 닭다리 북채 1kg 2팩, 2kg이 11,510원\n다나와에선 같은 상품이 20,930원이라 거의 반값이야\n에어프라이어에 돌리면 퇴근 후 치킨 한 판 뚝딱\n다들 닭다리는 구이파야 닭볶음탕파야?",
   "reply_texts": [
-    "이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.\n\n11,510원은 10/18 새벽 2시 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~\n{링크}",
     "토스쇼핑 생고기 4위, 리뷰 4,017개에 평점 4.2\n2kg이라 소분해 두면 몇 번은 먹어",
-    "혼자 먹어도 닭다리 4개는 기본 아니야?ㅋㅋ\n스하리 해주면 반하리 갈게💕"
+    "혼자 먹어도 닭다리 4개는 기본 아니야?ㅋㅋ\n스하리 해주면 반하리 갈게💕",
+    "이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.\n\n11,510원은 10/18 새벽 2시 기준이라 바뀔 수 있어\n지금 가격은 여기서 확인해봐~\n{링크}"
   ],
   "reply_ids": [],
   "link": "https://toss.shopping/_m/z0oH45qD",
@@ -18,10 +18,12 @@
   ],
   "warnings": [],
   "experience_note": "",
-  "status": "expired",
-  "approved": false,
-  "created_at": "2026-10-26T02:27:13.594962+09:00",
+  "status": "rejected",
+  "approved": true,
+  "created_at": "2026-10-18T02:14:29.796148+09:00",
   "reply_attempts": 0,
-  "preview_msg_id": 1032,
-  "updated_at": "2026-10-26T02:29:51.490131+09:00"
+  "preview_msg_id": 266,
+  "updated_at": "2026-10-18T02:20:41.708125+09:00",
+  "error": "스레드 조회 실패 (400): {'error': {'message': 'Error validating access token: You cannot access the app till you log in to www.threads.com and follow the instructions given.', 'code': 190, 'type': 'OAuthException', 'error_subcode': 0, 'fbtrace_id': 'AUnMy-3ma58w5Pm6I2vAMFU'}}",
+  "note": "10/18 16:13 사용자 요청으로 취소"
 }
