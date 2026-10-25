@@ -1,0 +1,22 @@
+{
+  "id": "20261029-life-ginkgo",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-29T08:00:00+09:00",
+  "main_text": "출근길에 망원 한강공원 쪽으로 돌아서 왔어🍂\n은행잎이 노랗게 다 물들었더라\n사진 찍느라 지하철 한 대 놓친 건 비밀ㅋㅋㅋ\n다들 올가을 단풍 구경 갔어?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 27자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-26T02:26:49.684968+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 1001,
+  "updated_at": "2026-10-26T02:26:50.339144+09:00"
+}

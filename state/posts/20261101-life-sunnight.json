@@ -1,0 +1,22 @@
+{
+  "id": "20261101-life-sunnight",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-11-01T21:30:00+09:00",
+  "main_text": "일요일 밤에 내일 입을 옷 미리 골라 놨어👗\n이렇게라도 해야 월요일 아침이 덜 괴로워\n이번 주는 마감 없는 평화로운 주였으면\n스친들은 일요일 밤 루틴 있어?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 27자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-26T02:27:02.587772+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 1020,
+  "updated_at": "2026-10-26T02:27:03.304796+09:00"
+}

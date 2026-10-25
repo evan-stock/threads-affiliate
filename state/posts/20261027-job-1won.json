@@ -1,0 +1,22 @@
+{
+  "id": "20261027-job-1won",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-27T11:00:00+09:00",
+  "main_text": "엑셀 합계가 딱 1원 안 맞아서 아침부터 찾는 중🔍\n1원이면 그냥 넘어가도 되지 않냐고들 하는데\n회계사한텐 1원이 제일 무서운 숫자야ㅋㅋㅋ\n찾고 나면 보통 반올림 하나라서 더 허무함\n다들 일하면서 사소한 거에 집착해 본 적 있어?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 31자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-26T02:26:43.571322+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 992,
+  "updated_at": "2026-10-26T02:26:44.288508+09:00"
+}

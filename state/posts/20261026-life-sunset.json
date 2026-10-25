@@ -1,0 +1,22 @@
+{
+  "id": "20261026-life-sunset",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-26T17:00:00+09:00",
+  "main_text": "외근 끝나고 나왔는데 벌써 노을 지는 중\n다섯 시인데 하늘이 이러니까 아직 적응이 안 돼🥲\n이제 진짜 겨울 오나 봐\n다들 해 짧아지면 기분 처지는 편이야?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 22자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-26T02:26:41.461520+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 989,
+  "updated_at": "2026-10-26T02:26:42.133503+09:00"
+}

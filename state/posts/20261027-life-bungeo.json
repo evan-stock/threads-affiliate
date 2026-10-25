@@ -1,0 +1,22 @@
+{
+  "id": "20261027-life-bungeo",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-10-27T17:00:00+09:00",
+  "main_text": "망원역 앞에 붕어빵 트럭 생겼어😭\n퇴근길마다 지나가야 되는데 이거 어떡해\n3개 2천 원이면 하나에 667원꼴... 또 계산함ㅋㅋㅋㅋ\n스친들은 팥붕이야 슈붕이야?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 21자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-10-26T02:26:45.003324+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 994,
+  "updated_at": "2026-10-26T02:26:45.655598+09:00"
+}
