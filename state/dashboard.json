@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T02:31:37.954210+09:00",
+ "generated_at": "2026-10-26T02:31:50.371306+09:00",
  "watch_last_check": "2026-10-26T02:18:42.497039+09:00",
  "comments": {
   "skipped": 70,
@@ -1707,10 +1707,10 @@
    "account": "B",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T23:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T02:31:49.701279+09:00",
+   "permalink": "https://www.threads.com/@just.chanbok/post/De7QA-GFqVL",
    "title": "불금이다.",
    "replies": 0,
    "warnings": [],
