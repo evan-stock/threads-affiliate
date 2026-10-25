@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T02:31:23.980270+09:00",
+ "generated_at": "2026-10-26T02:31:36.801629+09:00",
  "watch_last_check": "2026-10-26T02:18:42.497039+09:00",
  "comments": {
   "skipped": 70,
@@ -1690,10 +1690,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-23T23:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T02:31:36.198392+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De7P_QLFpkD",
    "title": "불금인데 집에 있는 스친?🙋‍♀️",
    "replies": 0,
    "warnings": [
