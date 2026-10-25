@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T02:28:18.439187+09:00",
+ "generated_at": "2026-10-26T02:28:52.763875+09:00",
  "watch_last_check": "2026-10-26T02:18:42.497039+09:00",
  "comments": {
   "skipped": 70,
@@ -476,10 +476,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-17T11:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T02:28:52.160338+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De7Ponvlnn3",
    "title": "마트 가격표 구석에 작게 써있는 숫자",
    "replies": 2,
    "warnings": [],
