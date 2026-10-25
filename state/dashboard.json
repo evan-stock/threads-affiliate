@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T02:30:33.231010+09:00",
+ "generated_at": "2026-10-26T02:30:41.834441+09:00",
  "watch_last_check": "2026-10-26T02:18:42.497039+09:00",
  "comments": {
   "skipped": 70,
@@ -1325,10 +1325,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-21T14:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T02:30:41.256876+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De7P5DMlhhz",
    "title": "지난주에 스친들이 추천해준 드라마 중에 하나 시작했어",
    "replies": 0,
    "warnings": [
