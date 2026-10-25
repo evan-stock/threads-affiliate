@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T02:30:06.172822+09:00",
+ "generated_at": "2026-10-26T02:30:18.800987+09:00",
  "watch_last_check": "2026-10-26T02:18:42.497039+09:00",
  "comments": {
   "skipped": 70,
@@ -1203,10 +1203,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-20T23:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T02:30:18.198843+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De7P1yxFnz6",
    "title": "화요일 밤 스친 모집💌",
    "replies": 0,
    "warnings": [],
