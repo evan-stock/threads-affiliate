@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T08:00:32.324589+09:00",
+ "generated_at": "2026-10-26T08:00:45.742456+09:00",
  "watch_last_check": "2026-10-26T07:58:15.791023+09:00",
  "comments": {
   "skipped": 70,
@@ -1799,10 +1799,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-26T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T08:00:45.163307+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De71p7ymkU1",
    "title": "월요일 아침 알람 세 번 끄고 겨우 일어났어😵",
    "replies": 0,
    "warnings": [
