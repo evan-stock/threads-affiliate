@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T02:29:37.104479+09:00",
+ "generated_at": "2026-10-26T02:29:50.334634+09:00",
  "watch_last_check": "2026-10-26T02:18:42.497039+09:00",
  "comments": {
   "skipped": 70,
@@ -399,10 +399,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-17T22:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T02:29:49.729191+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De7PyOIlsCY",
    "title": "배달비 보고 조용히 앱 끈 사람 손🙋",
    "replies": 0,
    "warnings": [
