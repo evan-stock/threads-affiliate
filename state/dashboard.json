@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T20:00:45.393446+09:00",
+ "generated_at": "2026-10-26T20:00:57.869098+09:00",
  "watch_last_check": "2026-10-26T19:54:22.445311+09:00",
  "comments": {
   "skipped": 71,
@@ -1767,10 +1767,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-26T20:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T20:00:57.277703+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De9IFB1lnPH",
    "title": "새 드라마 정주행 시작했어📺",
    "replies": 0,
    "warnings": [],
