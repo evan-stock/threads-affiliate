@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T17:00:56.977022+09:00",
+ "generated_at": "2026-10-26T17:01:08.599539+09:00",
  "watch_last_check": "2026-10-26T16:57:46.793586+09:00",
  "comments": {
   "skipped": 71,
@@ -1816,10 +1816,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-26T17:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-26T17:01:08.076427+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De8zgBWFfJd",
    "title": "외근 끝나고 나왔는데 벌써 노을 지는 중",
    "replies": 0,
    "warnings": [
