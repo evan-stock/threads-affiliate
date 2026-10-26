@@ -1,10 +1,11 @@
 {
- "generated_at": "2026-10-27T00:36:05.211669+09:00",
+ "generated_at": "2026-10-27T00:39:32.710191+09:00",
  "watch_last_check": "2026-10-27T00:35:51.765849+09:00",
  "comments": {
-  "skipped": 71,
-  "sent": 155,
-  "pending": 39
+  "skipped": 74,
+  "sent": 156,
+  "pending": 33,
+  "approved_send": 2
  },
  "posts": [
   {
