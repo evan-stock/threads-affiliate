@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-27T22:02:34.689813+09:00",
- "watch_last_check": "2026-10-27T22:02:24.873187+09:00",
+ "generated_at": "2026-10-27T22:12:59.869852+09:00",
+ "watch_last_check": "2026-10-27T22:12:44.176267+09:00",
  "comments": {
   "skipped": 88,
   "sent": 168,
-  "pending": 35
+  "pending": 36
  },
  "posts": [
   {
@@ -1894,7 +1894,7 @@
     "첫 줄이 25자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 7
+   "comments": 8
   },
   {
    "id": "20261027-life-fridge",
