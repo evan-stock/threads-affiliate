@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T14:00:13.674124+09:00",
+ "generated_at": "2026-10-27T14:00:39.953947+09:00",
  "watch_last_check": "2026-10-27T13:57:04.594835+09:00",
  "comments": {
   "skipped": 80,
@@ -1918,10 +1918,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-27T14:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-27T14:00:39.399506+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/De_DnOdlbKp",
    "title": "뜨개질 4탄🧶",
    "replies": 0,
    "warnings": [],
