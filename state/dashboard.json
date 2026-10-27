@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-27T20:03:14.662681+09:00",
- "watch_last_check": "2026-10-27T19:58:08.965143+09:00",
+ "generated_at": "2026-10-27T20:08:31.945100+09:00",
+ "watch_last_check": "2026-10-27T20:08:20.232526+09:00",
  "comments": {
   "skipped": 88,
   "sent": 168,
-  "pending": 33
+  "pending": 34
  },
  "posts": [
   {
@@ -1877,7 +1877,7 @@
     "첫 줄이 21자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 6
+   "comments": 7
   },
   {
    "id": "20261027-life-coat",
