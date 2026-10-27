@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-27T15:40:16.052741+09:00",
- "watch_last_check": "2026-10-27T15:40:10.289308+09:00",
+ "generated_at": "2026-10-27T15:50:31.293673+09:00",
+ "watch_last_check": "2026-10-27T15:50:22.331363+09:00",
  "comments": {
   "skipped": 80,
   "sent": 160,
-  "pending": 38
+  "pending": 39
  },
  "posts": [
   {
@@ -1926,7 +1926,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 4
+   "comments": 5
   },
   {
    "id": "20261028-job-room",
