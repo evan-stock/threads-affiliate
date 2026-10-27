@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T08:00:11.363080+09:00",
+ "generated_at": "2026-10-28T08:00:25.125359+09:00",
  "watch_last_check": "2026-10-28T07:54:52.044530+09:00",
  "comments": {
   "skipped": 88,
@@ -1982,10 +1982,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-28T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-28T08:00:24.441242+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfA_NL1lhnd",
    "title": "수요일이 제일 애매한 요일 같아",
    "replies": 0,
    "warnings": [],
