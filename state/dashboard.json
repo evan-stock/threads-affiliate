@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T11:00:44.687789+09:00",
+ "generated_at": "2026-10-28T11:00:57.301246+09:00",
  "watch_last_check": "2026-10-28T10:53:21.942258+09:00",
  "comments": {
   "skipped": 89,
@@ -1933,10 +1933,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-28T11:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-28T11:00:56.620882+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfBT3l8lv8H",
    "title": "감사 나가면 클라이언트 회의실이 내 사무실이 돼📂",
    "replies": 0,
    "warnings": [
