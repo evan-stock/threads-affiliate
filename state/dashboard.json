@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T17:00:57.565960+09:00",
+ "generated_at": "2026-10-28T17:01:05.253847+09:00",
  "watch_last_check": "2026-10-28T16:56:41.315274+09:00",
  "comments": {
   "skipped": 89,
@@ -1965,10 +1965,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-28T17:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-28T17:01:04.672397+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfB9F3xFhLn",
    "title": "오늘 저녁은 냉장고 털기 날🍳",
    "replies": 0,
    "warnings": [],
