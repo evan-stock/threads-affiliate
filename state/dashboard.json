@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T23:00:30.745499+09:00",
+ "generated_at": "2026-10-28T23:00:45.130922+09:00",
  "watch_last_check": "2026-10-28T22:59:21.936403+09:00",
  "comments": {
   "skipped": 93,
@@ -2012,10 +2012,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-28T23:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-28T23:00:44.623127+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfCmPcXFpdE",
    "title": "수요일 밤 아직 안 잔 스친🙋‍♀️",
    "replies": 0,
    "warnings": [
