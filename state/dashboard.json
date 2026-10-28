@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-28T23:09:58.987859+09:00",
- "watch_last_check": "2026-10-28T23:09:52.450416+09:00",
+ "generated_at": "2026-10-28T23:20:22.070740+09:00",
+ "watch_last_check": "2026-10-28T23:20:06.740007+09:00",
  "comments": {
   "skipped": 93,
   "sent": 183,
-  "pending": 45
+  "pending": 48
  },
  "posts": [
   {
@@ -2022,7 +2022,7 @@
     "첫 줄이 28자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 3
   },
   {
    "id": "20261029-job-heard",
