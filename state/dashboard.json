@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T12:30:21.634895+09:00",
+ "generated_at": "2026-10-28T12:31:24.885449+09:00",
  "watch_last_check": "2026-10-28T12:28:02.041374+09:00",
  "comments": {
   "skipped": 89,
@@ -1950,10 +1950,10 @@
    "account": "A",
    "source": "toss",
    "mode": "curation",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-28T12:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-28T12:31:24.321052+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfBeJJGjCYP",
    "title": "토스 LA갈비 이거 실화야?",
    "replies": 3,
    "warnings": [],
