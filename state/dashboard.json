@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T08:58:36.125314+09:00",
+ "generated_at": "2026-10-28T09:00:02.975580+09:00",
  "watch_last_check": "2026-10-28T08:58:19.759121+09:00",
  "comments": {
   "skipped": 89,
@@ -1942,6 +1942,21 @@
    "warnings": [
     "첫 줄이 30자예요 (20자 이내 권장)"
    ],
+   "note": "",
+   "comments": 0
+  },
+  {
+   "id": "20261028-lagalbi1kg",
+   "account": "A",
+   "source": "toss",
+   "mode": "curation",
+   "status": "pending",
+   "scheduled_at": "2026-10-28T20:00:00+09:00",
+   "published_at": "",
+   "permalink": "",
+   "title": "토스 LA갈비 이거 실화야?",
+   "replies": 3,
+   "warnings": [],
    "note": "",
    "comments": 0
   },
