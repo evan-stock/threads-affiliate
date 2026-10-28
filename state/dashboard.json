@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T08:00:18.138941+09:00",
+ "generated_at": "2026-10-29T08:00:26.428049+09:00",
  "watch_last_check": "2026-10-29T07:56:55.520362+09:00",
  "comments": {
   "skipped": 93,
@@ -2074,10 +2074,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-29T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-29T08:00:25.952036+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfDkA1mEYbB",
    "title": "출근길에 망원 한강공원 쪽으로 돌아서 왔어🍂",
    "replies": 0,
    "warnings": [
