@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T14:00:13.245565+09:00",
+ "generated_at": "2026-10-28T14:00:25.370703+09:00",
  "watch_last_check": "2026-10-28T13:50:54.337609+09:00",
  "comments": {
   "skipped": 89,
@@ -1980,10 +1980,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-28T14:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-28T14:00:24.798135+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfBoaFfFoLX",
    "title": "이번 주 토요일 핼러윈이라 연남 쪽 벌써 장식 시작했더라🎃",
    "replies": 0,
    "warnings": [
