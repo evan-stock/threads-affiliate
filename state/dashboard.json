@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-28T18:59:12.468480+09:00",
- "watch_last_check": "2026-10-28T18:51:02.352017+09:00",
+ "generated_at": "2026-10-28T19:01:30.573497+09:00",
+ "watch_last_check": "2026-10-28T19:01:15.191379+09:00",
  "comments": {
   "skipped": 93,
   "sent": 177,
-  "pending": 40,
+  "pending": 42,
   "approved_send": 6
  },
  "posts": [
@@ -1974,7 +1974,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 15
+   "comments": 17
   },
   {
    "id": "20261028-life-halloween",
