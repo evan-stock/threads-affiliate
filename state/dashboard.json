@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-29T20:05:41.988478+09:00",
- "watch_last_check": "2026-10-29T20:05:21.267942+09:00",
+ "generated_at": "2026-10-29T20:16:16.820225+09:00",
+ "watch_last_check": "2026-10-29T20:15:52.176707+09:00",
  "comments": {
   "skipped": 93,
   "sent": 191,
-  "pending": 76
+  "pending": 77
  },
  "posts": [
   {
@@ -2052,7 +2052,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261029-life-coffee",
