@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T14:00:52.845586+09:00",
+ "generated_at": "2026-10-29T14:00:59.262365+09:00",
  "watch_last_check": "2026-10-29T13:51:34.255638+09:00",
  "comments": {
   "skipped": 93,
@@ -2059,10 +2059,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-29T14:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-29T14:00:58.462927+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfENRzoFDAD",
    "title": "합정에서 점심 먹고 카페 갔는데",
    "replies": 0,
    "warnings": [],
