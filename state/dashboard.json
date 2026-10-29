@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-29T15:46:18.301173+09:00",
- "watch_last_check": "2026-10-29T15:46:06.032867+09:00",
+ "generated_at": "2026-10-29T15:56:49.081476+09:00",
+ "watch_last_check": "2026-10-29T15:56:28.117434+09:00",
  "comments": {
   "skipped": 93,
   "sent": 191,
-  "pending": 72
+  "pending": 74
  },
  "posts": [
   {
@@ -2067,7 +2067,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 14
+   "comments": 16
   },
   {
    "id": "20261029-life-ginkgo",
