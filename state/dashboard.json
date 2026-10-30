@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T11:00:37.530240+09:00",
+ "generated_at": "2026-10-30T11:00:50.487237+09:00",
  "watch_last_check": "2026-10-30T10:57:26.785062+09:00",
  "comments": {
   "skipped": 94,
@@ -2106,10 +2106,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-30T11:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-30T11:00:49.544581+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfGdcdjG1cc",
    "title": "마감 날 오전은 왜 이렇게 빨리 가지⏰",
    "replies": 0,
    "warnings": [
