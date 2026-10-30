@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-30T20:43:07.764762+09:00",
- "watch_last_check": "2026-10-30T20:42:59.411179+09:00",
+ "generated_at": "2026-10-30T20:53:26.338066+09:00",
+ "watch_last_check": "2026-10-30T20:53:15.824835+09:00",
  "comments": {
   "skipped": 94,
   "sent": 193,
-  "pending": 84
+  "pending": 85
  },
  "posts": [
   {
@@ -2161,7 +2161,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261030-life-weekend",
