@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T14:00:42.844938+09:00",
+ "generated_at": "2026-10-30T14:00:54.481206+09:00",
  "watch_last_check": "2026-10-30T13:52:29.406852+09:00",
  "comments": {
   "skipped": 94,
@@ -2168,10 +2168,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-30T14:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-30T14:00:53.937643+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfGyDbflWgz",
    "title": "일하다 말고 주말 계획 세우는 중🍂",
    "replies": 0,
    "warnings": [
