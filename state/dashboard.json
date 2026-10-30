@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-30T14:33:52.869118+09:00",
- "watch_last_check": "2026-10-30T14:33:47.681414+09:00",
+ "generated_at": "2026-10-30T14:44:07.688273+09:00",
+ "watch_last_check": "2026-10-30T14:44:00.493014+09:00",
  "comments": {
   "skipped": 94,
   "sent": 193,
-  "pending": 81
+  "pending": 82
  },
  "posts": [
   {
@@ -2178,7 +2178,7 @@
     "첫 줄이 22자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261031-life-halloween",
