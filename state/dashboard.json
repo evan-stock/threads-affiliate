@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T09:30:50.407340+09:00",
+ "generated_at": "2026-10-31T09:31:02.044790+09:00",
  "watch_last_check": "2026-10-31T09:22:39.593480+09:00",
  "comments": {
   "skipped": 94,
@@ -2230,10 +2230,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-31T09:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-31T09:31:01.559552+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfI39w4iUZu",
    "title": "토요일인데 알람 없이 7시 반에 눈 떠짐🥲",
    "replies": 0,
    "warnings": [
