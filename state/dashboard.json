@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-31T23:25:42.794666+09:00",
- "watch_last_check": "2026-10-31T23:16:39.457256+09:00",
+ "generated_at": "2026-10-31T23:27:02.538615+09:00",
+ "watch_last_check": "2026-10-31T23:26:44.549127+09:00",
  "comments": {
   "skipped": 94,
   "sent": 203,
-  "pending": 91,
+  "pending": 94,
   "approved_send": 1
  },
  "posts": [
@@ -2258,7 +2258,7 @@
     "첫 줄이 34자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 2
+   "comments": 5
   },
   {
    "id": "20261101-life-brunch",
