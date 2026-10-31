@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-31T13:09:13.333739+09:00",
- "watch_last_check": "2026-10-31T13:09:06.176446+09:00",
+ "generated_at": "2026-10-31T13:19:32.428230+09:00",
+ "watch_last_check": "2026-10-31T13:19:21.429415+09:00",
  "comments": {
   "skipped": 94,
   "sent": 197,
-  "pending": 90
+  "pending": 91
  },
  "posts": [
   {
@@ -2223,7 +2223,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261031-life-sat",
