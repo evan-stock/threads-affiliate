@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-10-31T15:53:19.383021+09:00",
- "watch_last_check": "2026-10-31T15:53:15.269899+09:00",
+ "generated_at": "2026-10-31T16:03:34.557044+09:00",
+ "watch_last_check": "2026-10-31T16:03:26.767102+09:00",
  "comments": {
   "skipped": 94,
   "sent": 197,
-  "pending": 91
+  "pending": 92
  },
  "posts": [
   {
@@ -2208,7 +2208,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261031-life-market",
