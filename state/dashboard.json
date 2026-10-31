@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T15:30:33.413598+09:00",
+ "generated_at": "2026-10-31T15:30:47.264437+09:00",
  "watch_last_check": "2026-10-31T15:22:19.359259+09:00",
  "comments": {
   "skipped": 94,
@@ -2200,10 +2200,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-10-31T15:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-10-31T15:30:46.721233+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfJhIWCFs4f",
    "title": "뜨개질 5탄🧶",
    "replies": 0,
    "warnings": [],
