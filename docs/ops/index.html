@@ -547,7 +547,8 @@ function boot(CH){
     if (p.format==='thread') return detailThread(p);
     let media = '';
     if (p.format==='reel'){
-      media = p.cover ? `<div><h3>릴스 커버</h3><img class="reelcov" src="${p.cover}" alt="릴스 커버"></div>` : '';
+      media = p.video ? `<div><h3>영상 미리보기</h3><video class="reelcov" src="${p.video}" poster="${p.cover||''}" controls playsinline preload="none"></video></div>`
+        : p.cover ? `<div><h3>릴스 커버</h3><img class="reelcov" src="${p.cover}" alt="릴스 커버"></div>` : '';
     } else if (p.slide_imgs && p.slide_imgs.length){
       media = `<div><h3>카드 ${p.slide_imgs.length}장</h3><div class="strip">${p.slide_imgs.map((s,i)=>
         `<figure>${s?`<img src="${s}" alt="${i+1}장" loading="lazy">`:'<img alt="">'}<figcaption>${String(i+1).padStart(2,'0')}${i===0?' · 표지':''}</figcaption></figure>`).join('')}</div></div>`;
@@ -793,7 +794,10 @@ function buildHumor(d){
     const status = pub ? 'published' : post.rejected ? 'rejected' : err ? 'failed' : post.approved ? 'approved' : 'pending';
     const sl = spec.slides || [], cov = sl.find(x => x.type === 'cover') || {};
     const cap = post.caption || '';
-    out.push({ id, source: 'humor', format: 'carousel', status,
+    const isReel = !!post.video || post.format === 'reel';  // 2026-11-01: 릴스는 영상·커버로 보여 준다
+    const reelCover = isReel ? RAW('humor-cards', `jobs/${id}/${post.cover || 'out/cover.jpg'}`) : null;
+    const reelVideo = isReel ? RAW('humor-cards', `jobs/${id}/${post.video || 'out/reel.mp4'}`) : null;
+    out.push({ id, source: 'humor', format: isReel ? 'reel' : 'carousel', status, video: reelVideo,
       publish_at: nt(pub && pub.published_at) || pa || (day ? day + 'T12:00:00+09:00' : null),
       published_at: nt(pub && pub.published_at) || null, created_at: day ? day + 'T00:00:00+09:00' : null,
       slot_label: '', topic: cap.split('\n')[0].slice(0,60), category: '',
@@ -801,7 +805,7 @@ function buildHumor(d){
       slides: sl.map(x => x.type === 'cover' ? {t: String(x.title||'').replace(/\n/g,' '), sub:'', b:''} : {t: x.headline || '', sub:'', b: (x.paras||[]).map(p => p.text).join('\n\n')}),
       caption: cap, permalink: (pub && pub.permalink) || null,
       note: err ? '게시 실패: ' + String(err.error || '').slice(0,90) : status === 'approved' && !pa ? '승인됨 · 곧 게시' : '',
-      error: err ? err.error : '', cover: imgs[0] || null, slide_imgs: imgs, music: null });
+      error: err ? err.error : '', cover: isReel ? reelCover : (imgs[0] || null), slide_imgs: isReel ? [] : imgs, music: null });
   }
   return out;
 }
