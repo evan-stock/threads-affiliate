@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T21:30:32.428073+09:00",
+ "generated_at": "2026-11-01T21:30:44.574678+09:00",
  "watch_last_check": "2026-11-01T21:28:26.175088+09:00",
  "comments": {
   "skipped": 94,
@@ -2309,10 +2309,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-01T21:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-01T21:30:44.068244+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfMvHzNoNwO",
    "title": "일요일 밤에 내일 입을 옷 미리 골라 놨어👗",
    "replies": 0,
    "warnings": [
