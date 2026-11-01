@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-01T10:13:47.468073+09:00",
- "watch_last_check": "2026-11-01T10:13:41.944535+09:00",
+ "generated_at": "2026-11-01T10:23:58.856661+09:00",
+ "watch_last_check": "2026-11-01T10:23:53.682240+09:00",
  "comments": {
   "skipped": 94,
   "sent": 210,
-  "pending": 94
+  "pending": 95
  },
  "posts": [
   {
@@ -2302,7 +2302,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261101-life-sunnight",
