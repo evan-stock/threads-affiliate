@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-01T20:43:25.241856+09:00",
- "watch_last_check": "2026-11-01T20:36:39.573499+09:00",
+ "generated_at": "2026-11-01T20:46:51.313674+09:00",
+ "watch_last_check": "2026-11-01T20:46:43.734114+09:00",
  "comments": {
   "skipped": 94,
-  "sent": 216,
-  "pending": 91,
-  "approved_send": 3
+  "sent": 217,
+  "pending": 92,
+  "approved_send": 2
  },
  "posts": [
   {
@@ -2241,7 +2241,7 @@
     "첫 줄이 26자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 11
+   "comments": 12
   },
   {
    "id": "20261031-shari-A",
