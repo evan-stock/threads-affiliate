@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-01T20:33:27.532401+09:00",
- "watch_last_check": "2026-11-01T20:26:36.863312+09:00",
+ "generated_at": "2026-11-01T20:36:47.201677+09:00",
+ "watch_last_check": "2026-11-01T20:36:39.573499+09:00",
  "comments": {
   "skipped": 94,
-  "sent": 213,
-  "pending": 90,
-  "approved_send": 6
+  "sent": 214,
+  "pending": 91,
+  "approved_send": 5
  },
  "posts": [
   {
@@ -2288,7 +2288,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261101-life-nov",
