@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-01T09:30:11.577366+09:00",
+ "generated_at": "2026-11-01T09:30:38.460471+09:00",
  "watch_last_check": "2026-11-01T09:21:56.304087+09:00",
  "comments": {
   "skipped": 94,
@@ -2294,10 +2294,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-01T09:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-01T09:30:37.795277+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfLcr2XGCL0",
    "title": "벌써 11월이래📅",
    "replies": 0,
    "warnings": [],
