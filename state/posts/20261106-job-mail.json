@@ -1,0 +1,22 @@
+{
+  "id": "20261106-job-mail",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-11-06T11:00:00+09:00",
+  "main_text": "며칠 쉬고 출근했더니 안 읽은 메일 87개📩\n급한 거부터 고르는데 제목에 다 '급함'이라고 써 있어ㅋㅋㅋ\n점심 전까지 반만 치우는 게 목표\n스친들은 휴가 다녀오면 메일 어떻게 처리해?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 27자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-11-05T23:00:03.251347+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 1393,
+  "updated_at": "2026-11-05T23:00:03.859862+09:00"
+}

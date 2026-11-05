@@ -1,0 +1,22 @@
+{
+  "id": "20261110-job-excel",
+  "account": "A",
+  "source": "none",
+  "mode": "talk",
+  "scheduled_at": "2026-11-10T17:00:00+09:00",
+  "main_text": "퇴근 30분 전에 엑셀이 '응답 없음' 떴어😇\n마지막 저장이 20분 전... 다행인지 불행인지;;\n그 뒤로 컨트롤 S를 1분마다 누르는 중\n스친들은 저장 습관 어때?",
+  "reply_texts": [],
+  "reply_ids": [],
+  "link": "",
+  "images": [],
+  "warnings": [
+    "첫 줄이 28자예요 (20자 이내 권장)"
+  ],
+  "experience_note": "",
+  "status": "approved",
+  "approved": true,
+  "created_at": "2026-11-05T23:00:17.920244+09:00",
+  "reply_attempts": 0,
+  "preview_msg_id": 1415,
+  "updated_at": "2026-11-05T23:00:18.561072+09:00"
+}
