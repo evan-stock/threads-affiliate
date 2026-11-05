@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T08:00:33.051619+09:00",
+ "generated_at": "2026-11-06T08:00:40.577312+09:00",
  "watch_last_check": "2026-11-06T07:51:23.292471+09:00",
  "comments": {
   "skipped": 99,
@@ -2375,10 +2375,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-06T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-06T08:00:40.031002+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfYKZsikbNE",
    "title": "스친들 오랜만이야🥹",
    "replies": 0,
    "warnings": [],
