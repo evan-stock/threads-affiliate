@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T14:00:00.186963+09:00",
+ "generated_at": "2026-11-06T14:00:13.837997+09:00",
  "watch_last_check": "2026-11-06T13:57:56.383175+09:00",
  "comments": {
   "skipped": 99,
@@ -2405,10 +2405,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-06T14:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-06T14:00:13.211535+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfYziYwDsTi",
    "title": "아플 땐 왜 죽보다 떡볶이가 더 먹고 싶을까🥲",
    "replies": 0,
    "warnings": [
