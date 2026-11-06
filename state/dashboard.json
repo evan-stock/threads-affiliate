@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-06T14:18:32.024742+09:00",
- "watch_last_check": "2026-11-06T14:18:31.015331+09:00",
+ "generated_at": "2026-11-06T14:28:43.376311+09:00",
+ "watch_last_check": "2026-11-06T14:28:39.937782+09:00",
  "comments": {
   "skipped": 99,
   "sent": 220,
-  "pending": 95
+  "pending": 96
  },
  "posts": [
   {
@@ -2415,7 +2415,7 @@
     "첫 줄이 28자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261107-life-gimjang-am",
