@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T20:00:05.956155+09:00",
+ "generated_at": "2026-11-06T20:00:19.058428+09:00",
  "watch_last_check": "2026-11-06T19:56:59.595679+09:00",
  "comments": {
   "skipped": 99,
@@ -2390,10 +2390,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-06T20:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-06T20:00:18.374608+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfZcv0am_9k",
    "title": "내일 김장하러 본가 가🥬",
    "replies": 0,
    "warnings": [],
