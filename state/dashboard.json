@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T15:31:01.667537+09:00",
+ "generated_at": "2026-11-07T15:31:13.479182+09:00",
  "watch_last_check": "2026-11-07T15:29:57.327629+09:00",
  "comments": {
   "skipped": 100,
@@ -2452,10 +2452,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-07T15:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-07T15:31:12.893704+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dfbiv5hFfdf",
    "title": "김장 끝나자마자 직업병 발동📊",
    "replies": 0,
    "warnings": [],
