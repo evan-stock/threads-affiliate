@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T23:01:02.941082+09:00",
+ "generated_at": "2026-11-07T23:01:15.011942+09:00",
  "watch_last_check": "2026-11-07T23:01:00.303287+09:00",
  "comments": {
   "skipped": 116,
@@ -2482,10 +2482,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-07T23:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-07T23:01:14.392599+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfcWP-SFjze",
    "title": "김장하고 온몸 쑤시는 스친 손🙋‍♀️",
    "replies": 0,
    "warnings": [
