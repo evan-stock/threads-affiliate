@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-07T18:53:47.474207+09:00",
- "watch_last_check": "2026-11-07T18:53:44.680863+09:00",
+ "generated_at": "2026-11-07T19:03:59.508693+09:00",
+ "watch_last_check": "2026-11-07T19:03:55.266658+09:00",
  "comments": {
   "skipped": 100,
   "sent": 227,
-  "pending": 100
+  "pending": 101
  },
  "posts": [
   {
@@ -2445,7 +2445,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261107-life-gimjang-math",
