@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T09:30:34.915291+09:00",
+ "generated_at": "2026-11-07T09:30:43.171785+09:00",
  "watch_last_check": "2026-11-07T09:23:27.280325+09:00",
  "comments": {
   "skipped": 100,
@@ -2422,10 +2422,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-07T09:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-07T09:30:42.678668+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dfa5f9bER_w",
    "title": "아침 7시부터 배추 씻는 중🥬",
    "replies": 0,
    "warnings": [],
