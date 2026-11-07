@@ -468,7 +468,15 @@ def lint(d: dict) -> tuple[list[str], list[str]]:
             errs.append(msg)
         elif msg:
             warns.append(msg)
-    if d.get("compare"):
+    is_case = str(d.get("id", "")).endswith("-case")
+    if is_case:
+        # 11/8~11/14 사례형 실험: 가격, 할인율, 판매량, 후기 수, 품절 임박을 쓰지 않음. 단가 카드도 없음
+        if d.get("compare"):
+            errs.append("사례형(-case) 글은 단가 카드(compare)를 넣지 않아요 (가격 없이 사양 숫자만)")
+        pricey = re.findall(r"\d[\d,]*\s*(?:만\s*)?원|\d+\s*%|할인|최저가|판매량|후기|리뷰|품절|임박", alltext)
+        if pricey:
+            warns.append(f"사례형인데 가격, 할인, 후기 쪽 표현이 보여요: {', '.join(sorted(set(pricey)))}")
+    elif d.get("compare"):
         import compare as cmpmod
         errs += cmpmod.validate(d["compare"])
     elif d.get("account") == "A" and d.get("source") in ("toss", "coupang"):
