@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-07T09:33:52.033353+09:00",
- "watch_last_check": "2026-11-07T09:33:46.848319+09:00",
+ "generated_at": "2026-11-07T09:44:06.783307+09:00",
+ "watch_last_check": "2026-11-07T09:43:58.354471+09:00",
  "comments": {
   "skipped": 100,
   "sent": 227,
-  "pending": 97
+  "pending": 98
  },
  "posts": [
   {
@@ -2430,7 +2430,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261107-life-gimjang-home",
