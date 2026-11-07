@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-08T00:53:49.148018+09:00",
- "watch_last_check": "2026-11-08T00:44:34.904683+09:00",
+ "generated_at": "2026-11-08T00:54:57.408297+09:00",
+ "watch_last_check": "2026-11-08T00:54:51.250970+09:00",
  "comments": {
   "skipped": 116,
   "sent": 234,
-  "pending": 85,
+  "pending": 86,
   "approved_send": 11
  },
  "posts": [
@@ -2493,7 +2493,7 @@
     "첫 줄이 29자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 16
+   "comments": 17
   },
   {
    "id": "20261108-life-ache",
