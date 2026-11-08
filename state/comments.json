@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-11-08T09:47:58.859665+09:00",
+  "last_check": "2026-11-08T09:58:15.631646+09:00",
   "items": {
     "17957477955018149": {
       "post_id": "20261017-bulgogi",
@@ -7450,6 +7450,20 @@
       "msg_id": 1544,
       "msg_ids": [
         1544
+      ]
+    },
+    "18130303432649628": {
+      "post_id": "20261108-life-ache",
+      "account": "A",
+      "username": "okaycomfy",
+      "text": "오늘 목표는 300보 이하로 걷기입니당. \n온전힌 널부러짐을 ㅎㅎㅎ\n\n오늘도 좋은 하루 만드세요\nOKCOMFY\nTake a break, feel this moment",
+      "draft": "",
+      "status": "pending",
+      "created_at": "2026-11-08T09:58:21.948207+09:00",
+      "msg_text": "💬 [gotitem.lab] '일어났는데 온몸이 근육통이야🥲' 글에 @okaycomfy\n오늘 목표는 300보 이하로 걷기입니당. \n온전힌 널부러짐을 ㅎㅎㅎ\n\n오늘도 좋은 하루 만드세요\nOKCOMFY\nTake a break, feel this moment\n\n(초안 없음) '다시'라고 답장하면 AI가 써요. 직접 쓰려면 '그대로: 문장'. 게시는 ✅를 눌러야 해요.\n⚠️ 초안 실패 이유: AI가 답 안 해도 되는 댓글로 봤어요(SKIP)",
+      "msg_id": 1546,
+      "msg_ids": [
+        1546
       ]
     }
   },
