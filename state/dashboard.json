@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-08T15:48:23.942283+09:00",
- "watch_last_check": "2026-11-08T15:48:18.151912+09:00",
+ "generated_at": "2026-11-08T15:58:42.004404+09:00",
+ "watch_last_check": "2026-11-08T15:58:33.964382+09:00",
  "comments": {
   "skipped": 119,
   "sent": 248,
-  "pending": 89
+  "pending": 90
  },
  "posts": [
   {
@@ -2539,7 +2539,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261108-life-ramen",
