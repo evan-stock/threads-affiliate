@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-09T08:00:55.471922+09:00",
+ "generated_at": "2026-11-09T08:01:05.692406+09:00",
  "watch_last_check": "2026-11-09T07:54:45.755725+09:00",
  "comments": {
   "skipped": 121,
@@ -2591,10 +2591,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-09T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-09T08:01:05.124334+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dff40_flDxq",
    "title": "월요일 출근길 너무 추워🥶",
    "replies": 0,
    "warnings": [],
