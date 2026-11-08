@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-09T08:46:04.471460+09:00",
- "watch_last_check": "2026-11-09T08:46:00.222668+09:00",
+ "generated_at": "2026-11-09T08:56:18.773678+09:00",
+ "watch_last_check": "2026-11-09T08:56:12.503983+09:00",
  "comments": {
   "skipped": 121,
   "sent": 255,
-  "pending": 90
+  "pending": 91
  },
  "posts": [
   {
@@ -2599,7 +2599,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261109-life-gyul",
