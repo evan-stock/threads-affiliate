@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-08T18:30:58.708553+09:00",
+ "generated_at": "2026-11-08T18:31:10.159893+09:00",
  "watch_last_check": "2026-11-08T18:22:43.345299+09:00",
  "comments": {
   "skipped": 119,
@@ -2514,10 +2514,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-08T18:30:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-08T18:31:09.299939+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfecIyNG_RA",
    "title": "아파서 누워 있는 동안 드라마 진도 쭉쭉 나감📺",
    "replies": 0,
    "warnings": [
