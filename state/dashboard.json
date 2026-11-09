@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-09T17:01:00.552604+09:00",
+ "generated_at": "2026-11-09T17:01:12.219108+09:00",
  "watch_last_check": "2026-11-09T17:00:53.992002+09:00",
  "comments": {
   "skipped": 122,
@@ -2576,10 +2576,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-09T17:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-09T17:01:11.549537+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dfg2ouYm3Zw",
    "title": "월요일 회의에서 들은 말",
    "replies": 0,
    "warnings": [],
