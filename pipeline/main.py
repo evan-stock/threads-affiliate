@@ -945,15 +945,31 @@ def no_middot(text: str) -> str:
 META_RE = re.compile(r"\b(Wait|Let me|I must|I should|Final|output|reply|sentences?|rules?|correct)\b", re.I)
 
 
+# 한국어 속생각(지시문을 되읊는 문장) 패턴. 2026-11-09 '이모지 하나만 달린 댓글이라 가볍게 받아주면 돼. 반말, 한두 문장,
+# 물음표 없이. 🤗 답글: ...'이 그대로 게시된 사고 대응
+META_KO_RE = re.compile(
+    r"답글\s*[:：]|초안\s*[:：]|받아주면 ?돼|받아 ?주면 ?된다|반말\s*,|한두 ?문장|물음표 없이|물음표 ?없|"
+    r"댓글이라\s|이모지 하나만|답하면 ?돼|하지 않기\.|않기\.|펀치라인|말투로|말투는|출력|지시|요청대로|규칙|SKIP")
+
+
 def has_meta(text: str) -> bool:
-    """AI 속생각(영어 메모)이 섞였는지. 영어 단어 4개 이상 또는 메타 단어가 보이면 오염으로 본다."""
+    """AI 속생각(영어 메모, 한국어 지시문 되읊기)이 섞였는지."""
     t = text or ""
-    return len(re.findall(r"[A-Za-z]{2,}", t)) >= 4 or bool(META_RE.search(t))
+    return (len(re.findall(r"[A-Za-z]{2,}", t)) >= 4 or bool(META_RE.search(t))
+            or bool(META_KO_RE.search(t)))
 
 
 def clean_draft(text: str) -> str:
     """오염된 초안이면 깨끗한 마지막 문단만 남긴다(2026-10-20 영어 속생각 게시 사고 대응)."""
     t = (text or "").strip()
+    # 속생각 끝에 SKIP만 남긴 경우(11/8 '...SKIP을 출력해야 해. SKIP' 게시 사고)는 SKIP으로 본다
+    lines = [x.strip() for x in t.splitlines() if x.strip()]
+    if lines and lines[-1].upper().strip(".") == "SKIP":
+        return "SKIP"
+    # '... 답글: 진짜 답글' 형태면 마지막 '답글:' 뒤만 쓴다
+    m = list(re.finditer(r"답글\s*[:：]\s*", t))
+    if m:
+        t = t[m[-1].end():].strip().strip('"\'“”')
     if not has_meta(t):
         return t
     paras = [x.strip() for x in re.split(r"\n\s*\n", t) if x.strip()]
@@ -1035,7 +1051,7 @@ def draft_reply(post: dict, comment: dict, extra: str = "") -> str:
     raw = "".join(b.get("text", "") for b in j.get("content", []) if b.get("type") == "text").strip()
     out = humanize_laugh(no_middot(clean_draft(raw)))
     if raw and not out:
-        raise RuntimeError("AI 초안에 영어 속생각이 섞여 버렸어요. '다시'를 눌러 주세요")
+        raise RuntimeError("AI 초안에 속생각(지시문)이 섞여 버렸어요. '다시'를 눌러 주세요")
     if not out:
         raise RuntimeError(f"AI 응답이 비어 있음(stop_reason={j.get('stop_reason')})")
     return out
@@ -1287,7 +1303,7 @@ def send_comment_reply(cid: str, text: str) -> str:
         return "이미 처리된 댓글이에요"
     text = no_middot(text)
     if has_meta(text):
-        raise RuntimeError("답글에 영어 속생각 같은 문장이 섞여 있어서 게시를 막았어요. 직접 답장으로 고친 문장을 보내 주세요")
+        raise RuntimeError("답글에 속생각이나 지시문 같은 문장(예: '답글:', '반말, 한두 문장')이 섞여 있어서 게시를 막았어요. 직접 답장으로 고친 문장을 보내 주세요")
     rid = create_reply(item["account"], cid, text)
     item.update({"status": "sent", "reply": text, "reply_id": rid, "sent_at": now().isoformat()})
     save_comments(store)
