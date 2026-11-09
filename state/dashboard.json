@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-09T20:38:08.781719+09:00",
- "watch_last_check": "2026-11-09T20:37:58.999765+09:00",
+ "generated_at": "2026-11-09T20:48:29.570800+09:00",
+ "watch_last_check": "2026-11-09T20:48:19.192386+09:00",
  "comments": {
   "skipped": 122,
   "sent": 268,
-  "pending": 87
+  "pending": 88
  },
  "posts": [
   {
@@ -2616,7 +2616,7 @@
     "첫 줄이 25자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261109-life-lunch",
