@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-09T14:22:50.451567+09:00",
- "watch_last_check": "2026-11-09T14:14:39.050066+09:00",
+ "generated_at": "2026-11-09T14:25:02.959613+09:00",
+ "watch_last_check": "2026-11-09T14:24:52.590613+09:00",
  "comments": {
   "skipped": 122,
   "sent": 258,
-  "pending": 85,
+  "pending": 86,
   "approved_send": 4
  },
  "posts": [
@@ -2634,7 +2634,7 @@
     "첫 줄이 27자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261109-tip-card40",
