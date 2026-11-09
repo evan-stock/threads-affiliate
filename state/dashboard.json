@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-09T15:25:36.164700+09:00",
- "watch_last_check": "2026-11-09T15:17:28.988380+09:00",
+ "generated_at": "2026-11-09T15:27:44.074129+09:00",
+ "watch_last_check": "2026-11-09T15:27:38.209725+09:00",
  "comments": {
   "skipped": 122,
   "sent": 266,
-  "pending": 85,
+  "pending": 86,
   "approved_send": 2
  },
  "posts": [
@@ -2525,7 +2525,7 @@
     "첫 줄이 29자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 2
+   "comments": 3
   },
   {
    "id": "20261108-life-knit6",
