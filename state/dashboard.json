@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-09T11:00:18.646586+09:00",
+ "generated_at": "2026-11-09T11:00:29.915702+09:00",
  "watch_last_check": "2026-11-09T10:59:06.285241+09:00",
  "comments": {
   "skipped": 121,
@@ -2640,10 +2640,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-09T11:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-09T11:00:29.349559+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfgNW2YFLF0",
    "title": "카드 공제는 어디서 썼냐에 따라 공제율이 달라💳",
    "replies": 0,
    "warnings": [
