@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-10T14:12:38.045405+09:00",
- "watch_last_check": "2026-11-10T14:12:28.265756+09:00",
+ "generated_at": "2026-11-10T14:23:05.952066+09:00",
+ "watch_last_check": "2026-11-10T14:22:48.392356+09:00",
  "comments": {
   "skipped": 122,
   "sent": 268,
-  "pending": 94
+  "pending": 96
  },
  "posts": [
   {
@@ -2682,7 +2682,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 1
+   "comments": 2
   },
   {
    "id": "20261110-life-boiler",
@@ -2729,7 +2729,7 @@
     "첫 줄이 34자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261111-job-1plus1",
