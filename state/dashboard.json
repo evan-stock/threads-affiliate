@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T10:34:33.386039+09:00",
+ "generated_at": "2026-11-10T10:34:46.344199+09:00",
  "watch_last_check": "2026-11-10T10:34:25.433672+09:00",
  "comments": {
   "skipped": 122,
@@ -2689,10 +2689,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-10T08:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-10T10:34:45.667533+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfivNJNmnkI",
    "title": "오늘 아침 보일러 처음 틀었어🔥",
    "replies": 0,
    "warnings": [],
