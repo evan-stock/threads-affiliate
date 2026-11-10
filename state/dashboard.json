@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-11T07:50:07.786176+09:00",
- "watch_last_check": "2026-11-11T07:50:02.531033+09:00",
+ "generated_at": "2026-11-11T08:00:20.705523+09:00",
+ "watch_last_check": "2026-11-11T08:00:14.230780+09:00",
  "comments": {
   "skipped": 126,
   "sent": 274,
@@ -2785,7 +2785,7 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "publishing",
    "scheduled_at": "2026-11-11T08:00:00+09:00",
    "published_at": "",
    "permalink": "",
