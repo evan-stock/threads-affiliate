@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-10T20:44:05.519424+09:00",
- "watch_last_check": "2026-11-10T20:43:59.287541+09:00",
+ "generated_at": "2026-11-10T20:54:18.550073+09:00",
+ "watch_last_check": "2026-11-10T20:54:13.345966+09:00",
  "comments": {
   "skipped": 126,
   "sent": 274,
-  "pending": 89
+  "pending": 90
  },
  "posts": [
   {
@@ -2697,7 +2697,7 @@
    "replies": 0,
    "warnings": [],
    "note": "",
-   "comments": 4
+   "comments": 5
   },
   {
    "id": "20261110-life-kimchirice",
