@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T20:00:07.403685+09:00",
+ "generated_at": "2026-11-10T20:00:19.506614+09:00",
  "watch_last_check": "2026-11-10T19:50:56.781526+09:00",
  "comments": {
   "skipped": 122,
@@ -2704,10 +2704,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-10T20:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-10T20:00:18.904165+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dfjv7dUlfiN",
    "title": "오늘 저녁은 김치볶음밥🍳",
    "replies": 0,
    "warnings": [],
