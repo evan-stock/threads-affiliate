@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T17:00:20.091190+09:00",
+ "generated_at": "2026-11-10T17:00:34.766842+09:00",
  "watch_last_check": "2026-11-10T16:57:13.485618+09:00",
  "comments": {
   "skipped": 122,
@@ -2657,10 +2657,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-10T17:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-10T17:00:34.161369+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfjbWoqFbe8",
    "title": "퇴근 30분 전에 엑셀이 '응답 없음' 떴어😇",
    "replies": 0,
    "warnings": [
