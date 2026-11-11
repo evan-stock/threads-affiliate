@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T23:00:57.136252+09:00",
+ "generated_at": "2026-11-11T23:01:08.740977+09:00",
  "watch_last_check": "2026-11-11T22:58:51.878355+09:00",
  "comments": {
   "skipped": 126,
@@ -2800,10 +2800,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-11T23:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-11T23:01:08.168752+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/DfmpawDlgEv",
    "title": "빼빼로데이 밤 아직 안 잔 스친 손🙋‍♀️",
    "replies": 0,
    "warnings": [
