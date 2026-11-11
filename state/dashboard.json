@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-12T08:43:06.396819+09:00",
- "watch_last_check": "2026-11-12T08:42:56.079885+09:00",
+ "generated_at": "2026-11-12T08:53:25.535805+09:00",
+ "watch_last_check": "2026-11-12T08:53:16.040272+09:00",
  "comments": {
   "skipped": 130,
   "sent": 280,
-  "pending": 90
+  "pending": 91
  },
  "posts": [
   {
@@ -2874,7 +2874,7 @@
     "첫 줄이 23자예요 (20자 이내 권장)"
    ],
    "note": "",
-   "comments": 0
+   "comments": 1
   },
   {
    "id": "20261112-life-suneung",
