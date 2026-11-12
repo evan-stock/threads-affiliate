@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T17:00:48.091868+09:00",
+ "generated_at": "2026-11-12T17:00:59.707133+09:00",
  "watch_last_check": "2026-11-12T16:57:41.819564+09:00",
  "comments": {
   "skipped": 130,
@@ -2832,10 +2832,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-12T17:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-12T17:00:59.025159+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dfok_zvlQvp",
    "title": "내일 저녁에 연남동에서 동기들 만나기로 했어🍻",
    "replies": 0,
    "warnings": [
