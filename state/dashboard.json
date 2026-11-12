@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T19:52:38.321080+09:00",
+ "generated_at": "2026-11-12T20:00:46.660034+09:00",
  "watch_last_check": "2026-11-12T19:52:29.598621+09:00",
  "comments": {
   "skipped": 130,
@@ -2849,7 +2849,7 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "approved",
+   "status": "publishing",
    "scheduled_at": "2026-11-12T20:00:00+09:00",
    "published_at": "",
    "permalink": "",
