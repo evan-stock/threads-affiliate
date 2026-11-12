@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T20:00:46.660034+09:00",
+ "generated_at": "2026-11-12T20:01:00.650978+09:00",
  "watch_last_check": "2026-11-12T19:52:29.598621+09:00",
  "comments": {
   "skipped": 130,
@@ -2849,10 +2849,10 @@
    "account": "A",
    "source": "none",
    "mode": "talk",
-   "status": "publishing",
+   "status": "published",
    "scheduled_at": "2026-11-12T20:00:00+09:00",
-   "published_at": "",
-   "permalink": "",
+   "published_at": "2026-11-12T20:00:59.912390+09:00",
+   "permalink": "https://www.threads.com/@gotitem.lab/post/Dfo5mAekafT",
    "title": "뜨개질 7탄🧶",
    "replies": 0,
    "warnings": [],
